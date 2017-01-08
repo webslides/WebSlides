@@ -1495,8 +1495,8 @@ bottom: 0;
 left: 0;
 }
 #navigation  {
--webkit-animation: fadeIn 4s;
-animation: fadeIn 4s;
+-webkit-animation: fadeIn 6s;
+animation: fadeIn 6s;
 opacity:0;
 }
 #navigation:hover {
