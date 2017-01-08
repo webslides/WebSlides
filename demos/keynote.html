@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CLEAN MARKUP = GOOD KARMA.
+      Hi source code lover,
+      
+      you're a curious person and a fast learner ;)
+      Let's make something beautiful together. Contribute on Github:
+      https://github.com/jlantunez/webslides
+      
+      Thanks,
+      @jlantunez.
+    -->
+    
+    <!-- SEO -->
+    <title>WebSlides Keynote: Make a Keynote presentation using HTML</title>
+    <meta name="description" content="WebSlides is the easiest way to make HTML presentations. Just essential features, clean code, and lovely CSS.">
+    
+    <!-- URL CANONICAL -->
+    <!-- <link rel="canonical" href="http://your-url.com/permalink"> -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
+    
+    <!-- CSS Base -->
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/base.css">
+    
+    <!-- CSS Colors -->
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/colors.css">
+    
+    <!-- Optional - CSS SVG Icons (Font Awesome) -->
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/svg-icons.css">
+    
+    <!-- SOCIAL CARDS (ADD YOUR INFO) -->
+    
+    <!-- FACEBOOK -->
+    <meta property="og:url" content="http://your-url.com/permalink"> <!-- EDIT -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Make a Keynote presentation using HTML"> <!-- EDIT -->
+    <meta property="og:description" content="WebSlides is the easiest way to make HTML presentations. 120+ free slides ready to use."> <!-- EDIT -->
+    <meta property="og:updated_time" content="2017-01-04T17:32:14"> <!-- EDIT -->
+    <meta property="og:image" content="../static/images/share-webslides.jpg" > <!-- EDIT -->
+    
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@webslides"> <!-- EDIT -->
+    <meta name="twitter:creator" content="@jlantunez"> <!-- EDIT -->
+    <meta name="twitter:title" content="Make a Keynote presentation using HTML"> <!-- EDIT -->
+    <meta name="twitter:description" content="WebSlides is the easiest way to make HTML presentations. 120+ free slides ready to use."> <!-- EDIT -->
+    <meta name="twitter:image" content="../static/images/share-webslides.jpg"> <!-- EDIT -->
+    
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" sizes="16x16" href="../static/images/favicons/favicon.png">
+    <link rel="shortcut icon" sizes="32x32" href="../static/images/favicons/favicon-32.png">
+    <link rel="apple-touch-icon icon" sizes="76x76" href="../static/images/favicons/favicon-76.png">
+    <link rel="apple-touch-icon icon" sizes="120x120" href="../static/images/favicons/favicon-120.png">
+    <link rel="apple-touch-icon icon" sizes="152x152" href="../static/images/favicons/favicon-152.png">
+    <link rel="apple-touch-icon icon" sizes="180x180" href="../static/images/favicons/favicon-180.png">
+    <link rel="apple-touch-icon icon" sizes="192x192" href="../static/images/favicons/favicon-192.png">
+    
+    <!-- Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#333333">
+  </head>
+  <body>
+    <header role="banner">
+      <nav role="navigation">
+        <p class="logo"><a href="../index.html" title="WebSlides">WebSlides</a></p>
+        <ul>
+          <li class="github">
+            <a rel="external" href="https://github.com/jlantunez/webslides" title="Github">
+              <svg class="fa-github">
+                <use xlink:href="#fa-github"></use>
+              </svg>
+              <em>WebSlides</em>
+            </a>
+          </li>
+          <li class="twitter">
+            <a rel="external" href="https://twitter.com/webslides" title="Twitter">
+              <svg class="fa-twitter">
+                <use xlink:href="#fa-twitter"></use>
+              </svg>
+              <em>@WebSlides</em>
+            </a>
+          </li>
+          <!--  <li class="dribbble"><a rel="external" href="http://dribbble.com/jlantunez" title="Dribbble"><svg class="fa-dribbble"><use xlink:href="#fa-dribbble"></use></svg> <em>jlantunez</em></a></li> -->
+        </ul>
+      </nav>
+    </header>
+    
+    <main role="main">
+      <article id="webslides">
+        
+        <!-- Quick Guide
+          - Each parent <section> in the <article id="webslides"> element is an individual slide.
+          - Vertical sliding = <article id="webslides" class="vertical">   
+          - <div class="wrap"> = container 1200px 
+        -->
+          
+        <section class="bg-apple aligncenter">
+          <!--.wrap = container 1200px -->
+          <div class="wrap">
+            <h1><img class="whitelogo" src="../static/images/logos/apple.svg" alt="Apple Logo"></h1>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <!--.wrap = container 1200px -->
+          <div class="wrap size-50">
+            <h1>Make a Keynote presentation using HTML</h1>
+            <p class="text-intro">WebSlides is an open source framework for building HTML presentations, landings, and portfolios.</p>
+            <p><code>.bg-apple</code></p>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <!--.wrap = container 1200px -->
+          <div class="wrap">
+            <h2>HTML presentations can be easy</h2>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <h2>Features</h2>
+            <ul class="flexblock features">
+              <li>
+                <div>
+                  <h2>
+                    <span>&rarr;</span>
+                    Simple Navigation
+                  </h2>
+                  with arrow keys and swipe.
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <svg class="fa-link">
+                      <use xlink:href="#fa-link"></use>
+                    </svg>
+                    Permalinks
+                  </h2>
+                  Go to a specific slide.
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <svg class="fa-clock-o">
+                      <use xlink:href="#fa-clock-o"></use>
+                    </svg>
+                    Slide Counter
+                  </h2>
+                  Current/Total number
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <span>40<sup>+</sup></span>
+                    Beautiful Components
+                  </h2>
+                  Covers, cards, quotes...
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <svg class="fa-text-height">
+                      <use xlink:href="#fa-text-height"></use>
+                    </svg>
+                    Vertical Rhythm
+                  </h2>
+                  Use multiples of 8.
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <span>500<sup>+</sup></span>
+                    SVG Icons
+                  </h2>
+                  Font Awesome Kit.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="content-left">
+              <h2>WebSlides was made to inspire people.</h2>
+            </div>
+            <!-- end .content-left -->
+            <div class="content-left">
+              <p>WebSlides is an wonderful way to showcase your company. All content is for demo purposes only. Images are property of their respective owners.</p>
+            </div>
+            <!-- end .content-left -->
+            <ul class="flexblock">
+              <li>
+                <div>
+                  <img class="whitelogo" src="../static/images/logos/google.svg" alt="Google">
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img class="whitelogo" src="../static/images/logos/netflix.svg" alt="Netflix">
+                </div>
+              </li>
+              <li>
+                <div>
+                  <img class="whitelogo" src="../static/images/logos/microsoft.svg" alt="Microsoft">
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="content-left">
+              <h2>WebSlides help you build a culture of excellence.</h2>
+            </div>
+            <!-- end .content-left -->
+            <div class="content-left">
+              <p>The art of storytelling. Hypertext, clean code, and beauty as narrative elements. Just essential features and lovely CSS. All content is for demo purposes only. </p>
+            </div>
+            <!-- end .content-left -->
+            <ul class="flexblock metrics">
+              <li> Founded
+                <span>1976</span>
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-users">
+                    <use xlink:href="#fa-users"></use>
+                  </svg>
+                </span>
+                524M Subscribers
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-line-chart">
+                    <use xlink:href="#fa-line-chart"></use>
+                  </svg>
+                </span>
+                Revenue: $16M
+              </li>
+              <li>
+                Monthly Growth
+                <span>64%</span>
+              </li>
+            </ul>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <!--.wrap o <nav> = container 1200px -->
+          <div class="wrap">
+            <ul class="flexblock metrics border">
+              <li> Founded
+                <span>1976</span>
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-users">
+                    <use xlink:href="#fa-users"></use>
+                  </svg>
+                </span>
+                524M Subscribers
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-line-chart">
+                    <use xlink:href="#fa-line-chart"></use>
+                  </svg>
+                </span>
+                Revenue: $16M
+              </li>
+              <li>
+                Monthly Growth
+                <span>64%</span>
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-building-o">
+                    <use xlink:href="#fa-building-o"></use>
+                  </svg>
+                </span>
+                6 Offices
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-smile-o">
+                    <use xlink:href="#fa-smile-o"></use>
+                  </svg>
+                </span>
+                14K Employees
+              </li>
+              <li>
+                <span>
+                $4M
+                </span>
+                EBITDA
+              </li>
+              <li>
+                <span>
+                  <svg class="fa-university">
+                    <use xlink:href="#fa-university"></use>
+                  </svg>
+                </span>
+                Bank: $76B
+              </li>
+            </ul>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <span class="background dark" style="background-image:url('https://source.unsplash.com/pb_lF8VWaPU/')"></span>
+          <div class="wrap">
+            <h2 class="text-data">3,456,789</h2>
+            <h3>iPhone 7 in first 24 hours</h3>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <!--.wrap = container 1200px -->
+          <div class="wrap">
+            <h2 class="text-data">$48 Billion</h2>
+            <h3>Revenue in Q4 2024</h3>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple slide-bottom">
+          <!-- Overlay/Opacity: [class*="bg-"] > .background.dark or .light -->
+          <span class="background" style="background-image:url('https://source.unsplash.com/Y5Tjb62cxl8/')"></span>
+          <div class="wrap">
+            <div class="content-left">
+              <p>
+                <svg class="large fa-tree">
+                  <use xlink:href="#fa-tree"></use>
+                </svg>
+              </p>
+              <h2>1,000,000</h2>
+              <h3>We're working to protect up to a million acres of sustainable forest.</h3>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="card-50">
+              <figure><img class="aligncenter" src="../static/images/iphone.png" alt="iPhone"></figure>
+              <div class="flex-content">
+                <h2>
+                  <svg class="fa-apple">
+                    <use xlink:href="#fa-apple"></use>
+                  </svg>
+                  iPhone 7
+                </h2>
+                <p class="text-intro">3D Touch, 12MP photos, and 4K video.</p>
+                <p>Every iPhone they have made was built on the same belief. That a phone should be more than a collection of features. That, above all, a phone should be absolutely simple, beautiful, and magical to use.</p>
+              </div>
+              <!-- end .flex-content-->
+            </div>
+            <!-- end .card-50-->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="grid vertical-align">
+              <div class="column">
+                <h2>
+                  <svg class="fa-apple">
+                    <use xlink:href="#fa-apple"></use>
+                  </svg>
+                  iPhone 7
+                </h2>
+                <p class="text-intro">We worked closely with the very talented people at Acme and created a new website. Content demo. </p>
+                <ul class="description">
+                  <li>
+                    <span class="text-label">
+                    Client:
+                    </span>
+                    Apple (2016)
+                  </li>
+                  <li>
+                    <span class="text-label">
+                    Services:
+                    </span>
+                    Web Design
+                  </li>
+                  <li>
+                    <span class="text-label">
+                    Website:
+                    </span>
+                    <a href="https://apple.com/iphone/">apple.com/iphone</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end .column-->
+              <div class="column">
+                <figure>
+                  <img src="../static/images/iphone.png" alt="iPhone">
+                </figure>
+              </div>
+              <!-- end figure-->
+            </div>
+            <!-- end .grid-->
+          </div>
+          <!-- end .wrap-->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="card-50">
+              <div class="flex-content">
+                <ul class="flexblock specs">
+                  <li>
+                    <div>
+                      <svg class="fa-wifi">
+                        <use xlink:href="#fa-wifi"></use>
+                      </svg>
+                      <h2>Ultra-Fast WiFi</h2>
+                      Faster LTE with the best worldwide roaming.
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <svg class="fa-camera">
+                        <use xlink:href="#fa-camera"></use>
+                      </svg>
+                      <h2>Two cameras that shoot as one.</h2>
+                      12MP wide angle.
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <svg class="fa-life-ring">
+                        <use xlink:href="#fa-life-ring"></use>
+                      </svg>
+                      <h2>Lifetime Warranty </h2>
+                      We'll fix it or if we can't, we'll replace it.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- end .flex-content-->
+              <figure>
+                <img class="aligncenter" src="../static/images/iphone.png" alt="iPhone 6">
+              </figure>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <div class="wrap zoomIn">
+            <h1>
+              <svg class="fa-apple">
+                <use xlink:href="#fa-apple"></use>
+              </svg>
+              Pay
+            </h1>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <span class="background-left-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
+          <div class="wrap">
+            <div class="content-right">
+              <h2>
+                Redesigning 
+                <svg class="fa-apple">
+                  <use xlink:href="#fa-apple"></use>
+                </svg>
+                Pay
+              </h2>
+              <p>We've been working with the Acme team over the last three months to build a new app.</p>
+              <p>
+                <a href="#" class="button" title="Case study">Case study &rsaquo;</a>
+                <a href="https://www.apple.com/apple-pay/" class="button ghost" title="Apple Website">Open site &rsaquo;</a>
+              </p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <span class="background-right-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
+          <!--.wrap = container 1200px -->
+          <div class="wrap">
+            <div class="content-left">
+              <h2>Payments Made Simple</h2>
+              <p>Apple Pay is so easy. Pay with your debit cards and credit cards with just a touch.</p>
+              <div class="content-left">
+                <h3>Secure</h3>
+                <p>Your card is never stored. Apple Pay uses a device-specific number and unique transaction code.</p>
+              </div>
+              <!-- .end .content-left -->
+              <div class="content-left">
+                <h3>Universal</h3>
+                <p>Apple Pay works with most major credit and debit cards from nearly all banks.</p>
+              </div>
+              <!-- .end .content-left -->
+            </div>
+            <!-- .end .content-left -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <span class="background-left-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
+          <div class="wrap">
+            <div class="content-right">
+              <ul class="flexblock specs">
+                <li>
+                  <div>
+                    <svg class="fa-bolt">
+                      <use xlink:href="#fa-bolt"></use>
+                    </svg>
+                    <h2>Incredibly fast</h2>
+                    Just hold your iPhone near the reader.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <svg class="fa-globe">
+                      <use xlink:href="#fa-globe"></use>
+                    </svg>
+                    <h2>Works with all major banks</h2>
+                    Apple Pay is accepted in restaurants, hotels... 
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <svg class="fa-lock">
+                      <use xlink:href="#fa-lock"></use>
+                    </svg>
+                    <h2>The safer way to pay</h2>
+                    Your card number is never stored.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <span class="background-right-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
+          <div class="wrap">
+            <div class="content-left">
+              <h1>
+                <svg class="fa-apple">
+                  <use xlink:href="#fa-apple"></use>
+                </svg>
+                Pay
+              </h1>
+              <p>Use your iPhone to pay securely and easily at over a million store locations and within apps — with a single touch. See where you can use Apple Pay:
+              </p>
+              <form class="user" action="/" method="post">
+                <input type="text" name="location" placeholder="Stores in your city..." required>
+                <button type="submit" title="Search">Search &rsaquo;</button>
+              </form>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <!--.wrap = container 1200px -->
+          <div class="wrap">
+            <blockquote class="wall">
+              <p>I'm an optimist in the sense that I believe humans are noble and honorable, and some of them are really smart. I have a very optimistic view of individuals.</p>
+              <p>
+                <cite>
+                  <!-- <img class="avatar-56" src="../static/images/avatar.jpg" alt="Avatar"> --> Steve Jobs.
+                </cite>
+              </p>
+            </blockquote>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <span class="background-right-bottom" style="background-image:url('https://webslides.tv/static/images/tim-cook.png')"></span>
+          <div class="wrap">
+            <div class="content-left">
+              <blockquote>
+                <p>&ldquo;We see that privacy is a fundamental human right that people have. We are going to do everything that we can to help maintain that trust.&rdquo;</p>
+                <p><cite>Tim Cook, CEO of Apple.</cite></p>
+              </blockquote>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <header>
+            <!--.wrap o <nav> = container 1200px -->
+            <div class="wrap">
+              <p>Header <span class="alignright">.alignright</span></p>
+            </div>
+          </header>
+          <div class="aligncenter fadeInUp">
+            <h2>Simple CSS Alignments</h2>
+            <p>Put content wherever you want.</p>
+          </div>
+          <footer class="bg-trans-dark">
+            <div class="wrap">
+              <p>
+                <span class="alignleft">
+                Footer
+                </span>
+                <span class="alignright">
+                  <a href="#" title="Twitter">
+                    <svg class="fa-twitter">
+                      <use xlink:href="#fa-twitter"></use>
+                    </svg>
+                    @username
+                  </a>
+                </span>
+              </p>
+            </div>
+          </footer>
+        </section>
+        <section class="bg-apple slide-top">
+          <div class="wrap">
+            <div class="content-left">
+              <h3>1/9 left top</h3>
+              <p>Put content wherever you want. Have less. Do more. Create beautiful solutions.</p>
+              <p><code>.slide-top and .content-left</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple slide-top">
+          <div class="wrap">
+            <div class="content-center">
+              <h3>2/9 center top</h3>
+              <p>Apple I was designed and hand-built by Steve Wozniak. Steve Jobs had the idea of selling the computer.</p>
+              <p><code>.slide-top and .content-center</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple slide-top">
+          <div class="wrap">
+            <div class="content-right">
+              <h3>3/9 right top</h3>
+              <p>The Apple II is one of the first highly successful computers.</p>
+              <p><code>.slide-top and .content-right</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="content-left">
+              <h3>4/9 left center</h3>
+              <p>The Apple III is a business-oriented personal computer that was intended as the successor to the Apple II series.</p>
+              <p><code>.content-left</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="content-center">
+              <h3>5/9 center</h3>
+              <p>Apple Lisa was one of the first personal computers to offer a graphical user interface.</p>
+              <p><code>.content-center</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="content-right">
+              <h3>6/9 right center</h3>
+              <p>The Macintosh was the company's first mass-market personal computer featuring a GUI and mouse.</p>
+              <p><code>.content-right</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple slide-bottom">
+          <div class="wrap">
+            <div class="content-left">
+              <h3>7/9 left bottom</h3>
+              <p>The iBook was a line of laptop computers designed and marketed by Apple Inc. from 1999 to 2006.</p>
+              <p><code>.slide-bottom</code> and <code>.content-left</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple slide-bottom">
+          <div class="wrap">
+            <div class="content-center">
+              <h3>8/9 center bottom</h3>
+              <p>Apple introduced the first generation iPod on October 23, 2001, with the slogan "1,000 songs in your pocket".</p>
+              <p><code>.slide-bottom</code> and <code>.content-center</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple slide-bottom">
+          <div class="wrap">
+            <div class="content-right">
+              <h3>9/9 right bottom</h3>
+              <p>The original iPhone was introduced by Steve Jobs on January 9, 2007. Jobs introduced the iPhone as a combination of three devices.</p>
+              <p><code>.slide-bottom</code> and <code>.content-right</code></p>
+            </div>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap size-50">
+            <h2>CSS Animations</h2>
+            <p>Fadein transition to all slides.</p>
+            <pre>&lt;article id="webslides"&gt;
+  &lt;section&gt;
+    &lt;div class="wrap fadeInUp"&gt;
+      &lt;h1&gt;Slide&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/article&gt;</pre>
+            <p>Just 3 basic animations: .fadeIn, .fadeInUp, and .zoomIn.</p>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-black aligncenter">
+          <span class="background light" style="background-image:url('https://source.unsplash.com/bopC0sTGu-E/')"></span>
+          <div class="wrap">
+            <h2>Embedding Media</h2>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple">
+          <div class="wrap">
+            <div class="content-left">
+              <h3>Responsive Videos</h3>
+              <pre>&lt;div class="embed"&gt;
+ &lt;iframe src="https://www.youtube.com/embed/XjJQBjWYDTs"&gt;  
+ &lt;/iframe&gt;
+&lt;/div&gt;</pre>
+              <p><code>.embed</code></p>
+            </div>
+            <!-- end .content-left -->
+            <div class="content-left">
+              <!-- <div class="embed"> = Responsive -->
+              <div class="embed">
+                <iframe src="https://www.youtube.com/embed/CQY3KUR3VzM" allowfullscreen></iframe>
+              </div>
+              <!-- end .embed -->
+            </div>
+            <!-- end .content-left -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple fullscreen">
+          <!-- Fullscreen Video -->
+          <div class="embed">
+            <iframe width="800" height="450" src="https://www.youtube.com/embed/mtY0K2fiFOA" allowfullscreen></iframe>
+          </div>
+          <!-- .end .embed -->
+        </section>
+        <section class="bg-black aligncenter">
+          <video class="background-video" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+            <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+          </video>
+          <div class="wrap size-50">
+            <h2><strong>Be Awesome</strong></h2>
+          </div>
+        </section>
+        <section class="bg-black aligncenter">
+          <video class="background-video dark" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+            <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+          </video>
+          <!-- .wrap = container 1200px -->
+          <div class="wrap size-50">
+            <h2><strong>Think Different</strong></h2>
+            <p>0verlay: <code>.bg-black > .background-video.dark</code> or .light</p>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <span class="background-right-bottom" style="background-image:url('https://webslides.tv/static/images/tim-cook.png')"></span>
+          <div class="wrap">
+            <h1>One more thing...</h1>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <div class="wrap">
+            <div class="cta">
+              <div class="number">
+                <p><span>Ag</span></p>
+              </div>
+              <!--end .number -->
+              <div class="benefit">
+                <p class="text-subtitle">San Francisco</p>
+                <h3><strong>The quick brown fox jumps over the lazy dog</strong>.</h3>
+                <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                <p>abcdefghijklmnopqrstuvwxyz</p>
+                <p>1234567890(,.;:?!$&*)</p>
+              </div>
+              <!--end .benefit -->
+            </div>
+            <!--end .cta -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <!-- .wrap = container 1200px -->
+          <div class="wrap">
+            <h2><strong>Start in seconds</strong></h2>
+            <p class="text-intro">120+ prebuilt slides ready to use.</p>
+            <p>
+              <a href="https://github.com/jlantunez/webslides/archive/master.zip" class="button" title="Download WebSlides">
+                <svg class="fa-cloud-download">
+                  <use xlink:href="#fa-cloud-download"></use>
+                </svg>
+                Free Download
+              </a>
+              <span class="try">
+                <a href="https://www.paypal.me/jlantunez/8" title="Good karma :)">
+                  <svg class="fa-paypal">
+                    <use xlink:href="#fa-paypal"></use>
+                  </svg>
+                  Pay what you want.
+                </a>
+              </span>
+            </p>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+        <section class="bg-apple aligncenter">
+          <h2><strong>Thank you!</strong></h2>
+          <p><a href="https://twitter.com/webslides" title="@jlantunez on Twitter">@jlantunez</a></p>
+          <p class="text-symbols">* * *</p>
+        </section>
+        
+      </article>
+    </main>
+    <!--main-->
+    
+    <!-- jQuery (required for slides to work) -->
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../static/js/webslides.js"></script>
+
+    <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
+    <script defer src="../static/js/svg-icons.js"></script>
+    
+  </body>
+</html>
