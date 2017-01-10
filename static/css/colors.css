@@ -260,26 +260,7 @@ text-shadow: none;
 position: relative;
 }
 .shadow:before,.shadow:after {
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 1.6rem;
-  left: 2.4rem;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
   box-shadow: 0 16px 24px rgba(0, 20, 80, 0.3);
-  transform: rotate(-3deg);
-}
-.shadow:after
-{
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  transform: rotate(3deg);
-  right: 2.4rem;
-  left: auto;
 }
 
 /*============================
