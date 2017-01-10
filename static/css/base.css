@@ -53,7 +53,6 @@
 
 ----------------------------------------------------------------------------------- */
 
-
 /*=========================================
 0. CSS Reset & Normalize
 =========================================== */
@@ -325,8 +324,8 @@ input:focus,
 textarea:focus,
 button{
   text-decoration: none;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
 }
 
 p a:active {
@@ -342,6 +341,7 @@ nav a[rel="external"] em,
   width: 1px;
   overflow: hidden;
 }
+
 /*Layer/Box Shadow*/
 .shadow {
 position: relative;
@@ -365,6 +365,7 @@ position: relative;
   right: 2.4rem;
   left: auto;
 }
+
 /*=== 1.1 WRAP/CONTAINER === */
 
 .wrap,header nav, footer nav {
@@ -472,12 +473,10 @@ pre code {
   padding: 0;
 }
 
-
 /*=== 1.2 Animations ================ 
 Just 3 basic animations: 
 .fadeIn, .fadeInUp, .zoomIn.
 https://github.com/daneden/animate.css*/
-
 
 @-webkit-keyframes fadeIn {
   from {
@@ -615,7 +614,6 @@ footer,
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
-
 
 /*=== 1.3 Responsive Media (videos, iframe...) === */
 
@@ -835,7 +833,6 @@ h2 svg, h3 svg, h4 svg {
 .text-intro svg,.wall p svg,.try svg {
 margin-top: -.4rem;
 }
-
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
 }
 
@@ -927,7 +924,6 @@ li[class*="bg-"],p[class*="bg-"] {
 
 h1 [class*="bg-"],h2 [class*="bg-"],h3 [class*="bg-"] {
 padding: .4rem .8rem;
-z-index: -100;
 }
 
 /*========================================= 
@@ -979,8 +975,8 @@ p.text-subtitle svg {vertical-align: text-top;}
 /* -- Numbers (results, sales... 23,478,289 iphones) -- */
 
 .text-data {
-  font-size: 7.2rem;
-  line-height: 8.8rem;
+  font-size: 6.4rem;
+  line-height: 8rem;
   margin-bottom: .8rem;
 }
 
@@ -1187,9 +1183,10 @@ footer img {
 header,
 section footer {
   position: absolute;
-  z-index: 9999;
   top: 0;
   left: 0;
+  /* hover/visibility */
+  z-index: 3;
 }
 
 section footer {
@@ -1200,7 +1197,6 @@ section footer {
 /*=== Hide header[role=banner] === */
 
 /*desktop only? Add @media (min-width: 1025px)*/
-
 header[role=banner] {
     opacity: 0;
 }
@@ -1210,7 +1206,6 @@ header[role=banner]:hover {
 }
 
 @media (max-width: 767px) {
-
 footer .alignleft, footer .alignright {
 float: none;
 display: block;
@@ -1508,14 +1503,16 @@ clear:both;
 
 #navigation {
 position: fixed;
-z-index: 9999;
 width: 24.4rem;
 margin-right: auto;
 margin-left: auto;
 right: 0;
 bottom: 0;
 left: 0;
+/* hover/visibility */
+z-index: 3;
 }
+
 #navigation  {
 -webkit-animation: fadeIn 6s;
 animation: fadeIn 6s;
@@ -1543,7 +1540,6 @@ opacity: 1;
 
 #navigation a {
   position: absolute;
-  z-index: 9999;
   width: 4rem;
   height: 4rem;
   text-align: center;
@@ -1726,6 +1722,7 @@ Blocks Links li>a = .flexblock.blink (.blink required)
 .flexblock li {
   flex: auto;
   text-align: left;
+  /*float: left;*/
   width: 100%;/* more control */
   -webkit-transition: .3s;
   transition: .3s;
@@ -1743,6 +1740,8 @@ transform: translateY(-.2rem);
 .flexblock.blink li {
   padding: 0;
 }
+
+
 
 @media (min-width:600px) {
   .flexblock li {
@@ -1870,7 +1869,7 @@ div + ul, div + ol{
 }
 
 .clients li:hover  {
-z-index: 9999;
+z-index: 1;
 }
 /*==================================================
 6.3 flexblock.steps <ul class="flexblock steps">
@@ -2128,9 +2127,7 @@ margin-top: .8rem;
   bottom: 0;
   left: 0;
   opacity: 1;
-  z-index: 9999;
-  /*z-index: -1;
-  opacity: 0;*/
+  z-index: 2;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -2160,8 +2157,6 @@ li .overlay h2 {
 
 li:hover .overlay {
   cursor: pointer;
-  /*opacity: 1;
-  z-index: 9999;*/
 }
 
 /*===============================================
@@ -2171,7 +2166,7 @@ li:hover .overlay {
 .flexblock.plans>li {
   text-align: center;
   border-radius: 3px;
-  z-index: 100;
+  z-index: 1;
   margin-bottom: 4.8rem;
 }
 
@@ -2239,12 +2234,12 @@ li:hover .overlay {
   .plans>li:hover,
   .plans>li:nth-child(2) {
     position: relative;
-    z-index: 150;
+    z-index: 2;
     transform: scale(1.08);
   }
   .plans:hover li:nth-child(2):not(:hover) {
     position: relative;
-    z-index: 100;
+    z-index: 1;
     transform: scale(1);
   }
 }
@@ -2401,6 +2396,7 @@ CV / News
     vertical-align: middle;
   }
 }
+
 
 /* --- Header CTA --- */
 
@@ -2763,12 +2759,13 @@ object-fit to re-frame images rather than just stretch and resize them  === */
 
 [class*="card-"] figure figcaption {
   position: absolute;
-  z-index: 9999;
   bottom: 0;
   left: 0;
   padding: .8rem 2.4rem;
   font-size: 1.4rem;
   line-height: 2.4rem;
+  /* Visibility */
+  z-index: 2;
 }
 
 [class*="card-"] figure figcaption.cover {
@@ -2821,7 +2818,6 @@ cite:before {
   content: "\2014 \2009";
   margin-right: 6px;
 }
-
 blockquote.wall:before {
   position: absolute;
   top: -6.4rem;
@@ -2848,7 +2844,6 @@ blockquote.wall:before {
     left: .8rem;
   }
 }
-
 
 /*=========================================
 12. Avatars - uifaces.com
@@ -2983,14 +2978,16 @@ button {
 button[type="submit"] {
   width: 100%;
 }
+
 /*input:hover, textarea:hover, select:hover {
 -webkit-transform: translateY(-.2rem);
 transform: translateY(-.2rem);
 }*/
+
 input:focus,
 textarea:focus,
 select:focus {
-  border-width: 2px;
+  border-width: 1px;
 }
 
 textarea {
@@ -3146,8 +3143,9 @@ button:disabled:hover {
 15. SAFARI BUGS (flex-wrap)
 Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 =========================================== */
+
 .flexblock:before, .flexblock:after,
-.grid:before,.grid:after {
+.grid:before,.grid:after, .cta:before,.cta:after{
   width: 0;
 }
 
