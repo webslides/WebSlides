@@ -70,7 +70,7 @@ webslides/
 You can add:
 - [Unsplash](https://unsplash.com) photos
 - [animate.css](https://daneden.github.io/animate.css)
-- [particles.js](github.com/VincentGarreau/particles.js)
+- [particles.js](https://github.com/VincentGarreau/particles.js)
 - [pt](http://williamngan.github.io/pt/)
 
 ### License
