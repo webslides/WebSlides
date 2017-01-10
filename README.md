@@ -80,6 +80,6 @@ Use it to make something cool.
 
 ### Credits
 
-- WebSlides was created by [@jlantunez](https://twitter.com/jlantunez) using [Cactus](http://cactusformac.com/).
+- WebSlides was created by [@jlantunez](https://twitter.com/jlantunez) using [Cactus](https://github.com/eudicots/Cactus).
 - Thanks [@LuisSacristan](https://twitter.com/luissacristan) for the javascript code :)
 - Based on [SimpleSlides](https://github.com/jennschiffer/SimpleSlides), by [@JennSchiffer](https://twitter.com/jennschiffer).
