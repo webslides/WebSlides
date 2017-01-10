@@ -2344,13 +2344,15 @@ CV / News
 .cta {
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
   justify-content: center;
-  
 }
 
 .number,
 .cta .benefit {
   padding: .8rem;
+  max-width: 100%;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -2358,18 +2360,19 @@ CV / News
   justify-content: center;
 }
 
-.number,.cta .benefit {
+.number {
   text-align: center;
 }
 
 .cta .benefit {
   max-width: 100%;
+  text-align: center;
 }
 
 .number span {
   font-size: 8rem;
   line-height: 8rem;
-  display: block;
+  display: block
 }
 
 .number span sup {
@@ -2381,7 +2384,6 @@ CV / News
 }
 
 @media (min-width: 768px) {
-
   .number,
   .cta .benefit {
     padding: 4.8rem;
