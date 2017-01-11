@@ -7,7 +7,7 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 ### Features
 Version 0.1 (Jan 8, 2017):
 
-- Navigation (horizontal and vertical sliding): trackpad, keyboard shorcuts, and swipe.
+- Navigation (horizontal and vertical sliding): touchpad, keyboard shorcuts, and swipe.
 - Slide counter.
 - Permalinks: go to a specific slide.
 - Simple CSS alignments. Put content wherever you want (vertical centering...)
