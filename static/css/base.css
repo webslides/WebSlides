@@ -299,11 +299,8 @@ dd {
 1. Base --> Baseline: 8px = .8rem
 =========================================== */
 
-/* == Prevent bounce scroll == */
-
 body {
-    height: 100%;
-    overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* == Prototype faster - Vertical rhythm 
