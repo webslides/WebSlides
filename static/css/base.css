@@ -1518,7 +1518,10 @@ z-index: 3;
 animation: fadeIn 6s;
 opacity:0;
 }
-#navigation:hover {
+/*#navigation:hover {
+opacity: 1;
+}*/
+#webslides:hover #navigation {
 opacity: 1;
 }
 #counter {
