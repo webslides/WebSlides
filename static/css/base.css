@@ -1513,18 +1513,14 @@ left: 0;
 /* hover/visibility */
 z-index: 3;
 }
-
 #navigation  {
 -webkit-animation: fadeIn 6s;
 animation: fadeIn 6s;
 opacity:0;
 }
 #navigation:hover {
-opacity: 0.7;
-}
-#navigation:hover #navigation a:hover  {
 opacity: 1;
-} 
+}
 #counter {
   position: relative;
   display: block;
