@@ -1514,16 +1514,21 @@ left: 0;
 z-index: 3;
 }
 #navigation  {
--webkit-animation: fadeIn 6s;
-animation: fadeIn 6s;
+-webkit-animation: fadeIn 16s;
+animation: fadeIn 16s;
 opacity:0;
 }
-/*#navigation:hover {
+#navigation:hover {
 opacity: 1;
-}*/
+}
+/* -- navigation arrow always visible? -- */
+
+/*
 #webslides:hover #navigation {
 opacity: 1;
 }
+*/
+
 #counter {
   position: relative;
   display: block;
