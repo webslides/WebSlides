@@ -1565,6 +1565,8 @@ a#previous {
 #navigation {
 background: url('../images/swipe.svg') no-repeat center top;
 background-size: 4.8rem;
+-webkit-animation: fadeIn 6s;
+animation: fadeIn 6s;
 } 
 #navigation a, #counter {display: none;
  }
