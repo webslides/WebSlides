@@ -311,8 +311,45 @@ jQuery(document).ready(function($){
           }
         }
       });
+      
+      /**
+       *  Bind the event HashChange when the prev/next history button was clicked
+      */
+      jQuery(window).bind("hashchange", function () {
+        if (hasHash()) {
+          goToSlideIfSlideHashChange();
+        } else {
+          window.location.reload();
+        }
+      });
 
+      function hasHash() {
+        return window.location.hash ? true : false;
+      }
 
+      function goToSlideIfSlideHashChange() {
+        var paramsArr = getArrayOfHashParams();
+        var slideObj = $.grep(paramsArr, function (e) {
+          return (e.key == "slide");
+        });
+        if (slideObj.length == 1) {
+          goToSlide(slideObj[0].value);
+        }
+      }
+
+      function getArrayOfHashParams() {
+        var hash = window.location.hash.replace('#', '').split('&');
+        var paramsArr = new Array();
+        for (var i = 0; i < hash.length; i++) {
+          var itemArray = hash[i].split('=');
+          var action = new Object();
+          action.key = itemArray[0];
+          action.value = itemArray[1];
+          paramsArr.push(action);
+        }
+        return paramsArr;
+      }
+      
       // Tabs
       jQuery('ul.tabs li').click(function(){
           var $this = jQuery(this);
