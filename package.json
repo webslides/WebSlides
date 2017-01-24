@@ -1,0 +1,21 @@
+{
+  "name": "webslides",
+  "version": "0.0.1",
+  "description": "Making HTML presentations easy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlantunez/webslides.git"
+  },
+  "keywords": [
+    "webslides",
+    "presentation",
+    "css"
+  ],
+  "author": "jlantunez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jlantunez/webslides/issues"
+  },
+  "homepage": "https://github.com/jlantunez/webslides#readme"
+}
