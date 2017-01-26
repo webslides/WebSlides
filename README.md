@@ -1,4 +1,5 @@
-# WebSlides = Good Karma
+# WebSlides = Good Karma [![OpenCollective](https://opencollective.com/webslides/backers/badge.svg)](#backers)  [![OpenCollective](https://opencollective.com/webslides/sponsors/badge.svg)](#sponsors)
+
 Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes — [https://webslides.tv/demos](https://webslides.tv/demos)
 
 ### Why WebSlides?
@@ -83,3 +84,75 @@ Use it to make something cool.
 - WebSlides was created by [@jlantunez](https://twitter.com/jlantunez) using [Cactus](https://github.com/eudicots/Cactus).
 - Thanks [@LuisSacristan](https://twitter.com/luissacristan) for the javascript code :)
 - Based on [SimpleSlides](https://github.com/jennschiffer/SimpleSlides), by [@JennSchiffer](https://twitter.com/jennschiffer).
+
+### Support
+
+#### Backers
+Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/webslides#backer)]
+
+<a href="https://opencollective.com/webslides/backer/0/website" target="_blank"><img src="https://opencollective.com/webslides/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/1/website" target="_blank"><img src="https://opencollective.com/webslides/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/2/website" target="_blank"><img src="https://opencollective.com/webslides/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/3/website" target="_blank"><img src="https://opencollective.com/webslides/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/4/website" target="_blank"><img src="https://opencollective.com/webslides/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/5/website" target="_blank"><img src="https://opencollective.com/webslides/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/6/website" target="_blank"><img src="https://opencollective.com/webslides/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/7/website" target="_blank"><img src="https://opencollective.com/webslides/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/8/website" target="_blank"><img src="https://opencollective.com/webslides/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/9/website" target="_blank"><img src="https://opencollective.com/webslides/backer/9/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/10/website" target="_blank"><img src="https://opencollective.com/webslides/backer/10/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/11/website" target="_blank"><img src="https://opencollective.com/webslides/backer/11/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/12/website" target="_blank"><img src="https://opencollective.com/webslides/backer/12/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/13/website" target="_blank"><img src="https://opencollective.com/webslides/backer/13/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/14/website" target="_blank"><img src="https://opencollective.com/webslides/backer/14/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/15/website" target="_blank"><img src="https://opencollective.com/webslides/backer/15/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/16/website" target="_blank"><img src="https://opencollective.com/webslides/backer/16/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/17/website" target="_blank"><img src="https://opencollective.com/webslides/backer/17/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/18/website" target="_blank"><img src="https://opencollective.com/webslides/backer/18/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/19/website" target="_blank"><img src="https://opencollective.com/webslides/backer/19/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/20/website" target="_blank"><img src="https://opencollective.com/webslides/backer/20/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/21/website" target="_blank"><img src="https://opencollective.com/webslides/backer/21/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/22/website" target="_blank"><img src="https://opencollective.com/webslides/backer/22/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/23/website" target="_blank"><img src="https://opencollective.com/webslides/backer/23/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/24/website" target="_blank"><img src="https://opencollective.com/webslides/backer/24/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/25/website" target="_blank"><img src="https://opencollective.com/webslides/backer/25/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/26/website" target="_blank"><img src="https://opencollective.com/webslides/backer/26/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/27/website" target="_blank"><img src="https://opencollective.com/webslides/backer/27/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/28/website" target="_blank"><img src="https://opencollective.com/webslides/backer/28/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/backer/29/website" target="_blank"><img src="https://opencollective.com/webslides/backer/29/avatar.svg"></a>
+
+#### Sponsors
+Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/webslides#sponsor)]
+
+<a href="https://opencollective.com/webslides/sponsor/0/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/1/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/2/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/3/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/4/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/5/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/6/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/7/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/8/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/9/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/10/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/11/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/12/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/13/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/14/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/15/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/15/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/16/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/16/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/17/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/17/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/18/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/18/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/19/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/19/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/20/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/20/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/21/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/21/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/22/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/22/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/23/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/23/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/24/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/24/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/25/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/25/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/26/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/26/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/27/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/27/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/28/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/28/avatar.svg"></a>
+<a href="https://opencollective.com/webslides/sponsor/29/website" target="_blank"><img src="https://opencollective.com/webslides/sponsor/29/avatar.svg"></a>
+
+
