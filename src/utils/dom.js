@@ -9,4 +9,20 @@ export default class DOM {
 
     return node;
   }
+
+  static hide(el) {
+    el.style.display = 'none';
+  }
+
+  static show(el) {
+    el.style.display = '';
+  }
+
+  static lockScroll() {
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  static unlockScroll() {
+    document.documentElement.style.overflow = 'auto';
+  }
 }

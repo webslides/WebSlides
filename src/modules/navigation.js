@@ -9,12 +9,12 @@ const ELEMENT_ID = {
 
 const LABELS = {
   VERTICAL: {
-    NEXT: '&darr;',
-    PREV: '&rarr;'
+    NEXT: '↓',
+    PREV: '↑'
   },
   HORIZONTAL: {
-    NEXT: '&uarr;',
-    PREV: '&larr;'
+    NEXT: '→',
+    PREV: '←'
   }
 };
 
@@ -31,7 +31,6 @@ export default class Navigation {
     this.el.appendChild(this.next);
     this.el.appendChild(this.prev);
     this.el.appendChild(this.counter);
-    console.log(this);
   }
 
   updateCounter(current, max) {
