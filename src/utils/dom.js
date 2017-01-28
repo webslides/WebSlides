@@ -1,3 +1,6 @@
+import WSCustomEvent from './custom-event';
+
+
 /**
  * Static class for DOM helper.
  */
@@ -53,5 +56,17 @@ export default class DOM {
    */
   static unlockScroll() {
     document.documentElement.style.overflow = 'auto';
+  }
+
+  /**
+   * Fires a custom event on the given target.
+   * @param {Element} target The target of the event.
+   * @param {string} eventType The event type.
+   * @param {Object} eventInfo Optional parameter to provide additional data
+   * to the event.
+   */
+  static fireEvent(target, eventType, eventInfo = { detail: '' }) {
+    const event = new WSCustomEvent(eventType, eventInfo);
+    target.dispatchEvent(event);
   }
 }
