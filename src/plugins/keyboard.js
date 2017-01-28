@@ -2,6 +2,7 @@ import Keys from '../utils/keys';
 
 export default class Keyboard {
   /**
+   * Keyboard interaction plugin.
    * @param {WebSlides} wsInstance The WebSlides instance
    */
   constructor(wsInstance) {
@@ -11,9 +12,15 @@ export default class Keyboard {
      */
     this.ws_ = wsInstance;
 
-    document.addEventListener("keydown", this.onKeyPress_.bind(this), false);
+    document.addEventListener('keydown', this.onKeyPress_.bind(this), false);
   }
 
+  /**
+   * Reacts to the keydown event. It reacts to the arrows and space key
+   * depending on the layout of the page.
+   * @param {KeyboardEvent} event The key event.
+   * @private
+   */
   onKeyPress_(event) {
     let method;
 
