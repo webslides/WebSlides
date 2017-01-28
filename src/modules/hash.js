@@ -2,23 +2,35 @@ const HASH = '#slide';
 const slideRegex = /#slide=(\d+)/;
 
 /**
- * Static class with methods to manipulate and extract infro from the hash of
+ * Static class with methods to manipulate and extract info from the hash of
  * the URL.
  */
 export default class Hash {
   /**
-   * Listens to the hashchange event and reacts to it by making the
-   * WebSlide instance navigate to the needed slide.
-   * @param {WebSlides} wsInstance
+   * Listens to the slide change event and the hash change events.
+   * @param wsInstance
    */
-  static init(wsInstance) {
-    window.addEventListener('hashchange', () => {
-      const newSlideIndex = Hash.getSlideNumber();
+  constructor(wsInstance) {
+    this.ws_ = wsInstance;
 
-      if (newSlideIndex !== null) {
-        wsInstance.goToSlide(newSlideIndex);
-      }
-    }, false);
+    wsInstance.el.addEventListener('ws:slide-change', Hash.onSlideChange_);
+    window.addEventListener('hashchange', this.onHashChange_.bind(this), false);
+  }
+
+  /**
+   * hashchange event handler, makes the WebSlide instance navigate to the
+   * needed slide.
+   */
+  onHashChange_() {
+    const newSlideIndex = Hash.getSlideNumber();
+
+    if (newSlideIndex !== null) {
+      this.ws_.goToSlide(newSlideIndex);
+    }
+  }
+
+  static onSlideChange_(event) {
+    Hash.setSlideNumber(event.detail.currentSlide);
   }
 
   /**

@@ -1,4 +1,3 @@
-import Hash from './hash';
 import Plugins from './plugins';
 import Slide from './slide';
 import DOM from '../utils/dom';
@@ -9,7 +8,8 @@ const CLASSES = {
 };
 
 const PLUGINS = {
-  'nav': Plugins.Navigation
+  'nav': Plugins.Navigation,
+  'hash': Plugins.Hash
 };
 
 export default class WebSlides {
@@ -32,7 +32,6 @@ export default class WebSlides {
     this.createPlugins_();
     this.initSlides_();
 
-    Hash.init(this);
     this.onInit_();
   }
 
@@ -52,7 +51,7 @@ export default class WebSlides {
   createPlugins_() {
     Object.keys(PLUGINS).forEach(pluginName => {
       const pluginCto = PLUGINS[pluginName];
-      this.plugins[pluginCto] = new pluginCto(this);
+      this.plugins[pluginName] = new pluginCto(this);
     });
   }
 
@@ -135,7 +134,6 @@ export default class WebSlides {
     this.currentSlideI_ = slide.i;
     this.isMoving = false;
 
-    Hash.setSlideNumber(this.currentSlideI_ + 1);
     DOM.fireEvent(this.el, 'ws:slide-change', {
       slides: this.maxSlide_,
       currentSlide0: this.currentSlideI_,
@@ -168,7 +166,7 @@ export default class WebSlides {
   }
 
   initSlides_() {
-    let slideNumber = Hash.getSlideNumber();
+    let slideNumber = this.plugins.hash.constructor.getSlideNumber();
 
     // Not valid
     if (slideNumber === null ||
