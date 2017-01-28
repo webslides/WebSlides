@@ -65,8 +65,11 @@ export default class DOM {
    * @param {Object} eventInfo Optional parameter to provide additional data
    * to the event.
    */
-  static fireEvent(target, eventType, eventInfo = { detail: '' }) {
-    const event = new WSCustomEvent(eventType, eventInfo);
+  static fireEvent(target, eventType, eventInfo = {}) {
+    const event = new WSCustomEvent(eventType, {
+      detail: eventInfo
+    });
+
     target.dispatchEvent(event);
   }
 }
