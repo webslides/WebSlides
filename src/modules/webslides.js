@@ -1,5 +1,5 @@
 import Hash from './hash';
-import Navigation from './navigation';
+import Plugins from './plugins';
 import Slide from './slide';
 import DOM from '../utils/dom';
 import ScrollHelper from '../utils/scroll-to';
@@ -8,16 +8,18 @@ const CLASSES = {
   VERTICAL: 'vertical'
 };
 
+const PLUGINS = ['Navigation'];
+
 export default class WebSlides {
   constructor() {
     this.el = document.getElementById('webslides');
     this.isMoving = false;
     this.slides = null;
-    this.navigation = null;
     this.currentSlideI_ = -1;
     this.currentSlide_ = null;
     this.maxSlide_ = 0;
     this.isVertical = this.el.classList.contains(CLASSES.VERTICAL);
+    this.plugins = {};
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');
@@ -25,10 +27,10 @@ export default class WebSlides {
 
     this.removeChildren_();
     this.grabSlides_();
-    this.createNav_();
+    this.createPlugins_();
     this.initSlides_();
 
-    window.st = ScrollHelper;
+    Hash.init(this);
   }
 
   removeChildren_() {
@@ -44,12 +46,15 @@ export default class WebSlides {
     }
   }
 
-  createNav_() {
-    this.navigation = new Navigation({
-      isVertical: this.isVertical
+  createPlugins_() {
+    PLUGINS.forEach(pluginName => {
+      if (Plugins[pluginName]) {
+        const pluginCto = Plugins[pluginName];
+        this.plugins[pluginCto] = new pluginCto(this);
+      } else {
+        throw new Error(`Tried to initialize plugin ${pluginName} but doesn't exist.`);
+      }
     });
-
-    this.el.appendChild(this.navigation.el);
   }
 
   grabSlides_() {
@@ -67,11 +72,10 @@ export default class WebSlides {
       if (forward !== null) {
         isMovingForward = forward;
       } else {
-        if (Number.isInteger(this.currentSlideI_)) {
+        if (this.currentSlideI_ >= 0) {
           isMovingForward = slideI > this.currentSlideI_;
         }
       }
-
       const nextSlide = this.slides[slideI];
 
       if (this.currentSlide_ !== null) {
@@ -87,15 +91,19 @@ export default class WebSlides {
   animateToSlide_(isMovingForward, nextSlide, callback) {
     DOM.lockScroll();
 
-    nextSlide.show();
+    if (!isMovingForward) {
+      nextSlide.moveBeforeFirst();
+      nextSlide.show();
+      ScrollHelper.scrollTo(this.currentSlide_.el.offsetTop, 0);
+    } else {
+      nextSlide.show();
+    }
 
     ScrollHelper.scrollTo(nextSlide.el.offsetTop, 500, () => {
       this.currentSlide_.hide();
 
       if (isMovingForward) {
         this.currentSlide_.moveAfterLast();
-      } else {
-        nextSlide.moveBeforeFirst();
       }
 
       DOM.unlockScroll();
@@ -122,8 +130,6 @@ export default class WebSlides {
   onSlideChange_(slide) {
     this.currentSlide_ = slide;
     this.currentSlideI_ = slide.i;
-    this.navigation.updateCounter(
-      this.currentSlideI_ + 1, this.maxSlide_);
     this.isMoving = false;
 
     Hash.setSlideNumber(this.currentSlideI_ + 1);
@@ -160,6 +166,15 @@ export default class WebSlides {
     if (slideNumber === null ||
         slideNumber >= this.maxSlide_) {
       slideNumber = 0;
+    }
+
+    // Keeping the order
+    if (slideNumber !== 0) {
+      let i = 0;
+      while(i < slideNumber) {
+        this.slides[i].moveAfterLast();
+        i++;
+      }
     }
 
     this.goToSlide(slideNumber);

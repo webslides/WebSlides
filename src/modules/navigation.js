@@ -18,10 +18,15 @@ const LABELS = {
   }
 };
 
-
 export default class Navigation {
-  constructor({ isVertical }) {
-    const arrowLabels = isVertical ? LABELS.VERTICAL : LABELS.HORIZONTAL;
+  /**
+   * The Navigation constructor. It'll create all the nodes needed for the
+   * navigation such as the arrows and the counter.
+   * @param {WebSlides} wsInstance The WebSlides instance
+   */
+  constructor(wsInstance) {
+    const arrowLabels = wsInstance.isVertical ?
+        LABELS.VERTICAL : LABELS.HORIZONTAL;
 
     this.el = DOM.createNode('div', 'navigation');
     this.next = Navigation.createArrow(ELEMENT_ID.NEXT, arrowLabels.NEXT);
@@ -31,12 +36,25 @@ export default class Navigation {
     this.el.appendChild(this.next);
     this.el.appendChild(this.prev);
     this.el.appendChild(this.counter);
+
+    wsInstance.el.appendChild(this.el);
   }
 
+  /**
+   *
+   * @param current
+   * @param max
+   */
   updateCounter(current, max) {
     this.counter.textContent = `${current} / ${max}`;
   }
 
+  /**
+   * Creates an arrow to navigate.
+   * @param {!String} id Desired ID for the arrow.
+   * @param {!String} text Desired text for the arrow.
+   * @return {Element} The arrow element.
+   */
   static createArrow(id, text) {
     const arrow = DOM.createNode('a', id, text);
     arrow.href = '#';
