@@ -1,4 +1,4 @@
-import Plugins from './plugins';
+import Plugins from '../plugins/plugins';
 import Slide from './slide';
 import DOM from '../utils/dom';
 import ScrollHelper from '../utils/scroll-to';
@@ -9,7 +9,8 @@ const CLASSES = {
 
 const PLUGINS = {
   'nav': Plugins.Navigation,
-  'hash': Plugins.Hash
+  'hash': Plugins.Hash,
+  'keyboard': Plugins.Keyboard
 };
 
 export default class WebSlides {
