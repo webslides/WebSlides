@@ -8,7 +8,9 @@ const CLASSES = {
   VERTICAL: 'vertical'
 };
 
-const PLUGINS = ['Navigation'];
+const PLUGINS = {
+  'nav': Plugins.Navigation
+};
 
 export default class WebSlides {
   constructor() {
@@ -31,6 +33,7 @@ export default class WebSlides {
     this.initSlides_();
 
     Hash.init(this);
+    this.onInit_();
   }
 
   removeChildren_() {
@@ -47,14 +50,14 @@ export default class WebSlides {
   }
 
   createPlugins_() {
-    PLUGINS.forEach(pluginName => {
-      if (Plugins[pluginName]) {
-        const pluginCto = Plugins[pluginName];
-        this.plugins[pluginCto] = new pluginCto(this);
-      } else {
-        throw new Error(`Tried to initialize plugin ${pluginName} but doesn't exist.`);
-      }
+    Object.keys(PLUGINS).forEach(pluginName => {
+      const pluginCto = PLUGINS[pluginName];
+      this.plugins[pluginCto] = new pluginCto(this);
     });
+  }
+
+  onInit_() {
+    DOM.fireEvent(this.el, 'ws:init');
   }
 
   grabSlides_() {
@@ -133,6 +136,11 @@ export default class WebSlides {
     this.isMoving = false;
 
     Hash.setSlideNumber(this.currentSlideI_ + 1);
+    DOM.fireEvent(this.el, 'ws:slide-change', {
+      slides: this.maxSlide_,
+      currentSlide0: this.currentSlideI_,
+      currentSlide: this.currentSlideI_ + 1
+    });
   }
 
   goNext() {
