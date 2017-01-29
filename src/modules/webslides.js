@@ -144,7 +144,8 @@ export default class WebSlides {
       }
       const nextSlide = this.slides[slideI];
 
-      if (this.currentSlide_ !== null && !this.isVertical) {
+      if (this.currentSlide_ !== null && this.isVertical &&
+        (!this.plugins.Touch || !this.plugins.Touch.isEnabled)) {
         this.scrollTransitionToSlide_(
             isMovingForward, nextSlide, this.onSlideChange_);
       } else {
@@ -199,16 +200,19 @@ export default class WebSlides {
   transitionToSlide_(isMovingForward, nextSlide, callback) {
     ScrollHelper.scrollTo(0, 0);
 
-    nextSlide.show();
+    if (!isMovingForward) {
+      nextSlide.moveBeforeFirst();
+    }
 
     if (this.currentSlide_) {
       if (isMovingForward) {
         this.currentSlide_.moveAfterLast();
-      } else {
-        nextSlide.moveBeforeFirst();
       }
+
+      this.currentSlide_.hide();
     }
 
+    nextSlide.show();
     callback.call(this, nextSlide);
   }
 
