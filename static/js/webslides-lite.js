@@ -1,7 +1,7 @@
 /*==================================================================
 Name: WebSlides
 Version: Lite (keyboard shortcuts, no trackpad gestures).
-Description: HTML presentations made easy. 
+Description: HTML presentations made easy.
 URL: https://github.com/jlantunez/WebSlides
 Thanks @LuisSacristan for your help :)
 -
@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
         previous : 'previous',
         current : 'current',
         verticalClass : 'vertical' // #webslides.vertical - You must add this class to slideshow for vertical sliding
-      }
+      };
       var easing = 'swing';
       var slideOffset = 50; // minimun number of pixels for sliding
       var verticalDelay = 150; // to avoid 2 slides in a row
@@ -35,7 +35,7 @@ jQuery(document).ready(function($){
           $firstSlide = $slides.first(),
           $lastSlide = $slides.last(),
           $auxSlide = null;
-          
+
       var total = $slides.length;
 
       var labels = {
@@ -90,16 +90,15 @@ jQuery(document).ready(function($){
 
       $slideshow.data('moving', false);
       var nextSlide = function() {
-
+        var nextSlide;
         if ($slideshow.hasClass(ID.verticalClass) && !isMobile) { // Is vertical
           if ($slideshow.data('moving')) return;
           $slideshow.data('moving', true);
           jQuery('html').css({overflow: 'hidden'});
-          var nextSlide;
-          
+
           nextSlide = $currentSlide.next();
           slidePointer.current = ((slidePointer.current+1)%total);
-          if (slidePointer.current == 0) slidePointer.current = total;
+          if (slidePointer.current === 0) slidePointer.current = total;
 
           // show next slide
           nextSlide.show().addClass(ID.current);
@@ -110,7 +109,7 @@ jQuery(document).ready(function($){
               $currentSlide.hide().removeClass(ID.current);
               $currentSlide.siblings('.slide').last().after($currentSlide);
               $currentSlide = nextSlide;
-              
+
               // update counter
               updateCounter();
 
@@ -134,7 +133,7 @@ jQuery(document).ready(function($){
           hideCurrentSlide();
 
           // get the next slide
-          var nextSlide = $currentSlide.next();
+          nextSlide = $currentSlide.next();
 
           nextSlide.show().addClass(ID.current);
           $currentSlide.siblings('.slide').last().after($currentSlide);
@@ -154,6 +153,7 @@ jQuery(document).ready(function($){
       };
 
       var previousSlide = function() {
+        var prevSlide;
         if ($slideshow.hasClass(ID.verticalClass) && !isMobile) { // Is vertical
           if ($slideshow.data('moving')) return;
           $slideshow.data('moving', true);
@@ -161,9 +161,9 @@ jQuery(document).ready(function($){
 
           $currentSlide.before($currentSlide.siblings('.slide').last());
 
-          var prevSlide = $currentSlide.prev();
+          prevSlide = $currentSlide.prev();
 
-          if (prevSlide.length == 0) return false;
+          if (prevSlide.length === 0) return false;
           // show next slide
           prevSlide.show().addClass(ID.current);
           // scroll to next slide
@@ -202,7 +202,7 @@ jQuery(document).ready(function($){
 
           // get the previous slide
           $currentSlide.before($currentSlide.siblings('.slide').last());
-          var prevSlide = $currentSlide.prev();
+          prevSlide = $currentSlide.prev();
 
           prevSlide.show().addClass(ID.current);
           $currentSlide = prevSlide;
@@ -226,19 +226,22 @@ jQuery(document).ready(function($){
 
         $currentSlide = $slides.eq(moveToSlide);
         $currentSlide.show().addClass(ID.current);
-        jQuery('.slide:lt('+(slideNumber-1)+')').each(function() {var $this = jQuery(this); $this.siblings('.slide').last().after($this); });
+        jQuery('.slide:lt('+$currentSlide.index()+')').each(function() {
+          var $this = jQuery(this);
+          $this.siblings('.slide').last().after($this);
+        });
         slidePointer.current = slideNumber;
 
         // update counter
         updateCounter();
-      }
+      };
 
       var fireSlideEvent = function(slide) {
         var slideEvent = new window.CustomEvent('slidechanged', {
           detail: { slide: slide || $currentSlide }
         });
         window.dispatchEvent(slideEvent);
-      }
+      };
 
       /*** INIT SLIDESHOW ***/
 
@@ -275,7 +278,7 @@ jQuery(document).ready(function($){
       // "previous" arrow clicked => previous slide
       $previous.click( function(e){
         e.preventDefault();
-        previousSlide()
+        previousSlide();
       });
 
       // Add keyboard shortcuts for changing slides
@@ -311,7 +314,7 @@ jQuery(document).ready(function($){
           }
         }
       });
-      
+
       /**
        *  Bind the event HashChange when the prev/next history button was clicked
       */
@@ -339,17 +342,17 @@ jQuery(document).ready(function($){
 
       function getArrayOfHashParams() {
         var hash = window.location.hash.replace('#', '').split('&');
-        var paramsArr = new Array();
+        var paramsArr = new Array([]);
         for (var i = 0; i < hash.length; i++) {
           var itemArray = hash[i].split('=');
-          var action = new Object();
+          var action = new Object({});
           action.key = itemArray[0];
           action.value = itemArray[1];
           paramsArr.push(action);
         }
         return paramsArr;
       }
-      
+
       // Tabs
       jQuery('ul.tabs li').click(function(){
           var $this = jQuery(this);
@@ -358,14 +361,18 @@ jQuery(document).ready(function($){
           jQuery('.tab-content').removeClass('current');
           $this.addClass('current');
           jQuery("#"+tab_id).addClass('current');
-      })
+      });
 
+      /* jQuery plugin */
+      $.WebSlides = function () {};
+
+      /* Public goToSlide */
+      $.WebSlides.goToSlide = goToSlide;
     });
-    
+
     // Prototype better, faster. To show the grid/baseline.png, press Enter on keyboard
     $(document).keypress(function(e) {
     if(e.which == 13) {
     $('body').toggleClass('baseline').css('height', $(document).height());
     }
   });
-   
