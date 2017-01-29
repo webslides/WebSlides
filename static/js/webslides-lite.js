@@ -363,6 +363,11 @@ jQuery(document).ready(function($){
           jQuery("#"+tab_id).addClass('current');
       });
 
+      /* jQuery plugin */
+      $.WebSlides = function () {};
+
+      /* Public goToSlide */
+      $.WebSlides.goToSlide = goToSlide;
     });
 
     // Prototype better, faster. To show the grid/baseline.png, press Enter on keyboard
