@@ -226,7 +226,10 @@ jQuery(document).ready(function($){
 
         $currentSlide = $slides.eq(moveToSlide);
         $currentSlide.show().addClass(ID.current);
-        jQuery('.slide:lt('+(slideNumber-1)+')').each(function() {var $this = jQuery(this); $this.siblings('.slide').last().after($this); });
+        jQuery('.slide:lt('+$currentSlide.index()+')').each(function() {
+          var $this = jQuery(this);
+          $this.siblings('.slide').last().after($this);
+        });
         slidePointer.current = slideNumber;
 
         // update counter
