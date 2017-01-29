@@ -30,7 +30,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build:": "npm-run-all --parallel build:*",
+    "build": "npm-run-all --parallel build:*",
     "build:main": "webpack",
     "build:main.min": "webpack --output-filename [name].min.js -p",
     "dev": "webpack-dev-server"
