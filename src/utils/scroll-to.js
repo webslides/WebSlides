@@ -1,6 +1,6 @@
 import Easings from './easing';
 
-let SCROLLABLE_CONTAINER;
+let SCROLLABLE_CONTAINER = getScrollableContainer();
 
 /**
  * Returns the correct DOM element to be used for scrolling the

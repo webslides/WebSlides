@@ -185,7 +185,7 @@ export default class WebSlides {
       }
 
       DOM.unlockScroll();
-      callback.call(this, nextSlide);
+      setTimeout(() => { callback.call(this, nextSlide); }, 150);
     });
   }
 
