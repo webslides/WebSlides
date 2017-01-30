@@ -3,39 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- CLEAN MARKUP = GOOD KARMA.
       Hi source code lover,
-      
+
       you're a curious person and a fast learner ;)
       Let's make something beautiful together. Contribute on Github:
       https://github.com/jlantunez/webslides
-      
+
       Thanks,
       @jlantunez.
     -->
-    
+
     <!-- SEO -->
     <title>WebSlides Demos</title>
     <meta name="description" content="Beautiful HTML presentations and websites made with WebSlides.">
-    
+
     <!-- URL CANONICAL -->
     <!-- <link rel="canonical" href="http://your-url.com/permalink"> -->
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
-    
+
     <!-- CSS Base -->
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/base.css">
-    
+
     <!-- CSS Colors -->
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/colors.css">
-    
+
     <!-- Optional - CSS SVG Icons (Font Awesome) -->
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/svg-icons.css">
-    
+
     <!-- SOCIAL CARDS (ADD YOUR INFO) -->
-    
+
     <!-- FACEBOOK -->
     <meta property="og:url" content="http://your-url.com/permalink"> <!-- EDIT -->
     <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <meta property="og:description" content="Beautiful HTML presentations and websites made with WebSlides."> <!-- EDIT -->
     <meta property="og:updated_time" content="2017-01-04T17:22:34"> <!-- EDIT -->
     <meta property="og:image" content="../static/images/share-webslides.jpg" > <!-- EDIT -->
-    
+
     <!-- TWITTER -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@webslides"> <!-- EDIT -->
@@ -51,7 +51,7 @@
     <meta name="twitter:title" content="WebSlides Demos"> <!-- EDIT -->
     <meta name="twitter:description" content="Beautiful HTML presentations and websites made with WebSlides."> <!-- EDIT -->
     <meta name="twitter:image" content="../static/images/share-webslides.jpg"> <!-- EDIT -->
-    
+
     <!-- FAVICONS -->
     <link rel="shortcut icon" sizes="16x16" href="../static/images/favicons/favicon.png">
     <link rel="shortcut icon" sizes="32x32" href="../static/images/favicons/favicon-32.png">
@@ -60,7 +60,7 @@
     <link rel="apple-touch-icon icon" sizes="152x152" href="../static/images/favicons/favicon-152.png">
     <link rel="apple-touch-icon icon" sizes="180x180" href="../static/images/favicons/favicon-180.png">
     <link rel="apple-touch-icon icon" sizes="192x192" href="../static/images/favicons/favicon-192.png">
-   
+
     <!-- Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#333333">
@@ -93,13 +93,13 @@
 
     <main role="main">
       <article>  <!-- Slideshow? id="webslides" -->
-      
+
         <!-- Quick Guide
           - Each parent <section> in the <article id="webslides"> element is an individual slide.
           - Vertical sliding = <article id="webslides" class="vertical">
-          - <div class="wrap"> = container 1200px 
+          - <div class="wrap"> = container 1200px
         -->
-          
+
         <section>
           <span class="background-right" style="background-image:url('https://webslides.tv/static/images/architecture.png')"></span>
           <!--.wrap = container 1200px -->
@@ -217,17 +217,18 @@
           </div>
           <!-- .end .wrap -->
         </section>
-        
+
       </article>
     </main>
     <!-- end main -->
-    
-    <!-- jQuery (required for slides to work) -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="../static/js/webslides.js"></script>
-    
+
+    <script src="../dist/webslides.js"></script>
+    <script>
+      window.ws = new WebSlides();
+    </script>
+
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="../static/js/svg-icons.js"></script>
-    
+
   </body>
 </html>
