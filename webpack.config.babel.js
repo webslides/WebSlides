@@ -6,7 +6,8 @@ module.exports = {
   context: src,
   entry: {
     webslides: './full.js',
-    "webslides-lite": './lite.js'
+    "webslides-lite": './lite.js',
+    "webslides-dev": './dev.js',
   },
   output: {
     filename: '[name].js',

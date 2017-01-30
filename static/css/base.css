@@ -3,7 +3,7 @@
 	App: WebSlides
 	Version: 0.1
 	Date: 2017-01-08
-	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios. 
+	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios.
 	Author: José Luis Antúnez
 	Author URI: http://twitter.com/jlantunez
 	License: The MIT License (MIT)
@@ -23,12 +23,12 @@
 		2.3 San Francisco Font (Apple)
 	3. Header & Footer
 		3.1 Logo
-	4. Navigation 
+	4. Navigation
 		4.1 Navbars
 		4.2 Tabs
 	5. SLIDES (vertically and horizontally centered)
-		5.1 Mini container & Alignment 
-		5.2 Counter / Navigation Slides 
+		5.1 Mini container & Alignment
+		5.2 Counter / Navigation Slides
 		5.3 Background Images/Video
 	6. Magic blocks = .flexblock (Flexible blocks with auto-fill and equal height).
 		6.1 .flexblock.features
@@ -57,11 +57,11 @@
 0. CSS Reset & Normalize
 =========================================== */
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, bbbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 } 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, bbbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 }
 
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary { 
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
 display: block;
-} 
+}
 body {
   line-height: 1;
 }
@@ -216,7 +216,7 @@ ins {
   text-decoration: none;
   padding: 0 4px;
   text-shadow: none;
-  
+
 }
 
 ::-moz-selection {
@@ -292,7 +292,7 @@ dd {
 
 
 /*=== Clearing === */
-.clear:before, .clear:after, header:before, header:after, main:before, main:after, .wrap:before, .wrap:after, group:before, group:after, section:before, section:after, aside:before, aside:after,footer:before, footer:after{ content: ""; display: table; } 
+.clear:before, .clear:after, header:before, header:after, main:before, main:after, .wrap:before, .wrap:after, group:before, group:after, section:before, section:after, aside:before, aside:after,footer:before, footer:after{ content: ""; display: table; }
 .clear:after, header:after, main:after, .wrap:after, group:after, section:after, aside:after, footer:after { clear: both; }
 
 /*=========================================
@@ -303,12 +303,6 @@ body {
   overflow-x: hidden;
 }
 
-/* == Prototype faster - Vertical rhythm 
-To show the grid/baseline.png, press ENTER key on keyboard == */ 
-
-body.baseline {
-  background: url(../images/baseline.png) left top .8rem/.8rem;
-}
 /*
 #webslides.vertical {cursor: s-resize; }
 */
@@ -474,8 +468,8 @@ pre code {
   padding: 0;
 }
 
-/*=== 1.2 Animations ================ 
-Just 3 basic animations: 
+/*=== 1.2 Animations ================
+Just 3 basic animations:
 .fadeIn, .fadeInUp, .zoomIn.
 https://github.com/daneden/animate.css*/
 
@@ -720,7 +714,7 @@ Auto-fill & Equal height === */
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-transition: .3s;
-  transition: .3s;   
+  transition: .3s;
   padding: 2.4rem;
 }
 
@@ -913,7 +907,7 @@ h1+img,h2+img,h3+img {
 font-size: 2.4rem;
 line-height: 4rem;
 }
-/*========================================= 
+/*=========================================
 2.1. Headings with background
 =========================================== */
 
@@ -927,8 +921,8 @@ h1 [class*="bg-"],h2 [class*="bg-"],h3 [class*="bg-"] {
 padding: .4rem .8rem;
 }
 
-/*========================================= 
-2.2. Typography Classes = .text- 
+/*=========================================
+2.2. Typography Classes = .text-
 =========================================== */
 
 .text-intro,[class*="content-"] p {
@@ -952,7 +946,7 @@ padding: .4rem .8rem;
     letter-spacing: 1.6rem;
  }
 }
-/* -- Subtitle (Before h1, h2) --  
+/* -- Subtitle (Before h1, h2) --
 p.subtitle + h1/h2 */
 
 p.text-subtitle {
@@ -1086,13 +1080,13 @@ padding-top: 1.4rem;
 margin-top: .8rem;
 }
 
-@media (min-width: 1024px) { 
+@media (min-width: 1024px) {
 [class*="text-pull"] {
 margin-right: -4rem;
 margin-left: -4rem;
  }
 }
-@media (min-width: 568px) { 
+@media (min-width: 568px) {
 [class*="text-pull-"] {
 width: 32rem;
 }
@@ -1113,8 +1107,8 @@ margin-right: 2.4rem;
 }
 
 
-/*========================================= 
-2.1. San Francisco Font (Apple's new font) 
+/*=========================================
+2.1. San Francisco Font (Apple's new font)
 =========================================== */
 
 .text-apple,.bg-apple {
@@ -1252,7 +1246,7 @@ nav ul {
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  /*====align left====*/ 
+  /*====align left====*/
   justify-content: flex-start;
   /* ==== align center ====*/
   /*justify-content: center; */
@@ -1387,13 +1381,13 @@ ul.tabs li.current {
 
 /*============================================
 5. SLIDES (Full Screen)
-Vertically and horizontally centered 
+Vertically and horizontally centered
 ============================================== */
 
-/* Fade transition to all slides. 
+/* Fade transition to all slides.
 * = All HTML elements will have those styles.*/
 
-section * { 
+section * {
 -webkit-animation: fadeIn 0.3s ease-in-out;
 animation: fadeIn 0.3s ease-in-out;
 }
@@ -1430,8 +1424,8 @@ section, .slide {
 /*slide no padding (full card, .embed> youtube video...) */
 .fullscreen {
 padding: 0;
-/* Fixed/Visible header? 
-padding:8.2rem 0 0 0; 
+/* Fixed/Visible header?
+padding:8.2rem 0 0 0;
 */
 }
 
@@ -1447,7 +1441,7 @@ padding:8.2rem 0 0 0;
 }
 
 
-/*== 5.1. Mini container width:50% (600px) 
+/*== 5.1. Mini container width:50% (600px)
 .wrap:1200px; / Aligned items [class*="content-"]=== */
 
 [class*="content-"] {
@@ -1482,7 +1476,7 @@ padding:8.2rem 0 0 0;
     float: right;
   }
 [class*="content-"] + [class*="content-"] {
-    padding-left:2.4rem; 
+    padding-left:2.4rem;
     margin-bottom: 4.8rem;
 }
 [class*="content-"] + [class*="size-"] {
@@ -1494,12 +1488,12 @@ clear:both;
 [class*="content-"]:after {
     content: "";
     display: table;
-} 
+}
 
 [class*="content-"]:after {
     clear: both;
  }
-}    
+}
 /* === 5.2 Counter / Navigation Slides  === */
 
 #navigation {
@@ -1567,7 +1561,7 @@ background: url('../images/swipe.svg') no-repeat center top;
 background-size: 4.8rem;
 -webkit-animation: fadeIn 6s;
 animation: fadeIn 6s;
-} 
+}
 #navigation a, #counter {display: none;
  }
 }
@@ -1597,7 +1591,7 @@ background-position: bottom;
 background-size: cover;
 }
 
-/*fullscreen video 
+/*fullscreen video
   <video class="background-video">
 */
 
@@ -1629,7 +1623,7 @@ background-size: cover;
   background-position: center bottom;
 }
 
-@media (min-width:1024px) { 
+@media (min-width:1024px) {
  .background-left-bottom {
     background-position: left bottom;
   }
@@ -1685,11 +1679,11 @@ background-size: cover;
   background-position: center top;
   -webkit-animation: anim 80s linear infinite;
   animation: anim 80s linear infinite;
-  
+
 }
 
 /*===============================================================
-6. Magic blocks with flexbox (Auto-fill & Equal Height) 
+6. Magic blocks with flexbox (Auto-fill & Equal Height)
 Blocks Links li>a = .flexblock.blink (.blink required)
 ================================================================= */
 
@@ -1802,7 +1796,7 @@ div + ul, div + ol{
     width: 46%;
   }
   .column .flexblock.features>li{width: 100%;}
-  
+
  footer .flexblock.features>li {margin-bottom: 0;
  }
 }
@@ -1987,11 +1981,11 @@ About, Philosophy...
 
 .specs li span  {
     font-weight: 300;
-    
+
 }
 .specs li span sup {
     font-size: 3rem;
-    
+
 }
 
 @media (min-width:1024px) {
@@ -2041,7 +2035,7 @@ transform: translateY(-.2rem);
 
 /*=================================================
 6.7 Gallery - <ul class="flexblock gallery">
-Block Thumbnails li+.overlay+image 
+Block Thumbnails li+.overlay+image
 img size recommended:800x600px
 =================================================== */
 
@@ -2145,7 +2139,7 @@ margin-top: .8rem;
   justify-content: center;
   transition: all 0.3s linear;
 }
-li .overlay {  
+li .overlay {
 align-items: center;
 }
 li .overlay h2 {
@@ -2254,7 +2248,7 @@ li:hover .overlay {
 
 /*===========================================
 6.9 Block Activity <ul class="activity">
-CV / News 
+CV / News
 ============================================= */
 
 .flexblock.activity {
@@ -2666,7 +2660,7 @@ p + .work {
 }
 
 
-/*==  Images inside container: 
+/*==  Images inside container:
 object-fit to re-frame images rather than just stretch and resize them  === */
 
 @media (min-width: 768px) {
@@ -2969,7 +2963,7 @@ select {
   padding: .7rem;
   font-weight: 400;
   font-size: 1.6rem;
-  
+
 }
 input[type="radio"],
 input[type="checkbox"] {
@@ -3020,7 +3014,7 @@ button {
 }
 
 .button.radius, button.radius,input.radius {border-radius: 2.4rem;}
-  
+
 button,
 input[type="submit"] {
   text-transform: uppercase;
@@ -3130,14 +3124,14 @@ transform: scale(1.01);
     cursor: pointer;
   }
   [class*="button"] + [class*="button"],[class*="badge"] + [class*="badge"] {
-    margin-left: 1.8rem;  
+    margin-left: 1.8rem;
   }
 }
 @media (max-width:499px) {
 
   [class*="button"] + [class*="button"],[class*="badge"] + [class*="badge"] {
     margin-top: .8rem;
-    
+
   }
 }
 
