@@ -5,9 +5,9 @@ const src = path.join(__dirname, 'src');
 module.exports = {
   context: src,
   entry: {
-    webslides: './full.js',
-    "webslides-lite": './lite.js',
-    "webslides-dev": './dev.js',
+    webslides: './js/full.js',
+    "webslides-lite": './js/lite.js',
+    "webslides-dev": './js/dev.js',
   },
   output: {
     filename: '[name].js',
