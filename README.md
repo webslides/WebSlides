@@ -5,6 +5,8 @@ Finally, everything you need to make HTML presentations in a beautiful way. Just
 Good karma and productivity. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
 
 ### Features
+A new release every 8th day of the month.
+
 Version 0.1 (Jan 8, 2017):
 
 - Navigation (horizontal and vertical sliding): touchpad, keyboard shorcuts, and swipe.
