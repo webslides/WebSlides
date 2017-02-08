@@ -170,6 +170,10 @@ Slides - Backgrounds <section class="bg-primary">
 .bg-white {
   background-color: #fff;
 }
+[class*="bg-"] .bg-white {
+  text-shadow: none;
+  color: #333;
+}
 
 /* BG Apple Keynote*/
 
