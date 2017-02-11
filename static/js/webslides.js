@@ -1,6 +1,7 @@
 /*==================================================================
 Name: WebSlides
 Version: 0.1.1 (trackpad gestures and keyboard shortcuts).
+Date: 2017-02-11
 Description: HTML presentations made easy.
 URL: https://github.com/jlantunez/WebSlides
 Thanks @LuisSacristan for your help :)
