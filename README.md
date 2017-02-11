@@ -20,7 +20,7 @@ Version 0.1 (Jan 8, 2017):
 
 Version 0.1.1 (Feb 11, 2017):
 
-- Transform the library into a object.
+- Transform the library into an object.
 - .tabs removed
 - webslides-lite.js removed.
 
