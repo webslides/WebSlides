@@ -493,23 +493,3 @@ jQuery.fn.webslides = function(options) {
   // Return same object
   return obj;
 }
-
-
-jQuery(document).ready(function($){
-  // Tabs
-  jQuery('ul.tabs li').click(function(){
-      var $this = jQuery(this);
-      var tab_id = $this.attr('data-tab');
-      jQuery('ul.tabs li').removeClass('current');
-      jQuery('.tab-content').removeClass('current');
-      $this.addClass('current');
-      jQuery("#"+tab_id).addClass('current');
-  });
-});
-
-// Prototype better, faster. To show the grid/baseline.png, press Enter on keyboard
-jQuery(document).keypress(function(e) {
-  if(e.which == 13) {
-    jQuery('body').toggleClass('baseline').css('height', $(document).height());
-  }
-});
