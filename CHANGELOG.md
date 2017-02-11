@@ -2,6 +2,7 @@
 
 - Transform the library into a object.
 - .tabs removed.
+- webslides-lite.js removed.
 
 ## 0.1 (2017-01-08)
 
