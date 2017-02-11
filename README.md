@@ -39,9 +39,28 @@ Version 0.1 (Jan 8, 2017):
 
 <pre>&lt;article id="webslides" class="vertical"&gt;</pre>
 
+### How it works
+
+You need to add the follow javascript to initialize the webslide objet
+
+```javascript
+var slide = jQuery('#webslides').webslides();
+```
+
+Now you can use the slide with these functions
+
+```javascript
+// Moving to next slide
+slide.nextSlide();
+// Moving to previous slide
+slide.previousSlide();
+// Moving to a specific slide
+slide.goToSlide(n);
+```
+
 ### What's in the download?
 
-The download includes demos and images (devices and logos). 
+The download includes demos and images (devices and logos).
 All content is for demo purposes only. Images are property of their respective owners.
 
 ```
@@ -77,7 +96,7 @@ You can add:
 
 ### License
 
-WebSlides is licensed under the [MIT License](https://opensource.org/licenses/MIT). 
+WebSlides is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 Use it to make something cool.
 
 ### Credits
