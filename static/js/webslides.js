@@ -236,11 +236,11 @@ jQuery.fn.webslides = function(options) {
       var diffY = $slideshow.data('touchYStart') - $slideshow.data('touchYEnd');
       if ((!$slideshow.hasClass(obj.settings.verticalClass) || isMobile) && Math.abs(diffX) > Math.abs(diffY)) {
         if(diffX < -slideOffset) {
-          previousSlide();
+          obj.previousSlide();
           // Scroll up
         } else if(diffX > slideOffset) {
           // scroll down
-          nextSlide();
+          obj.nextSlide();
         }
       }
     });
