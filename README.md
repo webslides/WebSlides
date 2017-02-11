@@ -41,13 +41,13 @@ Version 0.1 (Jan 8, 2017):
 
 ### How it works
 
-You need to add the follow javascript to initialize the webslide objet
+You need to add the follow javascript to initialize the webslides object.
 
 ```javascript
 var slide = jQuery('#webslides').webslides();
 ```
 
-Now you can use the slide with these functions
+Now you can use the slide with these functions:
 
 ```javascript
 // Moving to next slide
