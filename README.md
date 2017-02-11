@@ -17,12 +17,6 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Fonts: Roboto, Maitree (Serif), and San Francisco.
 - Vertical rhythm (use multiples of 8).
 
-Version 0.1.1 (Feb 11, 2017):
-
-- Transform the library into an object.
-- .tabs removed
-- webslides-lite.js removed.
-
 ### Markup
 
 - Code is clean and scalable. It uses intuitive markup with popular naming conventions. There's no need to overuse classes or nesting.
