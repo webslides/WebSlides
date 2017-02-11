@@ -3,39 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- CLEAN MARKUP = GOOD KARMA.
       Hi source code lover,
-      
+
       you're a curious person and a fast learner ;)
       Let's make something beautiful together. Contribute on Github:
       https://github.com/jlantunez/webslides
-      
+
       Thanks,
       @jlantunez.
     -->
-      
+
     <!-- SEO -->
     <title>WebSlides: Why WebSlides is so inspiring?</title>
     <meta name="description" content="WebSlides is about good karma. Create your own HTML presentation instantly. Just the esentials.">
-    
+
     <!-- URL CANONICAL -->
     <!-- <link rel="canonical" href="http://your-url.com/permalink"> -->
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
-    
+
     <!-- CSS Base -->
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/base.css">
-    
+
     <!-- CSS Colors -->
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/colors.css">
-    
+
     <!-- Optional - CSS SVG Icons (Font Awesome) -->
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/svg-icons.css">
-    
+
     <!-- SOCIAL CARDS (ADD YOUR INFO) -->
-    
+
     <!-- FACEBOOK -->
     <meta property="og:url" content="http://your-url.com/permalink"> <!-- EDIT -->
     <meta property="og:type" content="article">
@@ -45,7 +45,7 @@
     <meta property="og:image" content="https://webslides.tv/static/images/share-karma.jpg" > <!-- EDIT -->
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="429">
-    
+
     <!-- TWITTER -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@webslides"> <!-- EDIT -->
@@ -53,7 +53,7 @@
     <meta name="twitter:title" content="Why WebSlides? Good karma"> <!-- EDIT -->
     <meta name="twitter:description" content="WebSlides is a very effective way to engage young audiences, customers, teams..."> <!-- EDIT -->
     <meta name="twitter:image" content="https://webslides.tv/static/images/share-karma.jpg"> <!-- EDIT -->
-    
+
     <!-- FAVICONS -->
     <link rel="shortcut icon" sizes="16x16" href="../static/images/favicons/favicon.png">
     <link rel="shortcut icon" sizes="32x32" href="../static/images/favicons/favicon-32.png">
@@ -62,10 +62,11 @@
     <link rel="apple-touch-icon icon" sizes="152x152" href="../static/images/favicons/favicon-152.png">
     <link rel="apple-touch-icon icon" sizes="180x180" href="../static/images/favicons/favicon-180.png">
     <link rel="apple-touch-icon icon" sizes="192x192" href="../static/images/favicons/favicon-192.png">
-    
+
     <!-- Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#333333">
+
   </head>
   <body>
     <header role="banner">
@@ -92,22 +93,22 @@
         </ul>
       </nav>
     </header>
-    
+
     <main role="main">
       <article id="webslides" class="vertical">
-      
+
         <!-- Quick Guide
           - Each parent <section> in the <article id="webslides"> element is an individual slide.
-          - Vertical sliding = <article id="webslides" class="vertical">   
+          - Vertical sliding = <article id="webslides" class="vertical">
           - <div class="wrap"> = container 1200px / <div class="wrap size-50"> = 600px;
         -->
-      
+
         <section>
           <!--.wrap = container 1200px -->
           <div class="wrap aligncenter">
             <h1 class="text-landing">Good Karma</h1>
             <p class="text-intro">
-              <strong><a href="http://webslides.tv/">WebSlides</a></strong> &mdash; HTML presentations made easy. <br> 
+              <strong><a href="http://webslides.tv/">WebSlides</a></strong> &mdash; HTML presentations made easy. <br>
               Hypertext and beauty as narrative elements.
             </p>
             <nav>
@@ -126,7 +127,7 @@
           <!--.wrap = container 1200px -->
           <div class="wrap fadeInUp">
             <h1>
-              Everyone 
+              Everyone
               <svg class="fa-heart-o">
                 <use xlink:href="#fa-heart-o"></use>
               </svg>
@@ -309,7 +310,7 @@
                 <p>The best way to inspire with your content is to connect on a personal level:</p>
                 <ul class="description">
                   <li>
-                    <strong>Animations:</strong> <a href="https://github.com/daneden/animate.css/" title="Animate.css"> 
+                    <strong>Animations:</strong> <a href="https://github.com/daneden/animate.css/" title="Animate.css">
                     Animate.css</a>.
                   </li>
                   <li>
@@ -333,17 +334,20 @@
           </div>
           <!-- .end .wrap -->
         </section>
-        
+
       </article>
     </main>
     <!--main-->
-    
+
     <!-- jQuery (required for slides to work) -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="../static/js/webslides.js"></script>
-    
+
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="../static/js/svg-icons.js"></script>
-    
+    <script type="text/javascript">
+      var slide = jQuery('#webslides').webslides();
+    </script>
+
   </body>
 </html>
