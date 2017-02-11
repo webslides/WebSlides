@@ -24,7 +24,7 @@ jQuery(document).ready(function($){
       var easing = 'swing';
       var slideOffset = 50; // minimun number of pixels for sliding
       var verticalDelay = 150; // to avoid 2 slides in a row
-      var wheelDetail = -6; // how far the wheel turned for Firefox
+      var wheelDetail = -3; // how far the wheel turned for Firefox
       var wheelDelta = 150; // how far the wheel turned for Chrome
       var isMobile = ('ontouchstart' in document.documentElement && navigator.userAgent.match(/Mobi/));
 
@@ -358,10 +358,10 @@ jQuery(document).ready(function($){
       jQuery(window).bind('mousewheel DOMMouseScroll', function(event){
         $slideshow.data('iswheel', true);
         if ($slideshow.hasClass(ID.verticalClass) && !isMobile) {
-          if (event.originalEvent.wheelDelta > wheelDelta || event.originalEvent.detail < wheelDetail) {
+          if (event.originalEvent.wheelDelta > wheelDelta || event.originalEvent.detail <= wheelDetail) {
             // Scroll up
             previousSlide();
-          } else if (event.originalEvent.wheelDelta < -wheelDelta || event.originalEvent.detail > -wheelDetail) {
+          } else if (event.originalEvent.wheelDelta < -wheelDelta || event.originalEvent.detail >= -wheelDetail) {
             // scroll down
             nextSlide();
           }
