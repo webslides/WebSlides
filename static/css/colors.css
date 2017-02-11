@@ -363,31 +363,6 @@ nav li.email a:hover {
   background: #dd4b39;
 }
 
-
-/*=========================================
-Tabs
-=========================================== */
-
-
-ul.tabs li {
-  border: 1px solid rgba(0, 20, 80, 0.1);
-  border-right: none;
-}
-
-ul.tabs li:last-child {
-  border-right: 1px solid rgba(0, 20, 80, 0.1);
-}
-
-ul.tabs li.current {
-  background: rgba(255, 255, 255, 0.09);
-}
-
-ul.tabs li:before {
-  background-color: #44d;
-}
-
-
-
 /*===================================================
 .flexblock li hover/active
 ===================================================== */
