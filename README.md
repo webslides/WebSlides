@@ -22,6 +22,7 @@ Version 0.1.1 (Feb 11, 2017):
 
 - Transform the library into a object.
 - .tabs removed
+- webslides-lite.js removed.
 
 ### Markup
 
