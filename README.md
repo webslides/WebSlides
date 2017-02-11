@@ -7,11 +7,6 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 ### Features
 A new release every 8th day of the month.
 
-Version 0.1.1 (Feb 11, 2017):
-
-- Transform the library into a object.
-- .tabs removed
-
 Version 0.1 (Jan 8, 2017):
 
 - Navigation (horizontal and vertical sliding): touchpad, keyboard shorcuts, and swipe.
@@ -22,6 +17,11 @@ Version 0.1 (Jan 8, 2017):
 - Flexible blocks with auto-fill and equal height.
 - Fonts: Roboto, Maitree (Serif), and San Francisco.
 - Vertical rhythm (use multiples of 8).
+
+Version 0.1.1 (Feb 11, 2017):
+
+- Transform the library into a object.
+- .tabs removed
 
 ### Markup
 
