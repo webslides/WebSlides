@@ -7,9 +7,10 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 ### Features
 A new release every 8th day of the month.
 
-Version 0.1 (Feb 11, 2017):
+Version 0.1.1 (Feb 11, 2017):
 
 - Transform the library into a object.
+- .tabs removed
 
 Version 0.1 (Jan 8, 2017):
 
