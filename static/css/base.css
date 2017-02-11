@@ -25,7 +25,6 @@
 		3.1 Logo
 	4. Navigation 
 		4.1 Navbars
-		4.2 Tabs
 	5. SLIDES (vertically and horizontally centered)
 		5.1 Mini container & Alignment 
 		5.2 Counter / Navigation Slides 
@@ -303,8 +302,7 @@ body {
   overflow-x: hidden;
 }
 
-/* == Prototype faster - Vertical rhythm 
-To show the grid/baseline.png, press ENTER key on keyboard == */ 
+/* == Prototype faster - Vertical rhythm  == */ 
 
 body.baseline {
   background: url(../images/baseline.png) left top .8rem/.8rem;
@@ -1312,77 +1310,6 @@ nav.navbar ul {
 }
 nav.navbar li a{justify-content:flex-start;
  }
-}
-
-/*=== 4.2. Tabs === */
-
-ul.tabs {
-  display: inline-block;
-  margin-bottom: 3.2rem;
-}
-
-ul.tabs li {
-  position: relative;
-  display: table-cell;
-  /*ftext-transform: uppercase;
-	letter-spacing: .1rem;*/
-  padding: .8rem 2.4rem;
-  cursor: pointer;
-}
-
-.tabs li:before {
-  position: absolute;
-  content: "";
-  display: table;
-  clear: both;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  -webkit-transition: width 200ms ease, opacity 200ms ease;
-  transition: width 200ms ease, opacity 200ms ease;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.tabs li.current:before {
-  opacity: 1;
-  width: 100%;
-}
-
-ul.tabs li.current {
-  font-weight: 600;
-}
-/*.tabs li:after{
-	position: relative;
-	right: -2.8rem;
-	font-size:1.6rem;
-	font-weight:300;
-	content: "*";
-
-}
-.tabs li:last-child:after {
-  display: none;
-}
-
-*/
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.current {
-  display: inherit;
-  -webkit-animation: fadeIn ease-in 1;
-  animation: fadeIn ease-in 1;
-  -webkit-animation-duration: .3s;
-  animation-duration: .3s;
-}
-
-@media (max-width: 400px) {
-  .tabs li {
-    display: block;
-  }
 }
 
 /*============================================
