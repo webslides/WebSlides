@@ -495,7 +495,6 @@ jQuery.fn.webslides = function(options) {
 }
 
 
-// I don't know what it does
 jQuery(document).ready(function($){
   // Tabs
   jQuery('ul.tabs li').click(function(){
@@ -508,7 +507,6 @@ jQuery(document).ready(function($){
   });
 });
 
-// I don't know what it does
 // Prototype better, faster. To show the grid/baseline.png, press Enter on keyboard
 jQuery(document).keypress(function(e) {
   if(e.which == 13) {
