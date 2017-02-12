@@ -13,6 +13,7 @@ https://github.com/jennschiffer/SimpleSlides
 jQuery.fn.webslides = function(options) {
 
   var obj = {};
+  var $this = jQuery(this);
 
   // Private vars
   var easing = 'swing';
@@ -52,7 +53,6 @@ jQuery.fn.webslides = function(options) {
    */
   var init = function(_options) {
     obj.settings = {
-      id : 'webslides',
       class : 'slide',
       counter : 'counter',
       navigation : 'navigation',
@@ -75,7 +75,7 @@ jQuery.fn.webslides = function(options) {
   }
 
   var setup = function() {
-    $slideshow = jQuery('#' + obj.settings.id);
+    $slideshow = $this;
     $navigation = jQuery('<div>').attr('id', obj.settings.navigation);
     $slides = $slideshow.children('section').addClass(obj.settings.class);
     $firstSlide = $slides.first();
