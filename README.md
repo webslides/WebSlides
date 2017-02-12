@@ -1,7 +1,7 @@
 # WebSlides = Good Karma
 Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes — [https://webslides.tv/demos](https://webslides.tv/demos). 
 
-A new release every 8th day of the month. Version 0.1 (Jan 8, 2017).
+A new release (at least) every 8th day of the month. Version 0.1: Jan 8, 2017.
 
 ### Why WebSlides?
 Good karma and productivity. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
