@@ -2904,33 +2904,19 @@ input[type="checkbox"] {
   height: auto;
   padding: 4px;
 }
-
-button {
-  width: auto;
-}
-/*input:hover, textarea:hover, select:hover {
--webkit-transform: translateY(-.2rem);
-transform: translateY(-.2rem);
-}*/
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-width: 1px;
-}
-
 button[type="submit"],textarea {
   width: 100%;
 }
-
 textarea {
   padding: .7rem;
 }
 
 button {
+  width: auto;
   text-align: center;
   cursor: pointer;
 }
+
 .button {
   display: inline-block;
   line-height: 4.8rem;
@@ -2982,6 +2968,12 @@ legend {
   text-transform: uppercase;
   letter-spacing:.1rem;
   font-weight: 400;
+}
+/*=== Focus === */
+input:focus,
+textarea:focus,
+select:focus {
+  border-width: 1px;
 }
 
 /*=== App Store Badges === */
