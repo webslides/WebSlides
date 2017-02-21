@@ -2908,11 +2908,6 @@ input[type="checkbox"] {
 button {
   width: auto;
 }
-
-button[type="submit"] {
-  width: 100%;
-}
-
 /*input:hover, textarea:hover, select:hover {
 -webkit-transform: translateY(-.2rem);
 transform: translateY(-.2rem);
@@ -2922,6 +2917,10 @@ input:focus,
 textarea:focus,
 select:focus {
   border-width: 1px;
+}
+
+button[type="submit"],textarea {
+  width: 100%;
 }
 
 textarea {
