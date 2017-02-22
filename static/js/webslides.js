@@ -33,7 +33,8 @@ jQuery.fn.webslides = function(options) {
       $firstSlide,
       $lastSlide,
       $auxSlide = null,
-      slidePointer;
+      slidePointer,
+      intervalId;
 
   var total = 0;
 
@@ -50,6 +51,7 @@ jQuery.fn.webslides = function(options) {
    * @param {string} previous Previous HTML element ID
    * @param {string} current Current HTML element ID
    * @param {string} verticalClass Vertical class
+   * @param {boolean} autoslide Auto slide, default false
    */
   var init = function(_options) {
     obj.settings = {
@@ -59,7 +61,8 @@ jQuery.fn.webslides = function(options) {
       next : 'next',
       previous : 'previous',
       current : 'current',
-      verticalClass : 'vertical' // #webslides.vertical - You must add this class to slideshow for vertical sliding
+      verticalClass : 'vertical', // #webslides.vertical - You must add this class to slideshow for vertical sliding
+      interval : false,
     };
 
     // Allow overriding the default config
@@ -134,6 +137,8 @@ jQuery.fn.webslides = function(options) {
       $currentSlide = $firstSlide.show().addClass(obj.settings.current);
       updateCounter();
     }
+
+    obj.autoslide();
   };
 
   /**
@@ -245,6 +250,16 @@ jQuery.fn.webslides = function(options) {
         }
       }
     });
+  }
+
+  /**
+   * Autoslide process
+   */
+  obj.autoslide = function() {
+    if (obj.settings.interval != false && obj.settings.interval > 0) {
+      clearInterval(intervalId);
+      intervalId = setInterval(obj.nextSlide, obj.settings.interval);
+    }
   }
 
   /**
@@ -385,6 +400,8 @@ jQuery.fn.webslides = function(options) {
       // fire slide event
       fireSlideEvent();
     }
+
+    obj.autoslide();
   };
 
   /**
@@ -453,6 +470,7 @@ jQuery.fn.webslides = function(options) {
       // fire slide event
       fireSlideEvent();
     }
+    obj.autoslide();
   };
 
 
@@ -476,6 +494,7 @@ jQuery.fn.webslides = function(options) {
 
     // update counter
     updateCounter();
+    obj.autoslide();
   };
 
   /**
