@@ -1,3 +1,7 @@
+## 0.2 (2017-02-22)
+
+- Auto slide (Demo: why-webslides.html)
+
 ## 0.1.1 (2017-02-11)
 
 - Transform the library into an object.
