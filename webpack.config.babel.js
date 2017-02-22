@@ -6,13 +6,12 @@ module.exports = {
   context: src,
   entry: {
     webslides: './js/full.js',
-    "webslides-lite": './js/lite.js',
-    "webslides-dev": './js/dev.js',
+    'webslides-dev': './js/dev.js',
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/dist',
+    path: path.join(__dirname, 'static/js'),
+    publicPath: '/static/js/',
   },
   devServer: {
     contentBase: __dirname,

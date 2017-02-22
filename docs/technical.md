@@ -97,5 +97,4 @@ Make sure to let us know so it could get added to the repo!
 ### Roadmap
 
 * Fix crossbrowser issues. Safari mostly.
-* Make a stable release.
 * Write tests
