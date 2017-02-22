@@ -11,6 +11,7 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Navigation (horizontal and vertical sliding): touchpad, keyboard shortcuts, and swipe.
 - Slide counter.
 - Permalinks: go to a specific slide.
+- Autoslide
 - Simple CSS alignments. Put content wherever you want (vertical centering...)
 - 40+ components: background images/videos, quotes, cards, covers...
 - Flexible blocks with auto-fill and equal height.
@@ -46,6 +47,11 @@ You need to add the follow javascript to initialize the webslides object.
 var slide = jQuery('#webslides').webslides();
 ```
 
+#### Auto slide
+
+```javascript
+var slide = jQuery('#webslides').webslides({interval: 5000});
+```
 Now you can use the slide with these functions:
 
 ```javascript
