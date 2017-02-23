@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 1.0.0 (2017-02-23)
 
 This release is a special one since it sets up in the path of a better development environment. Although it's far from
@@ -43,3 +44,7 @@ to use the library as before.
 - Transform the library into an object.
 - `.tabs` removed.
 - `webslides-lite.js` removed.
+
+# 0.1.0 (2017-01-08)
+
+- Initial release.

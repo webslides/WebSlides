@@ -1308,7 +1308,8 @@ nav.navbar ul li {
     flex-flow: column wrap;
     padding: 0;
   }
-  nav.navbar li a{justify-content:flex-start;
+  nav.navbar li a {
+    justify-content:flex-start;
   }
 }
 
