@@ -1,7 +1,11 @@
 # WebSlides = Good Karma
-Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes — [https://webslides.tv/demos](https://webslides.tv/demos). 
 
-A new release (at least) every 8th day of the month. Version 0.1: Jan 8, 2017.
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/jlantunez/webslides.svg?style=social)](https://twitter.com/webslides)
+
+Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes — https://webslides.tv/demos.
+
+A new release (at least) every 8th day of the month.
 
 ### Why WebSlides?
 Good karma and productivity. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
@@ -18,54 +22,34 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Fonts: Roboto, Maitree (Serif), and San Francisco.
 - Vertical rhythm (use multiples of 8).
 
-### Markup
+## Markup
 
 - Code is clean and scalable. It uses intuitive markup with popular naming conventions. There's no need to overuse classes or nesting.
-- Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.
+- Each parent `<section>` in the `#webslides` element is an individual slide.
 
-<pre>&lt;article id="webslides"&gt;
-    &lt;section&gt;
-    	&lt;h1&gt;Slide 1&lt;/h1&gt;
-    &lt;/section&gt;
-    &lt;section class="bg-black aligncenter"&gt;
-    <span class="code-comment">&lt;!-- .wrap = container 1200px --&gt;</span>
-    	&lt;div class="wrap"&gt;
-    		&lt;h1&gt;Slide 2&lt;/h1&gt;
-    	&lt;/div&gt;
-    &lt;/section&gt;
-&lt;/article&gt;</pre>
-
-#### Vertical Sliding
-
-<pre>&lt;article id="webslides" class="vertical"&gt;</pre>
-
-### How it works
-
-You need to add the follow javascript to initialize the webslides object.
-
-```javascript
-var slide = jQuery('#webslides').webslides();
+```html
+<article id="webslides">
+    <section>
+        <h1>Slide 1</h1>
+    </section>
+    <section class="bg-black aligncenter">
+    <!-- .wrap = container 1200px -->
+        <div class="wrap">
+            <h1>Slide 2</h1>
+        </div>
+    </section>
+</article>
 ```
 
-#### Auto slide
+### Vertical Sliding
 
-```javascript
-var slide = jQuery('#webslides').webslides({interval: 5000});
-```
-Now you can use the slide with these functions:
-
-```javascript
-// Moving to next slide
-slide.nextSlide();
-// Moving to previous slide
-slide.previousSlide();
-// Moving to a specific slide
-slide.goToSlide(n);
+```html
+<article id="webslides" class="vertical">
 ```
 
 ### What's in the download?
 
-The download includes demos and images (devices and logos).
+The download includes demos and images (devices and logos). 
 All content is for demo purposes only. Images are property of their respective owners.
 
 ```
@@ -84,16 +68,17 @@ webslides/
 
 ### CSS Syntax (classes)
 
-- Typography: .text-landing, .text-data, .text-intro...
-- Background Colors: .bg-primary, .bg-apple, .bg-blue...
-- Background Images: .background,.background-center-bottom...
-- Cards: .card-50, .card-40...
-- Flexible Blocks: .flexblock.clients, .flexblock.metrics...
+- Typography: `.text-landing`, `.text-data`, `.text-intro`...
+- Background Colors: `.bg-primary`, `.bg-apple`, `.bg-blue`...
+- Background Images: `.background`,`.background-center-bottom`...
+- Cards: `.card-50`, `.card-40`...
+- Flexible Blocks: `.flexblock.clients`, `.flexblock.metrics`...
 
 
 ### Extensions
 
 You can add:
+
 - [Unsplash](https://unsplash.com) photos
 - [animate.css](https://daneden.github.io/animate.css)
 - [particles.js](https://github.com/VincentGarreau/particles.js)
@@ -101,9 +86,16 @@ You can add:
 
 ### License
 
-WebSlides is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+WebSlides is licensed under the [MIT License](https://opensource.org/licenses/MIT). 
 Use it to make something cool.
 
+### Dive In!
+
+Please check out:
+
+ - Want to get techie? Read [our technical docs](docs/technical.md)
+ - Do not miss [our demos](https://webslides.tv/) 
+ 
 ### Credits
 
 - WebSlides was created by [@jlantunez](https://twitter.com/jlantunez) using [Cactus](https://github.com/eudicots/Cactus).

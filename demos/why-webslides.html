@@ -66,7 +66,6 @@
     <!-- Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#333333">
-
   </head>
   <body>
     <header role="banner">
@@ -339,13 +338,11 @@
     </main>
     <!--main-->
 
-    <!-- jQuery (required for slides to work) -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../static/js/svg-icons.js"></script>
     <script src="../static/js/webslides.js"></script>
-
-    <!-- Autoslide 5 seconds. If you don't want autoslide, remove: {interval: 5000} -->
-    <script type="text/javascript">
-      var slide = jQuery('#webslides').webslides({interval: 5000});
+    <!-- Autoslide 5 seconds. If you don't want autoslide, remove: {autoslide: 5000} -->
+    <script>
+      window.ws = new WebSlides({ autoslide: 5000 });
     </script>
 
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->

@@ -319,7 +319,11 @@
         <section>
           <div class="wrap">
             <h1>Navigation</h1>
-
+            <ul class="tabs">
+              <li class="tab current" data-tab="tab-1">ul.tabs</li>
+              <li class="tab" data-tab="tab-2">columns</li>
+            </ul>
+            <div id="tab-1" class="tab-content current">
               <nav role="navigation">
                 <ul>
                   <li><a href="">About</a></li>
@@ -368,8 +372,9 @@
                 </ul>
               </nav>
               <p>nav.navbar</p>
-            
-            <hr>
+            </div>
+            <!-- end .tab-content -->
+            <div id="tab-2" class="tab-content">
               <div class="grid">
                 <div class="column">
                   <h3>Company</h3>
@@ -430,6 +435,8 @@
                 <!-- .end .column -->
               </div>
               <!-- .end .grid -->
+            </div>
+            <!-- end .tab-content -->
           </div>
           <!-- .end .wrap -->
         </section>
@@ -1796,8 +1803,49 @@
         <section class="aligncenter">
           <!--.wrap = container 1200px -->
           <div class="wrap">
-            <h1 class="text-landing">Tell a Story</h1>
-            <p class="text-intro"><strong>Hi, this is WebSlides</strong>. HTML presentations made simple. <br>I'm a cute solution with clean markup and <strong>lovely CSS</strong>.</p>
+            <div id="tab-3" class="tab-content current">
+              <h1 class="text-landing">Tell a Story</h1>
+              <p class="text-intro"><strong>Hi, this is WebSlides</strong>. HTML presentations made simple. <br>I'm a cute solution with clean markup and <strong>lovely CSS</strong>.</p>
+            </div>
+            <div id="tab-4" class="tab-content">
+              <ul class="flexblock features">
+                <li>
+                  <div>
+                    <svg class="fa-heart-o">
+                      <use xlink:href="#fa-heart-o"></use>
+                    </svg>
+                    <h2>Indexed content</h2>
+                    Sharing is caring.
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <h2>
+                      <svg class="fa-magic">
+                        <use xlink:href="#fa-magic"></use>
+                      </svg>
+                      Just essential features
+                    </h2>
+                    Keyboard navigation...
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <svg class="fa-bolt">
+                      <use xlink:href="#fa-bolt"></use>
+                    </svg>
+                    <h2>
+                      Prototype faster
+                    </h2>
+                    with clean code
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <ul class="tabs">
+              <li class="tab current" data-tab="tab-3">Purpose</li>
+              <li class="tab" data-tab="tab-4">Benefits</li>
+            </ul>
           </div>
         </section>
         <section class="bg-black aligncenter">
@@ -3078,16 +3126,14 @@
     </main>
     <!--main-->
 
-    <!-- jQuery (required for slides to work) -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../static/js/svg-icons.js"></script>
     <script src="../static/js/webslides.js"></script>
-    
-    <script type="text/javascript">
-      var slide = jQuery('#webslides').webslides();
+    <script>
+      window.ws = new WebSlides();
     </script>
 
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="../static/js/svg-icons.js"></script>
-    
+
   </body>
 </html>

@@ -1,9 +1,9 @@
 /*---------------------------------------------------------------------------------
 
 	App: WebSlides
-	Version: 0.1.1
+	Version: 1.0.0
 	Date: 2017-02-11
-	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios. 
+	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios.
 	Author: José Luis Antúnez
 	Author URI: http://twitter.com/jlantunez
 	License: The MIT License (MIT)
@@ -23,11 +23,11 @@
 		2.3 San Francisco Font (Apple)
 	3. Header & Footer
 		3.1 Logo
-	4. Navigation 
+	4. Navigation
 		4.1 Navbars
 	5. SLIDES (vertically and horizontally centered)
-		5.1 Mini container & Alignment 
-		5.2 Counter / Navigation Slides 
+		5.1 Mini container & Alignment
+		5.2 Counter / Navigation Slides
 		5.3 Background Images/Video
 	6. Magic blocks = .flexblock (Flexible blocks with auto-fill and equal height).
 		6.1 .flexblock.features
@@ -56,11 +56,11 @@
 0. CSS Reset & Normalize
 =========================================== */
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, bbbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 } 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, bbbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 }
 
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary { 
-display: block;
-} 
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+  display: block;
+}
 body {
   line-height: 1;
 }
@@ -215,7 +215,7 @@ ins {
   text-decoration: none;
   padding: 0 4px;
   text-shadow: none;
-  
+
 }
 
 ::-moz-selection {
@@ -291,7 +291,7 @@ dd {
 
 
 /*=== Clearing === */
-.clear:before, .clear:after, header:before, header:after, main:before, main:after, .wrap:before, .wrap:after, group:before, group:after, section:before, section:after, aside:before, aside:after,footer:before, footer:after{ content: ""; display: table; } 
+.clear:before, .clear:after, header:before, header:after, main:before, main:after, .wrap:before, .wrap:after, group:before, group:after, section:before, section:after, aside:before, aside:after,footer:before, footer:after{ content: ""; display: table; }
 .clear:after, header:after, main:after, .wrap:after, group:after, section:after, aside:after, footer:after { clear: both; }
 
 /*=========================================
@@ -302,7 +302,7 @@ body {
   overflow-x: hidden;
 }
 
-/* == Prototype faster - Vertical rhythm  == */ 
+/* == Prototype faster - Vertical rhythm  == */
 
 body.baseline {
   background: url(../images/baseline.png) left top .8rem/.8rem;
@@ -343,7 +343,7 @@ nav a[rel="external"] em,
 
 /*Layer/Box Shadow*/
 .shadow {
-position: relative;
+  position: relative;
 }
 .shadow:before,.shadow:after {
   z-index: -1;
@@ -472,8 +472,8 @@ pre code {
   padding: 0;
 }
 
-/*=== 1.2 Animations ================ 
-Just 3 basic animations: 
+/*=== 1.2 Animations ================
+Just 3 basic animations:
 .fadeIn, .fadeInUp, .zoomIn.
 https://github.com/daneden/animate.css*/
 
@@ -674,9 +674,9 @@ li .browser {margin-bottom: 0;
   content: "● ● ●";
 }
 @media (min-width:768px) {
-.browser:before {
-  font-size: 1.6rem;
- }
+  .browser:before {
+    font-size: 1.6rem;
+  }
 }
 
 
@@ -718,7 +718,7 @@ Auto-fill & Equal height === */
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-transition: .3s;
-  transition: .3s;   
+  transition: .3s;
   padding: 2.4rem;
 }
 
@@ -732,21 +732,21 @@ Auto-fill & Equal height === */
   }
   /* Grid (Sidebar + Main) .grid.sm */
   .grid.sm .column:nth-child(1) {
-   width: 30%
+    width: 30%
   }
   .grid.sm .column:nth-child(2) {
-   width: 70%;
+    width: 70%;
   }
   /* Grid (Main + Sidebar) .grid.ms */
   .grid.ms .column:nth-child(1) {
-   width: 70%
+    width: 70%
   }
   .grid.ms .column:nth-child(2) {
-   width: 30%;
+    width: 30%;
   }
-   /* Grid (Sidebar + Main + Sidebar) .grid.sms */
+  /* Grid (Sidebar + Main + Sidebar) .grid.sms */
   .grid.sms .column:nth-child(2) {
-   width: 50%;
+    width: 50%;
   }
 }
 
@@ -807,7 +807,7 @@ ul.description {
 }
 
 .description + p{
-margin-top: 3.2rem;
+  margin-top: 3.2rem;
 }
 
 .description li {
@@ -818,7 +818,7 @@ margin-top: 3.2rem;
   transition: .3s;
 }
 .description li:hover{
-padding-left: .4rem;
+  padding-left: .4rem;
 }
 ul.description li,.column ul li {list-style: none;margin-left: 0;}
 
@@ -830,7 +830,7 @@ h2 svg, h3 svg, h4 svg {
   margin-top: -.8rem;
 }
 .text-intro svg,.wall p svg,.try svg {
-margin-top: -.4rem;
+  margin-top: -.4rem;
 }
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
 }
@@ -908,10 +908,10 @@ h1+img,h2+img,h3+img {
 [class*="content-"] > [class*="content-"] h2,
 [class*="content-"] > [class*="content-"] h3,
 [class*="content-"] > [class*="content-"] h4 {
-font-size: 2.4rem;
-line-height: 4rem;
+  font-size: 2.4rem;
+  line-height: 4rem;
 }
-/*========================================= 
+/*=========================================
 2.1. Headings with background
 =========================================== */
 
@@ -922,11 +922,11 @@ li[class*="bg-"],p[class*="bg-"] {
 }
 
 h1 [class*="bg-"],h2 [class*="bg-"],h3 [class*="bg-"] {
-padding: .4rem .8rem;
+  padding: .4rem .8rem;
 }
 
-/*========================================= 
-2.2. Typography Classes = .text- 
+/*=========================================
+2.2. Typography Classes = .text-
 =========================================== */
 
 .text-intro,[class*="content-"] p {
@@ -948,9 +948,9 @@ padding: .4rem .8rem;
 @media (min-width: 768px) {
   .text-landing {
     letter-spacing: 1.6rem;
- }
+  }
 }
-/* -- Subtitle (Before h1, h2) --  
+/* -- Subtitle (Before h1, h2) --
 p.subtitle + h1/h2 */
 
 p.text-subtitle {
@@ -996,7 +996,7 @@ p.text-subtitle svg {vertical-align: text-top;}
 /* -- Magazine Two Columns -- */
 
 @media (min-width: 768px) {
-.text-cols {
+  .text-cols {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
@@ -1004,10 +1004,10 @@ p.text-subtitle svg {vertical-align: text-top;}
     -moz-column-gap: 4.8rem;
     column-gap: 4.8rem;
     text-align: left;
-}
-.text-landing + .text-cols{
-margin-top: 3.2rem;
- }
+  }
+  .text-landing + .text-cols{
+    margin-top: 3.2rem;
+  }
 }
 .text-cols p:first-child:first-letter {
   font-size: 11rem;
@@ -1037,7 +1037,7 @@ margin-top: 3.2rem;
   margin-bottom: .6rem;
 }
 .column .text-context:before {
-width:100%;
+  width:100%;
 }
 
 /* -- Separator/Symbols (stars ***...) -- */
@@ -1047,63 +1047,63 @@ width:100%;
 
 /* -- Separator -- */
 .text-separator {
- margin-top:2.4rem;
+  margin-top:2.4rem;
 }
 .text-separator:before {
-	position: absolute;
-	width: 16%;
-    height: .4rem;
-    content: "";
-    margin-top:-1.6rem;
-    left: 0;
+  position: absolute;
+  width: 16%;
+  height: .4rem;
+  content: "";
+  margin-top:-1.6rem;
+  left: 0;
 }
 @media (min-width: 568px) {
-.text-separator {
+  .text-separator {
     width: 80%;
     margin-top: 0;
     margin-left: 20%;
-}
-.text-separator:before {
+  }
+  .text-separator:before {
     margin-top: 1.2rem;
- }
+  }
 }
 
 /* -- Pull Quote (Right/Left)  -- */
 
 [class*="text-pull"] {
-position: relative;
-font-size: 2.4rem;
-line-height: 4rem;
-font-weight: 400;
-margin-right: 2.4rem;
-margin-left: 2.4rem;
+  position: relative;
+  font-size: 2.4rem;
+  line-height: 4rem;
+  font-weight: 400;
+  margin-right: 2.4rem;
+  margin-left: 2.4rem;
 }
 
 [class*="text-pull-"] {
-padding-top: 1.4rem;
-margin-top: .8rem;
+  padding-top: 1.4rem;
+  margin-top: .8rem;
 }
 
-@media (min-width: 1024px) { 
-[class*="text-pull"] {
-margin-right: -4rem;
-margin-left: -4rem;
- }
+@media (min-width: 1024px) {
+  [class*="text-pull"] {
+    margin-right: -4rem;
+    margin-left: -4rem;
+  }
 }
-@media (min-width: 568px) { 
-[class*="text-pull-"] {
-width: 32rem;
-}
-.text-pull-right {
-float: right;
-margin-right: -2.4rem;
-margin-left: 2.4rem;
-}
-.text-pull-left {
-float: left;
-margin-left: -2.4rem;
-margin-right: 2.4rem;
- }
+@media (min-width: 568px) {
+  [class*="text-pull-"] {
+    width: 32rem;
+  }
+  .text-pull-right {
+    float: right;
+    margin-right: -2.4rem;
+    margin-left: 2.4rem;
+  }
+  .text-pull-left {
+    float: left;
+    margin-left: -2.4rem;
+    margin-right: 2.4rem;
+  }
 }
 /* -- Info Messages (error, warning, success... -- */
 
@@ -1111,8 +1111,8 @@ margin-right: 2.4rem;
 }
 
 
-/*========================================= 
-2.1. San Francisco Font (Apple's new font) 
+/*=========================================
+2.1. San Francisco Font (Apple's new font)
 =========================================== */
 
 .text-apple,.bg-apple {
@@ -1169,8 +1169,8 @@ footer,
 
 header p,
 footer p {
-line-height: 4.8rem;
-margin-bottom: 0;
+  line-height: 4.8rem;
+  margin-bottom: 0;
 }
 
 header[role=banner] img,
@@ -1197,7 +1197,7 @@ section footer {
 
 /*desktop only? Add @media (min-width: 1025px)*/
 header[role=banner] {
-    opacity: 0;
+  opacity: 0;
 }
 /*=== Show Header[role=banner] === */
 header[role=banner]:hover {
@@ -1205,10 +1205,10 @@ header[role=banner]:hover {
 }
 
 @media (max-width: 767px) {
-footer .alignleft, footer .alignright {
-float: none;
-display: block;
- }
+  footer .alignleft, footer .alignright {
+    float: none;
+    display: block;
+  }
 }
 
 
@@ -1250,7 +1250,7 @@ nav ul {
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  /*====align left====*/ 
+  /*====align left====*/
   justify-content: flex-start;
   /* ==== align center ====*/
   /*justify-content: center; */
@@ -1297,37 +1297,38 @@ nav.aligncenter ul, .aligncenter nav ul {
 }
 
 nav.navbar ul li {
-/*====full float li a ====*/
--webkit-flex: 1 1 auto;
-flex: 1 1 auto;
+  /*====full float li a ====*/
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 @media (max-width: 568px) {
-nav.navbar ul {
+  nav.navbar ul {
     -webkit-flex-flow: column wrap;
     flex-flow: column wrap;
     padding: 0;
-}
-nav.navbar li a{justify-content:flex-start;
- }
+  }
+  nav.navbar li a {
+    justify-content:flex-start;
+  }
 }
 
 /*============================================
 5. SLIDES (Full Screen)
-Vertically and horizontally centered 
+Vertically and horizontally centered
 ============================================== */
 
-/* Fade transition to all slides. 
+/* Fade transition to all slides.
 * = All HTML elements will have those styles.*/
 
-section * { 
--webkit-animation: fadeIn 0.3s ease-in-out;
-animation: fadeIn 0.3s ease-in-out;
+section * {
+  -webkit-animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 section .background,section .background-video,
 [class*="background-"].light,[class*="background-"].dark {
--webkit-animation-duration:0s;
-animation-duration:0s;
+  -webkit-animation-duration:0s;
+  animation-duration:0s;
 }
 
 /*=== Section = Slide === */
@@ -1349,17 +1350,17 @@ section,.slide
 }
 
 @media (min-width: 1024px) {
-section, .slide {
+  section, .slide {
     padding-top: 12rem;
     padding-bottom: 12rem;
- }
+  }
 }
 /*slide no padding (full card, .embed> youtube video...) */
 .fullscreen {
-padding: 0;
-/* Fixed/Visible header? 
-padding:8.2rem 0 0 0; 
-*/
+  padding: 0;
+  /* Fixed/Visible header?
+  padding:8.2rem 0 0 0;
+  */
 }
 
 /* slide alignment - top */
@@ -1374,7 +1375,7 @@ padding:8.2rem 0 0 0;
 }
 
 
-/*== 5.1. Mini container width:50% (600px) 
+/*== 5.1. Mini container width:50% (600px)
 .wrap:1200px; / Aligned items [class*="content-"]=== */
 
 [class*="content-"] {
@@ -1385,12 +1386,12 @@ padding:8.2rem 0 0 0;
 .wrap[class*="bg-"],.wrap.frame,
 [class*="content-"][class*="bg-"],
 [class*="content-"].frame, [class*="align"][class*="bg-"]{
-    padding: 4.8rem;
+  padding: 4.8rem;
 }
 
 [class*="content-"] > [class*="content-"] p {
-    font-size: 1.8rem;
-    line-height: 3.2rem;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
 }
 
 .content-center {
@@ -1399,7 +1400,7 @@ padding:8.2rem 0 0 0;
 }
 
 @media (min-width: 768px) {
-[class*="content-"] {
+  [class*="content-"] {
     width: 50%;
   }
   .content-left {
@@ -1408,45 +1409,45 @@ padding:8.2rem 0 0 0;
   .content-right {
     float: right;
   }
-[class*="content-"] + [class*="content-"] {
-    padding-left:2.4rem; 
+  [class*="content-"] + [class*="content-"] {
+    padding-left:2.4rem;
     margin-bottom: 4.8rem;
-}
-[class*="content-"] + [class*="size-"] {
-margin-top: 6.4rem;
-clear:both;
-}
+  }
+  [class*="content-"] + [class*="size-"] {
+    margin-top: 6.4rem;
+    clear:both;
+  }
 
-[class*="content-"]:before,
-[class*="content-"]:after {
+  [class*="content-"]:before,
+  [class*="content-"]:after {
     content: "";
     display: table;
-} 
+  }
 
-[class*="content-"]:after {
+  [class*="content-"]:after {
     clear: both;
- }
-}    
+  }
+}
 /* === 5.2 Counter / Navigation Slides  === */
 
 #navigation {
-position: fixed;
-width: 24.4rem;
-margin-right: auto;
-margin-left: auto;
-right: 0;
-bottom: 0;
-left: 0;
-/* hover/visibility */
-z-index: 3;
+  position: fixed;
+  width: 24.4rem;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* hover/visibility */
+  z-index: 3;
 }
 #navigation  {
--webkit-animation: fadeIn 16s;
-animation: fadeIn 16s;
-opacity:0;
+  -webkit-animation: fadeIn 16s;
+  animation: fadeIn 16s;
+  opacity:0;
 }
 #navigation:hover {
-opacity: 1;
+  opacity: 1;
 }
 /* -- navigation arrow always visible? -- */
 
@@ -1489,14 +1490,14 @@ a#previous {
   left: 3.2rem;
 }
 @media (max-width:1024px) {
-#navigation {
-background: url('../images/swipe.svg') no-repeat center top;
-background-size: 4.8rem;
--webkit-animation: fadeIn 6s;
-animation: fadeIn 6s;
-} 
-#navigation a, #counter {display: none;
- }
+  #navigation {
+    background: url('../images/swipe.svg') no-repeat center top;
+    background-size: 4.8rem;
+    -webkit-animation: fadeIn 6s;
+    animation: fadeIn 6s;
+  }
+  #navigation a, #counter {display: none;
+  }
 }
 
 /*=== 5.3 Slides - Background Images === */
@@ -1516,15 +1517,15 @@ animation: fadeIn 6s;
   background-size: cover
 }
 .background-top {
-background-position: top;
-background-size: cover;
+  background-position: top;
+  background-size: cover;
 }
 .background-bottom {
-background-position: bottom;
-background-size: cover;
+  background-position: bottom;
+  background-size: cover;
 }
 
-/*fullscreen video 
+/*fullscreen video
   <video class="background-video">
 */
 
@@ -1544,10 +1545,10 @@ background-size: cover;
   background-position: center top;
 }
 .background-right-top {
-    background-position: right top;
+  background-position: right top;
 }
 .background-left-top {
-    background-position: left top;
+  background-position: left top;
 }
 .background-center-bottom,
 .background-left-bottom,
@@ -1556,8 +1557,8 @@ background-size: cover;
   background-position: center bottom;
 }
 
-@media (min-width:1024px) { 
- .background-left-bottom {
+@media (min-width:1024px) {
+  .background-left-bottom {
     background-position: left bottom;
   }
   .background-right-bottom {
@@ -1594,14 +1595,14 @@ background-size: cover;
   filter: alpha(opacity=5);
 }
 @media (max-width:1023px) {
-[class*="background-"] {
-  opacity: 0.20;
-  -webkit-animation: fadeIn ease-in 0.20;
-  animation: fadeIn ease-in 0.20;
- }
- .background-video {
-  opacity: 0.80;
- }
+  [class*="background-"] {
+    opacity: 0.20;
+    -webkit-animation: fadeIn ease-in 0.20;
+    animation: fadeIn ease-in 0.20;
+  }
+  .background-video {
+    opacity: 0.80;
+  }
 }
 /*=== Animated Background Image === */
 
@@ -1612,11 +1613,11 @@ background-size: cover;
   background-position: center top;
   -webkit-animation: anim 80s linear infinite;
   animation: anim 80s linear infinite;
-  
+
 }
 
 /*===============================================================
-6. Magic blocks with flexbox (Auto-fill & Equal Height) 
+6. Magic blocks with flexbox (Auto-fill & Equal Height)
 Blocks Links li>a = .flexblock.blink (.blink required)
 ================================================================= */
 
@@ -1662,8 +1663,8 @@ Blocks Links li>a = .flexblock.blink (.blink required)
   transition: .3s;
 }
 .flexblock li:hover{
--webkit-transform: translateY(-.2rem);
-transform: translateY(-.2rem);
+  -webkit-transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
 }
 .flexblock.aligncenter li {text-align: center;}
 
@@ -1729,9 +1730,9 @@ div + ul, div + ol{
     width: 46%;
   }
   .column .flexblock.features>li{width: 100%;}
-  
- footer .flexblock.features>li {margin-bottom: 0;
- }
+
+  footer .flexblock.features>li {margin-bottom: 0;
+  }
 }
 
 
@@ -1751,15 +1752,15 @@ div + ul, div + ol{
   display: block;
 }
 .features li span,.features li svg {
-    font-size: 6.4rem;
-    line-height: 1;
-    display: block;
-    margin: 0;
-  }
+  font-size: 6.4rem;
+  line-height: 1;
+  display: block;
+  margin: 0;
+}
 .features li img {width: 6.4rem;}
 
-  .features li span sup {
-    font-size: 3rem;
+.features li span sup {
+  font-size: 3rem;
 }
 
 @media (min-width:1200px) {
@@ -1803,7 +1804,7 @@ div + ul, div + ol{
 }
 
 .clients li:hover  {
-z-index: 1;
+  z-index: 1;
 }
 /*==================================================
 6.3 flexblock.steps <ul class="flexblock steps">
@@ -1905,20 +1906,20 @@ About, Philosophy...
 }
 
 .specs li span,.specs li svg {
-    font-size: 6.4rem;
-    line-height: 1;
-    display: block;
-    margin: 0;
+  font-size: 6.4rem;
+  line-height: 1;
+  display: block;
+  margin: 0;
 }
 .specs li img {width: 6.4rem;}
 
 .specs li span  {
-    font-weight: 300;
-    
+  font-weight: 300;
+
 }
 .specs li span sup {
-    font-size: 3rem;
-    
+  font-size: 3rem;
+
 }
 
 @media (min-width:1024px) {
@@ -1934,18 +1935,18 @@ About, Philosophy...
 =================================================== */
 
 .flexblock.reasons li {
-	text-align: left;
-	width: 100%;
-    counter-increment: list;
+  text-align: left;
+  width: 100%;
+  counter-increment: list;
 }
 .reasons li:hover{
--webkit-transform: translateY(-.2rem);
-transform: translateY(-.2rem);
+  -webkit-transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
 }
 .reasons li:before {
-    content: counter(list)'.';
-    font-size: 6.4rem;
-    line-height: 1;
+  content: counter(list)'.';
+  font-size: 6.4rem;
+  line-height: 1;
 }
 .reasons li:after {
   position: relative;
@@ -1955,12 +1956,12 @@ transform: translateY(-.2rem);
   display: block;
 }
 @media (min-width: 768px) {
-.reasons li {
-	padding-left: 8.8rem;
+  .reasons li {
+    padding-left: 8.8rem;
     /* You need two digits? (1-10)*/
     /*padding-left: 12rem; */
- }
-.reasons li:before {
+  }
+  .reasons li:before {
     position: absolute;
     left: 2.4rem;
   }
@@ -1968,7 +1969,7 @@ transform: translateY(-.2rem);
 
 /*=================================================
 6.7 Gallery - <ul class="flexblock gallery">
-Block Thumbnails li+.overlay+image 
+Block Thumbnails li+.overlay+image
 img size recommended:800x600px
 =================================================== */
 
@@ -2011,7 +2012,7 @@ img size recommended:800x600px
   transition: .1s;
 }
 .gallery li:hover figcaption:before {
-top:.3rem;
+  top:.3rem;
 }
 .aligncenter .gallery li figcaption:before {
   margin-left: 0;
@@ -2019,9 +2020,9 @@ top:.3rem;
 }
 
 .gallery li footer {
-position: relative;
-padding:1.2rem 0 0;
-margin-top: .8rem;
+  position: relative;
+  padding:1.2rem 0 0;
+  margin-top: .8rem;
 }
 @media (min-width:600px) {
   .flexblock.gallery {
@@ -2072,16 +2073,16 @@ margin-top: .8rem;
   justify-content: center;
   transition: all 0.3s linear;
 }
-li .overlay {  
-align-items: center;
+li .overlay {
+  align-items: center;
 }
 li .overlay h2 {
-	text-transform: uppercase;
-    margin: 0;
-    padding: 0 2.4rem;
-    letter-spacing: .2rem;
-    width: 100%;
-    text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 2.4rem;
+  letter-spacing: .2rem;
+  width: 100%;
+  text-align: center;
 }
 
 .overlay p,
@@ -2181,7 +2182,7 @@ li:hover .overlay {
 
 /*===========================================
 6.9 Block Activity <ul class="activity">
-CV / News 
+CV / News
 ============================================= */
 
 .flexblock.activity {
@@ -2593,7 +2594,7 @@ p + .work {
 }
 
 
-/*==  Images inside container: 
+/*==  Images inside container:
 object-fit to re-frame images rather than just stretch and resize them  === */
 
 @media (min-width: 768px) {
@@ -2896,7 +2897,7 @@ select {
   padding: .7rem;
   font-weight: 400;
   font-size: 1.6rem;
-  
+
 }
 input[type="radio"],
 input[type="checkbox"] {
@@ -2932,7 +2933,7 @@ button {
 }
 
 .button.radius, button.radius,input.radius {border-radius: 2.4rem;}
-  
+
 button,
 input[type="submit"] {
   text-transform: uppercase;
@@ -2991,11 +2992,11 @@ select:focus {
 }
 
 @media (min-width:1024px) {
-[class*="badge-"] {
-  width: 162px;
-  height: 48px;
-  line-height: 4.8rem;
- }
+  [class*="badge-"] {
+    width: 162px;
+    height: 48px;
+    line-height: 4.8rem;
+  }
 }
 .badge-ios {
   background-image: url("../images/bt-appstore.png");
@@ -3011,8 +3012,8 @@ select:focus {
 a.button:hover,
 button[type="submit"]:hover,
 input[type="submit"]:hover {
--webkit-transform:scale(1.01);
-transform: scale(1.01);
+  -webkit-transform:scale(1.01);
+  transform: scale(1.01);
 }
 [class*="badge-"]:hover {
   opacity: 0.7;
@@ -3048,14 +3049,14 @@ transform: scale(1.01);
     cursor: pointer;
   }
   [class*="button"] + [class*="button"],[class*="badge"] + [class*="badge"] {
-    margin-left: 1.8rem;  
+    margin-left: 1.8rem;
   }
 }
 @media (max-width:499px) {
 
   [class*="button"] + [class*="button"],[class*="badge"] + [class*="badge"] {
     margin-top: .8rem;
-    
+
   }
 }
 

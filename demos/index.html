@@ -92,7 +92,7 @@
     </header>
 
     <main role="main">
-      <article id="webslides" class="vertical">
+      <article>  <!-- Slideshow? id="webslides" -->
 
         <!-- Quick Guide
           - Each parent <section> in the <article id="webslides"> element is an individual slide.
@@ -107,7 +107,7 @@
             <h1><strong>WebSlides Demos</strong></h1>
             <p class="text-intro">All of these presentations are free and responsive.<br>
               40+ <a href="../demos/components.html" title="WebSlides Components">components</a> with a solid <a href="../demos/classes.html" title="WebSlides Classes">CSS architecture</a>.</p>
-            <p>Share your slides using <a target="_blank" href="https://twitter.com/search?f=tweets&q=%23webslides&src=typd" title="#WebSlides on Twitter">#WebSlides</a>.</p>
+            <p>Share your slides using <a href="https://twitter.com/search?q=%23webslides&amp;src=typd" title="#WebSlides on Twitter">#WebSlides</a>.</p>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -222,16 +222,14 @@
     </main>
     <!-- end main -->
 
-    <!-- jQuery (required for slides to work) -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../static/js/svg-icons.js"></script>
     <script src="../static/js/webslides.js"></script>
-    
-    <script type="text/javascript">
-      var slide = jQuery('#webslides').webslides();
+    <script>
+      window.ws = new WebSlides();
     </script>
 
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="../static/js/svg-icons.js"></script>
-    
+
   </body>
 </html>
