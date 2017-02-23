@@ -47,7 +47,7 @@ export default class Hash {
       slide = parseInt(results[1], 10);
     }
 
-    if (!Number.isInteger(slide) || slide < 0 || !Array.isArray(results)) {
+    if (typeof slide !== 'number' || slide < 0 || !Array.isArray(results)) {
       slide = null;
     } else {
       slide--; // Convert to 0 index

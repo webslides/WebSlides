@@ -347,7 +347,7 @@ export default class WebSlides {
   play(time) {
     time = time || this.autoslide_;
 
-    if (!this.interval_ && Number.isInteger(time) && time > 0) {
+    if (!this.interval_ && typeof time === 'number' && time > 0) {
       this.interval_ = setInterval(this.goNext.bind(this), time);
     }
   }
