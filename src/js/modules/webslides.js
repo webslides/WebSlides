@@ -141,7 +141,7 @@ export default class WebSlides {
    * @private
    */
   grabSlides_() {
-    this.slides = Array.from(this.el.childNodes)
+    this.slides = DOM.toArray(this.el.childNodes)
         .map((slide, i) => new Slide(slide, i));
 
     this.maxSlide_ = this.slides.length;

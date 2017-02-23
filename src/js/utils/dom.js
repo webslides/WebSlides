@@ -72,4 +72,13 @@ export default class DOM {
 
     target.dispatchEvent(event);
   }
+
+  /**
+   * Converts an iterable to an array.
+   * @param {*} iterable Element to convert to array
+   * @return {Array} the element casted to an array.
+   */
+  static toArray(iterable) {
+    return [].slice.call(iterable);
+  }
 }
