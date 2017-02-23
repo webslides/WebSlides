@@ -11,7 +11,9 @@ Finally, run one of the following commands in the cloned directory:
 
 In order to bootstrap the WebSlides you'll need to create a instance of it:
 
-`const ws = new WebSlides();`
+```javascript
+const ws = new WebSlides();
+```
 
 That'll make everything run without any hassle. 
 
@@ -24,7 +26,7 @@ WebSlides constructor accepts an object with options.
 | `autoslide` | `number` or `boolean` | `false` | Amount of milliseconds to wait to go to next slide automatically. |
 
 
-```
+```javascript
 const ws = new WebSlides({
   autoslide: false
 });
@@ -113,7 +115,7 @@ Those being:
 
 Almost every single feature of WebSlides is a plugin that can be overwritten and you are able to create your custom plugins. Just call `registerPlugin` (as seen above) **before creating** the instance:
 
-```
+```javascript
 // Adding the constructor to WebSlides
 WebSlides.registerPlugin('myPlugin', MyPlugin);
 
