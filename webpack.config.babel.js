@@ -14,6 +14,7 @@ module.exports = {
   },
   devServer: {
     contentBase: __dirname,
+    host: '0.0.0.0'
   },
   module: {
     rules: [
