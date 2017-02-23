@@ -5,7 +5,10 @@
 
 Finally, everything you need to make HTML presentations in a beautiful way. — [https://webslides.tv/demos](https://webslides.tv/demos).
 
-Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes. Download release: [https://github.com/jlantunez/webslides/releases/download/1.0.0/release.zip](WebSlides 1.0 zip).
+Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes. 
+
+Download release: [https://webslides.tv/demos](WebSlides 1.0 zip)
+
 A new release (at least) every 8th day of the month.
 
 ### Why WebSlides?
@@ -100,5 +103,5 @@ Please check out:
 ### Credits
 
 - WebSlides was created by [@jlantunez](https://twitter.com/jlantunez) using [Cactus](https://github.com/eudicots/Cactus).
-- Thanks [@LuisSacristan](https://twitter.com/luissacristan) for the javascript code :)
+- Javascript: [@Belelros](https://twitter.com/Belelros) and [@LuisSacristan](https://twitter.com/luissacristan).
 - Based on [SimpleSlides](https://github.com/jennschiffer/SimpleSlides), by [@JennSchiffer](https://twitter.com/jennschiffer).
