@@ -11,11 +11,11 @@ A new release (at least) every 8th day of the month.
 Good karma and productivity. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
 
 ### Features
-Version 0.1 (Jan 8, 2017):
 
-- Navigation (horizontal and vertical sliding): touchpad, keyboard shorcuts, and swipe.
+- Navigation (horizontal and vertical sliding): touchpad, keyboard shortcuts, and swipe.
 - Slide counter.
 - Permalinks: go to a specific slide.
+- Autoslide
 - Simple CSS alignments. Put content wherever you want (vertical centering...)
 - 40+ components: background images/videos, quotes, cards, covers...
 - Flexible blocks with auto-fill and equal height.
@@ -27,7 +27,7 @@ Version 0.1 (Jan 8, 2017):
 - Code is clean and scalable. It uses intuitive markup with popular naming conventions. There's no need to overuse classes or nesting.
 - Each parent `<section>` in the `#webslides` element is an individual slide.
 
-```
+```html
 <article id="webslides">
     <section>
         <h1>Slide 1</h1>
@@ -43,7 +43,9 @@ Version 0.1 (Jan 8, 2017):
 
 ### Vertical Sliding
 
-`<article id="webslides" class="vertical">`
+```html
+<article id="webslides" class="vertical">
+```
 
 ### What's in the download?
 
