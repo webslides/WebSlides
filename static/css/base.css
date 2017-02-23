@@ -1,8 +1,8 @@
 /*---------------------------------------------------------------------------------
 
 	App: WebSlides
-	Version: 0.1
-	Date: 2017-01-08
+	Version: 1.0.0
+	Date: 2017-02-11
 	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios.
 	Author: José Luis Antúnez
 	Author URI: http://twitter.com/jlantunez
@@ -25,7 +25,6 @@
 		3.1 Logo
 	4. Navigation
 		4.1 Navbars
-		4.2 Tabs
 	5. SLIDES (vertically and horizontally centered)
 		5.1 Mini container & Alignment
 		5.2 Counter / Navigation Slides
@@ -60,7 +59,7 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, bbbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 }
 
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
-display: block;
+  display: block;
 }
 body {
   line-height: 1;
@@ -303,6 +302,11 @@ body {
   overflow-x: hidden;
 }
 
+/* == Prototype faster - Vertical rhythm  == */
+
+body.baseline {
+  background: url(../images/baseline.png) left top .8rem/.8rem;
+}
 /*
 #webslides.vertical {cursor: s-resize; }
 */
@@ -339,7 +343,7 @@ nav a[rel="external"] em,
 
 /*Layer/Box Shadow*/
 .shadow {
-position: relative;
+  position: relative;
 }
 .shadow:before,.shadow:after {
   z-index: -1;
@@ -670,9 +674,9 @@ li .browser {margin-bottom: 0;
   content: "● ● ●";
 }
 @media (min-width:768px) {
-.browser:before {
-  font-size: 1.6rem;
- }
+  .browser:before {
+    font-size: 1.6rem;
+  }
 }
 
 
@@ -728,21 +732,21 @@ Auto-fill & Equal height === */
   }
   /* Grid (Sidebar + Main) .grid.sm */
   .grid.sm .column:nth-child(1) {
-   width: 30%
+    width: 30%
   }
   .grid.sm .column:nth-child(2) {
-   width: 70%;
+    width: 70%;
   }
   /* Grid (Main + Sidebar) .grid.ms */
   .grid.ms .column:nth-child(1) {
-   width: 70%
+    width: 70%
   }
   .grid.ms .column:nth-child(2) {
-   width: 30%;
+    width: 30%;
   }
-   /* Grid (Sidebar + Main + Sidebar) .grid.sms */
+  /* Grid (Sidebar + Main + Sidebar) .grid.sms */
   .grid.sms .column:nth-child(2) {
-   width: 50%;
+    width: 50%;
   }
 }
 
@@ -803,7 +807,7 @@ ul.description {
 }
 
 .description + p{
-margin-top: 3.2rem;
+  margin-top: 3.2rem;
 }
 
 .description li {
@@ -814,7 +818,7 @@ margin-top: 3.2rem;
   transition: .3s;
 }
 .description li:hover{
-padding-left: .4rem;
+  padding-left: .4rem;
 }
 ul.description li,.column ul li {list-style: none;margin-left: 0;}
 
@@ -826,7 +830,7 @@ h2 svg, h3 svg, h4 svg {
   margin-top: -.8rem;
 }
 .text-intro svg,.wall p svg,.try svg {
-margin-top: -.4rem;
+  margin-top: -.4rem;
 }
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
 }
@@ -904,8 +908,8 @@ h1+img,h2+img,h3+img {
 [class*="content-"] > [class*="content-"] h2,
 [class*="content-"] > [class*="content-"] h3,
 [class*="content-"] > [class*="content-"] h4 {
-font-size: 2.4rem;
-line-height: 4rem;
+  font-size: 2.4rem;
+  line-height: 4rem;
 }
 /*=========================================
 2.1. Headings with background
@@ -918,7 +922,7 @@ li[class*="bg-"],p[class*="bg-"] {
 }
 
 h1 [class*="bg-"],h2 [class*="bg-"],h3 [class*="bg-"] {
-padding: .4rem .8rem;
+  padding: .4rem .8rem;
 }
 
 /*=========================================
@@ -944,7 +948,7 @@ padding: .4rem .8rem;
 @media (min-width: 768px) {
   .text-landing {
     letter-spacing: 1.6rem;
- }
+  }
 }
 /* -- Subtitle (Before h1, h2) --
 p.subtitle + h1/h2 */
@@ -992,7 +996,7 @@ p.text-subtitle svg {vertical-align: text-top;}
 /* -- Magazine Two Columns -- */
 
 @media (min-width: 768px) {
-.text-cols {
+  .text-cols {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
@@ -1000,10 +1004,10 @@ p.text-subtitle svg {vertical-align: text-top;}
     -moz-column-gap: 4.8rem;
     column-gap: 4.8rem;
     text-align: left;
-}
-.text-landing + .text-cols{
-margin-top: 3.2rem;
- }
+  }
+  .text-landing + .text-cols{
+    margin-top: 3.2rem;
+  }
 }
 .text-cols p:first-child:first-letter {
   font-size: 11rem;
@@ -1033,7 +1037,7 @@ margin-top: 3.2rem;
   margin-bottom: .6rem;
 }
 .column .text-context:before {
-width:100%;
+  width:100%;
 }
 
 /* -- Separator/Symbols (stars ***...) -- */
@@ -1043,63 +1047,63 @@ width:100%;
 
 /* -- Separator -- */
 .text-separator {
- margin-top:2.4rem;
+  margin-top:2.4rem;
 }
 .text-separator:before {
-	position: absolute;
-	width: 16%;
-    height: .4rem;
-    content: "";
-    margin-top:-1.6rem;
-    left: 0;
+  position: absolute;
+  width: 16%;
+  height: .4rem;
+  content: "";
+  margin-top:-1.6rem;
+  left: 0;
 }
 @media (min-width: 568px) {
-.text-separator {
+  .text-separator {
     width: 80%;
     margin-top: 0;
     margin-left: 20%;
-}
-.text-separator:before {
+  }
+  .text-separator:before {
     margin-top: 1.2rem;
- }
+  }
 }
 
 /* -- Pull Quote (Right/Left)  -- */
 
 [class*="text-pull"] {
-position: relative;
-font-size: 2.4rem;
-line-height: 4rem;
-font-weight: 400;
-margin-right: 2.4rem;
-margin-left: 2.4rem;
+  position: relative;
+  font-size: 2.4rem;
+  line-height: 4rem;
+  font-weight: 400;
+  margin-right: 2.4rem;
+  margin-left: 2.4rem;
 }
 
 [class*="text-pull-"] {
-padding-top: 1.4rem;
-margin-top: .8rem;
+  padding-top: 1.4rem;
+  margin-top: .8rem;
 }
 
 @media (min-width: 1024px) {
-[class*="text-pull"] {
-margin-right: -4rem;
-margin-left: -4rem;
- }
+  [class*="text-pull"] {
+    margin-right: -4rem;
+    margin-left: -4rem;
+  }
 }
 @media (min-width: 568px) {
-[class*="text-pull-"] {
-width: 32rem;
-}
-.text-pull-right {
-float: right;
-margin-right: -2.4rem;
-margin-left: 2.4rem;
-}
-.text-pull-left {
-float: left;
-margin-left: -2.4rem;
-margin-right: 2.4rem;
- }
+  [class*="text-pull-"] {
+    width: 32rem;
+  }
+  .text-pull-right {
+    float: right;
+    margin-right: -2.4rem;
+    margin-left: 2.4rem;
+  }
+  .text-pull-left {
+    float: left;
+    margin-left: -2.4rem;
+    margin-right: 2.4rem;
+  }
 }
 /* -- Info Messages (error, warning, success... -- */
 
@@ -1165,8 +1169,8 @@ footer,
 
 header p,
 footer p {
-line-height: 4.8rem;
-margin-bottom: 0;
+  line-height: 4.8rem;
+  margin-bottom: 0;
 }
 
 header[role=banner] img,
@@ -1193,7 +1197,7 @@ section footer {
 
 /*desktop only? Add @media (min-width: 1025px)*/
 header[role=banner] {
-    opacity: 0;
+  opacity: 0;
 }
 /*=== Show Header[role=banner] === */
 header[role=banner]:hover {
@@ -1201,10 +1205,10 @@ header[role=banner]:hover {
 }
 
 @media (max-width: 767px) {
-footer .alignleft, footer .alignright {
-float: none;
-display: block;
- }
+  footer .alignleft, footer .alignright {
+    float: none;
+    display: block;
+  }
 }
 
 
@@ -1293,89 +1297,18 @@ nav.aligncenter ul, .aligncenter nav ul {
 }
 
 nav.navbar ul li {
-/*====full float li a ====*/
--webkit-flex: 1 1 auto;
-flex: 1 1 auto;
+  /*====full float li a ====*/
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 @media (max-width: 568px) {
-nav.navbar ul {
+  nav.navbar ul {
     -webkit-flex-flow: column wrap;
     flex-flow: column wrap;
     padding: 0;
-}
-nav.navbar li a{justify-content:flex-start;
- }
-}
-
-/*=== 4.2. Tabs === */
-
-ul.tabs {
-  display: inline-block;
-  margin-bottom: 3.2rem;
-}
-
-ul.tabs li {
-  position: relative;
-  display: table-cell;
-  /*ftext-transform: uppercase;
-	letter-spacing: .1rem;*/
-  padding: .8rem 2.4rem;
-  cursor: pointer;
-}
-
-.tabs li:before {
-  position: absolute;
-  content: "";
-  display: table;
-  clear: both;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  -webkit-transition: width 200ms ease, opacity 200ms ease;
-  transition: width 200ms ease, opacity 200ms ease;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.tabs li.current:before {
-  opacity: 1;
-  width: 100%;
-}
-
-ul.tabs li.current {
-  font-weight: 600;
-}
-/*.tabs li:after{
-	position: relative;
-	right: -2.8rem;
-	font-size:1.6rem;
-	font-weight:300;
-	content: "*";
-
-}
-.tabs li:last-child:after {
-  display: none;
-}
-
-*/
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.current {
-  display: inherit;
-  -webkit-animation: fadeIn ease-in 1;
-  animation: fadeIn ease-in 1;
-  -webkit-animation-duration: .3s;
-  animation-duration: .3s;
-}
-
-@media (max-width: 400px) {
-  .tabs li {
-    display: block;
+  }
+  nav.navbar li a{justify-content:flex-start;
   }
 }
 
@@ -1388,13 +1321,13 @@ Vertically and horizontally centered
 * = All HTML elements will have those styles.*/
 
 section * {
--webkit-animation: fadeIn 0.3s ease-in-out;
-animation: fadeIn 0.3s ease-in-out;
+  -webkit-animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 section .background,section .background-video,
 [class*="background-"].light,[class*="background-"].dark {
--webkit-animation-duration:0s;
-animation-duration:0s;
+  -webkit-animation-duration:0s;
+  animation-duration:0s;
 }
 
 /*=== Section = Slide === */
@@ -1416,17 +1349,17 @@ section,.slide
 }
 
 @media (min-width: 1024px) {
-section, .slide {
+  section, .slide {
     padding-top: 12rem;
     padding-bottom: 12rem;
- }
+  }
 }
 /*slide no padding (full card, .embed> youtube video...) */
 .fullscreen {
-padding: 0;
-/* Fixed/Visible header?
-padding:8.2rem 0 0 0;
-*/
+  padding: 0;
+  /* Fixed/Visible header?
+  padding:8.2rem 0 0 0;
+  */
 }
 
 /* slide alignment - top */
@@ -1452,12 +1385,12 @@ padding:8.2rem 0 0 0;
 .wrap[class*="bg-"],.wrap.frame,
 [class*="content-"][class*="bg-"],
 [class*="content-"].frame, [class*="align"][class*="bg-"]{
-    padding: 4.8rem;
+  padding: 4.8rem;
 }
 
 [class*="content-"] > [class*="content-"] p {
-    font-size: 1.8rem;
-    line-height: 3.2rem;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
 }
 
 .content-center {
@@ -1466,7 +1399,7 @@ padding:8.2rem 0 0 0;
 }
 
 @media (min-width: 768px) {
-[class*="content-"] {
+  [class*="content-"] {
     width: 50%;
   }
   .content-left {
@@ -1475,45 +1408,45 @@ padding:8.2rem 0 0 0;
   .content-right {
     float: right;
   }
-[class*="content-"] + [class*="content-"] {
+  [class*="content-"] + [class*="content-"] {
     padding-left:2.4rem;
     margin-bottom: 4.8rem;
-}
-[class*="content-"] + [class*="size-"] {
-margin-top: 6.4rem;
-clear:both;
-}
+  }
+  [class*="content-"] + [class*="size-"] {
+    margin-top: 6.4rem;
+    clear:both;
+  }
 
-[class*="content-"]:before,
-[class*="content-"]:after {
+  [class*="content-"]:before,
+  [class*="content-"]:after {
     content: "";
     display: table;
-}
+  }
 
-[class*="content-"]:after {
+  [class*="content-"]:after {
     clear: both;
- }
+  }
 }
 /* === 5.2 Counter / Navigation Slides  === */
 
 #navigation {
-position: fixed;
-width: 24.4rem;
-margin-right: auto;
-margin-left: auto;
-right: 0;
-bottom: 0;
-left: 0;
-/* hover/visibility */
-z-index: 3;
+  position: fixed;
+  width: 24.4rem;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* hover/visibility */
+  z-index: 3;
 }
 #navigation  {
--webkit-animation: fadeIn 16s;
-animation: fadeIn 16s;
-opacity:0;
+  -webkit-animation: fadeIn 16s;
+  animation: fadeIn 16s;
+  opacity:0;
 }
 #navigation:hover {
-opacity: 1;
+  opacity: 1;
 }
 /* -- navigation arrow always visible? -- */
 
@@ -1556,14 +1489,14 @@ a#previous {
   left: 3.2rem;
 }
 @media (max-width:1024px) {
-#navigation {
-background: url('../images/swipe.svg') no-repeat center top;
-background-size: 4.8rem;
--webkit-animation: fadeIn 6s;
-animation: fadeIn 6s;
-}
-#navigation a, #counter {display: none;
- }
+  #navigation {
+    background: url('../images/swipe.svg') no-repeat center top;
+    background-size: 4.8rem;
+    -webkit-animation: fadeIn 6s;
+    animation: fadeIn 6s;
+  }
+  #navigation a, #counter {display: none;
+  }
 }
 
 /*=== 5.3 Slides - Background Images === */
@@ -1583,12 +1516,12 @@ animation: fadeIn 6s;
   background-size: cover
 }
 .background-top {
-background-position: top;
-background-size: cover;
+  background-position: top;
+  background-size: cover;
 }
 .background-bottom {
-background-position: bottom;
-background-size: cover;
+  background-position: bottom;
+  background-size: cover;
 }
 
 /*fullscreen video
@@ -1611,10 +1544,10 @@ background-size: cover;
   background-position: center top;
 }
 .background-right-top {
-    background-position: right top;
+  background-position: right top;
 }
 .background-left-top {
-    background-position: left top;
+  background-position: left top;
 }
 .background-center-bottom,
 .background-left-bottom,
@@ -1624,7 +1557,7 @@ background-size: cover;
 }
 
 @media (min-width:1024px) {
- .background-left-bottom {
+  .background-left-bottom {
     background-position: left bottom;
   }
   .background-right-bottom {
@@ -1661,14 +1594,14 @@ background-size: cover;
   filter: alpha(opacity=5);
 }
 @media (max-width:1023px) {
-[class*="background-"] {
-  opacity: 0.20;
-  -webkit-animation: fadeIn ease-in 0.20;
-  animation: fadeIn ease-in 0.20;
- }
- .background-video {
-  opacity: 0.80;
- }
+  [class*="background-"] {
+    opacity: 0.20;
+    -webkit-animation: fadeIn ease-in 0.20;
+    animation: fadeIn ease-in 0.20;
+  }
+  .background-video {
+    opacity: 0.80;
+  }
 }
 /*=== Animated Background Image === */
 
@@ -1729,8 +1662,8 @@ Blocks Links li>a = .flexblock.blink (.blink required)
   transition: .3s;
 }
 .flexblock li:hover{
--webkit-transform: translateY(-.2rem);
-transform: translateY(-.2rem);
+  -webkit-transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
 }
 .flexblock.aligncenter li {text-align: center;}
 
@@ -1797,8 +1730,8 @@ div + ul, div + ol{
   }
   .column .flexblock.features>li{width: 100%;}
 
- footer .flexblock.features>li {margin-bottom: 0;
- }
+  footer .flexblock.features>li {margin-bottom: 0;
+  }
 }
 
 
@@ -1818,15 +1751,15 @@ div + ul, div + ol{
   display: block;
 }
 .features li span,.features li svg {
-    font-size: 6.4rem;
-    line-height: 1;
-    display: block;
-    margin: 0;
-  }
+  font-size: 6.4rem;
+  line-height: 1;
+  display: block;
+  margin: 0;
+}
 .features li img {width: 6.4rem;}
 
-  .features li span sup {
-    font-size: 3rem;
+.features li span sup {
+  font-size: 3rem;
 }
 
 @media (min-width:1200px) {
@@ -1870,7 +1803,7 @@ div + ul, div + ol{
 }
 
 .clients li:hover  {
-z-index: 1;
+  z-index: 1;
 }
 /*==================================================
 6.3 flexblock.steps <ul class="flexblock steps">
@@ -1972,19 +1905,19 @@ About, Philosophy...
 }
 
 .specs li span,.specs li svg {
-    font-size: 6.4rem;
-    line-height: 1;
-    display: block;
-    margin: 0;
+  font-size: 6.4rem;
+  line-height: 1;
+  display: block;
+  margin: 0;
 }
 .specs li img {width: 6.4rem;}
 
 .specs li span  {
-    font-weight: 300;
+  font-weight: 300;
 
 }
 .specs li span sup {
-    font-size: 3rem;
+  font-size: 3rem;
 
 }
 
@@ -2001,18 +1934,18 @@ About, Philosophy...
 =================================================== */
 
 .flexblock.reasons li {
-	text-align: left;
-	width: 100%;
-    counter-increment: list;
+  text-align: left;
+  width: 100%;
+  counter-increment: list;
 }
 .reasons li:hover{
--webkit-transform: translateY(-.2rem);
-transform: translateY(-.2rem);
+  -webkit-transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
 }
 .reasons li:before {
-    content: counter(list)'.';
-    font-size: 6.4rem;
-    line-height: 1;
+  content: counter(list)'.';
+  font-size: 6.4rem;
+  line-height: 1;
 }
 .reasons li:after {
   position: relative;
@@ -2022,12 +1955,12 @@ transform: translateY(-.2rem);
   display: block;
 }
 @media (min-width: 768px) {
-.reasons li {
-	padding-left: 8.8rem;
+  .reasons li {
+    padding-left: 8.8rem;
     /* You need two digits? (1-10)*/
     /*padding-left: 12rem; */
- }
-.reasons li:before {
+  }
+  .reasons li:before {
     position: absolute;
     left: 2.4rem;
   }
@@ -2078,7 +2011,7 @@ img size recommended:800x600px
   transition: .1s;
 }
 .gallery li:hover figcaption:before {
-top:.3rem;
+  top:.3rem;
 }
 .aligncenter .gallery li figcaption:before {
   margin-left: 0;
@@ -2086,9 +2019,9 @@ top:.3rem;
 }
 
 .gallery li footer {
-position: relative;
-padding:1.2rem 0 0;
-margin-top: .8rem;
+  position: relative;
+  padding:1.2rem 0 0;
+  margin-top: .8rem;
 }
 @media (min-width:600px) {
   .flexblock.gallery {
@@ -2140,15 +2073,15 @@ margin-top: .8rem;
   transition: all 0.3s linear;
 }
 li .overlay {
-align-items: center;
+  align-items: center;
 }
 li .overlay h2 {
-	text-transform: uppercase;
-    margin: 0;
-    padding: 0 2.4rem;
-    letter-spacing: .2rem;
-    width: 100%;
-    text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 2.4rem;
+  letter-spacing: .2rem;
+  width: 100%;
+  text-align: center;
 }
 
 .overlay p,
@@ -2971,34 +2904,19 @@ input[type="checkbox"] {
   height: auto;
   padding: 4px;
 }
-
-button {
-  width: auto;
-}
-
-button[type="submit"] {
+button[type="submit"],textarea {
   width: 100%;
 }
-
-/*input:hover, textarea:hover, select:hover {
--webkit-transform: translateY(-.2rem);
-transform: translateY(-.2rem);
-}*/
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-width: 1px;
-}
-
 textarea {
   padding: .7rem;
 }
 
 button {
+  width: auto;
   text-align: center;
   cursor: pointer;
 }
+
 .button {
   display: inline-block;
   line-height: 4.8rem;
@@ -3051,6 +2969,12 @@ legend {
   letter-spacing:.1rem;
   font-weight: 400;
 }
+/*=== Focus === */
+input:focus,
+textarea:focus,
+select:focus {
+  border-width: 1px;
+}
 
 /*=== App Store Badges === */
 /* Change width and height: 216x64px, 162x48px, 135x40... */
@@ -3067,11 +2991,11 @@ legend {
 }
 
 @media (min-width:1024px) {
-[class*="badge-"] {
-  width: 162px;
-  height: 48px;
-  line-height: 4.8rem;
- }
+  [class*="badge-"] {
+    width: 162px;
+    height: 48px;
+    line-height: 4.8rem;
+  }
 }
 .badge-ios {
   background-image: url("../images/bt-appstore.png");
@@ -3087,8 +3011,8 @@ legend {
 a.button:hover,
 button[type="submit"]:hover,
 input[type="submit"]:hover {
--webkit-transform:scale(1.01);
-transform: scale(1.01);
+  -webkit-transform:scale(1.01);
+  transform: scale(1.01);
 }
 [class*="badge-"]:hover {
   opacity: 0.7;

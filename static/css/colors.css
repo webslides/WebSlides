@@ -81,27 +81,27 @@ hr:after {
   color: #333;
 }
 
-bbbr,
+abbr,
 acronym {
   border-bottom: 1px dotted #333;
 }
 
 mark,
 ins {
-background-color: rgba(221,238,255, 0.8);
-color: inherit;
+  background-color: rgba(221,238,255, 0.8);
+  color: inherit;
 }
 
 ::-moz-selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221,238,255, 0.8);
 }
 
 ::-webkit-selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221,238,255, 0.8);
 }
 
 ::selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221,238,255, 0.8);
 }
 
 pre {
@@ -119,7 +119,7 @@ code,[class*="bg-"] pre {
 }
 
 .bg-white code{
-    background: rgba(0, 20, 80, 0.03);
+  background: rgba(0, 20, 80, 0.03);
 }
 /*================================================
 Slides - Backgrounds <section class="bg-primary">
@@ -170,6 +170,10 @@ Slides - Backgrounds <section class="bg-primary">
 .bg-white {
   background-color: #fff;
 }
+[class*="bg-"] .bg-white {
+  text-shadow: none;
+  color: #333;
+}
 
 /* BG Apple Keynote*/
 
@@ -214,7 +218,7 @@ Slides - Backgrounds <section class="bg-primary">
 
 /*Covers/Longforms...*/
 .bg-trans-gradient{
-background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
 }
 
 /*Horizontal Gradient*/
@@ -246,9 +250,9 @@ background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
 
 /*Gray Gradient (horizontal)*/
 .bg-gradient-gray{
-background: linear-gradient(90deg,#f7f9fb 0,#dee2e6 100%);
-color: #333;
-text-shadow: none;
+  background: linear-gradient(90deg,#f7f9fb 0,#dee2e6 100%);
+  color: #333;
+  text-shadow: none;
 }
 /*Border/Frame*/
 .frame {
@@ -257,7 +261,7 @@ text-shadow: none;
 
 /*Layer/Box Shadow*/
 .shadow,.pre {
-position: relative;
+  position: relative;
 }
 .shadow:before,.shadow:after {
   box-shadow: 0 16px 24px rgba(0, 20, 80, 0.3);
@@ -270,13 +274,13 @@ TYPOGRAPHY
 /* -- Horizontal separator  -- */
 
 .text-separator:before {
-    background-color: rgba(170, 0, 0, 0.8);
+  background-color: rgba(170, 0, 0, 0.8);
 }
 
 /* -- Pull Quote (Right/Left)  -- */
 
 [class*="text-pull-"] {
-border-top: 4px solid rgba(0, 0, 0, 0.5);
+  border-top: 4px solid rgba(0, 0, 0, 0.5);
 }
 /* -- Context  -- */
 
@@ -359,31 +363,6 @@ nav li.email a:hover {
   background: #dd4b39;
 }
 
-
-/*=========================================
-Tabs
-=========================================== */
-
-
-ul.tabs li {
-  border: 1px solid rgba(0, 20, 80, 0.1);
-  border-right: none;
-}
-
-ul.tabs li:last-child {
-  border-right: 1px solid rgba(0, 20, 80, 0.1);
-}
-
-ul.tabs li.current {
-  background: rgba(255, 255, 255, 0.09);
-}
-
-ul.tabs li:before {
-  background-color: #44d;
-}
-
-
-
 /*===================================================
 .flexblock li hover/active
 ===================================================== */
@@ -395,7 +374,7 @@ ul.tabs li:before {
 }
 
 /*=========================================
-Features & Clients List 
+Features & Clients List
 =========================================== */
 
 .features li,.clients li  {
@@ -408,7 +387,7 @@ Features & Clients List
 }
 
 .features li:hover,.clients li:hover  {
-box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
+  box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
 }
 /*.features li span,.features li svg{color: #44d;}*/
 
@@ -431,7 +410,7 @@ box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
 }
 
 /*===========================================
-flexblock.steps 
+flexblock.steps
 ============================================= */
 
 .steps li:nth-child(1) {
@@ -540,7 +519,7 @@ Gallery li+.overlay+image
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 .gallery li footer {
-border-top:1px solid rgba(0,20,80,0.1);
+  border-top:1px solid rgba(0,20,80,0.1);
 }
 
 .gallery li a {
@@ -705,7 +684,7 @@ Cards
 /*== Figure Background === */
 
 [class*="card-"][class*="bg-"] figure {
-background-color: rgba(0, 20, 80, 0.06);
+  background-color: rgba(0, 20, 80, 0.06);
 }
 
 /*== Ficaption Cards === */
@@ -724,7 +703,7 @@ background-color: rgba(0, 20, 80, 0.06);
     border-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
     -webkit-border-image: -webkit-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
     -moz-border-image: -moz-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
-    
+
   }
 }
 
@@ -758,7 +737,7 @@ tr:nth-child(even)>td:hover {
 
 
 /*============================
-Browser (Screenshots) 
+Browser (Screenshots)
 ============================== */
 
 .browser {
@@ -804,10 +783,10 @@ input:focus::-moz-placeholder {
 input:focus::-webkit-input-placeholder {
   color: #ddd;
 }
-a.button,[class*="badge-"]
+a.button,[class*="badge-"],
 button[type="submit"],
 input {
-  box-shadow: 0px 10px 16px -8px rgba(0, 20, 80, 0.3);
+  box-shadow: 0 10px 16px -8px rgba(0, 20, 80, 0.3);
 }
 
 button,
@@ -818,7 +797,7 @@ button[type="submit"],
 input[type="submit"],
 .button,.button:hover,
 button[type="submit"]:hover,
-input[type="submit"]:hover 
+input[type="submit"]:hover
 {
   border: 1px solid #44d;
 }
@@ -831,7 +810,7 @@ input[type="submit"],
   text-shadow: 0 1px 0 #123;
 }
 .button:active,button[type="submit"]:active,input[type="submit"]:active {
-background-color: #17d;
+  background-color: #17d;
 }
 .ghost,.ghost:hover {background: none;color: inherit;text-shadow: none;}
 .bg-primary select,
@@ -839,7 +818,7 @@ background-color: #17d;
 .bg-primary .button,
 .bg-primary button,.bg-primary button:hover,
 .bg-primary input,
-[class*="bg-gradient-"] .button,[class*="bg-"] a.button.ghost 
+[class*="bg-gradient-"] .button,[class*="bg-"] a.button.ghost
 {
   border-color: #fff;
 }
