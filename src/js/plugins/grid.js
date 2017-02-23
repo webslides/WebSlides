@@ -1,6 +1,6 @@
 import Keys from '../utils/keys';
 
-export default class Keyboard {
+export default class Grid {
   /**
    * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
    * @param {WebSlides} wsInstance The WebSlides instance

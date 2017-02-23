@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 1.0.0 (2017-02-23)
 
 This release is a special one since it sets up in the path of a better development environment. Although it's far from

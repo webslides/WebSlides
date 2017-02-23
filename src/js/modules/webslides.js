@@ -14,7 +14,7 @@ const PLUGINS = {
   'keyboard': Plugins.Keyboard,
   'nav': Plugins.Navigation,
   'scroll': Plugins.Scroll,
-  'touch': Plugins.touch
+  'touch': Plugins.Touch
 };
 
 export default class WebSlides {
