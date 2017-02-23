@@ -15,28 +15,47 @@ In order to bootstrap the WebSlides you'll need to create a instance of it:
 
 That'll make everything run without any hassle. 
 
+### Options
+
+WebSlides constructor accepts an object with options.
+
+| Param | Type | Default | Description |
+|-----------|----------------|-----------|-------------------------------------------------------------------------------|
+| `autoslide` | `number` or `boolean` | `false` | Amount of milliseconds to wait to go to next slide automatically. |
+
+
+```
+const ws = new WebSlides({
+  autoslide: false
+});
+```
+
+### API
+
 Do you want to get your hands dirty? This is the API for the WebSlides module:
 
 <dl>
-<dt><a href="#goToSlide">goToSlide(slideIndex, opt_forward)</a></dt>
-<dd><p>Goes to a given slide.</p>
-</dd>
-<dt><a href="#goNext">goNext()</a></dt>
-<dd><p>Goes to the next slide.</p>
-</dd>
-<dt><a href="#goPrev">goPrev()</a></dt>
-<dd><p>Goes to the previous slide.</p>
-</dd>
-<dt><a href="#registerPlugin">registerPlugin(key, cto)</a></dt>
-<dd><p>Registers a plugin to be loaded when the instance is created. It allows
-(on purpose) to replace default plugins.
-Those being:</p>
-<ul>
-<li>Navigation</li>
-<li>Hash</li>
-<li>Keyboard</li>
-</ul>
-</dd>
+    <dt><a href="#goToSlide">goToSlide(slideIndex, opt_forward)</a></dt>
+    <dd><p>Goes to a given slide.</p></dd>
+    <dt><a href="#goNext">goNext()</a></dt>
+    <dd><p>Goes to the next slide.</p></dd>
+    <dt><a href="#goPrev">goPrev()</a></dt>
+    <dd><p>Goes to the previous slide.</p>
+    <dt><a href="#play">play()</a></dt>
+    <dd><p>Starts autosliding.</p>
+    <dt><a href="#stop">stop()</a></dt>
+    <dd><p>Stops autosliding.</p>    
+    </dd>
+    <dt><a href="#registerPlugin">registerPlugin(key, cto)</a></dt>
+    <dd><p>Registers a plugin to be loaded when the instance is created. It allows
+        (on purpose) to replace default plugins.
+        Those being:</p>
+        <ul>
+            <li>Navigation</li>
+            <li>Hash</li>
+            <li>Keyboard</li>
+        </ul>
+    </dd>
 </dl>
 
 <a name="goToSlide"></a>
@@ -58,6 +77,20 @@ Goes to the next slide. If the page is vertical, it will animate the scroll down
 
 ### `goPrev()`
 Goes to the previous slide. If the page is vertical, it will animate the scroll up
+
+<a name="play"></a>
+
+### `play(time)`
+Autoplays slides. If time is omitted, it will use the default time passed to the constructor. This is useful if you don't want to autoslide from the beginning but you want to add a button to do it.
+
+| Param | Type | Description |
+| --- | --- | --- | --- |
+| time | <code>number</code> | Amount of milliseconds to wait to go to next slide automatically. |
+
+<a name="stop"></a>
+
+### `stop()`
+Stops autosliding.
 
 <a name="registerPlugin"></a>
 

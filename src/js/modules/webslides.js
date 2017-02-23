@@ -15,7 +15,14 @@ const PLUGINS = {
 };
 
 export default class WebSlides {
-  constructor() {
+  /**
+   * Options for WebSlides
+   * @param {number|boolean} autoslide Is false by default. If a number is
+   * provided, it will autoslide every given milliseconds.
+   */
+  constructor({
+    autoslide = false
+  } = {}) {
     /**
      * WebSlide element.
      * @type {Element}
@@ -59,6 +66,19 @@ export default class WebSlides {
      * @type {Object}
      */
     this.plugins = {};
+    /**
+     * Interval ID reference for the autoslide.
+     * @type {?number}
+     * @private
+     */
+    this.interval_ = null;
+    /**
+     * Amount of time to wait to go to next slide automatically or false to
+     * disable the feature.
+     * @type {boolean|number}
+     * @private
+     */
+    this.autoslide_ = autoslide;
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');
@@ -69,6 +89,7 @@ export default class WebSlides {
     this.grabSlides_();
     this.createPlugins_();
     this.initSlides_();
+    this.play();
     // Finished
     this.onInit_();
   }
@@ -312,5 +333,29 @@ export default class WebSlides {
    */
   static registerPlugin(key, cto) {
     PLUGINS[key] = cto;
+  }
+
+  /**
+   * Starts autosliding all the slides if it's not currently doing it and the
+   * autoslide option was a number greater than 0.
+   * @param {?number} time Amount of milliseconds to wait to go to next slide
+   * automatically.
+   */
+  play(time) {
+    time = time || this.autoslide_;
+
+    if (!this.interval_ && Number.isInteger(time) && time > 0) {
+      this.interval_ = setInterval(this.goNext.bind(this), time);
+    }
+  }
+
+  /**
+   * Stops autosliding all the slides.
+   */
+  stop() {
+    if (this.interval_) {
+      clearInterval(this.interval_);
+      this.interval_ = null;
+    }
   }
 }
