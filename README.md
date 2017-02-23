@@ -6,7 +6,7 @@
 Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. A new release (at least) every 8th day of the month — [https://webslides.tv/demos](https://webslides.tv/demos).
 
 * * *
-Simply choose a demo and customize it in minutes. Download [Latest version](https://webslides.tv/webslides-latest.zip)
+Simply choose a demo and customize it in minutes. Download [latest version](https://webslides.tv/webslides-latest.zip (zip)
 * * *
 
 
