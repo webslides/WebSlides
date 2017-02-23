@@ -3,8 +3,9 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/jlantunez/webslides.svg?style=social)](https://twitter.com/webslides)
 
-Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes — https://webslides.tv/demos.
+Finally, everything you need to make HTML presentations in a beautiful way. — [https://webslides.tv/demos](https://webslides.tv/demos).
 
+Just the essentials. You can create your own presentation instantly. Simply choose a demo and customize it in minutes. Download release: [https://github.com/jlantunez/webslides/releases/download/1.0.0/release.zip](WebSlides 1.0 zip).
 A new release (at least) every 8th day of the month.
 
 ### Why WebSlides?
