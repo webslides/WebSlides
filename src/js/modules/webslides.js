@@ -9,9 +9,12 @@ const CLASSES = {
 
 // Default plugins
 const PLUGINS = {
-  'nav': Plugins.Navigation,
+  'grid': Plugins.Grid,
   'hash': Plugins.Hash,
-  'keyboard': Plugins.Keyboard
+  'keyboard': Plugins.Keyboard,
+  'nav': Plugins.Navigation,
+  'scroll': Plugins.Scroll,
+  'touch': Plugins.touch
 };
 
 export default class WebSlides {
@@ -166,7 +169,7 @@ export default class WebSlides {
       const nextSlide = this.slides[slideI];
 
       if (this.currentSlide_ !== null && this.isVertical &&
-        (!this.plugins.Touch || !this.plugins.Touch.isEnabled)) {
+        (!this.plugins.touch || !this.plugins.touch.isEnabled)) {
         this.scrollTransitionToSlide_(
             isMovingForward, nextSlide, this.onSlideChange_);
       } else {

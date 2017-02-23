@@ -1,9 +1,15 @@
-import Navigation from './navigation';
+import Grid from './grid';
 import Hash from './hash';
 import Keyboard from './keyboard';
+import Navigation from './navigation';
+import Scroll from './scroll';
+import Touch from './touch';
 
 export default {
-  Navigation,
+  Grid,
   Hash,
-  Keyboard
+  Keyboard,
+  Navigation,
+  Scroll,
+  Touch
 };

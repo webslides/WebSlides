@@ -115,15 +115,15 @@ Almost every single feature of WebSlides is a plugin that can be overwritten and
 
 ```
 // Adding the constructor to WebSlides
-WebSlides.registerPlugin('MyPlugin', MyPlugin);
+WebSlides.registerPlugin('myPlugin', MyPlugin);
 
 // Starting WebSlides
 // Your plugin will be constructed at this time and it will receive the webslides instance as the only parameter.
 const ws = new WebSlides();
-// You can also access ws.plugins.MyPlugin now
+// You can also access ws.plugins.myPlugin now
 ```
 
-This allows you to rewrite the navigation to use a menu (for example) or add that missing piece of functionality you'd like to see.
+This allows you to rewrite the navigation to use a menu (for example) or add that missing piece of functionality you'd like to see. See [this part of the code](../src/js/modules/webslides.js#L11) to see all the plugins we're using and the name they're using.
 
 Make sure to let us know so it could get added to the repo!
 
