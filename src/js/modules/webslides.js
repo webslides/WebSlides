@@ -1,7 +1,7 @@
 import Plugins from '../plugins/plugins';
 import Slide from './slide';
 import DOM from '../utils/dom';
-import ScrollHelper from '../utils/scroll-to';
+import scrollTo from '../utils/scroll-to';
 
 const CLASSES = {
   VERTICAL: 'vertical'
@@ -186,29 +186,27 @@ export default class WebSlides {
    * @param {Function} callback Callback to be called upon finishing. This is an
    * async function so it'll happen once the scroll animation finishes.
    * @private
-   * @see DOM.lockScroll
-   * @see DOM.unlockScroll
-   * @see ScrollHelper.scrollTo
+   * @see scrollTo
    */
   scrollTransitionToSlide_(isMovingForward, nextSlide, callback) {
-    DOM.lockScroll();
+    this.el.style.overflow = 'none';
 
     if (!isMovingForward) {
       nextSlide.moveBeforeFirst();
       nextSlide.show();
-      ScrollHelper.scrollTo(this.currentSlide_.el.offsetTop, 0);
+      scrollTo(this.currentSlide_.el.offsetTop, 0);
     } else {
       nextSlide.show();
     }
 
-    ScrollHelper.scrollTo(nextSlide.el.offsetTop, 500, () => {
+    scrollTo(nextSlide.el.offsetTop, 500, () => {
       this.currentSlide_.hide();
 
       if (isMovingForward) {
         this.currentSlide_.moveAfterLast();
       }
 
-      DOM.unlockScroll();
+      this.el.style.overflow = 'auto';
       setTimeout(() => { callback.call(this, nextSlide); }, 150);
     });
   }
@@ -222,7 +220,7 @@ export default class WebSlides {
    * @private
    */
   transitionToSlide_(isMovingForward, nextSlide, callback) {
-    ScrollHelper.scrollTo(0, 0);
+    scrollTo(0, 0);
 
     if (!isMovingForward) {
       nextSlide.moveBeforeFirst();
