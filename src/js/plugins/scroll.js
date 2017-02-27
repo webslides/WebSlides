@@ -55,7 +55,7 @@ export default class Scroll {
    * @private
    */
   onSlideChange_() {
-    this.timeout_ = setTimeout(() => { this.timeout_ = null; }, 500);
+    this.timeout_ = setTimeout(() => { this.timeout_ = null; }, 450);
   }
 
   /**
@@ -71,12 +71,13 @@ export default class Scroll {
     }
 
     const { deltaY: wheelDeltaY, deltaX: wheelDeltaX } = event;
+    const isVertical = this.ws_.isVertical;
     this.isGoingUp_ = wheelDeltaY < 0;
     this.isGoingLeft_ = wheelDeltaX < 0;
 
     // If we're mainly moving horizontally, prevent default
     if (Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY)) {
-      if (!this.ws_.isVertical) {
+      if (!isVertical) {
         event.preventDefault();
       } else {
         // If we're moving horizontally but this is vertical, return to avoid
@@ -87,7 +88,8 @@ export default class Scroll {
 
     if (Math.abs(wheelDeltaY) >= MIN_WHEEL_DELTA ||
         Math.abs(wheelDeltaX) >= MIN_WHEEL_DELTA) {
-      if (this.isGoingUp_ || this.isGoingLeft_) {
+      if (isVertical && this.isGoingUp_ ||
+          !isVertical && this.isGoingLeft_) {
         this.ws_.goPrev();
       } else {
         this.ws_.goNext();
