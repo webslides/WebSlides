@@ -137,28 +137,6 @@ var DOM = function () {
     }
 
     /**
-     * Locks the scroll on the document by setting the HTML to have a hidden
-     * overflow.
-     */
-
-  }, {
-    key: 'lockScroll',
-    value: function lockScroll() {
-      document.documentElement.style.overflow = 'hidden';
-    }
-
-    /**
-     * Unlocks the scroll on the document by setting the HTML to have an auto
-     * overflow.
-     */
-
-  }, {
-    key: 'unlockScroll',
-    value: function unlockScroll() {
-      document.documentElement.style.overflow = 'auto';
-    }
-
-    /**
      * Fires a custom event on the given target.
      * @param {Element} target The target of the event.
      * @param {string} eventType The event type.
@@ -176,6 +154,18 @@ var DOM = function () {
       });
 
       target.dispatchEvent(event);
+    }
+
+    /**
+     * Converts an iterable to an array.
+     * @param {*} iterable Element to convert to array
+     * @return {Array} the element casted to an array.
+     */
+
+  }, {
+    key: 'toArray',
+    value: function toArray(iterable) {
+      return [].slice.call(iterable);
     }
   }]);
 
@@ -205,80 +195,99 @@ var Keys = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(13);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var SCROLLABLE_CONTAINER = getScrollableContainer();
+var UA = window.navigator.userAgent;
 
-/**
- * Returns the correct DOM element to be used for scrolling the
- * page, due to Firefox not scrolling on document.body.
- * @return {Element} Scrollable Element.
- */
-function getScrollableContainer() {
-  if (SCROLLABLE_CONTAINER) {
-    return SCROLLABLE_CONTAINER;
+var MobileDetector = function () {
+  function MobileDetector() {
+    _classCallCheck(this, MobileDetector);
   }
 
-  var documentElement = window.document.documentElement;
-  var scrollableContainer = void 0;
+  _createClass(MobileDetector, null, [{
+    key: "isAndroid",
 
-  documentElement.scrollTop = 1;
-
-  if (documentElement.scrollTop === 1) {
-    documentElement.scrollTop = 0;
-    scrollableContainer = documentElement;
-  } else {
-    scrollableContainer = document.body;
-  }
-
-  SCROLLABLE_CONTAINER = scrollableContainer;
-
-  return scrollableContainer;
-}
-
-/**
- * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
- * callback upon finishing.
- * @param {number} y Offset of the page to scroll to.
- * @param {number} duration Duration of the animation. 500ms by default.
- * @param {function} cb Callback function to call upon completion.
- */
-function scrollTo(y) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
-
-  var scrollableContainer = getScrollableContainer();
-  var delta = y - scrollableContainer.scrollTop;
-  var startLocation = scrollableContainer.scrollTop;
-  var increment = 16;
-
-  if (!duration) {
-    scrollableContainer.scrollTop = y;
-    cb();
-    return;
-  }
-
-  var animateScroll = function animateScroll(elapsedTime) {
-    elapsedTime += increment;
-    var percent = Math.min(1, elapsedTime / duration);
-    var easingP = __WEBPACK_IMPORTED_MODULE_0__easing__["a" /* default */].swing(percent, elapsedTime * percent, y, delta, duration);
-
-    scrollableContainer.scrollTop = Math.floor(startLocation + easingP * delta);
-
-    if (elapsedTime < duration) {
-      setTimeout(function () {
-        return animateScroll(elapsedTime);
-      }, increment);
-    } else {
-      cb();
+    /**
+     * Whether the device is Android or not.
+     * @return {Boolean}
+     */
+    value: function isAndroid() {
+      return !!UA.match(/Android/i);
     }
-  };
 
-  animateScroll(0);
-}
+    /**
+     * Whether the device is BlackBerry or not.
+     * @return {Boolean}
+     */
 
-/* harmony default export */ __webpack_exports__["a"] = { getScrollableContainer: getScrollableContainer, scrollTo: scrollTo };
+  }, {
+    key: "isBlackBerry",
+    value: function isBlackBerry() {
+      return !!UA.match(/BlackBerry/i);
+    }
+
+    /**
+     * Whether the device is iOS or not.
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "isiOS",
+    value: function isiOS() {
+      return !!UA.match(/iPhone/i);
+    }
+
+    /**
+     * Whether the device is Opera or not.
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "isOpera",
+    value: function isOpera() {
+      return !!UA.match(/Opera Mini/i);
+    }
+
+    /**
+     * Whether the device is Windows or not.
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "isWindows",
+    value: function isWindows() {
+      return !!UA.match(/IEMobile/i);
+    }
+
+    /**
+     * Whether the device is Windows Phone or not.
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "isWindowsPhone",
+    value: function isWindowsPhone() {
+      return !!UA.match(/Windows Phone/i);
+    }
+
+    /**
+     * Whether the device is any mobile device or not.
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "isAny",
+    value: function isAny() {
+      return MobileDetector.isAndroid() || MobileDetector.isBlackBerry() || MobileDetector.isiOS() || MobileDetector.isOpera() || MobileDetector.isWindows() || MobileDetector.isWindowsPhone();
+    }
+  }]);
+
+  return MobileDetector;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = MobileDetector;
 
 /***/ }),
 /* 3 */
@@ -288,7 +297,7 @@ function scrollTo(y) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -455,7 +464,7 @@ var WebSlides = function () {
   }, {
     key: 'grabSlides_',
     value: function grabSlides_() {
-      this.slides = Array.from(this.el.childNodes).map(function (slide, i) {
+      this.slides = __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].toArray(this.el.childNodes).map(function (slide, i) {
         return new __WEBPACK_IMPORTED_MODULE_1__slide__["a" /* default */](slide, i);
       });
 
@@ -503,9 +512,7 @@ var WebSlides = function () {
      * @param {Function} callback Callback to be called upon finishing. This is an
      * async function so it'll happen once the scroll animation finishes.
      * @private
-     * @see DOM.lockScroll
-     * @see DOM.unlockScroll
-     * @see ScrollHelper.scrollTo
+     * @see scrollTo
      */
 
   }, {
@@ -513,24 +520,24 @@ var WebSlides = function () {
     value: function scrollTransitionToSlide_(isMovingForward, nextSlide, callback) {
       var _this2 = this;
 
-      __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].lockScroll();
+      this.el.style.overflow = 'none';
 
       if (!isMovingForward) {
         nextSlide.moveBeforeFirst();
         nextSlide.show();
-        __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */].scrollTo(this.currentSlide_.el.offsetTop, 0);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(this.currentSlide_.el.offsetTop, 0);
       } else {
         nextSlide.show();
       }
 
-      __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */].scrollTo(nextSlide.el.offsetTop, 500, function () {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(nextSlide.el.offsetTop, 500, function () {
         _this2.currentSlide_.hide();
 
         if (isMovingForward) {
           _this2.currentSlide_.moveAfterLast();
         }
 
-        __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].unlockScroll();
+        _this2.el.style.overflow = 'auto';
         setTimeout(function () {
           callback.call(_this2, nextSlide);
         }, 150);
@@ -549,7 +556,7 @@ var WebSlides = function () {
   }, {
     key: 'transitionToSlide_',
     value: function transitionToSlide_(isMovingForward, nextSlide, callback) {
-      __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */].scrollTo(0, 0);
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(0, 0);
 
       if (!isMovingForward) {
         nextSlide.moveBeforeFirst();
@@ -689,7 +696,7 @@ var WebSlides = function () {
     value: function play(time) {
       time = time || this.autoslide_;
 
-      if (!this.interval_ && Number.isInteger(time) && time > 0) {
+      if (!this.interval_ && typeof time === 'number' && time > 0) {
         this.interval_ = setInterval(this.goNext.bind(this), time);
       }
     }
@@ -968,7 +975,7 @@ var Hash = function () {
         slide = parseInt(results[1], 10);
       }
 
-      if (!Number.isInteger(slide) || slide < 0 || !Array.isArray(results)) {
+      if (typeof slide !== 'number' || slide < 0 || !Array.isArray(results)) {
         slide = null;
       } else {
         slide--; // Convert to 0 index
@@ -1254,7 +1261,7 @@ var Navigation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_scroll_to__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(2);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1277,10 +1284,10 @@ var Scroll = function () {
      */
     this.ws_ = wsInstance;
 
-    this.scrollContainer_ = __WEBPACK_IMPORTED_MODULE_0__utils_scroll_to__["a" /* default */].getScrollableContainer();
+    this.scrollContainer_ = wsInstance.el;
     this.isGoingUp_ = false;
 
-    if (this.ws_.isVertical) {
+    if (this.ws_.isVertical && !__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
       this.scrollContainer_.addEventListener('wheel', this.onMouseWheel_.bind(this));
     }
   }
@@ -1297,6 +1304,7 @@ var Scroll = function () {
     key: 'onMouseWheel_',
     value: function onMouseWheel_(event) {
       if (this.ws_.isMoving) {
+        event.preventDefault();
         return;
       }
 
@@ -1327,7 +1335,7 @@ var Scroll = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(2);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1575,99 +1583,51 @@ function linear(p) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(13);
+/* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var UA = window.navigator.userAgent;
+var SCROLLABLE_CONTAINER = document.getElementById('webslides');
 
-var MobileDetector = function () {
-  function MobileDetector() {
-    _classCallCheck(this, MobileDetector);
+/**
+ * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
+ * callback upon finishing.
+ * @param {number} y Offset of the page to scroll to.
+ * @param {number} duration Duration of the animation. 500ms by default.
+ * @param {function} cb Callback function to call upon completion.
+ */
+function scrollTo(y) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
+
+  var delta = y - SCROLLABLE_CONTAINER.scrollTop;
+  var startLocation = SCROLLABLE_CONTAINER.scrollTop;
+  var increment = 16;
+
+  if (!duration) {
+    SCROLLABLE_CONTAINER.scrollTop = y;
+    cb();
+    return;
   }
 
-  _createClass(MobileDetector, null, [{
-    key: "isAndroid",
+  var animateScroll = function animateScroll(elapsedTime) {
+    elapsedTime += increment;
+    var percent = Math.min(1, elapsedTime / duration);
+    var easingP = __WEBPACK_IMPORTED_MODULE_0__easing__["a" /* default */].swing(percent, elapsedTime * percent, y, delta, duration);
 
-    /**
-     * Whether the device is Android or not.
-     * @return {Boolean}
-     */
-    value: function isAndroid() {
-      return !!UA.match(/Android/i);
+    SCROLLABLE_CONTAINER.scrollTop = Math.floor(startLocation + easingP * delta);
+
+    if (elapsedTime < duration) {
+      setTimeout(function () {
+        return animateScroll(elapsedTime);
+      }, increment);
+    } else {
+      cb();
     }
+  };
 
-    /**
-     * Whether the device is BlackBerry or not.
-     * @return {Boolean}
-     */
-
-  }, {
-    key: "isBlackBerry",
-    value: function isBlackBerry() {
-      return !!UA.match(/BlackBerry/i);
-    }
-
-    /**
-     * Whether the device is iOS or not.
-     * @return {Boolean}
-     */
-
-  }, {
-    key: "isiOS",
-    value: function isiOS() {
-      return !!UA.match(/iPhone/i);
-    }
-
-    /**
-     * Whether the device is Opera or not.
-     * @return {Boolean}
-     */
-
-  }, {
-    key: "isOpera",
-    value: function isOpera() {
-      return !!UA.match(/Opera Mini/i);
-    }
-
-    /**
-     * Whether the device is Windows or not.
-     * @return {Boolean}
-     */
-
-  }, {
-    key: "isWindows",
-    value: function isWindows() {
-      return !!UA.match(/IEMobile/i);
-    }
-
-    /**
-     * Whether the device is Windows Phone or not.
-     * @return {Boolean}
-     */
-
-  }, {
-    key: "isWindowsPhone",
-    value: function isWindowsPhone() {
-      return !!UA.match(/Windows Phone/i);
-    }
-
-    /**
-     * Whether the device is any mobile device or not.
-     * @return {Boolean}
-     */
-
-  }, {
-    key: "isAny",
-    value: function isAny() {
-      return MobileDetector.isAndroid() || MobileDetector.isBlackBerry() || MobileDetector.isiOS() || MobileDetector.isOpera() || MobileDetector.isWindows() || MobileDetector.isWindowsPhone();
-    }
-  }]);
-
-  return MobileDetector;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = MobileDetector;
+  animateScroll(0);
+}
 
 /***/ }),
 /* 15 */
