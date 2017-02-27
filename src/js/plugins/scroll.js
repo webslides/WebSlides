@@ -1,4 +1,4 @@
-import ScrollHelper from '../utils/scroll-to';
+import MobileDetector from '../utils/mobile-detector';
 
 const MIN_WHEEL_DELTA = 40;
 
@@ -17,7 +17,7 @@ export default class Scroll {
     this.scrollContainer_ = wsInstance.el;
     this.isGoingUp_ = false;
 
-    if (this.ws_.isVertical) {
+    if (this.ws_.isVertical && !MobileDetector.isAny()) {
         this.scrollContainer_.addEventListener(
             'wheel', this.onMouseWheel_.bind(this));
     }
