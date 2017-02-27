@@ -14,7 +14,7 @@ export default class Scroll {
      */
     this.ws_ = wsInstance;
 
-    this.scrollContainer_ = ScrollHelper.getScrollableContainer();
+    this.scrollContainer_ = wsInstance.el;
     this.isGoingUp_ = false;
 
     if (this.ws_.isVertical) {
