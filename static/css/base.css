@@ -302,8 +302,19 @@ dd {
 1. Base --> Baseline: 8px = .8rem
 =========================================== */
 
+html,
 body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+#webslides {
+  height: 100vh;
   overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* == Prototype faster - Vertical rhythm  == */
