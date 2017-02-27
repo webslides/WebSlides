@@ -861,7 +861,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var CLICKABLE_ELS = ['INPUT', 'SELECT', 'BUTTON', 'A', 'TEXTAREA'];
+var CLICKABLE_ELS = ['INPUT', 'SELECT', 'OPTION', 'BUTTON', 'A', 'TEXTAREA'];
 
 var ClickNav = function () {
   /**
@@ -1396,7 +1396,7 @@ var Scroll = function () {
 
       this.timeout_ = setTimeout(function () {
         _this.timeout_ = null;
-      }, 400);
+      }, 500);
     }
 
     /**
