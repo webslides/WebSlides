@@ -302,6 +302,8 @@ dd {
 1. Base --> Baseline: 8px = .8rem
 =========================================== */
 
+/* -- Disable elastic scrolling/bounce  -- */
+
 html,
 body {
   width: 100%;
@@ -309,15 +311,22 @@ body {
   overflow: hidden;
 }
 
-
 #webslides {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
+/* -- Hide scrollbar, but still being able to scroll -- */
 
-/* == Prototype faster - Vertical rhythm  == */
+#webslides {
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+#webslides::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+/* -- Prototype faster - Vertical rhythm  -- */
 
 body.baseline {
   background: url(../images/baseline.png) left top .8rem/.8rem;
