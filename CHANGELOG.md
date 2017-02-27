@@ -3,14 +3,14 @@
 ## Bugfixes
 
 - Fixed a bug which caused Chrome on OSX to stutter a lot on vertical transitioning due to elastic scroll bounce.
-- [#28] Fixed scroll on Firefox.
-- [#38] Fixed a bug in Safari which lead to unexpected behaviour using any form of movements.
-- [#10] Fixed animation flash on Safari.
+- [[#28](https://github.com/jlantunez/webslides/issues/28)] Fixed scroll on Firefox.
+- [[#38](https://github.com/jlantunez/webslides/issues/38)] Fixed a bug in Safari which lead to unexpected behaviour using any form of movements.
+- [[#10](https://github.com/jlantunez/webslides/issues/10)] Fixed animation flash on Safari.
 
 ## New Features
 
-- Adding option to click to go to the next slide. Read more [here](https://github.com/jlantunez/webslides/blob/master/docs/click-to-nav.md).
-- [#1] Improved sliding with mouse scroll and touchpad. It's now possible to use scroll to move an horizontal presentation.
+- [[#1](https://github.com/jlantunez/webslides/issues/1)] Adding option to click to go to the next slide. Read more [here](https://github.com/jlantunez/webslides/blob/master/docs/click-to-nav.md).
+- [[#1](https://github.com/jlantunez/webslides/issues/1)] Improved sliding with mouse scroll and touchpad. It's now possible to use scroll to move an horizontal presentation.
 It's also possible to scroll horizontally on horizontal presentations to move forward/backwards the presentation.
 
 ## Regression
