@@ -1,33 +1,6 @@
 import Easings from './easing';
 
-let SCROLLABLE_CONTAINER = getScrollableContainer();
-
-/**
- * Returns the correct DOM element to be used for scrolling the
- * page, due to Firefox not scrolling on document.body.
- * @return {Element} Scrollable Element.
- */
-function getScrollableContainer() {
-  if (SCROLLABLE_CONTAINER) {
-    return SCROLLABLE_CONTAINER;
-  }
-
-  const documentElement = window.document.documentElement;
-  let scrollableContainer;
-
-  documentElement.scrollTop = 1;
-
-  if (documentElement.scrollTop === 1) {
-    documentElement.scrollTop = 0;
-    scrollableContainer = documentElement;
-  } else {
-    scrollableContainer = document.body;
-  }
-
-  SCROLLABLE_CONTAINER = scrollableContainer;
-
-  return scrollableContainer;
-}
+let SCROLLABLE_CONTAINER = document.getElementById('webslides');
 
 /**
  * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
@@ -36,14 +9,13 @@ function getScrollableContainer() {
  * @param {number} duration Duration of the animation. 500ms by default.
  * @param {function} cb Callback function to call upon completion.
  */
-function scrollTo(y, duration = 500, cb = () => {}) {
-  const scrollableContainer = getScrollableContainer();
-  const delta = y - scrollableContainer.scrollTop;
-  const startLocation = scrollableContainer.scrollTop;
+export default function scrollTo(y, duration = 500, cb = () => {}) {
+  const delta = y - SCROLLABLE_CONTAINER.scrollTop;
+  const startLocation = SCROLLABLE_CONTAINER.scrollTop;
   const increment = 16;
 
   if (!duration) {
-    scrollableContainer.scrollTop = y;
+    SCROLLABLE_CONTAINER.scrollTop = y;
     cb();
     return;
   }
@@ -58,7 +30,7 @@ function scrollTo(y, duration = 500, cb = () => {}) {
       delta,
       duration);
 
-    scrollableContainer.scrollTop = Math.floor(startLocation +
+    SCROLLABLE_CONTAINER.scrollTop = Math.floor(startLocation +
         (easingP * delta));
 
     if (elapsedTime < duration) {
@@ -70,5 +42,3 @@ function scrollTo(y, duration = 500, cb = () => {}) {
 
   animateScroll(0);
 }
-
-export default { getScrollableContainer, scrollTo };
