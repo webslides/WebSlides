@@ -13,10 +13,29 @@ export default class Scroll {
      * @private
      */
     this.ws_ = wsInstance;
-
+    /**
+     * Where the scroll is going to happen. The WebSlides element.
+     * @type {Element}
+     * @private
+     */
     this.scrollContainer_ = wsInstance.el;
+    /**
+     * Whether movement is happening up or down.
+     * @type {boolean}
+     * @private
+     */
     this.isGoingUp_ = false;
+    /**
+     * Whether movement is happening left or right.
+     * @type {boolean}
+     * @private
+     */
     this.isGoingLeft_ = false;
+    /**
+     * Timeout id holder.
+     * @type {?number}
+     * @private
+     */
     this.timeout_ = null;
 
     if (!MobileDetector.isAny()) {
@@ -55,10 +74,14 @@ export default class Scroll {
     this.isGoingUp_ = wheelDeltaY < 0;
     this.isGoingLeft_ = wheelDeltaX < 0;
 
-    if (!this.ws_.isVertical) {
-      // If we're mainly moving horizontally, prevent default
-      if (Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY)) {
+    // If we're mainly moving horizontally, prevent default
+    if (Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY)) {
+      if (!this.ws_.isVertical) {
         event.preventDefault();
+      } else {
+        // If we're moving horizontally but this is vertical, return to avoid
+        // unwanted navigation.
+        return;
       }
     }
 
