@@ -9,6 +9,7 @@ const CLASSES = {
 
 // Default plugins
 const PLUGINS = {
+  'clickNav': Plugins.ClickNav,
   'grid': Plugins.Grid,
   'hash': Plugins.Hash,
   'keyboard': Plugins.Keyboard,
@@ -21,10 +22,12 @@ export default class WebSlides {
   /**
    * Options for WebSlides
    * @param {number|boolean} autoslide Is false by default. If a number is
-   * provided, it will autoslide every given milliseconds.
+   * @param {boolean} changeOnClick Is false by default. If true, it will allow
+   * clicking on any place to change the slide.
    */
   constructor({
-    autoslide = false
+    autoslide = false,
+    changeOnClick = false
   } = {}) {
     /**
      * WebSlide element.
@@ -82,6 +85,12 @@ export default class WebSlides {
      * @private
      */
     this.autoslide_ = autoslide;
+    /**
+     * Whether navigation should initiate on click
+     * @type {boolean}
+     * @private
+     */
+    this.changeOnClick_ = changeOnClick;
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');

@@ -16,11 +16,27 @@ export default class Scroll {
 
     this.scrollContainer_ = wsInstance.el;
     this.isGoingUp_ = false;
+    this.isGoingLeft_ = false;
+    this.timeout_ = null;
 
-    if (this.ws_.isVertical && !MobileDetector.isAny()) {
+    if (!MobileDetector.isAny()) {
         this.scrollContainer_.addEventListener(
             'wheel', this.onMouseWheel_.bind(this));
+
+        if (!wsInstance.isVertical) {
+          wsInstance.el.addEventListener(
+              'ws:slide-change', this.onSlideChange_.bind(this));
+        }
     }
+  }
+
+  /**
+   * When the slides change, set an inner timeout to avoid prematurely
+   * changing to the next slide again.
+   * @private
+   */
+  onSlideChange_() {
+    this.timeout_ = setTimeout(() => { this.timeout_ = null; }, 400);
   }
 
   /**
@@ -30,16 +46,25 @@ export default class Scroll {
    * @private
    */
   onMouseWheel_(event) {
-    if (this.ws_.isMoving) {
+    if (this.ws_.isMoving || this.timeout_) {
       event.preventDefault();
       return;
     }
 
-    const { deltaY: wheelDelta } = event;
-    this.isGoingUp_ = wheelDelta < 0;
+    const { deltaY: wheelDeltaY, deltaX: wheelDeltaX } = event;
+    this.isGoingUp_ = wheelDeltaY < 0;
+    this.isGoingLeft_ = wheelDeltaX < 0;
 
-    if (Math.abs(wheelDelta) >= MIN_WHEEL_DELTA) {
-      if (this.isGoingUp_) {
+    if (!this.ws_.isVertical) {
+      // If we're mainly moving horizontally, prevent default
+      if (Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY)) {
+        event.preventDefault();
+      }
+    }
+
+    if (Math.abs(wheelDeltaY) >= MIN_WHEEL_DELTA ||
+        Math.abs(wheelDeltaX) >= MIN_WHEEL_DELTA) {
+      if (this.isGoingUp_ || this.isGoingLeft_) {
         this.ws_.goPrev();
       } else {
         this.ws_.goNext();
