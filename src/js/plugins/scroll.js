@@ -31,6 +31,7 @@ export default class Scroll {
    */
   onMouseWheel_(event) {
     if (this.ws_.isMoving) {
+      event.preventDefault();
       return;
     }
 
