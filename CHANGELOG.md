@@ -1,3 +1,22 @@
+# 1.1.0 
+
+## Bugfixes
+
+- Fixed a bug which caused Chrome on OSX to stutter a lot on vertical transitioning due to elastic scroll bounce.
+- [#28] Fixed scroll on Firefox.
+- [#38] Fixed a bug in Safari which lead to unexpected behaviour using any form of movements.
+- [#10] Fixed animation flash on Safari.
+
+## New Features
+
+- Adding option to click to go to the next slide. Read more [here](https://github.com/jlantunez/webslides/blob/master/docs/click-to-nav.md).
+- [#1] Improved sliding with mouse scroll and touchpad. It's now possible to use scroll to move an horizontal presentation.
+It's also possible to scroll horizontally on horizontal presentations to move forward/backwards the presentation.
+
+## Regression
+
+- Introduced a minor bug on iOS Safari which leads to the bottom part of the page not being visible on the first scroll. This is likely a browser bug but it has been unearthed in this version due to a much needed improvement on scrolling behaviour bugs. We're trying to investigate a bit more and will provide a fix ASAP.
+
 # 1.0.0 (2017-02-23)
 
 This release is a special one since it sets up in the path of a better development environment. Although it's far from
