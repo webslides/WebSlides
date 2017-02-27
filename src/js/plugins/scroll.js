@@ -72,11 +72,13 @@ export default class Scroll {
 
     const { deltaY: wheelDeltaY, deltaX: wheelDeltaX } = event;
     const isVertical = this.ws_.isVertical;
+    const isHorizontalMovement = Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY);
     this.isGoingUp_ = wheelDeltaY < 0;
     this.isGoingLeft_ = wheelDeltaX < 0;
 
+
     // If we're mainly moving horizontally, prevent default
-    if (Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY)) {
+    if (isHorizontalMovement) {
       if (!isVertical) {
         event.preventDefault();
       } else {
@@ -88,8 +90,8 @@ export default class Scroll {
 
     if (Math.abs(wheelDeltaY) >= MIN_WHEEL_DELTA ||
         Math.abs(wheelDeltaX) >= MIN_WHEEL_DELTA) {
-      if (isVertical && this.isGoingUp_ ||
-          !isVertical && this.isGoingLeft_) {
+      if ((isHorizontalMovement && this.isGoingLeft_) ||
+          (!isHorizontalMovement && this.isGoingUp_)) {
         this.ws_.goPrev();
       } else {
         this.ws_.goNext();
