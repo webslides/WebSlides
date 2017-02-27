@@ -86,7 +86,7 @@ export default class WebSlides {
      */
     this.autoslide_ = autoslide;
     /**
-     * Whether navigation should initiate on click
+     * Whether navigation should initiate on click or not.
      * @type {boolean}
      * @private
      */
