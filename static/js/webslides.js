@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/static/js/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(13);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -294,10 +294,10 @@ var MobileDetector = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(15);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -313,6 +313,7 @@ var CLASSES = {
 
 // Default plugins
 var PLUGINS = {
+  'clickNav': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].ClickNav,
   'grid': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Grid,
   'hash': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Hash,
   'keyboard': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Keyboard,
@@ -325,12 +326,15 @@ var WebSlides = function () {
   /**
    * Options for WebSlides
    * @param {number|boolean} autoslide Is false by default. If a number is
-   * provided, it will autoslide every given milliseconds.
+   * @param {boolean} changeOnClick Is false by default. If true, it will allow
+   * clicking on any place to change the slide.
    */
   function WebSlides() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref$autoslide = _ref.autoslide,
-        autoslide = _ref$autoslide === undefined ? false : _ref$autoslide;
+        autoslide = _ref$autoslide === undefined ? false : _ref$autoslide,
+        _ref$changeOnClick = _ref.changeOnClick,
+        changeOnClick = _ref$changeOnClick === undefined ? false : _ref$changeOnClick;
 
     _classCallCheck(this, WebSlides);
 
@@ -390,6 +394,12 @@ var WebSlides = function () {
      * @private
      */
     this.autoslide_ = autoslide;
+    /**
+     * Whether navigation should initiate on click or not.
+     * @type {boolean}
+     * @private
+     */
+    this.changeOnClick_ = changeOnClick;
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');
@@ -847,6 +857,58 @@ var Slide = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var CLICKABLE_ELS = ['INPUT', 'SELECT', 'BUTTON', 'A', 'TEXTAREA'];
+
+var ClickNav = function () {
+  /**
+   * ClickNav plugin that allows to click on the page to get to the next slide.
+   * @param {WebSlides} wsInstance The WebSlides instance
+   */
+  function ClickNav(wsInstance) {
+    _classCallCheck(this, ClickNav);
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.ws_ = wsInstance;
+
+    if (wsInstance.changeOnClick_) {
+      this.ws_.el.addEventListener('click', this.onClick_.bind(this));
+    }
+  }
+
+  /**
+   * Reacts to the click event. It will go to the next slide unless the element
+   * has a data-prevent-nav attribute or is on the list of CLICKABLE_ELS.
+   * @param {MouseEvent} event The click event.
+   * @private
+   */
+
+
+  _createClass(ClickNav, [{
+    key: 'onClick_',
+    value: function onClick_(event) {
+      if (CLICKABLE_ELS.indexOf(event.target.tagName) < 0 && typeof event.target.dataset.preventNav === 'undefined') {
+        this.ws_.goNext();
+      }
+    }
+  }]);
+
+  return ClickNav;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = ClickNav;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_keys__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -907,7 +969,7 @@ var Grid = function () {
 /* harmony default export */ __webpack_exports__["a"] = Grid;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1007,7 +1069,7 @@ var Hash = function () {
 /* harmony default export */ __webpack_exports__["a"] = Hash;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1078,7 +1140,7 @@ var Keyboard = function () {
 /* harmony default export */ __webpack_exports__["a"] = Keyboard;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1230,16 +1292,18 @@ var Navigation = function () {
 /* harmony default export */ __webpack_exports__["a"] = Navigation;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__grid__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hash__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__keyboard__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__navigation__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__scroll__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__touch__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__click_nav__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__grid__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hash__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__keyboard__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navigation__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__scroll__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__touch__ = __webpack_require__(12);
+
 
 
 
@@ -1248,16 +1312,17 @@ var Navigation = function () {
 
 
 /* harmony default export */ __webpack_exports__["a"] = {
-  Grid: __WEBPACK_IMPORTED_MODULE_0__grid__["a" /* default */],
-  Hash: __WEBPACK_IMPORTED_MODULE_1__hash__["a" /* default */],
-  Keyboard: __WEBPACK_IMPORTED_MODULE_2__keyboard__["a" /* default */],
-  Navigation: __WEBPACK_IMPORTED_MODULE_3__navigation__["a" /* default */],
-  Scroll: __WEBPACK_IMPORTED_MODULE_4__scroll__["a" /* default */],
-  Touch: __WEBPACK_IMPORTED_MODULE_5__touch__["a" /* default */]
+  ClickNav: __WEBPACK_IMPORTED_MODULE_0__click_nav__["a" /* default */],
+  Grid: __WEBPACK_IMPORTED_MODULE_1__grid__["a" /* default */],
+  Hash: __WEBPACK_IMPORTED_MODULE_2__hash__["a" /* default */],
+  Keyboard: __WEBPACK_IMPORTED_MODULE_3__keyboard__["a" /* default */],
+  Navigation: __WEBPACK_IMPORTED_MODULE_4__navigation__["a" /* default */],
+  Scroll: __WEBPACK_IMPORTED_MODULE_5__scroll__["a" /* default */],
+  Touch: __WEBPACK_IMPORTED_MODULE_6__touch__["a" /* default */]
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1283,37 +1348,91 @@ var Scroll = function () {
      * @private
      */
     this.ws_ = wsInstance;
-
+    /**
+     * Where the scroll is going to happen. The WebSlides element.
+     * @type {Element}
+     * @private
+     */
     this.scrollContainer_ = wsInstance.el;
+    /**
+     * Whether movement is happening up or down.
+     * @type {boolean}
+     * @private
+     */
     this.isGoingUp_ = false;
+    /**
+     * Whether movement is happening left or right.
+     * @type {boolean}
+     * @private
+     */
+    this.isGoingLeft_ = false;
+    /**
+     * Timeout id holder.
+     * @type {?number}
+     * @private
+     */
+    this.timeout_ = null;
 
-    if (this.ws_.isVertical && !__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
+    if (!__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
       this.scrollContainer_.addEventListener('wheel', this.onMouseWheel_.bind(this));
+
+      if (!wsInstance.isVertical) {
+        wsInstance.el.addEventListener('ws:slide-change', this.onSlideChange_.bind(this));
+      }
     }
   }
 
   /**
-   * Reacts to the wheel event. Detects whether is going up or down and decides
-   * if it needs to move the slide based on the amount of delta.
-   * @param {WheelEvent} event The Wheel Event.
+   * When the slides change, set an inner timeout to avoid prematurely
+   * changing to the next slide again.
    * @private
    */
 
 
   _createClass(Scroll, [{
+    key: 'onSlideChange_',
+    value: function onSlideChange_() {
+      var _this = this;
+
+      this.timeout_ = setTimeout(function () {
+        _this.timeout_ = null;
+      }, 400);
+    }
+
+    /**
+     * Reacts to the wheel event. Detects whether is going up or down and decides
+     * if it needs to move the slide based on the amount of delta.
+     * @param {WheelEvent} event The Wheel Event.
+     * @private
+     */
+
+  }, {
     key: 'onMouseWheel_',
     value: function onMouseWheel_(event) {
-      if (this.ws_.isMoving) {
+      if (this.ws_.isMoving || this.timeout_) {
         event.preventDefault();
         return;
       }
 
-      var wheelDelta = event.deltaY;
+      var wheelDeltaY = event.deltaY,
+          wheelDeltaX = event.deltaX;
 
-      this.isGoingUp_ = wheelDelta < 0;
+      this.isGoingUp_ = wheelDeltaY < 0;
+      this.isGoingLeft_ = wheelDeltaX < 0;
 
-      if (Math.abs(wheelDelta) >= MIN_WHEEL_DELTA) {
-        if (this.isGoingUp_) {
+      // If we're mainly moving horizontally, prevent default
+      if (Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY)) {
+        if (!this.ws_.isVertical) {
+          event.preventDefault();
+        } else {
+          // If we're moving horizontally but this is vertical, return to avoid
+          // unwanted navigation.
+          return;
+        }
+      }
+
+      if (Math.abs(wheelDeltaY) >= MIN_WHEEL_DELTA || Math.abs(wheelDeltaX) >= MIN_WHEEL_DELTA) {
+        if (this.isGoingUp_ || this.isGoingLeft_) {
           this.ws_.goPrev();
         } else {
           this.ws_.goNext();
@@ -1331,7 +1450,7 @@ var Scroll = function () {
 ;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1511,7 +1630,7 @@ var Touch = function () {
 ;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1554,7 +1673,7 @@ var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 /* harmony default export */ __webpack_exports__["a"] = WSCustomEvent;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1579,11 +1698,11 @@ function linear(p) {
 /* harmony default export */ __webpack_exports__["a"] = { swing: swing, linear: linear };
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(14);
 /* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
 
 
@@ -1630,7 +1749,7 @@ function scrollTo(y) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
