@@ -55,7 +55,7 @@ export default class Scroll {
    * @private
    */
   onSlideChange_() {
-    this.timeout_ = setTimeout(() => { this.timeout_ = null; }, 400);
+    this.timeout_ = setTimeout(() => { this.timeout_ = null; }, 500);
   }
 
   /**
