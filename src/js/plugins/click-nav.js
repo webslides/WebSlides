@@ -1,6 +1,7 @@
 const CLICKABLE_ELS = [
   'INPUT',
   'SELECT',
+  'OPTION',
   'BUTTON',
   'A',
   'TEXTAREA'
