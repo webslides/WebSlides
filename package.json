@@ -12,7 +12,16 @@
     "presentation",
     "css"
   ],
-  "author": "Jose Luís Antúnez",
+  "author": "Jose Luís Antúnez <jlantunez@gmail.com>",
+  "contributors": [
+    {
+      "name": "Luís Sacristán"
+    },
+    {
+      "name": "Antonio Laguna",
+      "email": "a.laguna@funcion13.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jlantunez/webslides/issues"
