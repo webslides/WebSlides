@@ -19,7 +19,8 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Navigation (horizontal and vertical sliding): touchpad, keyboard shortcuts, and swipe.
 - Slide counter.
 - Permalinks: go to a specific slide.
-- Autoslide
+- Autoslide.
+- Click to nav. [Read more](docs/click-to-nav.md)!
 - Simple CSS alignments. Put content wherever you want (vertical centering...)
 - 40+ components: background images/videos, quotes, cards, covers...
 - Flexible blocks with auto-fill and equal height.
