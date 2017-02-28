@@ -43,22 +43,6 @@ export default class DOM {
   }
 
   /**
-   * Locks the scroll on the document by setting the HTML to have a hidden
-   * overflow.
-   */
-  static lockScroll() {
-    document.documentElement.style.overflow = 'hidden';
-  }
-
-  /**
-   * Unlocks the scroll on the document by setting the HTML to have an auto
-   * overflow.
-   */
-  static unlockScroll() {
-    document.documentElement.style.overflow = 'auto';
-  }
-
-  /**
    * Fires a custom event on the given target.
    * @param {Element} target The target of the event.
    * @param {string} eventType The event type.

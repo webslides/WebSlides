@@ -24,6 +24,7 @@ WebSlides constructor accepts an object with options.
 | Param | Type | Default | Description |
 |-----------|----------------|-----------|-------------------------------------------------------------------------------|
 | `autoslide` | `number` or `boolean` | `false` | Amount of milliseconds to wait to go to next slide automatically. |
+| `changeOnClick` | `boolean` | `false` | If true, clicking on the page will go to the next slide unless it's a clickable element. See [ClickToNav docs](./click-to-nav.md) for more info. |
 
 
 ```javascript
