@@ -496,11 +496,13 @@ pre code {
   padding: 0;
 }
 
+
 /*=== 1.2 Animations ================
-Just 3 basic animations:
-.fadeIn, .fadeInUp, .zoomIn.
+Just 5 basic animations:
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, slideInRight  
 https://github.com/daneden/animate.css*/
 
+/*-- fadeIn -- */
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -532,6 +534,7 @@ https://github.com/daneden/animate.css*/
   animation: fadeIn 1s;
 }
 
+/*-- fadeInUp -- */
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -561,12 +564,11 @@ https://github.com/daneden/animate.css*/
 }
 
 .fadeInUp {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation: fadeInUp 1s;
+  animation: fadeInUp 1s;
 }
 
+/*-- zoomIn -- */
 @-webkit-keyframes zoomIn {
   from {
     opacity: 0;
@@ -594,6 +596,42 @@ https://github.com/daneden/animate.css*/
 .zoomIn {
   -webkit-animation: zoomIn 1s;
   animation: zoomIn 1s;
+}
+
+/*-- slideInLeft -- */
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  -webkit-animation: slideInLeft 1s;
+  animation: slideInLeft 1s;
+}
+
+/*-- slideInRight -- */
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation: slideInRight 1s;
+  animation: slideInRight 1s;
 }
 
 /* Animated Background (Matrix) */
@@ -627,7 +665,6 @@ https://github.com/daneden/animate.css*/
   -webkit-animation-duration: 5s;
   animation-duration: 5s;
 }
-
 
 /* Transitions */
 
