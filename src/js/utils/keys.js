@@ -1,6 +1,8 @@
 const Keys = {
   ENTER: 13,
   SPACE: 32,
+  RE_PAGE: 33,
+  AV_PAGE: 34,
   LEFT: 37,
   UP: 38,
   RIGHT: 39,

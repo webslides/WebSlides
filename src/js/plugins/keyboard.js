@@ -24,22 +24,26 @@ export default class Keyboard {
   onKeyPress_(event) {
     let method;
 
-    if (event.which === Keys.SPACE) {
-      method = this.ws_.goNext;
-    } else {
-      if (this.ws_.isVertical) {
-        if (event.which === Keys.DOWN) {
-          method = this.ws_.goNext;
-        } else if (event.which === Keys.UP) {
-          method = this.ws_.goPrev;
-        }
-      } else {
-        if (event.which === Keys.RIGHT) {
-          method = this.ws_.goNext;
-        } else if (event.which === Keys.LEFT) {
-          method = this.ws_.goPrev;
-        }
-      }
+    switch (event.which) {
+      case Keys.AV_PAGE:
+      case Keys.SPACE:
+        method = this.ws_.goNext;
+        break;
+      case Keys.RE_PAGE:
+        method = this.ws_.goPrev;
+        break;
+      case Keys.DOWN:
+        method = this.ws_.isVertical ? this.ws_.goNext : null;
+        break;
+      case Keys.UP:
+        method = this.ws_.isVertical ? this.ws_.goPrev : null;
+        break;
+      case Keys.LEFT:
+        method = !this.ws_.isVertical ? this.ws_.goPrev : null;
+        break;
+      case Keys.RIGHT:
+        method = !this.ws_.isVertical ? this.ws_.goNext : null;
+        break;
     }
 
     if (method) {
