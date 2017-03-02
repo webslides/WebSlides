@@ -1,3 +1,12 @@
+# 1.2.0 (2017-03-02)
+
+## New Features
+
+- [[#48](https://github.com/jlantunez/webslides/issues/48)] Allows to navigate with AvPag & RePag to allow presentation devices to work.
+- [[#49](https://github.com/jlantunez/webslides/issues/49)] Allowing to go to first and last slides by using home and end keys respectively.
+- [[#50](https://github.com/jlantunez/webslides/issues/50)] Using the keyboard on inputs and editable content won't trigger any events that might cause navigation.
+- [[#47](https://github.com/jlantunez/webslides/issues/47)] Allowing options to be configured. [Read More](/docs/technical.md#options).
+
 # 1.1.0 (2017-02-28)
 
 ## Bugfixes
