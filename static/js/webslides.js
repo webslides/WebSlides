@@ -1,6 +1,6 @@
 /*!
  * Name: WebSlides
- * Version: 1.2.0
+ * Version: 1.2.1
  * Date: 2017-03-02
  * Description: Making HTML presentations easy
  * URL: https://github.com/jlantunez/webslides#readme
