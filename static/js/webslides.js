@@ -553,7 +553,7 @@ var WebSlides = function () {
     value: function scrollTransitionToSlide_(isMovingForward, nextSlide, callback) {
       var _this2 = this;
 
-      this.el.style.overflow = 'none';
+      this.el.style.overflow = 'hidden';
 
       if (!isMovingForward) {
         nextSlide.moveBeforeFirst();

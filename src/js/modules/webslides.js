@@ -208,7 +208,7 @@ export default class WebSlides {
    * @see scrollTo
    */
   scrollTransitionToSlide_(isMovingForward, nextSlide, callback) {
-    this.el.style.overflow = 'none';
+    this.el.style.overflow = 'hidden';
 
     if (!isMovingForward) {
       nextSlide.moveBeforeFirst();
