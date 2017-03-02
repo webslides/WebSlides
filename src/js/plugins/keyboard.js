@@ -25,6 +25,18 @@ export default class Keyboard {
     let method;
     let argument;
 
+    // Check if there's a focused element that might use the keyboard.
+    if (document.activeElement) {
+      const isContentEditable = document.activeElement
+            .contentEditable !== 'inherit';
+      const isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA']
+            .indexOf(document.activeElement.tagName) > -1;
+
+      if (isInput || isContentEditable) {
+        return;
+      }
+    }
+
     switch (event.which) {
       case Keys.AV_PAGE:
       case Keys.SPACE:
