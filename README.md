@@ -16,7 +16,7 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 
 ## Features
 
-- Navigation (horizontal and vertical sliding): touchpad, keyboard shortcuts, and swipe.
+- Navigation (horizontal and vertical sliding): remote presenters, touchpad, keyboard shortcuts, and swipe.
 - Slide counter.
 - Permalinks: go to a specific slide.
 - Autoslide.
