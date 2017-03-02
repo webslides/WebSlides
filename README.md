@@ -34,6 +34,7 @@ There's a handful of keys that can be used to achieve navigation within WebSlide
 * `←`: If WebSlides is not vertical, it will go to the previous slide.
 * `→`: If WebSlides is not vertical, it will go to the next slide.
 * `↑`: If WebSlides is vertical, it will go to the previous slide.
+* `↓`: If WebSlides is vertical, it will go to the next slide.
 * `Page Up`: Go to the previous slide.
 * `Page Down`: Go to the next slide.
 * `Space`: Go to the next slide.
