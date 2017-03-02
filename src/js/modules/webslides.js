@@ -21,13 +21,23 @@ const PLUGINS = {
 export default class WebSlides {
   /**
    * Options for WebSlides
-   * @param {number|boolean} autoslide Is false by default. If a number is
-   * @param {boolean} changeOnClick Is false by default. If true, it will allow
+   * @param {number|boolean} autoslide If a number is provided, it will allow
+   * autosliding by said amount of miliseconds.
+   * @param {boolean} changeOnClick If true, it will allow
    * clicking on any place to change the slide.
+   * @param {number} minWheelDelta Controls the amount of needed scroll to
+   * trigger navigation.
+   * @param {number} scrollWait Controls the amount of time to wait till
+   * navigation can occur again with scroll.
+   * @param {number} slideOffset Controls the amount of needed touch delta to
+   * trigger navigation.
    */
   constructor({
     autoslide = false,
-    changeOnClick = false
+    changeOnClick = false,
+    minWheelDelta = 40,
+    scrollWait = 450,
+    slideOffset = 50
   } = {}) {
     /**
      * WebSlide element.
@@ -79,18 +89,16 @@ export default class WebSlides {
      */
     this.interval_ = null;
     /**
-     * Amount of time to wait to go to next slide automatically or false to
-     * disable the feature.
-     * @type {boolean|number}
-     * @private
+     * Options dictionary.
+     * @type {Object}
      */
-    this.autoslide_ = autoslide;
-    /**
-     * Whether navigation should initiate on click or not.
-     * @type {boolean}
-     * @private
-     */
-    this.changeOnClick_ = changeOnClick;
+    this.options = {
+      autoslide,
+      changeOnClick,
+      minWheelDelta,
+      scrollWait,
+      slideOffset
+    };
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');
@@ -164,7 +172,9 @@ export default class WebSlides {
    * scroll animations.
    */
   goToSlide(slideI, forward = null) {
-    if (this.isValidIndexSlide_(slideI) && !this.isMoving) {
+    if (this.isValidIndexSlide_(slideI) &&
+        !this.isMoving &&
+        this.currentSlideI_ !== slideI) {
       this.isMoving = true;
       let isMovingForward = false;
 
@@ -352,7 +362,7 @@ export default class WebSlides {
    * automatically.
    */
   play(time) {
-    time = time || this.autoslide_;
+    time = time || this.options.autoslide;
 
     if (!this.interval_ && typeof time === 'number' && time > 0) {
       this.interval_ = setInterval(this.goNext.bind(this), time);

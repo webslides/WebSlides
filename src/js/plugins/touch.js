@@ -13,8 +13,6 @@ const EVENTS = {
   }
 };
 
-const SLIDE_OFFSET = 50;
-
 export default class Touch {
   /**
    * @param {WebSlides} wsInstance The WebSlides instance
@@ -116,9 +114,9 @@ export default class Touch {
 
     // It's an horizontal drag
     if (Math.abs(diffX) > Math.abs(diffY)) {
-      if(diffX < -SLIDE_OFFSET) {
+      if (diffX < -this.ws_.options.slideOffset) {
         this.ws_.goPrev();
-      } else if(diffX > SLIDE_OFFSET) {
+      } else if(diffX > this.ws_.options.slideOffset) {
         this.ws_.goNext();
       }
     }

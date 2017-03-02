@@ -19,7 +19,7 @@ export default class ClickNav {
      */
     this.ws_ = wsInstance;
 
-    if (wsInstance.changeOnClick_) {
+    if (wsInstance.options.changeOnClick) {
       this.ws_.el.addEventListener('click', this.onClick_.bind(this));
     }
   }

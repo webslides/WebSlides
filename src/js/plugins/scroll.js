@@ -1,7 +1,5 @@
 import MobileDetector from '../utils/mobile-detector';
 
-const MIN_WHEEL_DELTA = 40;
-
 export default class Scroll {
   /**
    * Scroll handler for the WebSlides.
@@ -55,7 +53,9 @@ export default class Scroll {
    * @private
    */
   onSlideChange_() {
-    this.timeout_ = setTimeout(() => { this.timeout_ = null; }, 450);
+    this.timeout_ = setTimeout(
+        () => { this.timeout_ = null; },
+        this.ws_.options.scrollWait);
   }
 
   /**
@@ -88,8 +88,8 @@ export default class Scroll {
       }
     }
 
-    if (Math.abs(wheelDeltaY) >= MIN_WHEEL_DELTA ||
-        Math.abs(wheelDeltaX) >= MIN_WHEEL_DELTA) {
+    if (Math.abs(wheelDeltaY) >= this.ws_.options.minWheelDelta ||
+        Math.abs(wheelDeltaX) >= this.ws_.options.minWheelDelta) {
       if ((isHorizontalMovement && this.isGoingLeft_) ||
           (!isHorizontalMovement && this.isGoingUp_)) {
         this.ws_.goPrev();
