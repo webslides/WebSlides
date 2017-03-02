@@ -23,6 +23,7 @@ export default class Keyboard {
    */
   onKeyPress_(event) {
     let method;
+    let argument;
 
     switch (event.which) {
       case Keys.AV_PAGE:
@@ -31,6 +32,14 @@ export default class Keyboard {
         break;
       case Keys.RE_PAGE:
         method = this.ws_.goPrev;
+        break;
+      case Keys.HOME:
+        method = this.ws_.goToSlide;
+        argument = 0;
+        break;
+      case Keys.END:
+        method = this.ws_.goToSlide;
+        argument = this.ws_.maxSlide_ - 1;
         break;
       case Keys.DOWN:
         method = this.ws_.isVertical ? this.ws_.goNext : null;
@@ -47,7 +56,7 @@ export default class Keyboard {
     }
 
     if (method) {
-      method.call(this.ws_);
+      method.call(this.ws_, argument);
     }
   }
 }
