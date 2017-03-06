@@ -41,13 +41,14 @@
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "webpack-merge": "^4.0.0"
   },
   "scripts": {
     "prebuild": "rimraf static/js/webslide*",
     "build": "npm-run-all --parallel build:*",
     "build:main": "webpack",
-    "build:main.min": "webpack --output-filename [name].min.js -p",
+    "build:main.min": "webpack --output-filename [name].min.js -p --config ./webpack.config.prod.babel.js",
     "dev": "webpack-dev-server"
   },
   "babel": {

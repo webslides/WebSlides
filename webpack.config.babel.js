@@ -17,6 +17,7 @@ module.exports = {
     contentBase: __dirname,
     host: '0.0.0.0'
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -28,7 +29,7 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader?url=false!postcss-loader!sass-loader'
+          use: 'css-loader?url=false!postcss-loader!sass-loader?sourceMap'
         }),
       }
     ]
