@@ -1,4 +1,3 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 const src = path.join(__dirname, 'src');
@@ -17,24 +16,13 @@ module.exports = {
     contentBase: __dirname,
     host: '0.0.0.0'
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
         include: src
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?url=false!postcss-loader!sass-loader?sourceMap'
-        }),
       }
     ]
-  },
-  plugins: [
-    new ExtractTextPlugin("../css/webslides.css")
-  ]
+  }
 };

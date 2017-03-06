@@ -1,10 +1,7 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
-const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const src = path.join(__dirname, 'src');
-
-let config = {
+let prod = {
   module: {
     rules: [
       {
@@ -21,4 +18,4 @@ let config = {
   ]
 };
 
-module.exports = merge(require('./webpack.config.babel'), config);
+module.exports = merge(require('./webpack.config.common'), prod);
