@@ -50,7 +50,7 @@
     "build": "npm-run-all --parallel build:*",
     "build:main": "webpack --config ./webpack.config.dev.js",
     "build:main.min": "webpack --output-filename [name].min.js -p --config ./webpack.config.prod.js",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --config ./webpack.config.dev.js"
   },
   "babel": {
     "presets": [

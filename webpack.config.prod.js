@@ -14,7 +14,7 @@ let prod = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin("../css/webslides.min.css")
+    new ExtractTextPlugin('../css/webslides.min.css')
   ]
 };
 
