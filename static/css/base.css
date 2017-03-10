@@ -1240,8 +1240,7 @@ footer img {
   vertical-align: middle;
 }
 
-header,
-section footer {
+header, footer {
   position: absolute;
   top: 0;
   left: 0;
@@ -1249,7 +1248,7 @@ section footer {
   z-index: 3;
 }
 
-section footer {
+footer {
   top: auto;
   bottom: 0;
 }
