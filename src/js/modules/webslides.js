@@ -18,6 +18,10 @@ const PLUGINS = {
   'touch': Plugins.Touch
 };
 
+
+/**
+ * WebSlides module.
+ */
 export default class WebSlides {
   /**
    * Options for WebSlides
@@ -144,8 +148,8 @@ export default class WebSlides {
    */
   createPlugins_() {
     Object.keys(PLUGINS).forEach(pluginName => {
-      const pluginCto = PLUGINS[pluginName];
-      this.plugins[pluginName] = new pluginCto(this);
+      const PluginCto = PLUGINS[pluginName];
+      this.plugins[pluginName] = new PluginCto(this);
     });
   }
 
@@ -232,7 +236,9 @@ export default class WebSlides {
       }
 
       this.el.style.overflow = 'auto';
-      setTimeout(() => { callback.call(this, nextSlide); }, 150);
+      setTimeout(() => {
+        callback.call(this, nextSlide);
+      }, 150);
     });
   }
 

@@ -1,5 +1,8 @@
 import Keys from '../utils/keys';
 
+/**
+ * Grid plugin.
+ */
 export default class Grid {
   /**
    * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
@@ -20,7 +23,7 @@ export default class Grid {
 
     style.type = 'text/css';
 
-    if (style.styleSheet){
+    if (style.styleSheet) {
       style.styleSheet.cssText = CSS;
     } else {
       style.appendChild(document.createTextNode(CSS));

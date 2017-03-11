@@ -1,5 +1,8 @@
 import Keys from '../utils/keys';
 
+/**
+ * Keyboard plugin.
+ */
 export default class Keyboard {
   /**
    * Keyboard interaction plugin.

@@ -1,5 +1,9 @@
 const UA = window.navigator.userAgent;
 
+/**
+ * Mobile detector helper class. Tests the User Agent to see if we're, likely,
+ * on a mobile device.
+ */
 export default class MobileDetector {
   /**
    * Whether the device is Android or not.
