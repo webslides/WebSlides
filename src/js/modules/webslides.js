@@ -99,6 +99,11 @@ export default class WebSlides {
       scrollWait,
       slideOffset
     };
+    /**
+     * Initialisation flag.
+     * @type {boolean}
+     */
+    this.initialised = false;
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');
@@ -150,6 +155,7 @@ export default class WebSlides {
    * @fires WebSlide#ws:init
    */
   onInit_() {
+    this.initialised = true;
     DOM.fireEvent(this.el, 'ws:init');
   }
 
@@ -231,7 +237,8 @@ export default class WebSlides {
   }
 
   /**
-   * Transitions to a slide, without doing the scroll animation.
+   * Transitions to a slide, without doing the scroll animation. If the page is
+   * already initialised and on mobile device, it will do a slide animation.
    * @param {boolean} isMovingForward Whether we're going forward or backwards.
    * @param {Slide} nextSlide Next slide.
    * @param {Function} callback Callback to be called upon finishing. This is a
@@ -240,9 +247,11 @@ export default class WebSlides {
    */
   transitionToSlide_(isMovingForward, nextSlide, callback) {
     scrollTo(0, 0);
+    let className = 'slideInRight';
 
     if (!isMovingForward) {
       nextSlide.moveBeforeFirst();
+      className = 'slideInLeft';
     }
 
     if (this.currentSlide_) {
@@ -254,7 +263,19 @@ export default class WebSlides {
     }
 
     nextSlide.show();
-    callback.call(this, nextSlide);
+
+    if (this.initialised &&
+        this.plugins.touch &&
+        this.plugins.touch.isEnabled) {
+      DOM.once(nextSlide.el, DOM.getAnimationEvent(), () => {
+        nextSlide.el.classList.remove(className);
+        callback.call(this, nextSlide);
+      });
+
+      nextSlide.el.classList.add(className);
+    } else {
+      callback.call(this, nextSlide);
+    }
   }
 
   /**

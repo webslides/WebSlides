@@ -499,7 +499,7 @@ pre code {
 
 /*=== 1.2 Animations ================
 Just 5 basic animations:
-.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, slideInRight  
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, slideInRight
 https://github.com/daneden/animate.css*/
 
 /*-- fadeIn -- */
@@ -614,6 +614,7 @@ https://github.com/daneden/animate.css*/
 .slideInLeft {
   -webkit-animation: slideInLeft 1s;
   animation: slideInLeft 1s;
+  animation-fill-mode: both;
 }
 
 /*-- slideInRight -- */
@@ -632,6 +633,7 @@ https://github.com/daneden/animate.css*/
 .slideInRight {
   -webkit-animation: slideInRight 1s;
   animation: slideInRight 1s;
+  animation-fill-mode: both;
 }
 
 /* Animated Background (Matrix) */
