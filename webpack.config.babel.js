@@ -1,6 +1,8 @@
+const SmartBannerPlugin = require('smart-banner-webpack-plugin');
 const path = require('path');
 
 const src = path.join(__dirname, 'src');
+const pkg = require('./package.json');
 
 module.exports = {
   context: src,
@@ -24,5 +26,12 @@ module.exports = {
         include: src
       }
     ]
-  }
+  },
+  plugins: [
+    new SmartBannerPlugin({
+      banner: `Name: WebSlides\nVersion: ${pkg.version}\nDate: ${new Date().toISOString().slice(0,10)}\nDescription: ${pkg.description}\nURL: ${pkg.homepage}\nCredits: @jlantunez, @LuisSacristan, @Belelros`,
+      raw: false,
+      entryOnly: true
+    })
+  ],
 };

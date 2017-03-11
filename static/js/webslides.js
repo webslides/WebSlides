@@ -1,3 +1,11 @@
+/*!
+ * Name: WebSlides
+ * Version: 1.2.1
+ * Date: 2017-03-02
+ * Description: Making HTML presentations easy
+ * URL: https://github.com/jlantunez/webslides#readme
+ * Credits: @jlantunez, @LuisSacristan, @Belelros
+ */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -182,6 +190,10 @@ var DOM = function () {
 var Keys = {
   ENTER: 13,
   SPACE: 32,
+  RE_PAGE: 33,
+  AV_PAGE: 34,
+  END: 35,
+  HOME: 36,
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
@@ -325,16 +337,29 @@ var PLUGINS = {
 var WebSlides = function () {
   /**
    * Options for WebSlides
-   * @param {number|boolean} autoslide Is false by default. If a number is
-   * @param {boolean} changeOnClick Is false by default. If true, it will allow
+   * @param {number|boolean} autoslide If a number is provided, it will allow
+   * autosliding by said amount of miliseconds.
+   * @param {boolean} changeOnClick If true, it will allow
    * clicking on any place to change the slide.
+   * @param {number} minWheelDelta Controls the amount of needed scroll to
+   * trigger navigation.
+   * @param {number} scrollWait Controls the amount of time to wait till
+   * navigation can occur again with scroll.
+   * @param {number} slideOffset Controls the amount of needed touch delta to
+   * trigger navigation.
    */
   function WebSlides() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref$autoslide = _ref.autoslide,
         autoslide = _ref$autoslide === undefined ? false : _ref$autoslide,
         _ref$changeOnClick = _ref.changeOnClick,
-        changeOnClick = _ref$changeOnClick === undefined ? false : _ref$changeOnClick;
+        changeOnClick = _ref$changeOnClick === undefined ? false : _ref$changeOnClick,
+        _ref$minWheelDelta = _ref.minWheelDelta,
+        minWheelDelta = _ref$minWheelDelta === undefined ? 40 : _ref$minWheelDelta,
+        _ref$scrollWait = _ref.scrollWait,
+        scrollWait = _ref$scrollWait === undefined ? 450 : _ref$scrollWait,
+        _ref$slideOffset = _ref.slideOffset,
+        slideOffset = _ref$slideOffset === undefined ? 50 : _ref$slideOffset;
 
     _classCallCheck(this, WebSlides);
 
@@ -388,18 +413,16 @@ var WebSlides = function () {
      */
     this.interval_ = null;
     /**
-     * Amount of time to wait to go to next slide automatically or false to
-     * disable the feature.
-     * @type {boolean|number}
-     * @private
+     * Options dictionary.
+     * @type {Object}
      */
-    this.autoslide_ = autoslide;
-    /**
-     * Whether navigation should initiate on click or not.
-     * @type {boolean}
-     * @private
-     */
-    this.changeOnClick_ = changeOnClick;
+    this.options = {
+      autoslide: autoslide,
+      changeOnClick: changeOnClick,
+      minWheelDelta: minWheelDelta,
+      scrollWait: scrollWait,
+      slideOffset: slideOffset
+    };
 
     if (!this.el) {
       throw new Error('Couldn\'t find the webslides container!');
@@ -494,7 +517,7 @@ var WebSlides = function () {
     value: function goToSlide(slideI) {
       var forward = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-      if (this.isValidIndexSlide_(slideI) && !this.isMoving) {
+      if (this.isValidIndexSlide_(slideI) && !this.isMoving && this.currentSlideI_ !== slideI) {
         this.isMoving = true;
         var isMovingForward = false;
 
@@ -530,7 +553,7 @@ var WebSlides = function () {
     value: function scrollTransitionToSlide_(isMovingForward, nextSlide, callback) {
       var _this2 = this;
 
-      this.el.style.overflow = 'none';
+      this.el.style.overflow = 'hidden';
 
       if (!isMovingForward) {
         nextSlide.moveBeforeFirst();
@@ -704,7 +727,7 @@ var WebSlides = function () {
      * automatically.
      */
     value: function play(time) {
-      time = time || this.autoslide_;
+      time = time || this.options.autoslide;
 
       if (!this.interval_ && typeof time === 'number' && time > 0) {
         this.interval_ = setInterval(this.goNext.bind(this), time);
@@ -877,7 +900,7 @@ var ClickNav = function () {
      */
     this.ws_ = wsInstance;
 
-    if (wsInstance.changeOnClick_) {
+    if (wsInstance.options.changeOnClick) {
       this.ws_.el.addEventListener('click', this.onClick_.bind(this));
     }
   }
@@ -1109,27 +1132,50 @@ var Keyboard = function () {
     key: 'onKeyPress_',
     value: function onKeyPress_(event) {
       var method = void 0;
+      var argument = void 0;
 
-      if (event.which === __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].SPACE) {
-        method = this.ws_.goNext;
-      } else {
-        if (this.ws_.isVertical) {
-          if (event.which === __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].DOWN) {
-            method = this.ws_.goNext;
-          } else if (event.which === __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].UP) {
-            method = this.ws_.goPrev;
-          }
-        } else {
-          if (event.which === __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].RIGHT) {
-            method = this.ws_.goNext;
-          } else if (event.which === __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].LEFT) {
-            method = this.ws_.goPrev;
-          }
+      // Check if there's a focused element that might use the keyboard.
+      if (document.activeElement) {
+        var isContentEditable = document.activeElement.contentEditable !== 'inherit';
+        var isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA'].indexOf(document.activeElement.tagName) > -1;
+
+        if (isInput || isContentEditable) {
+          return;
         }
       }
 
+      switch (event.which) {
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].AV_PAGE:
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].SPACE:
+          method = this.ws_.goNext;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].RE_PAGE:
+          method = this.ws_.goPrev;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].HOME:
+          method = this.ws_.goToSlide;
+          argument = 0;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].END:
+          method = this.ws_.goToSlide;
+          argument = this.ws_.maxSlide_ - 1;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].DOWN:
+          method = this.ws_.isVertical ? this.ws_.goNext : null;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].UP:
+          method = this.ws_.isVertical ? this.ws_.goPrev : null;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].LEFT:
+          method = !this.ws_.isVertical ? this.ws_.goPrev : null;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].RIGHT:
+          method = !this.ws_.isVertical ? this.ws_.goNext : null;
+          break;
+      }
+
       if (method) {
-        method.call(this.ws_);
+        method.call(this.ws_, argument);
       }
     }
   }]);
@@ -1333,8 +1379,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
-var MIN_WHEEL_DELTA = 40;
-
 var Scroll = function () {
   /**
    * Scroll handler for the WebSlides.
@@ -1396,7 +1440,7 @@ var Scroll = function () {
 
       this.timeout_ = setTimeout(function () {
         _this.timeout_ = null;
-      }, 450);
+      }, this.ws_.options.scrollWait);
     }
 
     /**
@@ -1433,7 +1477,7 @@ var Scroll = function () {
         }
       }
 
-      if (Math.abs(wheelDeltaY) >= MIN_WHEEL_DELTA || Math.abs(wheelDeltaX) >= MIN_WHEEL_DELTA) {
+      if (Math.abs(wheelDeltaY) >= this.ws_.options.minWheelDelta || Math.abs(wheelDeltaX) >= this.ws_.options.minWheelDelta) {
         if (isHorizontalMovement && this.isGoingLeft_ || !isHorizontalMovement && this.isGoingUp_) {
           this.ws_.goPrev();
         } else {
@@ -1475,8 +1519,6 @@ var EVENTS = {
     END: 'pointerup'
   }
 };
-
-var SLIDE_OFFSET = 50;
 
 var Touch = function () {
   /**
@@ -1590,9 +1632,9 @@ var Touch = function () {
 
       // It's an horizontal drag
       if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX < -SLIDE_OFFSET) {
+        if (diffX < -this.ws_.options.slideOffset) {
           this.ws_.goPrev();
-        } else if (diffX > SLIDE_OFFSET) {
+        } else if (diffX > this.ws_.options.slideOffset) {
           this.ws_.goNext();
         }
       }

@@ -14,9 +14,9 @@ Simply choose a demo and customize it in minutes. Latest version: [webslides.tv/
 ### Why WebSlides?
 Good karma and productivity. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
 
-### Features
+## Features
 
-- Navigation (horizontal and vertical sliding): touchpad, keyboard shortcuts, and swipe.
+- Navigation (horizontal and vertical sliding): remote presenters, touchpad, keyboard shortcuts, and swipe.
 - Slide counter.
 - Permalinks: go to a specific slide.
 - Autoslide.
@@ -26,6 +26,20 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Flexible blocks with auto-fill and equal height.
 - Fonts: Roboto, Maitree (Serif), and San Francisco.
 - Vertical rhythm (use multiples of 8).
+
+### Key Navigation
+
+There's a handful of keys that can be used to achieve navigation within WebSlides. Here's the list:
+
+* `←`: If WebSlides is not vertical, it will go to the previous slide.
+* `→`: If WebSlides is not vertical, it will go to the next slide.
+* `↑`: If WebSlides is vertical, it will go to the previous slide.
+* `↓`: If WebSlides is vertical, it will go to the next slide.
+* `Page Up`: Go to the previous slide.
+* `Page Down`: Go to the next slide.
+* `Space`: Go to the next slide.
+* `Home`: Go to the first slide.
+* `End`: Go to the last slide.
 
 ## Markup
 

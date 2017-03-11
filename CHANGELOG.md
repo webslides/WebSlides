@@ -1,3 +1,18 @@
+# 1.2.1 (2017-03-02)
+
+## Bugfixes
+
+- Scrollbar showing in Firefox
+
+# 1.2.0 (2017-03-02)
+
+## New Features
+
+- [[#48](https://github.com/jlantunez/webslides/issues/48)] Allows to navigate with AvPag & RePag to allow presentation devices to work.
+- [[#49](https://github.com/jlantunez/webslides/issues/49)] Allowing to go to first and last slides by using home and end keys respectively.
+- [[#50](https://github.com/jlantunez/webslides/issues/50)] Using the keyboard on inputs and editable content won't trigger any events that might cause navigation.
+- [[#47](https://github.com/jlantunez/webslides/issues/47)] Allowing options to be configured. [Read More](/docs/technical.md#options).
+
 # 1.1.0 (2017-02-28)
 
 ## Bugfixes
@@ -20,19 +35,19 @@ It's also possible to scroll horizontally on horizontal presentations to move fo
 # 1.0.0 (2017-02-23)
 
 This release is a special one since it sets up in the path of a better development environment. Although it's far from
-perfect, it's a solid beginning. 
+perfect, it's a solid beginning.
 
-All the code has been migrated from **jQuery** with ES5 to **vanilla JavaScript with ES2015 (or ES6) and is fully modular**. 
-This means that WebSlides is a (base module)[src/js/modules/webslides.js] with a solid API (few public methods) and 
+All the code has been migrated from **jQuery** with ES5 to **vanilla JavaScript with ES2015 (or ES6) and is fully modular**.
+This means that WebSlides is a (base module)[src/js/modules/webslides.js] with a solid API (few public methods) and
 it's extended by (plugins)[src/js/plugins]. This leads to more granularity and less code to dive through while fixing a
-bug. 
+bug.
 
 **The benefit from this approach is that now it's really easy to extend WebSlides** to achieve what you need. You can also
 overwrite current plugins. Say you don't like the current navigation with arrows and want to create a menu instead, you
 can just write that for yourself with your custom needs and register it as `nav` and it will overwrite our nav with
 your code.
 
-We hope this leads to a better environment in which WebSlides can grow better. 
+We hope this leads to a better environment in which WebSlides can grow better.
 
 All the technical specs live now in [this document](docs/technical.md).
 
