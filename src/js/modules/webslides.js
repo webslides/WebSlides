@@ -15,7 +15,8 @@ const PLUGINS = {
   'keyboard': Plugins.Keyboard,
   'nav': Plugins.Navigation,
   'scroll': Plugins.Scroll,
-  'touch': Plugins.Touch
+  'touch': Plugins.Touch,
+  'video': Plugins.Video
 };
 
 
@@ -293,8 +294,13 @@ export default class WebSlides {
    * @private
    */
   onSlideChange_(slide) {
+    if (this.currentSlide_) {
+      this.currentSlide_.disable();
+    }
+
     this.currentSlide_ = slide;
     this.currentSlideI_ = slide.i;
+    this.currentSlide_.enable();
     this.isMoving = false;
 
     DOM.fireEvent(this.el, 'ws:slide-change', {

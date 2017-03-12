@@ -28,8 +28,20 @@ export default class Slide {
      * @type {number}
      */
     this.i = i;
+    /**
+     * Enable callbacks.
+     * @type {Array<Function>}
+     * @private
+     */
+    this.onEnable_ = [];
+    /**
+     * Disable callbacks
+     * @type {Array<Function>}
+     * @private
+     */
+    this.onDisable_ = [];
 
-    this.el.id = 'section-' + (i + 1);
+    this.el.id = `section-${(i + 1)}`;
     this.el.classList.add(CLASSES.SLIDE);
 
     // Hide slides by default
@@ -71,6 +83,36 @@ export default class Slide {
   }
 
   /**
+   * Adds a callback to the enable event.
+   * @param {Function} cb Callback to add.
+   */
+  onEnable(cb) {
+    this.onEnable_.push(cb);
+  }
+
+  /**
+   * Adds a callback to the disable event.
+   * @param {Function} cb Callback to add.
+   */
+  onDisable(cb) {
+    this.onDisable_.push(cb);
+  }
+
+  /**
+   * Runs every on enable callback.
+   */
+  enable() {
+    this.onEnable_.forEach(f => f(this));
+  }
+
+  /**
+   * Runs every on disable callback.
+   */
+  disable() {
+    this.onDisable_.forEach(f => f(this));
+  }
+
+  /**
    * Checks whether an element is a valid candidate to be a slide by ensuring
    * it's a "section" element.
    * @param {Element} el Element to be checked.
@@ -78,5 +120,29 @@ export default class Slide {
    */
   static isCandidate(el) {
     return el.nodeType === 1 && el.tagName === 'SECTION';
+  }
+
+  /**
+   * Gets the section element from an inner element.
+   * @param {Node} el
+   * @return {{section: ?Node, i: ?number}} A map with the section and the
+   * position of the section.
+   */
+  static getSectionFromEl(el) {
+    let parent = el;
+    let section = null;
+    let i = null;
+
+    while (parent.parentElement &&
+          !parent.classList.contains(CLASSES.SLIDE)) {
+      parent = parent.parentElement;
+    }
+
+    if (parent.classList.contains(CLASSES.SLIDE)) {
+      section = parent;
+      i = parseInt(section.id.replace('section-', ''), 10);
+    }
+
+    return {section, i};
   }
 }

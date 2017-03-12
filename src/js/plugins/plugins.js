@@ -5,6 +5,7 @@ import Keyboard from './keyboard';
 import Navigation from './navigation';
 import Scroll from './scroll';
 import Touch from './touch';
+import Video from './video';
 
 export default {
   ClickNav,
@@ -13,5 +14,6 @@ export default {
   Keyboard,
   Navigation,
   Scroll,
-  Touch
+  Touch,
+  Video
 };
