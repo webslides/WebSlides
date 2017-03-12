@@ -7,31 +7,31 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-cond-assign": 0, // eslint:recommended
-    "no-console": 2, // eslint:recommended
-    "no-constant-condition": 2, // eslint:recommended
-    "no-control-regex": 2, // eslint:recommended
-    "no-debugger": 2, // eslint:recommended
-    "no-dupe-args": 2, // eslint:recommended
-    "no-dupe-keys": 2, // eslint:recommended
-    "no-duplicate-case": 2, // eslint:recommended
-    "no-empty-character-class": 2, // eslint:recommended
+    "no-cond-assign": 0,
+    "no-console": 2,
+    "no-constant-condition": 2,
+    "no-control-regex": 2,
+    "no-debugger": 2,
+    "no-dupe-args": 2,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-empty-character-class": 2,
     "no-empty": [2, {
       "allowEmptyCatch": true
-    }], // eslint:recommended
-    "no-ex-assign": 2, // eslint:recommended
-    "no-extra-boolean-cast": 2, // eslint:recommended
-    "no-extra-semi": 2, // eslint:recommended
-    "no-func-assign": 2, // eslint:recommended
-    "no-inner-declarations": 2, // eslint:recommended
-    "no-invalid-regexp": 2, // eslint:recommended
-    "no-irregular-whitespace": 2, // eslint:recommended
-    "no-obj-calls": 2, // eslint:recommended
-    "no-regex-spaces": 2, // eslint:recommended
-    "no-sparse-arrays": 2, // eslint:recommended
-    "no-unexpected-multiline": 2, // eslint:recommended
-    "no-unreachable": 2, // eslint:recommended
-    "no-unsafe-finally": 2, // eslint:recommended
+    }],
+    "no-ex-assign": 2,
+    "no-extra-boolean-cast": 2,
+    "no-extra-semi": 2,
+    "no-func-assign": 2,
+    "no-inner-declarations": 2,
+    "no-invalid-regexp": 2,
+    "no-irregular-whitespace": 2,
+    "no-obj-calls": 2,
+    "no-regex-spaces": 2,
+    "no-sparse-arrays": 2,
+    "no-unexpected-multiline": 2,
+    "no-unreachable": 2,
+    "no-unsafe-finally": 2,
     "use-isnan": 2,
     "valid-jsdoc": [2, {
       "requireParamDescription": false,
@@ -40,29 +40,30 @@
       "prefer": {"returns": "return"}
     }],
     "valid-typeof": 2,
+    "max-len": [1, 80, 2],
 
     // Best Practices
     "eqeqeq": 0,
     "guard-for-in": 2,
     "no-alert": 0,
     "no-caller": 2,
-    "no-case-declarations": 2, // eslint:recommended
-    "no-empty-pattern": 2, // eslint:recommended
+    "no-case-declarations": 2,
+    "no-empty-pattern": 2,
     "no-extend-native": 2,
     "no-extra-bind": 2,
-    "no-fallthrough": 2, // eslint:recommended
+    "no-fallthrough": 2,
     "no-invalid-this": 2,
     "no-multi-spaces": 2,
     "no-multi-str": 2,
     "no-new-wrappers": 2,
-    "no-octal": 2, // eslint:recommended
-    "no-redeclare": 2, // eslint:recommended
-    "no-self-assign": 2, // eslint:recommended
-    "no-throw-literal": 2, // eslint:recommended
-    "no-unused-labels": 2, // eslint:recommended
+    "no-octal": 2,
+    "no-redeclare": 2,
+    "no-self-assign": 2,
+    "no-throw-literal": 2,
+    "no-unused-labels": 2,
     "no-with": 2,
-    "no-delete-var": 2, // eslint:recommended
-    "no-undef": 2, // eslint:recommended
+    "no-delete-var": 2,
+    "no-undef": 2,
     "no-unused-vars": [2, {"args": "none"}],
     // Stylistic Issues
     // ----------------------------------------------
@@ -80,7 +81,7 @@
     "linebreak-style": 2,
     "new-cap": 2,
     "no-array-constructor": 2,
-    "no-mixed-spaces-and-tabs": 2, // eslint:recommended
+    "no-mixed-spaces-and-tabs": 2,
     "no-multiple-empty-lines": [2, {"max": 2}],
     "no-new-object": 2,
     "no-trailing-spaces": 2,
@@ -110,19 +111,19 @@
     // http://eslint.org/docs/rules/#ecmascript-6
     // ------------------------------------------
     "arrow-parens": [2, "as-needed"],
-    "constructor-super": 2, // eslint:recommended
+    "constructor-super": 2,
     "generator-star-spacing": [2, "after"],
-    "no-const-assign": 0, // eslint:recommended
-    "no-dupe-class-members": 0, // eslint:recommended
-    "no-new-symbol": 2, // eslint:recommended
-    "no-this-before-super": 2,  // eslint:recommended
+    "no-const-assign": 0,
+    "no-dupe-class-members": 0,
+    "no-new-symbol": 2,
+    "no-this-before-super": 2,
     "no-var": 2,
     "prefer-rest-params": 2,
     "prefer-spread": 2,
     "prefer-const": 2,
     "prefer-arrow-callback": 2,
     "prefer-template": 2,
-    "require-yield": 2, // eslint:recommended
+    "require-yield": 2,
     "rest-spread-spacing": 2,
     "yield-star-spacing": [2, "after"]
   }

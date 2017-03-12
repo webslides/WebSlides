@@ -12,8 +12,8 @@ export default class DOM {
    * @param {string} tag The name of the tag of the needed element.
    * @param {string} id The desired id for the element. It defaults to an
    * empty string.
-   * @param {string} text The desired text to go inside of the element. It defaults
-   * to an empty string.
+   * @param {string} text The desired text to go inside of the element. It
+   * defaults to an empty string.
    * @return {Element}
    */
   static createNode(tag, id = '', text = '') {
@@ -62,7 +62,8 @@ export default class DOM {
     };
     const transitionNames = Object.keys(transitions);
 
-    for (let i = 0, length = transitionNames.length; i < length && !transitionEvent; i++) {
+    for (let i = 0, length = transitionNames.length;
+          i < length && !transitionEvent; i++) {
       const transitionName = transitionNames[i];
 
       if (typeof el.style[transitionName] !== 'undefined') {
@@ -91,7 +92,8 @@ export default class DOM {
     };
     const animationNames = Object.keys(animations);
 
-    for (let i = 0, length = animationNames.length; i < length && !animationEvent; i++) {
+    for (let i = 0, length = animationNames.length;
+          i < length && !animationEvent; i++) {
       const animationName = animationNames[i];
 
       if (typeof el.style[animationName] !== 'undefined') {
