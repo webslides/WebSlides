@@ -19,8 +19,28 @@ export default class AutoSlide {
      * @private
      */
     this.interval_ = null;
+    /**
+     * Internal stored time.
+     * @type {?number}
+     */
+    this.time = this.ws_.options.autoslide;
 
-    DOM.once(wsInstance.el, 'ws:init', this.play.bind(this));
+    if (this.time) {
+      DOM.once(wsInstance.el, 'ws:init', this.play.bind(this));
+      document.body.addEventListener('focus', this.onFocus.bind(this));
+    }
+  }
+
+  /**
+   * On focus handler. Will decide if stops/play depending on the focused
+   * element if autoslide is active.
+   */
+  onFocus() {
+    if (DOM.isFocusableElement()) {
+      this.stop();
+    } else if (this.interval_ === null) {
+      this.play();
+    }
   }
 
   /**
@@ -30,7 +50,8 @@ export default class AutoSlide {
    * automatically.
    */
   play(time) {
-    time = time || this.ws_.options.autoslide;
+    time = time || this.time;
+    this.time = time;
 
     if (!this.interval_ && typeof time === 'number' && time > 0) {
       this.interval_ = setInterval(this.ws_.goNext.bind(this.ws_), time);
