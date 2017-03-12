@@ -30,6 +30,7 @@ export default class WebSlides {
    * autosliding by said amount of miliseconds.
    * @param {boolean} changeOnClick If true, it will allow
    * clicking on any place to change the slide.
+   * @param {boolean} loop Whether to go to first slide from last one or not.
    * @param {number} minWheelDelta Controls the amount of needed scroll to
    * trigger navigation.
    * @param {number} scrollWait Controls the amount of time to wait till
@@ -40,6 +41,7 @@ export default class WebSlides {
   constructor({
     autoslide = false,
     changeOnClick = false,
+    loop = true,
     minWheelDelta = 40,
     scrollWait = 450,
     slideOffset = 50
@@ -100,6 +102,7 @@ export default class WebSlides {
     this.options = {
       autoslide,
       changeOnClick,
+      loop,
       minWheelDelta,
       scrollWait,
       slideOffset
@@ -178,7 +181,7 @@ export default class WebSlides {
   /**
    * Goes to a given slide.
    * @param {!number} slideI The slide index.
-   * @param {?boolean} forward Whether we're forcing moving forward/backwards.
+   * @param {?boolean=} forward Whether we're forcing moving forward/backwards.
    * This parameter is used only from the goNext, goPrev functions to adjust the
    * scroll animations.
    */
@@ -317,6 +320,10 @@ export default class WebSlides {
     let nextIndex = this.currentSlideI_ + 1;
 
     if (nextIndex >= this.maxSlide_) {
+      if (!this.options.loop) {
+        return;
+      }
+
       nextIndex = 0;
     }
 
@@ -330,6 +337,10 @@ export default class WebSlides {
     let prevIndex = this.currentSlideI_ - 1;
 
     if (prevIndex < 0) {
+      if (!this.options.loop) {
+        return;
+      }
+
       prevIndex = this.maxSlide_ - 1;
     }
 
@@ -391,7 +402,7 @@ export default class WebSlides {
   /**
    * Starts autosliding all the slides if it's not currently doing it and the
    * autoslide option was a number greater than 0.
-   * @param {?number} time Amount of milliseconds to wait to go to next slide
+   * @param {?number=} time Amount of milliseconds to wait to go to next slide
    * automatically.
    */
   play(time) {
