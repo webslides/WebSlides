@@ -144,4 +144,25 @@ export default class DOM {
   static toArray(iterable) {
     return [].slice.call(iterable);
   }
+
+  /**
+   * Checks whether the document has focus on an input or contenteditable
+   * element.
+   * @return {boolean} Whether the focused element is an input or content
+   * editable.
+   */
+  static isFocusableElement() {
+    let result = false;
+
+    if (document.activeElement) {
+      const isContentEditable = document.activeElement
+          .contentEditable !== 'inherit';
+      const isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA']
+          .indexOf(document.activeElement.tagName) > -1;
+
+      result = isInput || isContentEditable;
+    }
+
+    return result;
+  }
 }
