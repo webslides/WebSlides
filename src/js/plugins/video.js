@@ -1,4 +1,3 @@
-/* eslint no-console: 0 */
 import DOM from '../utils/dom';
 import Slide from '../modules/slide';
 
