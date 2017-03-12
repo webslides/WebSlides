@@ -1,3 +1,4 @@
+import AutoSlide from './autoslide';
 import ClickNav from './click-nav';
 import Grid from './grid';
 import Hash from './hash';
@@ -8,6 +9,7 @@ import Touch from './touch';
 import Video from './video';
 
 export default {
+  AutoSlide,
   ClickNav,
   Grid,
   Hash,

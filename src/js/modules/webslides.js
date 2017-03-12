@@ -9,6 +9,7 @@ const CLASSES = {
 
 // Default plugins
 const PLUGINS = {
+  'autoslide': Plugins.AutoSlide,
   'clickNav': Plugins.ClickNav,
   'grid': Plugins.Grid,
   'hash': Plugins.Hash,
@@ -90,12 +91,6 @@ export default class WebSlides {
      */
     this.plugins = {};
     /**
-     * Interval ID reference for the autoslide.
-     * @type {?number}
-     * @private
-     */
-    this.interval_ = null;
-    /**
      * Options dictionary.
      * @type {Object}
      */
@@ -122,7 +117,6 @@ export default class WebSlides {
     this.grabSlides_();
     this.createPlugins_();
     this.initSlides_();
-    this.play();
     // Finished
     this.onInit_();
   }
@@ -397,29 +391,5 @@ export default class WebSlides {
    */
   static registerPlugin(key, cto) {
     PLUGINS[key] = cto;
-  }
-
-  /**
-   * Starts autosliding all the slides if it's not currently doing it and the
-   * autoslide option was a number greater than 0.
-   * @param {?number=} time Amount of milliseconds to wait to go to next slide
-   * automatically.
-   */
-  play(time) {
-    time = time || this.options.autoslide;
-
-    if (!this.interval_ && typeof time === 'number' && time > 0) {
-      this.interval_ = setInterval(this.goNext.bind(this), time);
-    }
-  }
-
-  /**
-   * Stops autosliding all the slides.
-   */
-  stop() {
-    if (this.interval_) {
-      clearInterval(this.interval_);
-      this.interval_ = null;
-    }
   }
 }
