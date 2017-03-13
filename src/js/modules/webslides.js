@@ -52,6 +52,11 @@ export default class WebSlides {
      * @type {Element}
      */
     this.el = document.getElementById('webslides');
+
+    if (!this.el) {
+      throw new Error('Couldn\'t find the webslides container!');
+    }
+
     /**
      * Moving flag.
      * @type {boolean}
@@ -107,10 +112,6 @@ export default class WebSlides {
      * @type {boolean}
      */
     this.initialised = false;
-
-    if (!this.el) {
-      throw new Error('Couldn\'t find the webslides container!');
-    }
 
     // Bootstrapping
     this.removeChildren_();
