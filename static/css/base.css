@@ -1223,6 +1223,9 @@ p.text-subtitle svg {vertical-align: text-top;}
 3. Header & Footer
 =========================================== */
 
+/* -- If you want an unique, global header/footer,read this:
+https://github.com/jlantunez/webslides/issues/57 -- */
+
 header,
 footer,
 #navigation {
@@ -1242,7 +1245,7 @@ footer img {
   vertical-align: middle;
 }
 
-header, footer {
+header,footer {
   position: absolute;
   top: 0;
   left: 0;
@@ -1257,7 +1260,7 @@ footer {
 
 /*=== Hide header[role=banner] === */
 
-/*desktop only? Add @media (min-width: 1025px)*/
+/*Remove "opacity=0" if you want an unique, visible header on each slide*/
 header[role=banner] {
   opacity: 0;
 }
@@ -1272,7 +1275,6 @@ header[role=banner]:hover {
     display: block;
   }
 }
-
 
 /*=== 3.1. Logo === */
 
