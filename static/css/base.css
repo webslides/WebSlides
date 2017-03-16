@@ -1168,12 +1168,34 @@ p.text-subtitle svg {vertical-align: text-top;}
     margin-right: 2.4rem;
   }
 }
+
+/* -- Interviews (Questions & Answers)  --- */
+/* -- <dl class="text-interview"> 
+<dt>name</dt>
+<dd><p>question or answer</p>
+</dd>
+--- */
+
+.text-interview dt {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+.text-interview dt {
+    margin-left: -34%;
+    position: absolute;
+    text-align: right;
+    white-space: nowrap;
+    width: 30%;
+  }
+}
+
 /* -- Info Messages (error, warning, success... -- */
 
 .text-info {font-size: 1.6rem;line-height: 2.4rem;
 }
-
-
 /*=========================================
 2.1. San Francisco Font (Apple's new font)
 =========================================== */
@@ -2797,7 +2819,9 @@ blockquote p {
   font-size: 2.4rem;
   line-height: 4rem;
 }
-
+blockquote p:last-child {
+margin-bottom: 3.2rem;
+}
 .bg-apple blockquote p {
   font-family: "San Francisco", "Roboto", helvetica, arial, sans-serif;
   font-weight: 300;
