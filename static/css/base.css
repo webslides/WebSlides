@@ -2662,8 +2662,8 @@ p + .work {
 object-fit to re-frame images rather than just stretch and resize them  === */
 
 @media (min-width: 768px) {
-  [class*="card-"][class*="bg-"] figure,
-  .fullscreen [class*="card-"] figure {
+  [class*="card"][class*="bg-"] figure,
+  .fullscreen [class*="card"] figure {
     vertical-align: middle;
     text-align: center;
     min-width: 380px;
@@ -2682,7 +2682,7 @@ object-fit to re-frame images rather than just stretch and resize them  === */
 }
 
 .flex-content,
-[class*="card-"] blockquote {
+[class*="card"] blockquote {
   position: relative;
   display: -webkit-flex;
   display: flex;
@@ -2723,18 +2723,18 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   .card-30 blockquote {
     width: 70%;
   }
-  [class*="card-"]:nth-child(odd) figure {
+  [class*="card"]:nth-child(odd) figure {
     order: 0
   }
-  [class*="card-"]:nth-child(even) figure {
+  [class*="card"]:nth-child(even) figure {
     order: 1;
   }
   .flex-content,
-  [class*="card-"] blockquote {
+  [class*="card"] blockquote {
     padding: 4.8rem;
   }
-  .fullscreen [class*="card-"] .flex-content,
-  .fullscreen [class*="card-"] blockquote {
+  .fullscreen [class*="card"] .flex-content,
+  .fullscreen [class*="card"] blockquote {
     padding: 6.4rem;
   }
 }
@@ -2756,7 +2756,7 @@ object-fit to re-frame images rather than just stretch and resize them  === */
 
 /*== Ficaption Cards === */
 
-[class*="card-"] figure figcaption {
+[class*="card"] figure figcaption {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2767,7 +2767,7 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   z-index: 2;
 }
 
-[class*="card-"] figure figcaption.cover {
+[class*="card"] figure figcaption.cover {
   top: 0;
   right: 0;
   width: 100%;
@@ -2780,10 +2780,9 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   justify-content: center;
 }
 
-[class*="card-"] figure figcaption svg {
+[class*="card"] figure figcaption svg {
   font-size: 1rem;
 }
-
 
 /*=========================================
 11. Quotes
