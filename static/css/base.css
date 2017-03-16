@@ -1764,8 +1764,6 @@ Blocks Links li>a = .flexblock.blink (.blink required)
   padding: 0;
 }
 
-
-
 @media (min-width:600px) {
   .flexblock li {
     width: 50%;
@@ -2777,7 +2775,6 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   }
 }
 
-
 /*== Ficaption Cards === */
 
 [class*="card"] figure figcaption {
@@ -2790,20 +2787,6 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   /* Visibility */
   z-index: 2;
 }
-
-[class*="card"] figure figcaption.cover {
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 [class*="card"] figure figcaption svg {
   font-size: 1rem;
 }
