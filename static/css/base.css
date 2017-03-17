@@ -1476,7 +1476,9 @@ section,.slide
 [class*="content-"].frame, [class*="align"][class*="bg-"]{
   padding: 4.8rem;
 }
-
+form[class*="bg-"] {
+padding: 2.4rem;
+}
 [class*="content-"] > [class*="content-"] p {
   font-size: 1.8rem;
   line-height: 3.2rem;
