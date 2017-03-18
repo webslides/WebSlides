@@ -2062,6 +2062,7 @@ img size recommended:800x600px
 =================================================== */
 
 .flexblock.gallery li {
+  flex:inherit;
   margin-bottom: 4.8rem;
 }
 
