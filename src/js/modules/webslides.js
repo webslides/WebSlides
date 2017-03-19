@@ -4,7 +4,8 @@ import DOM from '../utils/dom';
 import scrollTo from '../utils/scroll-to';
 
 const CLASSES = {
-  VERTICAL: 'vertical'
+  VERTICAL: 'vertical',
+  READY: 'ws-ready'
 };
 
 // Default plugins
@@ -160,6 +161,7 @@ export default class WebSlides {
   onInit_() {
     this.initialised = true;
     DOM.fireEvent(this.el, 'ws:init');
+    document.documentElement.classList.add(CLASSES.READY);
   }
 
   /**
