@@ -1,5 +1,9 @@
 import Keys from '../utils/keys';
 
+const GRID_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAg' +
+  'MAAACdGdVrAAAACVBMVEUAAAAtXsUtXcPDDPUWAAAAA3RSTlMAZmHzZFkxAAAAFklEQVQI12M' +
+  'AA9bBR3ExhAJB1iooBQBGwgVEs/QtuAAAAABJRU5ErkJggg==';
+
 /**
  * Grid plugin.
  */
@@ -16,7 +20,7 @@ export default class Grid {
     this.ws_ = wsInstance;
 
     const CSS = `body.baseline {
-                  background: url(../images/baseline.png) left top .8rem/.8rem;
+                  background: url(${GRID_IMAGE}) left top .8rem/.8rem;
                 }`;
     const head = document.head || document.getElementsByTagName('head')[0];
     const style = document.createElement('style');
