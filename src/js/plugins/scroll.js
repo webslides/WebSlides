@@ -6,8 +6,8 @@ import MobileDetector from '../utils/mobile-detector';
  */
 export default class Scroll {
   /**
-   * Scroll handler for the WebSlides.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**

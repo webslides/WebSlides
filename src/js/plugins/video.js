@@ -2,12 +2,13 @@ import DOM from '../utils/dom';
 import Slide from '../modules/slide';
 
 /**
- * Video plugin.
+ * Video plugin. Video plugin that allows to autoplay videos once the slide gets
+ * active.
  */
 export default class Video {
   /**
-   * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
-   * @param {WebSlides} wsInstance The WebSlides instance
+   * @param {WebSlides} wsInstance The WebSlides instance.
+   * @constructor
    */
   constructor(wsInstance) {
     /**

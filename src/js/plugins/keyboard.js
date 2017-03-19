@@ -2,12 +2,12 @@ import Keys from '../utils/keys';
 import DOM from '../utils/dom';
 
 /**
- * Keyboard plugin.
+ * Keyboard interaction plugin.
  */
 export default class Keyboard {
   /**
-   * Keyboard interaction plugin.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**

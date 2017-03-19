@@ -7,8 +7,8 @@ const slideRegex = /#slide=(\d+)/;
  */
 export default class Hash {
   /**
-   * Listens to the slide change event and the hash change events.
    * @param {WebSlides} wsInstance
+   * @constructor
    */
   constructor(wsInstance) {
     this.ws_ = wsInstance;

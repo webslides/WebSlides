@@ -6,6 +6,7 @@ import DOM from '../utils/dom';
 export default class AutoSlide {
   /**
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**

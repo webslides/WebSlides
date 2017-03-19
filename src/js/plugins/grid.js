@@ -5,12 +5,12 @@ const GRID_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAg' +
   'AA9bBR3ExhAJB1iooBQBGwgVEs/QtuAAAAABJRU5ErkJggg==';
 
 /**
- * Grid plugin.
+ * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
  */
 export default class Grid {
   /**
-   * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**

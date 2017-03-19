@@ -19,6 +19,7 @@ const EVENTS = {
 export default class Touch {
   /**
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**
@@ -28,14 +29,14 @@ export default class Touch {
     this.ws_ = wsInstance;
 
     /**
-     * Start position for the X coord.
+     * Start position for the X coordinate.
      * @type {number}
      * @private
      */
     this.startX_ = 0;
 
     /**
-     * Start position for the Y coord.
+     * Start position for the Y coordinate.
      * @type {number}
      * @private
      */
