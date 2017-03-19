@@ -41,7 +41,7 @@ export default class Grid {
    */
   onKeyPress_(event) {
     if (event.which === Keys.ENTER) {
-      document.body.toggleClass('baseline');
+      document.body.classList.toggle('baseline');
     }
   }
 }
