@@ -302,10 +302,11 @@ dd {
 1. Base --> Baseline: 8px = .8rem
 =========================================== */
 
-/* -- Disable elastic scrolling/bounce  -- */
+/* -- Disable elastic scrolling/bounce: 
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
 
-html,
-body {
+html.ws-ready,
+html.ws-ready body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -1329,7 +1330,6 @@ header[role=banner]:hover {
 /*=========================================
 4. Navigation
 =========================================== */
-
 
 /*=== 4.1. Navbars === */
 
