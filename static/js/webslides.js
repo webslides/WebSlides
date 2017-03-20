@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-03-02
+ * Date: 2017-03-20
  * Description: Making HTML presentations easy
  * URL: https://github.com/jlantunez/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -71,7 +71,7 @@
 /******/ 	__webpack_require__.p = "/static/js/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,12 +79,15 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(16);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
+
+var transitionEvent = '';
+var animationEvent = '';
 
 /**
  * Static class for DOM helper.
@@ -103,8 +106,8 @@ var DOM = function () {
      * @param {string} tag The name of the tag of the needed element.
      * @param {string} id The desired id for the element. It defaults to an
      * empty string.
-     * @param {string} text The desired text to go inside of the element. It defaults
-     * to an empty string.
+     * @param {string} text The desired text to go inside of the element. It
+     * defaults to an empty string.
      * @return {Element}
      */
     value: function createNode(tag) {
@@ -119,6 +122,90 @@ var DOM = function () {
       }
 
       return node;
+    }
+
+    /**
+     * Listens for an event once.
+     * @param {Element} el Element to listen to.
+     * @param {string} event Event Type.
+     * @param {Function} callback Function to execute once the event fires.
+     */
+
+  }, {
+    key: 'once',
+    value: function once(el, event, callback) {
+      var cb = function cb(e) {
+        if (e.target === el) {
+          el.removeEventListener(event, cb);
+          callback(e);
+        }
+      };
+
+      el.addEventListener(event, cb, false);
+    }
+
+    /**
+     * Gets the prefixed transitionend event.
+     * @return {string}
+     */
+
+  }, {
+    key: 'getTransitionEvent',
+    value: function getTransitionEvent() {
+      if (transitionEvent) {
+        return transitionEvent;
+      }
+
+      var el = document.createElement('ws');
+      var transitions = {
+        'transition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'MozTransition': 'transitionend',
+        'WebkitTransition': 'webkitTransitionEnd'
+      };
+      var transitionNames = Object.keys(transitions);
+
+      for (var i = 0, length = transitionNames.length; i < length && !transitionEvent; i++) {
+        var transitionName = transitionNames[i];
+
+        if (typeof el.style[transitionName] !== 'undefined') {
+          transitionEvent = transitions[transitionName];
+        }
+      }
+
+      return transitionEvent;
+    }
+
+    /**
+     * Gets the prefixed animation end event.
+     * @return {string}
+     */
+
+  }, {
+    key: 'getAnimationEvent',
+    value: function getAnimationEvent() {
+      if (animationEvent) {
+        return animationEvent;
+      }
+
+      var el = document.createElement('ws');
+      var animations = {
+        'animation': 'animationend',
+        'OAnimation': 'oAnimationEnd',
+        'MozAnimation': 'animationend',
+        'WebkitAnimation': 'webkitAnimationEnd'
+      };
+      var animationNames = Object.keys(animations);
+
+      for (var i = 0, length = animationNames.length; i < length && !animationEvent; i++) {
+        var animationName = animationNames[i];
+
+        if (typeof el.style[animationName] !== 'undefined') {
+          animationEvent = animations[animationName];
+        }
+      }
+
+      return animationEvent;
     }
 
     /**
@@ -175,6 +262,28 @@ var DOM = function () {
     value: function toArray(iterable) {
       return [].slice.call(iterable);
     }
+
+    /**
+     * Checks whether the document has focus on an input or contenteditable
+     * element.
+     * @return {boolean} Whether the focused element is an input or content
+     * editable.
+     */
+
+  }, {
+    key: 'isFocusableElement',
+    value: function isFocusableElement() {
+      var result = false;
+
+      if (document.activeElement) {
+        var isContentEditable = document.activeElement.contentEditable !== 'inherit';
+        var isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA'].indexOf(document.activeElement.tagName) > -1;
+
+        result = isInput || isContentEditable;
+      }
+
+      return result;
+    }
   }]);
 
   return DOM;
@@ -184,6 +293,211 @@ var DOM = function () {
 
 /***/ }),
 /* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var CLASSES = {
+  SLIDE: 'slide',
+  CURRENT: 'current'
+};
+
+/**
+ * Wrapper for the Slide section.
+ */
+
+var Slide = function () {
+  /**
+   * Bootstraps the slide by saving some data, adding a class and hiding it.
+   * @param {Element} el Section element.
+   * @param {number} i Zero based index of the slide.
+   */
+  function Slide(el, i) {
+    _classCallCheck(this, Slide);
+
+    /**
+     * @type {Element}
+     */
+    this.el = el;
+    /**
+     * The section's parent.
+     * @type {Node}
+     */
+    this.parent = el.parentNode;
+    /**
+     * @type {number}
+     */
+    this.i = i;
+    /**
+     * Enable callbacks.
+     * @type {Array<Function>}
+     * @private
+     */
+    this.onEnable_ = [];
+    /**
+     * Disable callbacks
+     * @type {Array<Function>}
+     * @private
+     */
+    this.onDisable_ = [];
+
+    this.el.id = 'section-' + (i + 1);
+    this.el.classList.add(CLASSES.SLIDE);
+
+    // Hide slides by default
+    this.hide();
+  }
+
+  /**
+   * Hides the node and removes the class that makes it "active".
+   */
+
+
+  _createClass(Slide, [{
+    key: 'hide',
+    value: function hide() {
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.el);
+      this.el.classList.remove(CLASSES.CURRENT);
+    }
+
+    /**
+     * Shows the node and adds the class that makes it "active".
+     */
+
+  }, {
+    key: 'show',
+    value: function show() {
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.el);
+      this.el.classList.add(CLASSES.CURRENT);
+    }
+
+    /**
+     * Moves the section to the bottom of the section's list.
+     */
+
+  }, {
+    key: 'moveAfterLast',
+    value: function moveAfterLast() {
+      var last = this.parent.childNodes[this.parent.childElementCount - 1];
+
+      this.parent.insertBefore(this.el, last.nextSibling);
+    }
+
+    /**
+     * Moves the section to the top of the section's list.
+     */
+
+  }, {
+    key: 'moveBeforeFirst',
+    value: function moveBeforeFirst() {
+      var first = this.parent.childNodes[0];
+
+      this.parent.insertBefore(this.el, first);
+    }
+
+    /**
+     * Adds a callback to the enable event.
+     * @param {Function} cb Callback to add.
+     */
+
+  }, {
+    key: 'onEnable',
+    value: function onEnable(cb) {
+      this.onEnable_.push(cb);
+    }
+
+    /**
+     * Adds a callback to the disable event.
+     * @param {Function} cb Callback to add.
+     */
+
+  }, {
+    key: 'onDisable',
+    value: function onDisable(cb) {
+      this.onDisable_.push(cb);
+    }
+
+    /**
+     * Runs every on enable callback.
+     */
+
+  }, {
+    key: 'enable',
+    value: function enable() {
+      var _this = this;
+
+      this.onEnable_.forEach(function (f) {
+        return f(_this);
+      });
+    }
+
+    /**
+     * Runs every on disable callback.
+     */
+
+  }, {
+    key: 'disable',
+    value: function disable() {
+      var _this2 = this;
+
+      this.onDisable_.forEach(function (f) {
+        return f(_this2);
+      });
+    }
+
+    /**
+     * Checks whether an element is a valid candidate to be a slide by ensuring
+     * it's a "section" element.
+     * @param {Element} el Element to be checked.
+     * @return {boolean} Whether is candidate or not.
+     */
+
+  }], [{
+    key: 'isCandidate',
+    value: function isCandidate(el) {
+      return el.nodeType === 1 && el.tagName === 'SECTION';
+    }
+
+    /**
+     * Gets the section element from an inner element.
+     * @param {Node} el
+     * @return {{section: ?Node, i: ?number}} A map with the section and the
+     * position of the section.
+     */
+
+  }, {
+    key: 'getSectionFromEl',
+    value: function getSectionFromEl(el) {
+      var parent = el;
+      var section = null;
+      var i = null;
+
+      while (parent.parentElement && !parent.classList.contains(CLASSES.SLIDE)) {
+        parent = parent.parentElement;
+      }
+
+      if (parent.classList.contains(CLASSES.SLIDE)) {
+        section = parent;
+        i = parseInt(section.id.replace('section-', ''), 10);
+      }
+
+      return { section: section, i: i };
+    }
+  }]);
+
+  return Slide;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = Slide;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -203,7 +517,7 @@ var Keys = {
 /* harmony default export */ __webpack_exports__["a"] = Keys;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -212,6 +526,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var UA = window.navigator.userAgent;
+
+/**
+ * Mobile detector helper class. Tests the User Agent to see if we're, likely,
+ * on a mobile device.
+ */
 
 var MobileDetector = function () {
   function MobileDetector() {
@@ -302,14 +621,14 @@ var MobileDetector = function () {
 /* harmony default export */ __webpack_exports__["a"] = MobileDetector;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(18);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -320,27 +639,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 var CLASSES = {
-  VERTICAL: 'vertical'
+  VERTICAL: 'vertical',
+  READY: 'ws-ready'
 };
 
 // Default plugins
 var PLUGINS = {
+  'autoslide': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].AutoSlide,
   'clickNav': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].ClickNav,
   'grid': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Grid,
   'hash': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Hash,
   'keyboard': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Keyboard,
   'nav': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Navigation,
   'scroll': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Scroll,
-  'touch': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Touch
+  'touch': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Touch,
+  'video': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Video,
+  'youtube': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].YouTube
 };
+
+/**
+ * WebSlides module.
+ */
 
 var WebSlides = function () {
   /**
    * Options for WebSlides
    * @param {number|boolean} autoslide If a number is provided, it will allow
-   * autosliding by said amount of miliseconds.
+   * autosliding by said amount of milliseconds.
    * @param {boolean} changeOnClick If true, it will allow
    * clicking on any place to change the slide.
+   * @param {boolean} loop Whether to go to first slide from last one or not.
    * @param {number} minWheelDelta Controls the amount of needed scroll to
    * trigger navigation.
    * @param {number} scrollWait Controls the amount of time to wait till
@@ -354,6 +682,8 @@ var WebSlides = function () {
         autoslide = _ref$autoslide === undefined ? false : _ref$autoslide,
         _ref$changeOnClick = _ref.changeOnClick,
         changeOnClick = _ref$changeOnClick === undefined ? false : _ref$changeOnClick,
+        _ref$loop = _ref.loop,
+        loop = _ref$loop === undefined ? true : _ref$loop,
         _ref$minWheelDelta = _ref.minWheelDelta,
         minWheelDelta = _ref$minWheelDelta === undefined ? 40 : _ref$minWheelDelta,
         _ref$scrollWait = _ref.scrollWait,
@@ -368,6 +698,11 @@ var WebSlides = function () {
      * @type {Element}
      */
     this.el = document.getElementById('webslides');
+
+    if (!this.el) {
+      throw new Error('Couldn\'t find the webslides container!');
+    }
+
     /**
      * Moving flag.
      * @type {boolean}
@@ -407,33 +742,28 @@ var WebSlides = function () {
      */
     this.plugins = {};
     /**
-     * Interval ID reference for the autoslide.
-     * @type {?number}
-     * @private
-     */
-    this.interval_ = null;
-    /**
      * Options dictionary.
      * @type {Object}
      */
     this.options = {
       autoslide: autoslide,
       changeOnClick: changeOnClick,
+      loop: loop,
       minWheelDelta: minWheelDelta,
       scrollWait: scrollWait,
       slideOffset: slideOffset
     };
-
-    if (!this.el) {
-      throw new Error('Couldn\'t find the webslides container!');
-    }
+    /**
+     * Initialisation flag.
+     * @type {boolean}
+     */
+    this.initialised = false;
 
     // Bootstrapping
     this.removeChildren_();
     this.grabSlides_();
     this.createPlugins_();
     this.initSlides_();
-    this.play();
     // Finished
     this.onInit_();
   }
@@ -472,8 +802,8 @@ var WebSlides = function () {
       var _this = this;
 
       Object.keys(PLUGINS).forEach(function (pluginName) {
-        var pluginCto = PLUGINS[pluginName];
-        _this.plugins[pluginName] = new pluginCto(_this);
+        var PluginCto = PLUGINS[pluginName];
+        _this.plugins[pluginName] = new PluginCto(_this);
       });
     }
 
@@ -486,7 +816,9 @@ var WebSlides = function () {
   }, {
     key: 'onInit_',
     value: function onInit_() {
+      this.initialised = true;
       __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].fireEvent(this.el, 'ws:init');
+      document.documentElement.classList.add(CLASSES.READY);
     }
 
     /**
@@ -507,7 +839,7 @@ var WebSlides = function () {
     /**
      * Goes to a given slide.
      * @param {!number} slideI The slide index.
-     * @param {?boolean} forward Whether we're forcing moving forward/backwards.
+     * @param {?boolean=} forward Whether we're forcing moving forward/backwards.
      * This parameter is used only from the goNext, goPrev functions to adjust the
      * scroll animations.
      */
@@ -578,7 +910,8 @@ var WebSlides = function () {
     }
 
     /**
-     * Transitions to a slide, without doing the scroll animation.
+     * Transitions to a slide, without doing the scroll animation. If the page is
+     * already initialised and on mobile device, it will do a slide animation.
      * @param {boolean} isMovingForward Whether we're going forward or backwards.
      * @param {Slide} nextSlide Next slide.
      * @param {Function} callback Callback to be called upon finishing. This is a
@@ -589,10 +922,14 @@ var WebSlides = function () {
   }, {
     key: 'transitionToSlide_',
     value: function transitionToSlide_(isMovingForward, nextSlide, callback) {
+      var _this3 = this;
+
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(0, 0);
+      var className = 'slideInRight';
 
       if (!isMovingForward) {
         nextSlide.moveBeforeFirst();
+        className = 'slideInLeft';
       }
 
       if (this.currentSlide_) {
@@ -604,7 +941,17 @@ var WebSlides = function () {
       }
 
       nextSlide.show();
-      callback.call(this, nextSlide);
+
+      if (this.initialised && this.plugins.touch && this.plugins.touch.isEnabled) {
+        __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].once(nextSlide.el, __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].getAnimationEvent(), function () {
+          nextSlide.el.classList.remove(className);
+          callback.call(_this3, nextSlide);
+        });
+
+        nextSlide.el.classList.add(className);
+      } else {
+        callback.call(this, nextSlide);
+      }
     }
 
     /**
@@ -619,8 +966,13 @@ var WebSlides = function () {
   }, {
     key: 'onSlideChange_',
     value: function onSlideChange_(slide) {
+      if (this.currentSlide_) {
+        this.currentSlide_.disable();
+      }
+
       this.currentSlide_ = slide;
       this.currentSlideI_ = slide.i;
+      this.currentSlide_.enable();
       this.isMoving = false;
 
       __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].fireEvent(this.el, 'ws:slide-change', {
@@ -640,6 +992,10 @@ var WebSlides = function () {
       var nextIndex = this.currentSlideI_ + 1;
 
       if (nextIndex >= this.maxSlide_) {
+        if (!this.options.loop) {
+          return;
+        }
+
         nextIndex = 0;
       }
 
@@ -656,6 +1012,10 @@ var WebSlides = function () {
       var prevIndex = this.currentSlideI_ - 1;
 
       if (prevIndex < 0) {
+        if (!this.options.loop) {
+          return;
+        }
+
         prevIndex = this.maxSlide_ - 1;
       }
 
@@ -716,21 +1076,96 @@ var WebSlides = function () {
      * @param {!Function} cto Plugin constructor.
      */
 
-  }, {
-    key: 'play',
+  }], [{
+    key: 'registerPlugin',
+    value: function registerPlugin(key, cto) {
+      PLUGINS[key] = cto;
+    }
+  }]);
 
+  return WebSlides;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = WebSlides;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+/**
+ * Autoslide plugin.
+ */
+
+var AutoSlide = function () {
+  /**
+   * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
+   */
+  function AutoSlide(wsInstance) {
+    _classCallCheck(this, AutoSlide);
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.ws_ = wsInstance;
+    /**
+     * Interval ID reference for the autoslide.
+     * @type {?number}
+     * @private
+     */
+    this.interval_ = null;
+    /**
+     * Internal stored time.
+     * @type {?number}
+     */
+    this.time = this.ws_.options.autoslide;
+
+    if (this.time) {
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].once(wsInstance.el, 'ws:init', this.play.bind(this));
+      document.body.addEventListener('focus', this.onFocus.bind(this));
+    }
+  }
+
+  /**
+   * On focus handler. Will decide if stops/play depending on the focused
+   * element if autoslide is active.
+   */
+
+
+  _createClass(AutoSlide, [{
+    key: 'onFocus',
+    value: function onFocus() {
+      if (__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isFocusableElement()) {
+        this.stop();
+      } else if (this.interval_ === null) {
+        this.play();
+      }
+    }
 
     /**
      * Starts autosliding all the slides if it's not currently doing it and the
      * autoslide option was a number greater than 0.
-     * @param {?number} time Amount of milliseconds to wait to go to next slide
+     * @param {?number=} time Amount of milliseconds to wait to go to next slide
      * automatically.
      */
+
+  }, {
+    key: 'play',
     value: function play(time) {
-      time = time || this.options.autoslide;
+      time = time || this.time;
+      this.time = time;
 
       if (!this.interval_ && typeof time === 'number' && time > 0) {
-        this.interval_ = setInterval(this.goNext.bind(this), time);
+        this.interval_ = setInterval(this.ws_.goNext.bind(this.ws_), time);
       }
     }
 
@@ -746,137 +1181,15 @@ var WebSlides = function () {
         this.interval_ = null;
       }
     }
-  }], [{
-    key: 'registerPlugin',
-    value: function registerPlugin(key, cto) {
-      PLUGINS[key] = cto;
-    }
   }]);
 
-  return WebSlides;
+  return AutoSlide;
 }();
 
-/* harmony default export */ __webpack_exports__["a"] = WebSlides;
+/* harmony default export */ __webpack_exports__["a"] = AutoSlide;
 
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var CLASSES = {
-  SLIDE: 'slide',
-  CURRENT: 'current'
-};
-
-/**
- * Wrapper for the Slide section.
- */
-
-var Slide = function () {
-  /**
-   * Bootstraps the slide by saving some data, adding a class and hiding it.
-   * @param {Element} el Section element.
-   * @param {number} i Zero based index of the slide.
-   */
-  function Slide(el, i) {
-    _classCallCheck(this, Slide);
-
-    /**
-     * @type {Element}
-     */
-    this.el = el;
-    /**
-     * The section's parent.
-     * @type {Node}
-     */
-    this.parent = el.parentNode;
-    /**
-     * @type {number}
-     */
-    this.i = i;
-
-    this.el.id = 'section-' + (i + 1);
-    this.el.classList.add(CLASSES.SLIDE);
-
-    // Hide slides by default
-    this.hide();
-  }
-
-  /**
-   * Hides the node and removes the class that makes it "active".
-   */
-
-
-  _createClass(Slide, [{
-    key: 'hide',
-    value: function hide() {
-      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.el);
-      this.el.classList.remove(CLASSES.CURRENT);
-    }
-
-    /**
-     * Shows the node and adds the class that makes it "active".
-     */
-
-  }, {
-    key: 'show',
-    value: function show() {
-      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.el);
-      this.el.classList.add(CLASSES.CURRENT);
-    }
-
-    /**
-     * Moves the section to the bottom of the section's list.
-     */
-
-  }, {
-    key: 'moveAfterLast',
-    value: function moveAfterLast() {
-      var last = this.parent.childNodes[this.parent.childElementCount - 1];
-
-      this.parent.insertBefore(this.el, last.nextSibling);
-    }
-
-    /**
-     * Moves the section to the top of the section's list.
-     */
-
-  }, {
-    key: 'moveBeforeFirst',
-    value: function moveBeforeFirst() {
-      var first = this.parent.childNodes[0];
-
-      this.parent.insertBefore(this.el, first);
-    }
-
-    /**
-     * Checks whether an element is a valid candidate to be a slide by ensuring
-     * it's a "section" element.
-     * @param {Element} el Element to be checked.
-     * @return {boolean} Whether is candidate or not.
-     */
-
-  }], [{
-    key: 'isCandidate',
-    value: function isCandidate(el) {
-      return el.nodeType === 1 && el.tagName === 'SECTION';
-    }
-  }]);
-
-  return Slide;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = Slide;
-
-/***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -886,10 +1199,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var CLICKABLE_ELS = ['INPUT', 'SELECT', 'OPTION', 'BUTTON', 'A', 'TEXTAREA'];
 
+/**
+ * ClickNav plugin that allows to click on the page to get to the next slide.
+ */
+
 var ClickNav = function () {
   /**
-   * ClickNav plugin that allows to click on the page to get to the next slide.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   function ClickNav(wsInstance) {
     _classCallCheck(this, ClickNav);
@@ -928,21 +1245,27 @@ var ClickNav = function () {
 /* harmony default export */ __webpack_exports__["a"] = ClickNav;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_keys__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_keys__ = __webpack_require__(2);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
 
+var GRID_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAg' + 'MAAACdGdVrAAAACVBMVEUAAAAtXsUtXcPDDPUWAAAAA3RSTlMAZmHzZFkxAAAAFklEQVQI12M' + 'AA9bBR3ExhAJB1iooBQBGwgVEs/QtuAAAAABJRU5ErkJggg==';
+
+/**
+ * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
+ */
+
 var Grid = function () {
   /**
-   * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   function Grid(wsInstance) {
     _classCallCheck(this, Grid);
@@ -953,7 +1276,7 @@ var Grid = function () {
      */
     this.ws_ = wsInstance;
 
-    var CSS = 'body.baseline {\n                  background: url(../images/baseline.png) left top .8rem/.8rem;\n                }';
+    var CSS = 'body.baseline {\n                  background: url(' + GRID_IMAGE + ') left top .8rem/.8rem;\n                }';
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
 
@@ -981,7 +1304,7 @@ var Grid = function () {
     key: 'onKeyPress_',
     value: function onKeyPress_(event) {
       if (event.which === __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].ENTER) {
-        document.body.toggleClass('baseline');
+        document.body.classList.toggle('baseline');
       }
     }
   }]);
@@ -992,7 +1315,7 @@ var Grid = function () {
 /* harmony default export */ __webpack_exports__["a"] = Grid;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1010,8 +1333,8 @@ var slideRegex = /#slide=(\d+)/;
 
 var Hash = function () {
   /**
-   * Listens to the slide change event and the hash change events.
-   * @param wsInstance
+   * @param {WebSlides} wsInstance
+   * @constructor
    */
   function Hash(wsInstance) {
     _classCallCheck(this, Hash);
@@ -1037,6 +1360,13 @@ var Hash = function () {
         this.ws_.goToSlide(newSlideIndex);
       }
     }
+
+    /**
+     * Handler for the slide change event which updates the slide on the hash.
+     * @param {Event} event
+     * @private
+     */
+
   }], [{
     key: 'onSlideChange_',
     value: function onSlideChange_(event) {
@@ -1092,21 +1422,27 @@ var Hash = function () {
 /* harmony default export */ __webpack_exports__["a"] = Hash;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_keys__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_keys__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_dom__ = __webpack_require__(0);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
 
+
+/**
+ * Keyboard interaction plugin.
+ */
+
 var Keyboard = function () {
   /**
-   * Keyboard interaction plugin.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   function Keyboard(wsInstance) {
     _classCallCheck(this, Keyboard);
@@ -1134,14 +1470,8 @@ var Keyboard = function () {
       var method = void 0;
       var argument = void 0;
 
-      // Check if there's a focused element that might use the keyboard.
-      if (document.activeElement) {
-        var isContentEditable = document.activeElement.contentEditable !== 'inherit';
-        var isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA'].indexOf(document.activeElement.tagName) > -1;
-
-        if (isInput || isContentEditable) {
-          return;
-        }
+      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement()) {
+        return;
       }
 
       switch (event.which) {
@@ -1186,7 +1516,7 @@ var Keyboard = function () {
 /* harmony default export */ __webpack_exports__["a"] = Keyboard;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1215,11 +1545,14 @@ var LABELS = {
   }
 };
 
+/**
+ * Navigation plugin.
+ */
+
 var Navigation = function () {
   /**
-   * The Navigation constructor. It'll create all the nodes needed for the
-   * navigation such as the arrows and the counter.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   function Navigation(wsInstance) {
     _classCallCheck(this, Navigation);
@@ -1338,17 +1671,23 @@ var Navigation = function () {
 /* harmony default export */ __webpack_exports__["a"] = Navigation;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__click_nav__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__grid__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hash__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__keyboard__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navigation__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__scroll__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__touch__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__autoslide__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__click_nav__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grid__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hash__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__keyboard__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__navigation__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scroll__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(15);
+
+
+
 
 
 
@@ -1358,31 +1697,38 @@ var Navigation = function () {
 
 
 /* harmony default export */ __webpack_exports__["a"] = {
-  ClickNav: __WEBPACK_IMPORTED_MODULE_0__click_nav__["a" /* default */],
-  Grid: __WEBPACK_IMPORTED_MODULE_1__grid__["a" /* default */],
-  Hash: __WEBPACK_IMPORTED_MODULE_2__hash__["a" /* default */],
-  Keyboard: __WEBPACK_IMPORTED_MODULE_3__keyboard__["a" /* default */],
-  Navigation: __WEBPACK_IMPORTED_MODULE_4__navigation__["a" /* default */],
-  Scroll: __WEBPACK_IMPORTED_MODULE_5__scroll__["a" /* default */],
-  Touch: __WEBPACK_IMPORTED_MODULE_6__touch__["a" /* default */]
+  AutoSlide: __WEBPACK_IMPORTED_MODULE_0__autoslide__["a" /* default */],
+  ClickNav: __WEBPACK_IMPORTED_MODULE_1__click_nav__["a" /* default */],
+  Grid: __WEBPACK_IMPORTED_MODULE_2__grid__["a" /* default */],
+  Hash: __WEBPACK_IMPORTED_MODULE_3__hash__["a" /* default */],
+  Keyboard: __WEBPACK_IMPORTED_MODULE_4__keyboard__["a" /* default */],
+  Navigation: __WEBPACK_IMPORTED_MODULE_5__navigation__["a" /* default */],
+  Scroll: __WEBPACK_IMPORTED_MODULE_6__scroll__["a" /* default */],
+  Touch: __WEBPACK_IMPORTED_MODULE_7__touch__["a" /* default */],
+  Video: __WEBPACK_IMPORTED_MODULE_8__video__["a" /* default */],
+  YouTube: __WEBPACK_IMPORTED_MODULE_9__youtube__["a" /* default */]
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
 
+/**
+ * Scroll plugin.
+ */
+
 var Scroll = function () {
   /**
-   * Scroll handler for the WebSlides.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   function Scroll(wsInstance) {
     _classCallCheck(this, Scroll);
@@ -1493,14 +1839,13 @@ var Scroll = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = Scroll;
-;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1520,9 +1865,14 @@ var EVENTS = {
   }
 };
 
+/**
+ * Touch plugin.
+ */
+
 var Touch = function () {
   /**
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   function Touch(wsInstance) {
     _classCallCheck(this, Touch);
@@ -1534,14 +1884,14 @@ var Touch = function () {
     this.ws_ = wsInstance;
 
     /**
-     * Start position for the X coord.
+     * Start position for the X coordinate.
      * @type {number}
      * @private
      */
     this.startX_ = 0;
 
     /**
-     * Start position for the Y coord.
+     * Start position for the Y coordinate.
      * @type {number}
      * @private
      */
@@ -1588,7 +1938,7 @@ var Touch = function () {
 
   /**
    * Start touch handler. Saves starting points.
-   * @param event
+   * @param {Event} event The Touch event.
    * @private
    */
 
@@ -1606,7 +1956,7 @@ var Touch = function () {
 
     /**
      * Move touch handler. Saves end points.
-     * @param event
+     * @param {Event} event The Touch event.
      * @private
      */
 
@@ -1643,15 +1993,13 @@ var Touch = function () {
     /**
      * Normalizes an event to deal with differences between PointerEvent and
      * TouchEvent.
-     * @param event
-     * @return {*}
+     * @param {Event} event
+     * @return {Object} Normalised touch points.
      */
 
   }], [{
     key: 'normalizeEventInfo',
     value: function normalizeEventInfo(event) {
-      var x = void 0;
-      var y = void 0;
       var touchEvent = { pageX: 0, pageY: 0 };
 
       if (typeof event.changedTouches !== 'undefined') {
@@ -1660,8 +2008,8 @@ var Touch = function () {
         touchEvent = event.originalEvent.changedTouches[0];
       }
 
-      x = event.offsetX || event.layerX || touchEvent.pageX;
-      y = event.offsetY || event.layerY || touchEvent.pageY;
+      var x = event.offsetX || event.layerX || touchEvent.pageX;
+      var y = event.offsetY || event.layerY || touchEvent.pageY;
 
       return { x: x, y: y };
     }
@@ -1671,10 +2019,304 @@ var Touch = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = Touch;
-;
 
 /***/ }),
-/* 13 */
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_slide__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+/**
+ * Video plugin. Video plugin that allows to autoplay videos once the slide gets
+ * active.
+ */
+
+var Video = function () {
+  /**
+   * @param {WebSlides} wsInstance The WebSlides instance.
+   * @constructor
+   */
+  function Video(wsInstance) {
+    _classCallCheck(this, Video);
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.ws_ = wsInstance;
+
+    var videos = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].toArray(this.ws_.el.querySelectorAll('video'));
+
+    if (videos.length) {
+      videos.forEach(function (video) {
+        video.removeAttribute('autoplay');
+
+        var _Slide$getSectionFrom = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(video),
+            i = _Slide$getSectionFrom.i;
+
+        var slide = wsInstance.slides[i - 1];
+
+        /**
+         * @type {HTMLMediaElement}
+         */
+        slide.video = video;
+        slide.onEnable(Video.onSectionEnabled);
+        slide.onDisable(Video.onSectionDisabled);
+      });
+    }
+  }
+
+  /**
+   * On Section enable hook. Will play the video.
+   * @param {Slide} slide
+   */
+
+
+  _createClass(Video, null, [{
+    key: 'onSectionEnabled',
+    value: function onSectionEnabled(slide) {
+      slide.video.play();
+    }
+
+    /**
+     * On Section enable hook. Will pause the video.
+     * @param {Slide} slide
+     */
+
+  }, {
+    key: 'onSectionDisabled',
+    value: function onSectionDisabled(slide) {
+      slide.video.pause();
+    }
+  }]);
+
+  return Video;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = Video;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_slide__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/* global YT */
+
+
+
+/**
+ * Player wrapper around the YT player. This is mostly to get around the event
+ * in which we need to play a video which player isn't ready yet.
+ */
+
+var Player = function () {
+  /**
+   * @param {Element} el
+   */
+  function Player(el) {
+    var _this = this;
+
+    _classCallCheck(this, Player);
+
+    this.ready = false;
+    this.onReadyC = null;
+    this.slide = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(el).section;
+
+    var playerVars = this.getPlayerVars(el);
+
+    this.player = new YT.Player(el, {
+      videoId: el.dataset.youtubeId,
+      playerVars: playerVars,
+      events: {
+        onReady: function onReady() {
+          _this.ready = true;
+          if (_this.timeout && _this.player.getPlayerState() !== 1) {
+            _this.play();
+          }
+
+          if (_this.onReadyC) {
+            _this.onReadyC();
+            _this.onReadyC = null;
+          }
+        }
+      }
+    });
+
+    this.el = this.player.getIframe();
+    this.timeout = null;
+  }
+
+  /**
+   *
+   */
+
+
+  _createClass(Player, [{
+    key: 'play',
+    value: function play() {
+      var _this2 = this;
+
+      if (this.ready) {
+        this.timeout = setTimeout(function () {
+          _this2.timeout = null;
+        }, 1000);
+        this.player.playVideo();
+      } else {
+        this.onReadyC = this.play;
+      }
+    }
+
+    /**
+     *
+     */
+
+  }, {
+    key: 'pause',
+    value: function pause() {
+      this.player.pauseVideo();
+    }
+
+    /**
+     * Get player vars by element.
+     * @return {{modestbranding: number}}
+     */
+
+  }, {
+    key: 'getPlayerVars',
+    value: function getPlayerVars() {
+      var vars = {
+        modestbranding: 1,
+        rel: 0,
+        origin: window.location.origin
+      };
+
+      if (this.slide.classList.contains('fullscreen')) {
+        // Disabling keyboard interaction for fullscreenvideos
+        vars.disablekb = 1;
+        vars.showinfo = 0;
+      }
+
+      return vars;
+    }
+  }]);
+
+  return Player;
+}();
+
+/**
+ * Video plugin.
+ */
+
+
+var YouTube = function () {
+  /**
+   * Grid plugin that shows a grid on top of the WebSlides for easy prototyping.
+   * @param {WebSlides} wsInstance The WebSlides instance
+   */
+  function YouTube(wsInstance) {
+    _classCallCheck(this, YouTube);
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.ws_ = wsInstance;
+
+    this.videos = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].toArray(this.ws_.el.querySelectorAll('[data-youtube'));
+
+    if (this.videos.length) {
+      this.inject();
+    }
+  }
+
+  /**
+   * Once the YouTube API is ready this gets called so we can start the videos.
+   */
+
+
+  _createClass(YouTube, [{
+    key: 'onYTReady',
+    value: function onYTReady() {
+      var _this3 = this;
+
+      this.videos.forEach(function (video) {
+        var player = new Player(video);
+
+        if (typeof video.dataset.autoplay !== 'undefined') {
+          var _Slide$getSectionFrom = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(player.el),
+              i = _Slide$getSectionFrom.i;
+
+          var slide = _this3.ws_.slides[i - 1];
+
+          slide.player = player;
+          slide.onEnable(YouTube.onSectionEnabled);
+          slide.onDisable(YouTube.onSectionDisabled);
+
+          if (_this3.ws_.currentSlide_ === slide) {
+            YouTube.onSectionEnabled(slide);
+          }
+        }
+      });
+    }
+
+    /**
+     * Injects the YouTube iFrame API into the page.
+     */
+
+  }, {
+    key: 'inject',
+    value: function inject() {
+      window.onYouTubeIframeAPIReady = this.onYTReady.bind(this);
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+    /**
+     * On Section enable hook. Will play the video.
+     * @param {Slide} slide
+     */
+
+  }], [{
+    key: 'onSectionEnabled',
+    value: function onSectionEnabled(slide) {
+      slide.player.play();
+    }
+
+    /**
+     * On Section enable hook. Will pause the video.
+     * @param {Slide} slide
+     */
+
+  }, {
+    key: 'onSectionDisabled',
+    value: function onSectionDisabled(slide) {
+      slide.player.pause();
+    }
+  }]);
+
+  return YouTube;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = YouTube;
+
+/***/ }),
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1687,9 +2329,14 @@ var NativeCustomEvent = window.CustomEvent;
  */
 function canIuseNativeCustom() {
   try {
-    var p = new NativeCustomEvent('t', { detail: { a: 'b' } });
+    var p = new NativeCustomEvent('t', {
+      detail: {
+        a: 'b'
+      }
+    });
     return 't' === p.type && 'b' === p.detail.a;
   } catch (e) {}
+
   return false;
 }
 
@@ -1717,7 +2364,7 @@ var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 /* harmony default export */ __webpack_exports__["a"] = WSCustomEvent;
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1742,11 +2389,11 @@ function linear(p) {
 /* harmony default export */ __webpack_exports__["a"] = { swing: swing, linear: linear };
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(17);
 /* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
 
 
@@ -1793,12 +2440,12 @@ function scrollTo(y) {
 }
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_webslides__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_webslides__ = __webpack_require__(4);
 
 
 window.WebSlides = __WEBPACK_IMPORTED_MODULE_0__modules_webslides__["a" /* default */];
