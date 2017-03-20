@@ -28,20 +28,6 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Fonts: Roboto, Maitree (Serif), and San Francisco.
 - Vertical rhythm (use multiples of 8).
 
-### Key Navigation
-
-There's a handful of keys that can be used to achieve navigation within WebSlides. Here's the list:
-
-* `←`: If WebSlides is not vertical, it will go to the previous slide.
-* `→`: If WebSlides is not vertical, it will go to the next slide.
-* `↑`: If WebSlides is vertical, it will go to the previous slide.
-* `↓`: If WebSlides is vertical, it will go to the next slide.
-* `Page Up`: Go to the previous slide.
-* `Page Down`: Go to the next slide.
-* `Space`: Go to the next slide.
-* `Home`: Go to the first slide.
-* `End`: Go to the last slide.
-
 ## Markup
 
 - Code is clean and scalable. It uses intuitive markup with popular naming conventions. There's no need to overuse classes or nesting.
@@ -94,6 +80,19 @@ webslides/
 - Cards: `.card-50`, `.card-40`...
 - Flexible Blocks: `.flexblock.clients`, `.flexblock.metrics`...
 
+### Key Navigation
+
+There's a handful of keys that can be used to achieve navigation within WebSlides. Here's the list:
+
+* `←`: If WebSlides is not vertical, it will go to the previous slide.
+* `→`: If WebSlides is not vertical, it will go to the next slide.
+* `↑`: If WebSlides is vertical, it will go to the previous slide.
+* `↓`: If WebSlides is vertical, it will go to the next slide.
+* `Page Up`: Go to the previous slide.
+* `Page Down`: Go to the next slide.
+* `Space`: Go to the next slide.
+* `Home`: Go to the first slide.
+* `End`: Go to the last slide.
 
 ### Extensions
 
