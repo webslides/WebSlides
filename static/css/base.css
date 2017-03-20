@@ -394,7 +394,7 @@ nav a[rel="external"] em,
 
 .wrap,header nav, footer nav {
   position: relative;
-  width: 1200px;
+  width: 90%;
   max-width: 100%;
   margin-right:auto;
   margin-left: auto;
@@ -1463,8 +1463,8 @@ section,.slide
 }
 
 
-/*== 5.1. Mini container width:50% (600px)
-.wrap:1200px; / Aligned items [class*="content-"]=== */
+/*== 5.1. Mini container width:50%
+Aligned items [class*="content-"]=== */
 
 [class*="content-"] {
   position: relative;
