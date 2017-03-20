@@ -7,6 +7,7 @@ import Navigation from './navigation';
 import Scroll from './scroll';
 import Touch from './touch';
 import Video from './video';
+import YouTube from './youtube';
 
 export default {
   AutoSlide,
@@ -17,5 +18,6 @@ export default {
   Navigation,
   Scroll,
   Touch,
-  Video
+  Video,
+  YouTube
 };

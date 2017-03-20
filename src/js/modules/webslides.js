@@ -18,7 +18,8 @@ const PLUGINS = {
   'nav': Plugins.Navigation,
   'scroll': Plugins.Scroll,
   'touch': Plugins.Touch,
-  'video': Plugins.Video
+  'video': Plugins.Video,
+  'youtube': Plugins.YouTube
 };
 
 
@@ -29,7 +30,7 @@ export default class WebSlides {
   /**
    * Options for WebSlides
    * @param {number|boolean} autoslide If a number is provided, it will allow
-   * autosliding by said amount of miliseconds.
+   * autosliding by said amount of milliseconds.
    * @param {boolean} changeOnClick If true, it will allow
    * clicking on any place to change the slide.
    * @param {boolean} loop Whether to go to first slide from last one or not.
