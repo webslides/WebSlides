@@ -1,5 +1,4 @@
 /* global YT */
-
 import DOM from '../utils/dom';
 import Slide from '../modules/slide';
 
@@ -24,6 +23,9 @@ class Player {
       events: {
         onReady: () => {
           this.ready = true;
+          if (this.timeout && this.player.getPlayerState() !== 1) {
+            this.play();
+          }
 
           if (this.onReadyC) {
             this.onReadyC();
@@ -32,7 +34,9 @@ class Player {
         }
       }
     });
+
     this.el = this.player.getIframe();
+    this.timeout = null;
   }
 
   /**
@@ -40,6 +44,9 @@ class Player {
    */
   play() {
     if (this.ready) {
+      this.timeout = setTimeout(() => {
+        this.timeout = null;
+      }, 1000);
       this.player.playVideo();
     } else {
       this.onReadyC = this.play;
@@ -134,7 +141,6 @@ export default class YouTube {
    * @param {Slide} slide
    */
   static onSectionEnabled(slide) {
-    console.log('enabling', slide); // eslint-disable-line no-console
     slide.player.play();
   }
 
@@ -143,7 +149,6 @@ export default class YouTube {
    * @param {Slide} slide
    */
   static onSectionDisabled(slide) {
-    console.log('disabling', slide); // eslint-disable-line no-console
     slide.player.pause();
   }
 }
