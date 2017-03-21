@@ -1823,7 +1823,6 @@ div + ul, div + ol{
   }
 }
 
-
 .features li h2 {
   text-transform: uppercase;
 }
@@ -1858,7 +1857,6 @@ div + ul, div + ol{
     margin-right: .8rem;
   }
 }
-
 
 /*=====================================================================
 6.2 Clients Logos <ul class="flexblock clients">
@@ -2827,6 +2825,10 @@ cite span {
 cite:before {
   content: "\2014 \2009";
   margin-right: 6px;
+}
+/* -- Versatility: blockquote, p, h2, h3...  -- */
+.text-quote {
+position: relative;
 }
 .text-quote:before {
   position: absolute;
