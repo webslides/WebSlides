@@ -895,7 +895,7 @@ h1 svg,
 h2 svg, h3 svg, h4 svg {
   margin-top: -.8rem;
 }
-.text-intro svg,.wall p svg,.try svg {
+.text-intro svg,.text-quote p svg,.try svg {
   margin-top: -.4rem;
 }
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
@@ -2828,7 +2828,7 @@ cite:before {
   content: "\2014 \2009";
   margin-right: 6px;
 }
-blockquote.wall:before {
+.text-quote:before {
   position: absolute;
   top: -6.4rem;
   left: -.8rem;
@@ -2842,14 +2842,14 @@ blockquote.wall:before {
 }
 
 @media (min-width:768px) {
-  blockquote.wall {
+  .text-quote {
     padding-left: 8rem;
   }
-  blockquote.wall p {
+  .text-quote p {
     font-size: 3.2rem;
     line-height: 4.8rem;
   }
-  blockquote.wall:before {
+  .text-quote:before {
     top: -3.2rem;
     left: .8rem;
   }
