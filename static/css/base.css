@@ -3168,7 +3168,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
     text-shadow: none !important;
     filter: none !important;
   }
-  html.ws-ready, .ws-ready body, #webslides {
+  html, body, #webslides {
     width: auto !important;
     height: auto !important;
     overflow: auto !important;
