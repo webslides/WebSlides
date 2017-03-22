@@ -1,8 +1,8 @@
 # WebSlides = Good Karma
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
-[![Release](https://img.shields.io/github/release/jlantunez/webslides.svg)](https://github.com/jlantunez/webslides/releases/latest)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/jlantunez/webslides.svg?style=social)](https://twitter.com/webslides)
+[![Release](https://img.shields.io/github/release/webslides/webslides.svg)](https://github.com/webslides/webslides/releases/latest)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/webslides/webslides.svg?style=social)](https://twitter.com/webslides)
 
 Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. A new release (at least) every 8th day of the month — [https://webslides.tv/demos](https://webslides.tv/demos).
 

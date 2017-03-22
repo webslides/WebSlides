@@ -302,7 +302,7 @@ dd {
 1. Base --> Baseline: 8px = .8rem
 =========================================== */
 
-/* -- Disable elastic scrolling/bounce: 
+/* -- Disable elastic scrolling/bounce:
 webslides.js will add .ws-ready automatically. Don't worry :) -- */
 
 html.ws-ready,
@@ -1173,7 +1173,7 @@ p.text-subtitle svg {vertical-align: text-top;}
 }
 
 /* -- Interviews (Questions & Answers)  --- */
-/* -- <dl class="text-interview"> 
+/* -- <dl class="text-interview">
 <dt>name</dt>
 <dd><p>question or answer</p>
 </dd>
@@ -1249,7 +1249,7 @@ p.text-subtitle svg {vertical-align: text-top;}
 =========================================== */
 
 /* -- If you want an unique, global header/footer,read this:
-https://github.com/jlantunez/webslides/issues/57 -- */
+https://github.com/webslides/webslides/issues/57 -- */
 
 header,
 footer,
