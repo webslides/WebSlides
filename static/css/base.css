@@ -3157,13 +3157,38 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 =========================================== */
 
 @media print {
-  section,.slide {
-    /* not static, just in case slide contents take advantage of positioning */
-    position: relative;
-    display: block !important;
+  @page {
+    size: A4 landscape;
+    margin: 0.5cm;
   }
-  #counter,
-  #navigation {
+  /* Black prints faster */
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  html.ws-ready, .ws-ready body, #webslides {
+    width: auto !important;
+    height: auto !important;
+    overflow: auto !important;
+  }
+  #webslides {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+  section, .slide {
+    display: flex !important;
+    height: auto !important;
+  }
+  section * {
+    -webkit-animation: none;
+    animation: none;
+  }
+  table, figure {
+    page-break-inside: avoid;
+  }
+  #counter, #navigation {
     display: none;
   }
 }
