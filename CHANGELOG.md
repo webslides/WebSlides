@@ -1,3 +1,29 @@
+# 1.3.0
+
+## Misc
+
+- Deps updated.
+- Now using [eslint](http://eslint.org/) to enforce code style.
+- Adding a new badge so the release number is quickly seen.
+- [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide is now a plugin.
+- Updated docs.
+- Moved to org!
+
+## New features
+
+- [[#46](https://github.com/webslides/webslides/issues/46)]Added slide animation for mobile devices.
+- [[#56](https://github.com/webslides/webslides/issues/56)]Added option to disable looping.
+- [[#54](https://github.com/webslides/webslides/issues/54)]Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
+- [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide now pauses if a focusable element gains focus.
+- Added `ws-ready` to actually lock the scroll 
+
+## Bugfixes
+
+- Fixed issues with the grid.
+- [[#33](https://github.com/webslides/webslides/issues/33)] Fixed video issue.
+- [[#61](https://github.com/webslides/webslides/issues/61)]Fixed print issue which prevented to export the slides to PDF in an easy way.
+
+
 # 1.2.1 (2017-03-02)
 
 ## Bugfixes
