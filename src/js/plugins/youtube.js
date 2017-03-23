@@ -40,7 +40,7 @@ class Player {
   }
 
   /**
-   *
+   * Plays the video.
    */
   play() {
     if (this.ready) {
@@ -54,10 +54,14 @@ class Player {
   }
 
   /**
-   *
+   * Pause playing the video if it's already playing.
    */
   pause() {
-    this.player.pauseVideo();
+    if (this.player &&
+        this.player.pauseVideo &&
+        this.player.getPlayerState() === 1) {
+      this.player.pauseVideo();
+    }
   }
 
   /**
