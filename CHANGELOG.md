@@ -17,6 +17,18 @@
 - [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide now pauses if a focusable element gains focus.
 - Added `ws-ready` to actually lock the scroll 
 
+## CSS
+
+- naming conventions: 
+  - .wall is now .text-quote
+  - introducing .text-interview = dl.text-interview, dt (name), dd (question/answer)
+  - .card is now a card: width: 100%
+- fluid .wrap (width: 90%)
+- .gallery li: auto-fill removed. Now: equal width (useful for gallery layouts)
+- adding padding to form[class*="bg-"]
+- a better CSS print: A4 landscape
+
+
 ## Bugfixes
 
 - Fixed issues with the grid.
