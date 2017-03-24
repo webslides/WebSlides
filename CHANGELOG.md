@@ -8,6 +8,7 @@
 - [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide is now a plugin.
 - Updated docs.
 - Moved to org!
+- Demos: GitHub links updated.
 
 ## New features
 
