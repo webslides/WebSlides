@@ -8,6 +8,7 @@
 - [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide is now a plugin.
 - Updated docs.
 - Moved to org!
+- Demos: GitHub links updated.
 
 ## New features
 
@@ -15,7 +16,20 @@
 - [[#56](https://github.com/webslides/webslides/issues/56)]Added option to disable looping.
 - [[#54](https://github.com/webslides/webslides/issues/54)]Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
 - [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide now pauses if a focusable element gains focus.
-- Added `ws-ready` to actually lock the scroll 
+- Added `ws-ready` to actually lock the scroll.
+
+## CSS
+
+- 2 new animations: .slideInLeft and .slideInRight.
+- naming conventions: 
+  - .wall is now .text-quote.
+  - introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
+  - .card is now a card: width: 100%.
+- fluid .wrap (width: 90%).
+- .gallery li: auto-fill removed. Now: equal width (useful for gallery layouts).
+- adding padding to form[class*="bg-"].
+- a better CSS print: A4 landscape.
+
 
 ## Bugfixes
 
