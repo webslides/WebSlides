@@ -21,14 +21,14 @@
 ## CSS
 
 - 2 new animations: .slideInLeft and .slideInRight.
-- naming conventions: 
-  - .wall is now .text-quote.
-  - introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
+- Naming conventions: 
+  - Introducing .text-quote.
+  - Introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
   - .card is now a card: width: 100%.
-- fluid .wrap (width: 90%).
+- Fluid .wrap (width: 90%).
 - .gallery li: auto-fill removed. Now: equal width (useful for gallery layouts).
-- adding padding to form[class*="bg-"].
-- a better CSS print: A4 landscape.
+- Adding padding to form[class*="bg-"].
+- A better CSS print: A4 landscape.
 
 
 ## Bugfixes
