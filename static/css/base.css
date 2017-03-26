@@ -47,8 +47,9 @@
 	12. Avatars
 	13. Tables
 	14. Forms
-	15. Safari Bug (flex-wrap)
-	16. Print
+  15. Longform Elements
+	16. Safari Bug (flex-wrap)
+	17. Print
 
 ----------------------------------------------------------------------------------- */
 
@@ -420,29 +421,28 @@ nav a[rel="external"] em,
   text-align: center;
 }
 
-img.aligncenter {
+img.aligncenter,figure.aligncenter {
   display: block;
 }
 
-img.alignleft,
-img.alignright,
-img.aligncenter {
-  margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+img.alignleft,figure.alignleft,
+img.alignright,figure.alignright,
+img.aligncenter,figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
-@media (min-width: 768px) {
-  img.aligncenter {
-    margin-top: .8rem;
-    margin-bottom: .8rem;
-  }
-  img.alignright,svg.alignright {
-    margin: .8rem 0 .8rem 4.8rem
-  }
-  img.alignleft,svg.alignright {
-    margin: .8rem 4.8rem .8rem 0;
-  }
+img.aligncenter,figure.aligncenter {
+  margin-top: .8rem;
+  margin-bottom: .8rem;
 }
+img.alignright,svg.alignright,figure.alignright {
+  margin: .8rem 0 .8rem 2.4rem
+}
+img.alignleft,svg.alignleft,figure.alignleft {
+  margin: .8rem 2.4rem .8rem 0;
+}
+
 @media (min-width: 1024px) {
 
   /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
@@ -1158,7 +1158,7 @@ p.text-subtitle svg {vertical-align: text-top;}
 }
 @media (min-width: 568px) {
   [class*="text-pull-"] {
-    width: 32rem;
+    max-width: 45%;
   }
   .text-pull-right {
     float: right;
@@ -1170,6 +1170,10 @@ p.text-subtitle svg {vertical-align: text-top;}
     margin-left: -2.4rem;
     margin-right: 2.4rem;
   }
+}
+img[class*="text-pull-"],figure[class*="text-pull-"] {
+  padding-top:0;
+  margin-top: .8rem;
 }
 
 /* -- Interviews (Questions & Answers)  --- */
@@ -3143,7 +3147,32 @@ button:disabled:hover {
 }
 
 /*=========================================
-15. SAFARI BUGS (flex-wrap)
+15. Longform 
+=========================================== */
+
+/* -- Posts = .wrap.longform -- */
+
+.longform {
+width: 72rem; 
+/* Why 72rem=720px? 
+90-95 characters per line = better reading speed */
+}
+.longform .alignleft, .longform .alignright {
+    max-width: 45%;
+}
+
+.longform img.aligncenter,.longform figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+.longform ul,.longform ol {
+margin-bottom: 3.2rem;
+}
+.longform ul ol,.longform ol ul,.longform ul ul,.longform ol ol {
+margin-bottom: 0;
+}
+/*=========================================
+16. SAFARI BUGS (flex-wrap)
 Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 =========================================== */
 
@@ -3153,7 +3182,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 }
 
 /*=========================================
-16. PRINT
+17. PRINT
 =========================================== */
 
 @media print {
