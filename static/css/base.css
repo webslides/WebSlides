@@ -891,7 +891,7 @@ h1 svg,
 h2 svg, h3 svg, h4 svg {
   margin-top: -.8rem;
 }
-.text-intro svg,.text-quote p svg,.try svg {
+.text-intro svg,.text-quote p svg,.wall p svg,.try svg {
   margin-top: -.4rem;
 }
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
@@ -2826,33 +2826,35 @@ cite:before {
   content: "\2014 \2009";
   margin-right: 6px;
 }
-/* -- Versatility: blockquote, p, h2, h3...  -- */
-.text-quote {
-position: relative;
+/* -- Big Blockquote -- */
+/* Info: .wall will be deprecated soon. Use .text-quote ;) */
+
+.text-quote,.wall {
+position: relative; /* Versatility: blockquote, p, h2... */
 }
-.text-quote:before {
+.text-quote:before,.wall:before {
   position: absolute;
   top: -6.4rem;
   left: -.8rem;
   content: "\201C";
   font-family: arial, sans-serif;
-  width: 6.4rem;
-  height: 6.4rem;
-  font-size: 16rem;
+  width: 5.6rem;
+  height: 5.6rem;
+  font-size: 12rem;
   line-height: 1;
   text-align: center;
 }
 
 @media (min-width:768px) {
-  .text-quote {
-    padding-left: 8rem;
+  .text-quote,.wall {
+    padding-left: 6.4rem;
   }
-  .text-quote p {
+  .text-quote p,.wall p {
     font-size: 3.2rem;
     line-height: 4.8rem;
   }
-  .text-quote:before {
-    top: -3.2rem;
+  .text-quote:before,.wall:before {
+    top: -1.6rem;
     left: .8rem;
   }
 }
@@ -3167,6 +3169,15 @@ margin-bottom: 3.2rem;
 .longform ul ol,.longform ol ul,.longform ul ul,.longform ol ol {
 margin-bottom: 0;
 }
+
+@media (min-width:1024px) {
+
+.longform .text-quote {
+margin-right: -4.8rem;
+margin-left: -4.8rem;
+ }
+}
+
 /*=========================================
 16. SAFARI BUGS (flex-wrap)
 Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
