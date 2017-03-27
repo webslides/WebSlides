@@ -742,14 +742,10 @@ li .browser {margin-bottom: 0;
     font-size: 1.6rem;
   }
 }
-
-
 .browser img {
   width: 100%;
   margin-top: 3.2rem;
 }
-
-
 
 /*=== 1.4. Basic Grid (Flexible blocks)
 Auto-fill & Equal height === */
@@ -1211,7 +1207,6 @@ img[class*="text-pull-"],figure[class*="text-pull-"] {
   font-family: "San Francisco", helvetica, arial, sans-serif;
 }
 
-
 /* Ultra Light */
 
 @font-face {
@@ -1219,7 +1214,6 @@ img[class*="text-pull-"],figure[class*="text-pull-"] {
   font-weight: 100;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2");
 }
-
 
 /* Thin */
 
@@ -1238,7 +1232,6 @@ img[class*="text-pull-"],figure[class*="text-pull-"] {
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2");
 }
 
-
 /* Bold */
 
 @font-face {
@@ -1246,7 +1239,6 @@ img[class*="text-pull-"],figure[class*="text-pull-"] {
   font-weight: bold;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2");
 }
-
 
 /*=========================================
 3. Header & Footer
@@ -1273,20 +1265,24 @@ footer img {
   height: 4rem;
   vertical-align: middle;
 }
-
-header,footer {
-  position: absolute;
-  top: 0;
-  left: 0;
+footer {
+  position: relative;
+}
+header, footer {
   /* hover/visibility */
   z-index: 3;
 }
 
-footer {
+header,.ws-ready footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ws-ready footer {
   top: auto;
   bottom: 0;
 }
-
 /*=== Hide header[role=banner] === */
 
 /*Remove "opacity=0" if you want an unique, visible header on each slide*/
