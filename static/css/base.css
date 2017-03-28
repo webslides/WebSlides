@@ -3175,6 +3175,7 @@ font-size: 1.6rem;
 }
 /* Mobile: video full width */
 .text-pull.embed {
+padding-bottom: 60.6%; /*without black borders; */
 margin-right: -2.4rem;
 margin-left: -2.4rem;
 }
