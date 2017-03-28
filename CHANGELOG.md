@@ -2,6 +2,7 @@
 
 ## Misc
 
+- 3 new demos: longform, interview, and media (YouTube API, videos, images, maps...)
 - Deps updated.
 - Now using [eslint](http://eslint.org/) to enforce code style.
 - Adding a new badge so the release number is quickly seen.
@@ -21,6 +22,7 @@
 ## CSS
 
 - 2 new animations: .slideInLeft and .slideInRight.
+- Adding longform elements.
 - Naming conventions: 
   - Introducing .text-quote.
   - Introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
@@ -29,7 +31,6 @@
 - .gallery li: auto-fill removed. Now: equal width (useful for gallery layouts).
 - Adding padding to form[class*="bg-"].
 - A better CSS print: A4 landscape.
-
 
 ## Bugfixes
 
