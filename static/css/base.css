@@ -2708,12 +2708,15 @@ object-fit to re-frame images rather than just stretch and resize them  === */
 .flex-content,
 [class*="card"] blockquote {
   position: relative;
+  padding: 2.4rem;
+}
+[class*="card-"] .flex-content,
+[class*="card-"] blockquote {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   justify-content: center;
-  padding: 2.4rem;
 }
 
 .flex-content p {
@@ -2789,9 +2792,11 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   /* Visibility */
   z-index: 2;
 }
+
 [class*="card"] figure figcaption svg {
   font-size: 1rem;
 }
+
 
 /*=========================================
 11. Quotes
@@ -2835,7 +2840,7 @@ position: relative; /* Versatility: blockquote, p, h2... */
 }
 .text-quote:before,.wall:before {
   position: absolute;
-  top: -6.4rem;
+  top: -4rem;
   left: -.8rem;
   content: "\201C";
   font-family: arial, sans-serif;
