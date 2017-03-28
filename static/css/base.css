@@ -1137,19 +1137,16 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-size: 2.4rem;
   line-height: 4rem;
   font-weight: 400;
-  margin-right: 3.2rem;
+  margin-right: 2.4rem;
   margin-bottom: 3.2rem;
-  margin-left: 3.2rem;
+  margin-left: 2.4rem;
 }
 
 [class*="text-pull-"] {
   padding-top: 1.4rem;
   margin-top: .8rem;
-  
 }
-blockquote[class*="text-pull-"] {
-margin-bottom: 0;
-}
+
 @media (min-width: 1024px) {
   [class*="text-pull"] {
     margin-right: -4.8rem;
@@ -1162,11 +1159,13 @@ margin-bottom: 0;
   }
   .text-pull-right {
     float: right;
-    margin-right: -3.2rem;
+    margin-right: -2.4rem;
+    margin-left: 2.4rem;
   }
   .text-pull-left {
     float: left;
-    margin-left: -3.2rem;
+    margin-left: -2.4rem;
+    margin-right: 2.4rem;
   }
 }
 img[class*="text-pull-"],figure[class*="text-pull-"] {
