@@ -3179,10 +3179,10 @@ font-size: 1.6rem;
 max-width: 32%;
 }
 .longform .text-pull-right {
-margin-right:-240px;
+margin-right:-256px;
 }
 .longform .text-pull-left {
-margin-left:-240px;
+margin-left:-256px;
  }
 }
 @media (min-width:1024px) {
