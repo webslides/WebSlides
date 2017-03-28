@@ -1137,34 +1137,36 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-size: 2.4rem;
   line-height: 4rem;
   font-weight: 400;
-  margin-right: 2.4rem;
-  margin-left: 2.4rem;
+  margin-right: 3.2rem;
+  margin-bottom: 3.2rem;
+  margin-left: 3.2rem;
 }
 
 [class*="text-pull-"] {
   padding-top: 1.4rem;
   margin-top: .8rem;
+  
 }
-
+blockquote[class*="text-pull-"] {
+margin-bottom: 0;
+}
 @media (min-width: 1024px) {
   [class*="text-pull"] {
-    margin-right: -4rem;
-    margin-left: -4rem;
+    margin-right: -4.8rem;
+    margin-left: -4.8rem;
   }
 }
 @media (min-width: 568px) {
   [class*="text-pull-"] {
-    max-width: 45%;
+    max-width: 40%;
   }
   .text-pull-right {
     float: right;
-    margin-right: -2.4rem;
-    margin-left: 2.4rem;
+    margin-right: -3.2rem;
   }
   .text-pull-left {
     float: left;
-    margin-left: -2.4rem;
-    margin-right: 2.4rem;
+    margin-left: -3.2rem;
   }
 }
 img[class*="text-pull-"],figure[class*="text-pull-"] {
@@ -3156,9 +3158,8 @@ width: 72rem;
 90-95 characters per line = better reading speed */
 }
 .longform .alignleft, .longform .alignright {
-    max-width: 45%;
+    max-width: 40%;
 }
-
 .longform img.aligncenter,.longform figure.aligncenter {
   margin-top: 3.2rem;
   margin-bottom: 3.2rem;
@@ -3169,14 +3170,29 @@ margin-bottom: 3.2rem;
 .longform ul ol,.longform ol ul,.longform ul ul,.longform ol ol {
 margin-bottom: 0;
 }
+.longform figcaption p,.longform [class*="text-pull-"] p{
+line-height: 2.4rem;
+font-size: 1.6rem;
+}
 
+@media (min-width:1280px) {
+.longform [class*="text-pull-"] {
+max-width: 32%;
+}
+.longform .text-pull-right {
+margin-right:-240px;
+}
+.longform .text-pull-left {
+margin-left:-240px;
+ }
+}
 @media (min-width:1024px) {
-
 .longform .text-quote {
 margin-right: -4.8rem;
 margin-left: -4.8rem;
  }
 }
+
 
 /*=========================================
 16. SAFARI BUGS (flex-wrap)
