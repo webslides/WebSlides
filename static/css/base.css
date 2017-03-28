@@ -3173,7 +3173,11 @@ margin-bottom: 0;
 line-height: 2.4rem;
 font-size: 1.6rem;
 }
-
+/* Mobile: video full width */
+.text-pull.embed {
+margin-right: -2.4rem;
+margin-left: -2.4rem;
+}
 @media (min-width:1280px) {
 .longform [class*="text-pull-"] {
 max-width: 32%;
