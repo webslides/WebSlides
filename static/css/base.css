@@ -2814,6 +2814,10 @@ blockquote p {
 blockquote p:last-child {
 margin-bottom: 3.2rem;
 }
+/* -- Interviews dl.text-interview -- */
+dd blockquote p:last-child {
+margin-bottom: 0;
+}
 .bg-apple blockquote p {
   font-family: "San Francisco", "Roboto", helvetica, arial, sans-serif;
   font-weight: 300;
