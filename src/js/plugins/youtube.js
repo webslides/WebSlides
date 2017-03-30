@@ -127,6 +127,10 @@ class Player {
       vars.controls = 0;
     }
 
+    if (typeof element.dataset.loop !== 'undefined') {
+      vars.loop = 0;
+    }
+
     return vars;
   }
 }
