@@ -1591,18 +1591,20 @@ a#previous {
   }
 }
 
-/*=== 5.3 Slides - Background Images === */
+/*=== 5.3 Slides - Background Images/Videos === */
 
 .background,
-[class*="background-"] {
+[class*="background-"],.fullscreen > .embed {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+}
+.background,
+[class*="background-"]{
   background-repeat: no-repeat;
 }
-
 .background {
   background-position: center;
   background-size: cover
