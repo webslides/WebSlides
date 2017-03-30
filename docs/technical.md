@@ -111,13 +111,16 @@ Registers a plugin to be loaded when the instance is created. It allows
 
 Those being:
 
-- ClickNav
-- Grid
-- Hash
-- Keyboard
-- Navigation
-- Scroll
-- Touch
+- `autoslide`
+- `clickNav`
+- `grid`
+- `hash`
+- `keyboard`
+- `nav`
+- `scroll`
+- `touch`
+- `video`
+- `youtube`
 
 | Param | Type | Description |
 | --- | --- | --- |
