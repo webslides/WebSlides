@@ -2271,6 +2271,7 @@ var Player = function () {
 
       if (typeof element.dataset.loop !== 'undefined') {
         vars.loop = 1;
+        vars.playlist = element.dataset.youtubeId;
       }
 
       return vars;
