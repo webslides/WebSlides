@@ -2262,15 +2262,15 @@ var Player = function () {
       if (this.slide.classList.contains('fullscreen')) {
         // Disabling keyboard interaction for fullscreenvideos
         vars.disablekb = 1;
-        vars.showinfo = 0;
       }
 
       if (typeof element.dataset.noControls !== 'undefined') {
         vars.controls = 0;
+        vars.showinfo = 0;
       }
 
       if (typeof element.dataset.loop !== 'undefined') {
-        vars.loop = 0;
+        vars.loop = 1;
       }
 
       return vars;
