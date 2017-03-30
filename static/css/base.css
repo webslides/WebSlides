@@ -1663,19 +1663,18 @@ a#previous {
   }
 }
 
+/*=== bg image/video overlay === */
+/*-- [class*="bg-"] .background.dark, [class*="bg-"] .embed.dark...  -- */
 
-
-/*=== bg image light overlay === */
-
-[class*="bg-"] .background.light,
-[class*="bg-"] [class*="background-"].light {
+[class*="bg-"] .light,
+[class*="bg-"] .light {
   filter: alpha(opacity=8000);
   opacity: 0.80;
   filter: alpha(opacity=8);
 }
 
-[class*="bg-"] .background.dark,
-[class*="bg-"] [class*="background-"].dark {
+[class*="bg-"] .dark,
+[class*="bg-"] .dark {
   filter: alpha(opacity=2000);
   opacity: 0.20;
   filter: alpha(opacity=2);
