@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-03-22
+ * Date: 2017-03-30
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2143,12 +2143,38 @@ var Player = function () {
 
     _classCallCheck(this, Player);
 
+    /**
+     * Whether the Player is ready or not.
+     * @type {boolean}
+     */
     this.ready = false;
-    this.onReadyC = null;
+    /**
+     * Ready callback.
+     * @type {?function}
+     */
+    this.onReadyCb = null;
+    /**
+     * Slide element in which the video is located.
+     * @type {Node}
+     */
     this.slide = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(el).section;
+    /**
+     * Whether it should autoplay on load or not.
+     * @type {boolean}
+     */
+    this.autoplay = typeof el.dataset.autoplay !== 'undefined';
+    /**
+     * Whether the video should be muted or not.
+     * @type {boolean}
+     */
+    this.isMuted = typeof el.dataset.mute !== 'undefined';
 
     var playerVars = this.getPlayerVars(el);
 
+    /**
+     * Youtube player.
+     * @type {YT.Player}
+     */
     this.player = new YT.Player(el, {
       videoId: el.dataset.youtubeId,
       playerVars: playerVars,
@@ -2159,20 +2185,28 @@ var Player = function () {
             _this.play();
           }
 
-          if (_this.onReadyC) {
-            _this.onReadyC();
-            _this.onReadyC = null;
+          if (_this.onReadyCb) {
+            _this.onReadyCb();
+            _this.onReadyCb = null;
           }
         }
       }
     });
 
+    /**
+     * The iframe in which the video is loaded.
+     * @type {Element}
+     */
     this.el = this.player.getIframe();
+    /**
+     * Timeout id.
+     * @type {?number}
+     */
     this.timeout = null;
   }
 
   /**
-   *
+   * Plays the video.
    */
 
 
@@ -2185,30 +2219,40 @@ var Player = function () {
         this.timeout = setTimeout(function () {
           _this2.timeout = null;
         }, 1000);
+
+        if (this.isMuted) {
+          this.player.mute();
+        } else {
+          this.player.unMute();
+        }
+
         this.player.playVideo();
       } else {
-        this.onReadyC = this.play;
+        this.onReadyCb = this.play;
       }
     }
 
     /**
-     *
+     * Pause playing the video if it's already playing.
      */
 
   }, {
     key: 'pause',
     value: function pause() {
-      this.player.pauseVideo();
+      if (this.player && this.player.pauseVideo && this.player.getPlayerState() === 1) {
+        this.player.pauseVideo();
+      }
     }
 
     /**
-     * Get player vars by element.
-     * @return {{modestbranding: number}}
+     * Parses the element to have the proper variables.
+     * @param {Element} element
+     * @return {Object} Player variables.
      */
 
   }, {
     key: 'getPlayerVars',
-    value: function getPlayerVars() {
+    value: function getPlayerVars(element) {
       var vars = {
         modestbranding: 1,
         rel: 0,
@@ -2219,6 +2263,14 @@ var Player = function () {
         // Disabling keyboard interaction for fullscreenvideos
         vars.disablekb = 1;
         vars.showinfo = 0;
+      }
+
+      if (typeof element.dataset.noControls !== 'undefined') {
+        vars.controls = 0;
+      }
+
+      if (typeof element.dataset.loop !== 'undefined') {
+        vars.loop = 0;
       }
 
       return vars;
@@ -2306,7 +2358,9 @@ var YouTube = function () {
   }], [{
     key: 'onSectionEnabled',
     value: function onSectionEnabled(slide) {
-      slide.player.play();
+      if (slide.player.autoplay) {
+        slide.player.play();
+      }
     }
 
     /**
