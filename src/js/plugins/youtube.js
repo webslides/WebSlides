@@ -11,12 +11,38 @@ class Player {
    * @param {Element} el
    */
   constructor(el) {
+    /**
+     * Whether the Player is ready or not.
+     * @type {boolean}
+     */
     this.ready = false;
-    this.onReadyC = null;
+    /**
+     * Ready callback.
+     * @type {?function}
+     */
+    this.onReadyCb = null;
+    /**
+     * Slide element in which the video is located.
+     * @type {Node}
+     */
     this.slide = Slide.getSectionFromEl(el).section;
+    /**
+     * Whether it should autoplay on load or not.
+     * @type {boolean}
+     */
+    this.autoplay = typeof el.dataset.autoplay !== 'undefined';
+    /**
+     * Whether the video should be muted or not.
+     * @type {boolean}
+     */
+    this.isMuted = typeof el.dataset.mute !== 'undefined';
 
     const playerVars = this.getPlayerVars(el);
 
+    /**
+     * Youtube player.
+     * @type {YT.Player}
+     */
     this.player = new YT.Player(el, {
       videoId: el.dataset.youtubeId,
       playerVars,
@@ -27,15 +53,23 @@ class Player {
             this.play();
           }
 
-          if (this.onReadyC) {
-            this.onReadyC();
-            this.onReadyC = null;
+          if (this.onReadyCb) {
+            this.onReadyCb();
+            this.onReadyCb = null;
           }
         }
       }
     });
 
+    /**
+     * The iframe in which the video is loaded.
+     * @type {Element}
+     */
     this.el = this.player.getIframe();
+    /**
+     * Timeout id.
+     * @type {?number}
+     */
     this.timeout = null;
   }
 
@@ -47,9 +81,16 @@ class Player {
       this.timeout = setTimeout(() => {
         this.timeout = null;
       }, 1000);
+
+      if (this.isMuted) {
+        this.player.mute();
+      } else {
+        this.player.unMute();
+      }
+
       this.player.playVideo();
     } else {
-      this.onReadyC = this.play;
+      this.onReadyCb = this.play;
     }
   }
 
@@ -65,10 +106,11 @@ class Player {
   }
 
   /**
-   * Get player vars by element.
-   * @return {{modestbranding: number}}
+   * Parses the element to have the proper variables.
+   * @param {Element} element
+   * @return {Object} Player variables.
    */
-  getPlayerVars() {
+  getPlayerVars(element) {
     const vars = {
       modestbranding: 1,
       rel: 0,
@@ -79,6 +121,10 @@ class Player {
       // Disabling keyboard interaction for fullscreenvideos
       vars.disablekb = 1;
       vars.showinfo = 0;
+    }
+
+    if (typeof element.dataset.noControls !== 'undefined') {
+      vars.controls = 0;
     }
 
     return vars;
@@ -145,7 +191,9 @@ export default class YouTube {
    * @param {Slide} slide
    */
   static onSectionEnabled(slide) {
-    slide.player.play();
+    if (slide.player.autoplay) {
+      slide.player.play();
+    }
   }
 
   /**
