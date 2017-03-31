@@ -22,6 +22,7 @@
 ## CSS
 
 - 2 new animations: .slideInLeft and .slideInRight.
+- [[#68](https://github.com/webslides/webslides/issues/68)] Responsive background videos (`<video>`).
 - Adding longform elements.
 - Naming conventions: 
   - Introducing .text-quote.
