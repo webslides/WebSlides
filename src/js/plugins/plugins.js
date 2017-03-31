@@ -8,6 +8,7 @@ import Scroll from './scroll';
 import Touch from './touch';
 import Video from './video';
 import YouTube from './youtube';
+import Zoom from './zoom';
 
 export default {
   AutoSlide,
@@ -19,5 +20,6 @@ export default {
   Scroll,
   Touch,
   Video,
-  YouTube
+  YouTube,
+  Zoom
 };

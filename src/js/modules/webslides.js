@@ -19,7 +19,8 @@ const PLUGINS = {
   'scroll': Plugins.Scroll,
   'touch': Plugins.Touch,
   'video': Plugins.Video,
-  'youtube': Plugins.YouTube
+  'youtube': Plugins.YouTube,
+  'zoom': Plugins.Zoom
 };
 
 
