@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-03-22
+ * Date: 2017-04-01
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -79,7 +79,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(18);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -283,6 +283,53 @@ var DOM = function () {
       }
 
       return result;
+    }
+
+    /**
+     * Gets the integer value of a style property
+     * @param {string} prop CSS property value
+     * @return {integer} The property without the units
+     */
+
+  }, {
+    key: 'parseSize',
+    value: function parseSize(prop) {
+      return Number(prop.replace(/[^\d\.]/g, ''));
+    }
+
+    /**
+     * Wraps a HTML structure arrond a element
+     * @param {Element} elem the element to be wrapped
+     * @param {string} tag the new element tag
+     * @return {Element} the new element
+     */
+
+  }, {
+    key: 'wrap',
+    value: function wrap(elem, tag) {
+      var wrap = document.createElement(tag);
+      elem.parentElement.insertBefore(wrap, elem);
+      wrap.appendChild(elem);
+
+      return wrap;
+    }
+
+    /**
+     * Inserts and element after another element
+     * @param {Element} elem the element to be inserted
+     * @param {Element} target the element to be inserted after
+     */
+
+  }, {
+    key: 'after',
+    value: function after(elem, target) {
+      var parent = target.parentNode;
+
+      if (parent.lastChild == target) {
+        parent.appendChild(elem);
+      } else {
+        parent.insertBefore(elem, target.nextSibling);
+      }
     }
   }]);
 
@@ -511,7 +558,9 @@ var Keys = {
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
-  DOWN: 40
+  DOWN: 40,
+  PLUS: [107, 171],
+  MINUS: [109, 173]
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Keys);
@@ -628,7 +677,7 @@ var MobileDetector = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(20);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -654,7 +703,8 @@ var PLUGINS = {
   'scroll': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Scroll,
   'touch': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Touch,
   'video': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Video,
-  'youtube': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].YouTube
+  'youtube': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].YouTube,
+  'zoom': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Zoom
 };
 
 /**
@@ -1696,6 +1746,8 @@ var Navigation = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__zoom__ = __webpack_require__(17);
+
 
 
 
@@ -1717,7 +1769,8 @@ var Navigation = function () {
   Scroll: __WEBPACK_IMPORTED_MODULE_6__scroll__["a" /* default */],
   Touch: __WEBPACK_IMPORTED_MODULE_7__touch__["a" /* default */],
   Video: __WEBPACK_IMPORTED_MODULE_8__video__["a" /* default */],
-  YouTube: __WEBPACK_IMPORTED_MODULE_9__youtube__["a" /* default */]
+  YouTube: __WEBPACK_IMPORTED_MODULE_9__youtube__["a" /* default */],
+  Zoom: __WEBPACK_IMPORTED_MODULE_10__zoom__["a" /* default */]
 });
 
 /***/ }),
@@ -2172,7 +2225,7 @@ var Player = function () {
   }
 
   /**
-   *
+   * Plays the video.
    */
 
 
@@ -2192,13 +2245,15 @@ var Player = function () {
     }
 
     /**
-     *
+     * Pause playing the video if it's already playing.
      */
 
   }, {
     key: 'pause',
     value: function pause() {
-      this.player.pauseVideo();
+      if (this.player && this.player.pauseVideo && this.player.getPlayerState() === 1) {
+        this.player.pauseVideo();
+      }
     }
 
     /**
@@ -2331,6 +2386,157 @@ var YouTube = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_keys__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_slide__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+var CLASSES = {
+  ZOOM: 'grid',
+  DIV: 'column',
+  WRAP: 'wrap-zoom'
+};
+
+var ID = 'webslides-zoomed';
+
+/**
+ * Zoom plugin.
+ */
+
+var Zoom = function () {
+  /**
+   * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
+   */
+  function Zoom(wsInstance) {
+    _classCallCheck(this, Zoom);
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.ws_ = wsInstance;
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.zws_ = {};
+
+    /**
+     * @type {boolean}
+     * @private
+     */
+    this.isZoomed_ = false;
+
+    this.preBuildZoom_();
+    document.addEventListener('keydown', this.onKeyDown.bind(this));
+  }
+
+  /**
+   * On key down handler. Will decide if Zoom in or out
+   * @param {Event} event Key down event
+   */
+
+
+  _createClass(Zoom, [{
+    key: 'onKeyDown',
+    value: function onKeyDown(event) {
+      if (!this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].MINUS.includes(event.which)) {
+        this.zoomIn();
+      } else if (this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which)) {
+        this.zoomOut();
+      }
+    }
+
+    /**
+     * Prepare zoom structure, scales the slides and uses a grid layout
+     * to show them
+     */
+
+  }, {
+    key: 'preBuildZoom_',
+    value: function preBuildZoom_() {
+      var _this = this;
+
+      // Clone #webslides element
+      this.zws_.el = this.ws_.el.cloneNode();
+      this.zws_.el.id = ID;
+      this.zws_.el.className = CLASSES.ZOOM;
+      // Clone the slides
+      this.zws_.slides = [].map.call(this.ws_.slides, function (slide, i) {
+        var s_ = slide.el.cloneNode(true);
+        _this.zws_.el.appendChild(s_);
+        return new __WEBPACK_IMPORTED_MODULE_2__modules_slide__["a" /* default */](s_, i);
+      });
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].after(this.zws_.el, this.ws_.el);
+
+      // Creates the container for each slide
+      this.zws_.slides.forEach(function (elem) {
+        var wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(elem.el, 'div');
+        wrap.className = CLASSES.WRAP;
+        var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
+        div.className = CLASSES.DIV;
+
+        // Calculates the margins in relation to window width
+        var divCSS = window.getComputedStyle(div);
+        var marginW = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingLeft) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingRight);
+        var marginH = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingTop) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingBottom);
+
+        // Sets element size: window size - relative margins
+        console.log(window.innerWidth, divCSS.width);
+        var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
+        elem.el.style.width = window.innerWidth - marginW * scale + 'px';
+        elem.el.style.height = window.innerHeight - marginH * scale + 'px';
+
+        // Because of flexbox, wrap height is required
+        var slideCSS = window.getComputedStyle(elem.el);
+        wrap.style.height = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(slideCSS.height) / scale + 'px';
+      });
+    }
+
+    /**
+     * Zoom In the slider, scales the slides and uses a grid layout to show them
+     */
+
+  }, {
+    key: 'zoomIn',
+    value: function zoomIn() {
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.ws_.el);
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
+      this.isZoomed_ = true;
+    }
+
+    /**
+     * Zoom Out the slider, remove scale from the slides
+     */
+
+  }, {
+    key: 'zoomOut',
+    value: function zoomOut() {
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.ws_.el);
+      this.isZoomed_ = false;
+    }
+  }]);
+
+  return Zoom;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Zoom);
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var NativeCustomEvent = window.CustomEvent;
 
 /**
@@ -2375,7 +2581,7 @@ var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 /* harmony default export */ __webpack_exports__["a"] = (WSCustomEvent);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2400,11 +2606,11 @@ function linear(p) {
 /* harmony default export */ __webpack_exports__["a"] = ({ swing: swing, linear: linear });
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(19);
 /* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
 
 

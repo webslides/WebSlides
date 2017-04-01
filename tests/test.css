@@ -1,0 +1,31 @@
+
+#webslides-zoomed.grid {
+  background: #ccc;
+}
+
+#webslides-zoomed.grid > .column {
+  position: relative;
+}
+#webslides-zoomed.grid > .column > .wrap-zoom {
+  position: relative;
+  background: #fff;
+}
+
+#webslides-zoomed.grid > .column > .wrap-zoom > .slide {
+  transform: scale(0.25) translate(-150%, -150vh);
+  display: flex !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip: rect(0px auto auto 0);
+}
+
+
+
+
+.enorme {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 500px;
+}

@@ -188,4 +188,19 @@ export default class DOM {
 
     return wrap;
   }
+
+  /**
+   * Inserts and element after another element
+   * @param {Element} elem the element to be inserted
+   * @param {Element} target the element to be inserted after
+   */
+  static after(elem, target) {
+    const parent = target.parentNode;
+
+    if (parent.lastChild == target) {
+      parent.appendChild(elem);
+    } else {
+      parent.insertBefore(elem, target.nextSibling);
+    }
+  }
 }
