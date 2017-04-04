@@ -1459,8 +1459,7 @@ section * {
   -webkit-animation: fadeIn 0.3s ease-in-out;
   animation: fadeIn 0.3s ease-in-out;
 }
-section .background,section .background-video,
-[class*="background-"].light,[class*="background-"].dark {
+section .background,section .light,section .dark {
   -webkit-animation-duration:0s;
   animation-duration:0s;
 }
