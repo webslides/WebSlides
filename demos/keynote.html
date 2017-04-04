@@ -722,7 +722,7 @@
     &lt;/div&gt;
   &lt;/section&gt;
 &lt;/article&gt;</pre>
-            <p>Just 3 basic animations: .fadeIn, .fadeInUp, and .zoomIn.</p>
+            <p>Just 5 basic animations: .fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight.</p>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -736,17 +736,18 @@
         <section class="bg-apple">
           <div class="wrap">
             <div class="content-left">
-              <h3>Responsive Videos</h3>
+              <h3><a href="https://webslides.tv/demos/media#slide=2">YouTube API</a></h3>
+              <p>Embed videos with loop, autoplay, and muted attributes. The video will automatically play when the slide is loaded.</p>
               <pre>&lt;div class="embed"&gt;
  &lt;div data-youtube data-youtube-id=&quot;CQY3KUR3VzM&quot; data-autoplay &gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
-              <p><code>.embed</code></p>
+              <p><code>.embed</code> (responsive)</p>
             </div>
             <!-- end .content-left -->
             <div class="content-left">
               <!-- <div class="embed"> = Responsive -->
               <div class="embed">
-                <div data-youtube data-youtube-id="CQY3KUR3VzM" data-autoplay></div>
+                <div data-youtube data-youtube-id="CQY3KUR3VzM" data-autoplay data-no-controls></div>
               </div>
               <!-- end .embed -->
             </div>
@@ -757,26 +758,31 @@
         <section class="bg-apple fullscreen">
           <!-- Fullscreen Video -->
           <div class="embed">
-            <div data-youtube data-youtube-id="F-UO9vMS7AI" data-autoplay></div>
+            <div data-youtube data-youtube-id="lvOKBQvbLhg" data-autoplay></div>
           </div>
           <!-- .end .embed -->
         </section>
-        <section class="bg-black aligncenter">
-          <video class="background-video" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+        <section class="fullscreen bg-apple aligncenter">
+         <div class="embed">
+           <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
             <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-          </video>
+           </video>
+          </div><!-- .embed -->
+          <!-- .wrap = container (width: 90%) -->
           <div class="wrap size-50">
             <h2><strong>Be Awesome</strong></h2>
           </div>
         </section>
-        <section class="bg-black aligncenter">
-          <video class="background-video dark" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
-            <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-          </video>
+        <section class="fullscreen bg-black aligncenter">
+          <div class="embed dark">
+             <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+             <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+            </video>
+          </div><!-- .embed -->
           <!-- .wrap = container (width: 90%) -->
           <div class="wrap size-50">
             <h2><strong>Think Different</strong></h2>
-            <p>0verlay: <code>.bg-black > .background-video.dark</code> or .light</p>
+            <p>Overlay: <code>fullscreen.bg-black > .embed.dark</code> or .light</p>
           </div>
           <!-- .end .wrap -->
         </section>
