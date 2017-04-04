@@ -2776,23 +2776,31 @@
         </section>
         <section>
           <div class="wrap size-60">
-            <h3>Background Videos</h3>
-            <pre>&lt;video class="background-video" autoplay muted loop poster="image.jpg"&gt;
-  &lt;source src="video.mp4" type="video/mp4"&gt;
-&lt;/video&gt;</pre>
-            <p><code>.background-video</code></p>
+            <h3>Background videos</h3>
+            <pre><strong>&lt;section class="fullscreen"&gt;</strong>
+  &lt;div class="embed"&gt;
+    &lt;video autoplay loop poster="image.jpg"&gt;
+      &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;/video&gt;
+  &lt;/div&gt;
+<strong>&lt;/section&gt;</strong>
+</pre>
+            <p>.fullscreen > .embed (responsive) > video</p>
           </div>
           <!-- .end .wrap -->
         </section>
-        <section class="bg-blue aligncenter">
-          <video class="background-video dark" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+        <section class="fullscreen bg-blue aligncenter">
+         <div class="embed dark">
+          <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
             <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
           </video>
-          <div class="wrap">
-            <h2><strong>Be Awesome</strong></h2>
-            <p>Overlay: <code>section.bg-blue > .background-video.dark</code> or .light</p>
           </div>
-          <!-- .end .wrap -->
+          <!-- .end .embed -->
+          <div class="wrap">
+            <h2><strong>Muted</strong></h2>
+            <p>Overlay: <code>section.fullscreen.bg-blue > embed.dark</code> or .light</p>
+           </div>
+           <!-- .end .wrap -->
         </section>
         <section class="bg-black aligncenter">
           <span class="background dark" style="background-image:url('https://source.unsplash.com/MDGpwpMY2Ws/')"></span>
