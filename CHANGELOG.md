@@ -25,6 +25,7 @@
 - [[#68](https://github.com/webslides/webslides/issues/68)] Responsive background videos (`<video>`).
 - Adding longform elements.
 - Naming conventions: 
+  - Introducing .text-emoji.
   - Introducing .text-quote.
   - Introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
   - .card is now a card: width: 100%.
