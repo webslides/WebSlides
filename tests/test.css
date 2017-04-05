@@ -10,7 +10,9 @@
   position: relative;
   background: #fff;
 }
-
+#webslides-zoomed.grid > .column {
+  width: 25%;
+}
 #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
   transform: scale(0.25) translate(-150%, -150vh);
   display: flex !important;
@@ -19,13 +21,9 @@
   left: 0;
   clip: rect(0px auto auto 0);
 }
-
-
-
-
-.enorme {
-	position: absolute;
-	top: 0;
-	left: 0;
-	font-size: 500px;
+#webslides-zoomed.grid > .column > .wrap-zoom > .zoom-layer {
+  position: absolute;
+  background: transparent;
+  width: 100%;
+  height: 100%;
 }

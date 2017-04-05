@@ -49,6 +49,7 @@
 	14. Forms
 	15. Safari Bug (flex-wrap)
 	16. Print
+  17. Zoom
 
 ----------------------------------------------------------------------------------- */
 
@@ -315,7 +316,6 @@ html.ws-ready body {
 #webslides {
   height: 100vh;
   overflow-x: hidden;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 /* -- Hide scrollbar, but still being able to scroll -- */
@@ -3191,4 +3191,38 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   #counter, #navigation {
     display: none;
   }
+}
+
+
+/*=========================================
+16. ZOOM
+=========================================== */
+
+#webslides-zoomed.grid {
+  background: #ccc;
+}
+
+#webslides-zoomed.grid > .column {
+  position: relative;
+}
+#webslides-zoomed.grid > .column > .wrap-zoom {
+  position: relative;
+  background: #fff;
+}
+#webslides-zoomed.grid > .column {
+  width: 25%;
+}
+#webslides-zoomed.grid > .column > .wrap-zoom > .slide {
+  transform: scale(0.25) translate(-150%, -150vh);
+  display: flex !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip: rect(0px auto auto 0);
+}
+#webslides-zoomed.grid > .column > .wrap-zoom > .zoom-layer {
+  position: absolute;
+  background: transparent;
+  width: 100%;
+  height: 100%;
 }

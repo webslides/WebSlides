@@ -39,14 +39,15 @@ export default class Zoom {
     this.isZoomed_ = false;
 
     this.preBuildZoom_();
-    document.addEventListener('keydown', this.onKeyDown.bind(this));
+    document.body.addEventListener('keydown', this.onKeyDown.bind(this));
+    window.addEventListener('resize', this.onWindowResize.bind(this));
   }
 
   /**
    * On key down handler. Will decide if Zoom in or out
    * @param {Event} event Key down event
    */
-  onKeyDown( event ) {
+  onKeyDown(event) {
     if ( !this.isZoomed_ && Keys.MINUS.includes( event.which ) ) {
       this.zoomIn();
     } else if ( this.isZoomed_ && Keys.PLUS.includes( event.which ) ) {
@@ -79,25 +80,43 @@ export default class Zoom {
       wrap.className = CLASSES.WRAP;
       const div = DOM.wrap(wrap, 'div');
       div.className = CLASSES.DIV;
+      // Adding some layer for controling click events
+      const divLayer = document.createElement('div');
+      divLayer.className = 'zoom-layer';
+      divLayer.addEventListener('click', e => {
+        this.zoomOut();
+        this.ws_.goToSlide(elem.i);
+      });
+      wrap.appendChild(divLayer);
 
-      // Calculates the margins in relation to window width
-      const divCSS = window.getComputedStyle(div);
-      const marginW = DOM.parseSize(divCSS.paddingLeft)
-        + DOM.parseSize(divCSS.paddingRight);
-      const marginH = DOM.parseSize(divCSS.paddingTop)
-        + DOM.parseSize(divCSS.paddingBottom);
-
-      // Sets element size: window size - relative margins
-      const scale = divCSS.width.includes('%') ?
-        100 / DOM.parseSize(divCSS.width) :
-        window.innerWidth / DOM.parseSize(divCSS.width);
-      elem.el.style.width = `${window.innerWidth - marginW * scale}px`;
-      elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
-
-      // Because of flexbox, wrap height is required
-      const slideCSS = window.getComputedStyle(elem.el);
-      wrap.style.height = `${DOM.parseSize(slideCSS.height) / scale}px`;
+      this.setSizes_(div, wrap, elem);
     });
+  }
+
+  /**
+   * Sets layers size
+   * @param {Element} div flexbox element
+   * @param {Element} wrap wrapping element
+   * @param {Element} elem slide element
+   */
+  setSizes_(div, wrap, elem) {
+    // Calculates the margins in relation to window width
+    const divCSS = window.getComputedStyle(div);
+    const marginW = DOM.parseSize(divCSS.paddingLeft)
+      + DOM.parseSize(divCSS.paddingRight);
+    const marginH = DOM.parseSize(divCSS.paddingTop)
+      + DOM.parseSize(divCSS.paddingBottom);
+
+    // Sets element size: window size - relative margins
+    const scale = divCSS.width.includes('%') ?
+      100 / DOM.parseSize(divCSS.width) :
+      window.innerWidth / DOM.parseSize(divCSS.width);
+    elem.el.style.width = `${window.innerWidth - marginW * scale}px`;
+    elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
+
+    // Because of flexbox, wrap height is required
+    const slideCSS = window.getComputedStyle(elem.el);
+    wrap.style.height = `${DOM.parseSize(slideCSS.height) / scale}px`;
   }
 
   /**
@@ -107,6 +126,7 @@ export default class Zoom {
     DOM.hide(this.ws_.el);
     DOM.show(this.zws_.el);
     this.isZoomed_ = true;
+    document.body.style.overflow = 'auto';
   }
 
   /**
@@ -116,6 +136,19 @@ export default class Zoom {
     DOM.hide(this.zws_.el);
     DOM.show(this.ws_.el);
     this.isZoomed_ = false;
+    document.body.style.overflow = '';
+  }
+
+  /**
+   * When windows resize it is necessary to recalculate layers sizes
+   * @param {Event} ev
+   */
+  onWindowResize(ev) {
+    this.zws_.slides.forEach( elem => {
+      const wrap = elem.el.parentElement;
+      const div = wrap.parentElement;
+      this.setSizes_(div, wrap, elem);
+    });
   }
 
 }

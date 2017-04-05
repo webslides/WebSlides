@@ -122,6 +122,16 @@ export default class DOM {
   }
 
   /**
+   * Checks if the element is visible.This is only intended
+   * to be used in conjunction with DOM.hide and DOM.show
+   * @param {Element} el Element to check.
+   * @return {boolean}
+   */
+  static isVisible(el) {
+    return el.style.display == '';
+  }
+
+  /**
    * Fires a custom event on the given target.
    * @param {Element} target The target of the event.
    * @param {string} eventType The event type.

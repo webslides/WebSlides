@@ -1,3 +1,4 @@
+import DOM from '../utils/dom';
 import MobileDetector from '../utils/mobile-detector';
 
 const EVENTS = {
@@ -88,6 +89,10 @@ export default class Touch {
    * @private
    */
   onStart_(event) {
+    if (!DOM.isVisible(this.ws_.el)) {
+      return;
+    }
+
     const info = Touch.normalizeEventInfo(event);
 
     this.startX_ = info.x;
@@ -102,6 +107,10 @@ export default class Touch {
    * @private
    */
   onMove_(event) {
+    if (!DOM.isVisible(this.ws_.el)) {
+      return;
+    }
+
     const info = Touch.normalizeEventInfo(event);
 
     this.endX_ = info.x;
@@ -113,6 +122,10 @@ export default class Touch {
    * @private
    */
   onStop_() {
+    if (!DOM.isVisible(this.ws_.el)) {
+      return;
+    }
+
     const diffX = this.startX_ - this.endX_;
     const diffY = this.startY_ - this.endY_;
 

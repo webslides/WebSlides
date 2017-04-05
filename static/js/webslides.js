@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-01
+ * Date: 2017-04-05
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -229,6 +229,19 @@ var DOM = function () {
     key: 'show',
     value: function show(el) {
       el.style.display = '';
+    }
+
+    /**
+     * Checks if the element is visible.This is only intended
+     * to be used in conjunction with DOM.hide and DOM.show
+     * @param {Element} el Element to check.
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'isVisible',
+    value: function isVisible(el) {
+      return el.style.display == '';
     }
 
     /**
@@ -1531,7 +1544,7 @@ var Keyboard = function () {
       var method = void 0;
       var argument = void 0;
 
-      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement()) {
+      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement() || !__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
         return;
       }
 
@@ -1778,10 +1791,12 @@ var Navigation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -1827,7 +1842,7 @@ var Scroll = function () {
      */
     this.timeout_ = null;
 
-    if (!__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
+    if (!__WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isAny()) {
       this.scrollContainer_.addEventListener('wheel', this.onMouseWheel_.bind(this));
 
       if (!wsInstance.isVertical) {
@@ -1863,6 +1878,10 @@ var Scroll = function () {
   }, {
     key: 'onMouseWheel_',
     value: function onMouseWheel_(event) {
+      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+        return;
+      }
+
       if (this.ws_.isMoving || this.timeout_) {
         event.preventDefault();
         return;
@@ -1909,10 +1928,12 @@ var Scroll = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -1984,9 +2005,9 @@ var Touch = function () {
 
     var events = void 0;
 
-    if (__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
+    if (__WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isAny()) {
       // Likely IE
-      if (window.PointerEvent && (__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isWindows() || __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isWindowsPhone())) {
+      if (window.PointerEvent && (__WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isWindows() || __WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isWindowsPhone())) {
         events = EVENTS.pointer;
       } else {
         events = EVENTS.touch;
@@ -2010,6 +2031,10 @@ var Touch = function () {
   _createClass(Touch, [{
     key: 'onStart_',
     value: function onStart_(event) {
+      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+        return;
+      }
+
       var info = Touch.normalizeEventInfo(event);
 
       this.startX_ = info.x;
@@ -2027,6 +2052,10 @@ var Touch = function () {
   }, {
     key: 'onMove_',
     value: function onMove_(event) {
+      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+        return;
+      }
+
       var info = Touch.normalizeEventInfo(event);
 
       this.endX_ = info.x;
@@ -2041,6 +2070,10 @@ var Touch = function () {
   }, {
     key: 'onStop_',
     value: function onStop_() {
+      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+        return;
+      }
+
       var diffX = this.startX_ - this.endX_;
       var diffY = this.startY_ - this.endY_;
 
@@ -2436,7 +2469,8 @@ var Zoom = function () {
     this.isZoomed_ = false;
 
     this.preBuildZoom_();
-    document.addEventListener('keydown', this.onKeyDown.bind(this));
+    document.body.addEventListener('keydown', this.onKeyDown.bind(this));
+    window.addEventListener('resize', this.onWindowResize.bind(this));
   }
 
   /**
@@ -2484,22 +2518,42 @@ var Zoom = function () {
         wrap.className = CLASSES.WRAP;
         var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
         div.className = CLASSES.DIV;
+        // Adding some layer for controling click events
+        var divLayer = document.createElement('div');
+        divLayer.className = 'zoom-layer';
+        divLayer.addEventListener('click', function (e) {
+          _this.zoomOut();
+          _this.ws_.goToSlide(elem.i);
+        });
+        wrap.appendChild(divLayer);
 
-        // Calculates the margins in relation to window width
-        var divCSS = window.getComputedStyle(div);
-        var marginW = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingLeft) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingRight);
-        var marginH = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingTop) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingBottom);
-
-        // Sets element size: window size - relative margins
-        console.log(window.innerWidth, divCSS.width);
-        var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
-        elem.el.style.width = window.innerWidth - marginW * scale + 'px';
-        elem.el.style.height = window.innerHeight - marginH * scale + 'px';
-
-        // Because of flexbox, wrap height is required
-        var slideCSS = window.getComputedStyle(elem.el);
-        wrap.style.height = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(slideCSS.height) / scale + 'px';
+        _this.setSizes_(div, wrap, elem);
       });
+    }
+
+    /**
+     * Sets layers size
+     * @param {Element} div flexbox element
+     * @param {Element} wrap wrapping element
+     * @param {Element} elem slide element
+     */
+
+  }, {
+    key: 'setSizes_',
+    value: function setSizes_(div, wrap, elem) {
+      // Calculates the margins in relation to window width
+      var divCSS = window.getComputedStyle(div);
+      var marginW = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingLeft) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingRight);
+      var marginH = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingTop) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingBottom);
+
+      // Sets element size: window size - relative margins
+      var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
+      elem.el.style.width = window.innerWidth - marginW * scale + 'px';
+      elem.el.style.height = window.innerHeight - marginH * scale + 'px';
+
+      // Because of flexbox, wrap height is required
+      var slideCSS = window.getComputedStyle(elem.el);
+      wrap.style.height = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(slideCSS.height) / scale + 'px';
     }
 
     /**
@@ -2512,6 +2566,7 @@ var Zoom = function () {
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.ws_.el);
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
       this.isZoomed_ = true;
+      document.body.style.overflow = 'auto';
     }
 
     /**
@@ -2524,6 +2579,24 @@ var Zoom = function () {
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.ws_.el);
       this.isZoomed_ = false;
+      document.body.style.overflow = '';
+    }
+
+    /**
+     * When windows resize it is necessary to recalculate layers sizes
+     * @param {Event} ev
+     */
+
+  }, {
+    key: 'onWindowResize',
+    value: function onWindowResize(ev) {
+      var _this2 = this;
+
+      this.zws_.slides.forEach(function (elem) {
+        var wrap = elem.el.parentElement;
+        var div = wrap.parentElement;
+        _this2.setSizes_(div, wrap, elem);
+      });
     }
   }]);
 
