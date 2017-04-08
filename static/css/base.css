@@ -1547,7 +1547,7 @@ opacity: 1;
 }
 */
 
-#counter {
+#navigation #counter {
   position: relative;
   display: block;
   width: 10rem;
@@ -1555,6 +1555,8 @@ opacity: 1;
   margin-left: auto;
   text-align: center;
   line-height: 4.8rem;
+  height: auto;
+  padding: 0;
 }
 
 #navigation p {
@@ -3225,4 +3227,5 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   background: transparent;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }

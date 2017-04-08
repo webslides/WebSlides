@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-05
+ * Date: 2017-04-08
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1128,6 +1128,16 @@ var WebSlides = function () {
     }
 
     /**
+     * Toggles zoom
+     */
+
+  }, {
+    key: 'toggleZoom',
+    value: function toggleZoom() {
+      this.plugins.zoom.toggleZoom();
+    }
+
+    /**
      * Registers a plugin to be loaded when the instance is created. It allows
      * (on purpose) to replace default plugins.
      * Those being:
@@ -1651,7 +1661,9 @@ var Navigation = function () {
      * Counter Element.
      * @type {Element}
      */
-    this.counter = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('span', ELEMENT_ID.COUNTER);
+    this.counter = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('a', ELEMENT_ID.COUNTER);
+    this.counter.href = '#';
+    this.counter.title = 'View all slides';
     /**
      * @type {WebSlides}
      * @private
@@ -1678,6 +1690,7 @@ var Navigation = function () {
       this.ws_.el.addEventListener('ws:slide-change', this.onSlideChanged_.bind(this));
       this.next.addEventListener('click', this.onButtonClicked_.bind(this));
       this.prev.addEventListener('click', this.onButtonClicked_.bind(this));
+      this.counter.addEventListener('click', this.onButtonClicked_.bind(this));
     }
 
     /**
@@ -1724,8 +1737,10 @@ var Navigation = function () {
       event.preventDefault();
       if (event.target === this.next) {
         this.ws_.goNext();
-      } else {
+      } else if (event.target === this.next) {
         this.ws_.goPrev();
+      } else {
+        this.ws_.toggleZoom();
       }
     }
   }], [{
@@ -2552,8 +2567,21 @@ var Zoom = function () {
       elem.el.style.height = window.innerHeight - marginH * scale + 'px';
 
       // Because of flexbox, wrap height is required
-      var slideCSS = window.getComputedStyle(elem.el);
-      wrap.style.height = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(slideCSS.height) / scale + 'px';
+      wrap.style.height = window.innerHeight / scale + 'px';
+    }
+
+    /**
+     * Toggles zoom
+     */
+
+  }, {
+    key: 'toggleZoom',
+    value: function toggleZoom() {
+      if (this.isZoomed_) {
+        this.zoomOut();
+      } else {
+        this.zoomIn();
+      }
     }
 
     /**

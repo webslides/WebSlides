@@ -115,8 +115,18 @@ export default class Zoom {
     elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
 
     // Because of flexbox, wrap height is required
-    const slideCSS = window.getComputedStyle(elem.el);
-    wrap.style.height = `${DOM.parseSize(slideCSS.height) / scale}px`;
+    wrap.style.height = `${window.innerHeight / scale}px`;
+  }
+
+  /**
+   * Toggles zoom
+   */
+  toggleZoom() {
+    if (this.isZoomed_) {
+      this.zoomOut();
+    } else {
+      this.zoomIn();
+    }
   }
 
   /**

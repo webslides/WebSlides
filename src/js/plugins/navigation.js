@@ -48,7 +48,9 @@ export default class Navigation {
      * Counter Element.
      * @type {Element}
      */
-    this.counter = DOM.createNode('span', ELEMENT_ID.COUNTER);
+    this.counter = DOM.createNode('a', ELEMENT_ID.COUNTER);
+    this.counter.href = '#';
+    this.counter.title = 'View all slides';
     /**
      * @type {WebSlides}
      * @private
@@ -72,6 +74,7 @@ export default class Navigation {
       'ws:slide-change', this.onSlideChanged_.bind(this));
     this.next.addEventListener('click', this.onButtonClicked_.bind(this));
     this.prev.addEventListener('click', this.onButtonClicked_.bind(this));
+    this.counter.addEventListener('click', this.onButtonClicked_.bind(this));
   }
 
   /**
@@ -115,8 +118,10 @@ export default class Navigation {
     event.preventDefault();
     if (event.target === this.next) {
       this.ws_.goNext();
-    } else {
+    } else if (event.target === this.next) {
       this.ws_.goPrev();
+    } else {
+      this.ws_.toggleZoom();
     }
   }
 }

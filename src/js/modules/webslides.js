@@ -384,6 +384,13 @@ export default class WebSlides {
   }
 
   /**
+   * Toggles zoom
+   */
+  toggleZoom() {
+    this.plugins.zoom.toggleZoom();
+  }
+
+  /**
    * Registers a plugin to be loaded when the instance is created. It allows
    * (on purpose) to replace default plugins.
    * Those being:
