@@ -131,7 +131,7 @@ export default class Navigation {
     event.preventDefault();
     if (event.target === this.next) {
       this.ws_.goNext();
-    } else if (event.target === this.next) {
+    } else if (event.target === this.prev) {
       this.ws_.goPrev();
     } else {
       this.ws_.toggleZoom();
