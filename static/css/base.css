@@ -47,9 +47,10 @@
 	12. Avatars
 	13. Tables
 	14. Forms
-	15. Safari Bug (flex-wrap)
-	16. Print
-  17. Zoom
+	15. Longform Elements
+	16. Safari Bug (flex-wrap)
+	17. Print
+	18. Zoom
 
 ----------------------------------------------------------------------------------- */
 
@@ -395,11 +396,16 @@ nav a[rel="external"] em,
 
 .wrap,header nav, footer nav {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 100%;
   margin-right:auto;
   margin-left: auto;
   z-index: 2;
+}
+@media (min-width: 1024px) {
+.wrap,header nav, footer nav {
+width: 90%;
+ }
 }
 
 .frame,.shadow {
@@ -421,29 +427,28 @@ nav a[rel="external"] em,
   text-align: center;
 }
 
-img.aligncenter {
+img.aligncenter,figure.aligncenter {
   display: block;
 }
 
-img.alignleft,
-img.alignright,
-img.aligncenter {
-  margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+img.alignleft,figure.alignleft,
+img.alignright,figure.alignright,
+img.aligncenter,figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
-@media (min-width: 768px) {
-  img.aligncenter {
-    margin-top: .8rem;
-    margin-bottom: .8rem;
-  }
-  img.alignright,svg.alignright {
-    margin: .8rem 0 .8rem 4.8rem
-  }
-  img.alignleft,svg.alignright {
-    margin: .8rem 4.8rem .8rem 0;
-  }
+img.aligncenter,figure.aligncenter {
+  margin-top: .8rem;
+  margin-bottom: .8rem;
 }
+img.alignright,svg.alignright,figure.alignright {
+  margin: .8rem 0 .8rem 2.4rem
+}
+img.alignleft,svg.alignleft,figure.alignleft {
+  margin: .8rem 2.4rem .8rem 0;
+}
+
 @media (min-width: 1024px) {
 
   /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
@@ -693,13 +698,58 @@ footer,
 
 .embed iframe,
 .embed object,
-.embed embed {
+.embed embed,.embed video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   margin: 0;
+}
+/* -- Responsive background video 
+https://fvsch.com/code/video-background/ -- */
+
+.fullscreen > .embed {
+  position: fixed;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 0;
+}
+
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video { 
+    height: 300%; 
+    top: -100%; 
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video { 
+    width: 300%; 
+    left: -100%; 
+  }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video {
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /*=== Browser (Screenshots) ================ */
@@ -743,14 +793,10 @@ li .browser {margin-bottom: 0;
     font-size: 1.6rem;
   }
 }
-
-
 .browser img {
   width: 100%;
   margin-top: 3.2rem;
 }
-
-
 
 /*=== 1.4. Basic Grid (Flexible blocks)
 Auto-fill & Equal height === */
@@ -896,7 +942,7 @@ h1 svg,
 h2 svg, h3 svg, h4 svg {
   margin-top: -.8rem;
 }
-.text-intro svg,.text-quote p svg,.try svg {
+.text-intro svg,.text-quote p svg,.wall p svg,.try svg {
   margin-top: -.4rem;
 }
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
@@ -1034,9 +1080,22 @@ p.text-subtitle svg {vertical-align: text-top;}
   margin-top: 3.2rem;
 }
 
-
 .text-uppercase {text-transform: uppercase;}
 .text-lowercase {text-transform: lowercase;}
+
+/* -- Emoji (you'll love this) -- */
+
+.text-emoji {
+font-size: 6.8rem;
+line-height: 8.8rem;
+}
+
+@media (min-width: 768px) {
+.text-emoji {
+font-size: 12.8rem;
+line-height: 16rem;
+ }
+}
 
 /* -- Numbers (results, sales... 23,478,289 iphones) -- */
 
@@ -1143,6 +1202,7 @@ p.text-subtitle svg {vertical-align: text-top;}
   line-height: 4rem;
   font-weight: 400;
   margin-right: 2.4rem;
+  margin-bottom: 3.2rem;
   margin-left: 2.4rem;
 }
 
@@ -1153,13 +1213,13 @@ p.text-subtitle svg {vertical-align: text-top;}
 
 @media (min-width: 1024px) {
   [class*="text-pull"] {
-    margin-right: -4rem;
-    margin-left: -4rem;
+    margin-right: -4.8rem;
+    margin-left: -4.8rem;
   }
 }
 @media (min-width: 568px) {
   [class*="text-pull-"] {
-    width: 32rem;
+    max-width: 40%;
   }
   .text-pull-right {
     float: right;
@@ -1171,6 +1231,10 @@ p.text-subtitle svg {vertical-align: text-top;}
     margin-left: -2.4rem;
     margin-right: 2.4rem;
   }
+}
+img[class*="text-pull-"],figure[class*="text-pull-"] {
+  padding-top:0;
+  margin-top: .8rem;
 }
 
 /* -- Interviews (Questions & Answers)  --- */
@@ -1208,7 +1272,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-family: "San Francisco", helvetica, arial, sans-serif;
 }
 
-
 /* Ultra Light */
 
 @font-face {
@@ -1216,7 +1279,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-weight: 100;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2");
 }
-
 
 /* Thin */
 
@@ -1235,7 +1297,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2");
 }
 
-
 /* Bold */
 
 @font-face {
@@ -1243,7 +1304,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-weight: bold;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2");
 }
-
 
 /*=========================================
 3. Header & Footer
@@ -1270,20 +1330,24 @@ footer img {
   height: 4rem;
   vertical-align: middle;
 }
-
-header,footer {
-  position: absolute;
-  top: 0;
-  left: 0;
+footer {
+  position: relative;
+}
+header, footer {
   /* hover/visibility */
   z-index: 3;
 }
 
-footer {
+header,.ws-ready footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ws-ready footer {
   top: auto;
   bottom: 0;
 }
-
 /*=== Hide header[role=banner] === */
 
 /*Remove "opacity=0" if you want an unique, visible header on each slide*/
@@ -1414,8 +1478,7 @@ section * {
   -webkit-animation: fadeIn 0.3s ease-in-out;
   animation: fadeIn 0.3s ease-in-out;
 }
-section .background,section .background-video,
-[class*="background-"].light,[class*="background-"].dark {
+section .background,section .light,section .dark {
   -webkit-animation-duration:0s;
   animation-duration:0s;
 }
@@ -1519,6 +1582,7 @@ padding: 2.4rem;
     clear: both;
   }
 }
+
 /* === 5.2 Counter / Navigation Slides  === */
 
 #navigation {
@@ -1557,7 +1621,9 @@ opacity: 1;
   text-align: center;
   line-height: 4.8rem;
 }
-
+#counter a:hover {
+padding: .8rem;
+}
 #navigation p {
   margin-bottom: 0;
 }
@@ -1591,7 +1657,7 @@ a#previous {
   }
 }
 
-/*=== 5.3 Slides - Background Images === */
+/*=== 5.3 Slides - Background Images/Videos === */
 
 .background,
 [class*="background-"] {
@@ -1600,9 +1666,11 @@ a#previous {
   right: 0;
   bottom: 0;
   left: 0;
+}
+.background,
+[class*="background-"]{
   background-repeat: no-repeat;
 }
-
 .background {
   background-position: center;
   background-size: cover
@@ -1663,19 +1731,18 @@ a#previous {
   }
 }
 
+/*=== bg image/video overlay === */
+/*-- [class*="bg-"] .background.dark, [class*="bg-"] .embed.dark...  -- */
 
-
-/*=== bg image light overlay === */
-
-[class*="bg-"] .background.light,
-[class*="bg-"] [class*="background-"].light {
+[class*="bg-"] .light,
+[class*="bg-"] .light {
   filter: alpha(opacity=8000);
   opacity: 0.80;
   filter: alpha(opacity=8);
 }
 
-[class*="bg-"] .background.dark,
-[class*="bg-"] [class*="background-"].dark {
+[class*="bg-"] .dark,
+[class*="bg-"] .dark {
   filter: alpha(opacity=2000);
   opacity: 0.20;
   filter: alpha(opacity=2);
@@ -2061,10 +2128,12 @@ img size recommended:800x600px
 =================================================== */
 
 .flexblock.gallery li {
-  flex:inherit;
   margin-bottom: 4.8rem;
 }
-
+.flexblock.gallery li:nth-child(n+4) {
+  -webkit-flex:inherit;
+  flex:inherit;
+}
 .flexblock.gallery li,
 .flexblock.gallery.blink li>a {
   padding: 0;
@@ -2676,7 +2745,7 @@ p + .work {
   min-height: 100vh;
 }
 
-[class*="card-"] figure img {
+[class*="card-"] figure img,[class*="card-"] figure iframe {
   margin: 0 auto;
   display: block;
 }
@@ -2693,8 +2762,12 @@ object-fit to re-frame images rather than just stretch and resize them  === */
     min-width: 380px;
     max-height: 100%;
   }
+  /* -- imgs/frames size recommended:800x600 -- */
   [class*="card-"][class*="bg-"] figure img,
-  .fullscreen [class*="card-"] figure img {
+  [class*="card-"][class*="bg-"] figure iframe,
+  /* -- Make small images/iframes larger -- */
+  .fullscreen [class*="card-"] figure img,
+  .fullscreen [class*="card-"] figure iframe {
     position: absolute;
     z-index: 1;
     top: 0;
@@ -2708,12 +2781,15 @@ object-fit to re-frame images rather than just stretch and resize them  === */
 .flex-content,
 [class*="card"] blockquote {
   position: relative;
+  padding: 2.4rem;
+}
+[class*="card-"] .flex-content,
+[class*="card-"] blockquote {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   justify-content: center;
-  padding: 2.4rem;
 }
 
 .flex-content p {
@@ -2789,9 +2865,11 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   /* Visibility */
   z-index: 2;
 }
+
 [class*="card"] figure figcaption svg {
   font-size: 1rem;
 }
+
 
 /*=========================================
 11. Quotes
@@ -2808,6 +2886,10 @@ blockquote p {
 }
 blockquote p:last-child {
 margin-bottom: 3.2rem;
+}
+/* -- Interviews dl.text-interview -- */
+dd blockquote p:last-child {
+margin-bottom: 0;
 }
 .bg-apple blockquote p {
   font-family: "San Francisco", "Roboto", helvetica, arial, sans-serif;
@@ -2827,33 +2909,35 @@ cite:before {
   content: "\2014 \2009";
   margin-right: 6px;
 }
-/* -- Versatility: blockquote, p, h2, h3...  -- */
-.text-quote {
-position: relative;
+/* -- Big Blockquote -- */
+/* Info: .wall will be deprecated soon. Use .text-quote ;) */
+
+.text-quote,.wall {
+position: relative; /* Versatility: blockquote, p, h2... */
 }
-.text-quote:before {
+.text-quote:before,.wall:before {
   position: absolute;
-  top: -6.4rem;
+  top: -4rem;
   left: -.8rem;
   content: "\201C";
   font-family: arial, sans-serif;
-  width: 6.4rem;
-  height: 6.4rem;
-  font-size: 16rem;
+  width: 5.6rem;
+  height: 5.6rem;
+  font-size: 12rem;
   line-height: 1;
   text-align: center;
 }
 
 @media (min-width:768px) {
-  .text-quote {
-    padding-left: 8rem;
+  .text-quote,.wall {
+    padding-left: 6.4rem;
   }
-  .text-quote p {
+  .text-quote p,.wall p {
     font-size: 3.2rem;
     line-height: 4.8rem;
   }
-  .text-quote:before {
-    top: -3.2rem;
+  .text-quote:before,.wall:before {
+    top: -1.6rem;
     left: .8rem;
   }
 }
@@ -3144,7 +3228,60 @@ button:disabled:hover {
 }
 
 /*=========================================
-15. SAFARI BUGS (flex-wrap)
+15. Longform 
+=========================================== */
+
+/* -- Posts = .wrap.longform -- */
+
+.longform {
+width: 72rem; 
+/* Why 72rem=720px? 
+90-95 characters per line = better reading speed */
+}
+.longform .alignleft, .longform .alignright {
+    max-width: 40%;
+}
+.longform img.aligncenter,.longform figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+.longform ul,.longform ol {
+margin-bottom: 3.2rem;
+}
+.longform ul ol,.longform ol ul,.longform ul ul,.longform ol ol {
+margin-bottom: 0;
+}
+.longform figcaption p,.longform [class*="text-pull-"] p{
+line-height: 2.4rem;
+font-size: 1.6rem;
+}
+/* Mobile: video full width */
+.text-pull.embed {
+padding-bottom: 60.6%; /*without black borders; */
+margin-right: -2.4rem;
+margin-left: -2.4rem;
+}
+@media (min-width:1280px) {
+.longform [class*="text-pull-"] {
+max-width: 32%;
+}
+.longform .text-pull-right {
+margin-right:-256px;
+}
+.longform .text-pull-left {
+margin-left:-256px;
+ }
+}
+@media (min-width:1024px) {
+.longform .text-quote {
+margin-right: -4.8rem;
+margin-left: -4.8rem;
+ }
+}
+
+
+/*=========================================
+16. SAFARI BUGS (flex-wrap)
 Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 =========================================== */
 
@@ -3154,7 +3291,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 }
 
 /*=========================================
-16. PRINT
+17. PRINT
 =========================================== */
 
 @media print {
@@ -3194,9 +3331,8 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   }
 }
 
-
 /*=========================================
-16. ZOOM
+18. ZOOM
 =========================================== */
 
 #webslides-zoomed.grid {
