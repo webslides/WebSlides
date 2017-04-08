@@ -1661,9 +1661,7 @@ var Navigation = function () {
      * Counter Element.
      * @type {Element}
      */
-    this.counter = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('a', ELEMENT_ID.COUNTER);
-    this.counter.href = '#';
-    this.counter.title = 'View all slides';
+    this.counter = Navigation.createCounter(ELEMENT_ID.COUNTER);
     /**
      * @type {WebSlides}
      * @private
@@ -1702,7 +1700,7 @@ var Navigation = function () {
   }, {
     key: 'updateCounter',
     value: function updateCounter(current, max) {
-      this.counter.textContent = current + ' / ' + max;
+      this.counter.childNodes[0].textContent = current + ' / ' + max;
     }
 
     /**
@@ -1751,6 +1749,24 @@ var Navigation = function () {
       arrow.title = 'Arrow Keys';
 
       return arrow;
+    }
+
+    /**
+     * Creates the navigation counter.
+     * @param {!String} id Desired ID for the counter.
+     * @return {Element} The arrow element.
+     */
+
+  }, {
+    key: 'createCounter',
+    value: function createCounter(id) {
+      var counter = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('span', id);
+      var link = document.createElement('a');
+      link.href = '#';
+      link.title = 'View all slides';
+      counter.appendChild(link);
+
+      return counter;
     }
   }]);
 

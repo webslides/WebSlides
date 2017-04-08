@@ -316,6 +316,7 @@ html.ws-ready body {
 #webslides {
   height: 100vh;
   overflow-x: hidden;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 /* -- Hide scrollbar, but still being able to scroll -- */
@@ -1547,7 +1548,7 @@ opacity: 1;
 }
 */
 
-#navigation #counter {
+#counter {
   position: relative;
   display: block;
   width: 10rem;
@@ -1555,15 +1556,13 @@ opacity: 1;
   margin-left: auto;
   text-align: center;
   line-height: 4.8rem;
-  height: auto;
-  padding: 0;
 }
 
 #navigation p {
   margin-bottom: 0;
 }
 
-#navigation a {
+a#next,a#previous {
   position: absolute;
   width: 4rem;
   height: 4rem;

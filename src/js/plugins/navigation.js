@@ -48,9 +48,7 @@ export default class Navigation {
      * Counter Element.
      * @type {Element}
      */
-    this.counter = DOM.createNode('a', ELEMENT_ID.COUNTER);
-    this.counter.href = '#';
-    this.counter.title = 'View all slides';
+    this.counter = Navigation.createCounter(ELEMENT_ID.COUNTER);
     /**
      * @type {WebSlides}
      * @private
@@ -83,7 +81,7 @@ export default class Navigation {
    * @param {string|number} max Max slide number.
    */
   updateCounter(current, max) {
-    this.counter.textContent = `${current} / ${max}`;
+    this.counter.childNodes[0].textContent = `${current} / ${max}`;
   }
 
   /**
@@ -98,6 +96,21 @@ export default class Navigation {
     arrow.title = 'Arrow Keys';
 
     return arrow;
+  }
+
+  /**
+   * Creates the navigation counter.
+   * @param {!String} id Desired ID for the counter.
+   * @return {Element} The arrow element.
+   */
+  static createCounter(id) {
+    const counter = DOM.createNode('span', id);
+    const link = document.createElement('a');
+    link.href = '#';
+    link.title = 'View all slides';
+    counter.appendChild(link);
+
+    return counter;
   }
 
   /**
