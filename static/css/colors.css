@@ -39,7 +39,9 @@ WebSlides - Colors
 Base
 =========================================== */
 
-body {
+body, 
+/*index of slides: mini-slides same bg color as body */
+#webslides-zoomed.grid > .column > .wrap-zoom {
   color: #333;
   background-color: #f7f9fb;
 }
@@ -927,7 +929,6 @@ Zoom: Index of slides
 }
 
 #webslides-zoomed.grid > .column > .wrap-zoom {
-  background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 #webslides-zoomed.grid > .column > .wrap-zoom:hover {
