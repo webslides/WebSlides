@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-08
+ * Date: 2017-04-09
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2545,21 +2545,47 @@ var Zoom = function () {
 
       // Creates the container for each slide
       this.zws_.slides.forEach(function (elem) {
-        var wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(elem.el, 'div');
-        wrap.className = CLASSES.WRAP;
-        var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
-        div.className = CLASSES.DIV;
-        // Adding some layer for controling click events
-        var divLayer = document.createElement('div');
-        divLayer.className = 'zoom-layer';
-        divLayer.addEventListener('click', function (e) {
-          _this.zoomOut();
-          _this.ws_.goToSlide(elem.i);
-        });
-        wrap.appendChild(divLayer);
-
-        _this.setSizes_(div, wrap, elem);
+        return _this.createSlideBlock_(elem);
       });
+    }
+
+    /**
+     * Creates a block structure around the slide
+     * @param {Element} elem slide element
+     */
+
+  }, {
+    key: 'createSlideBlock_',
+    value: function createSlideBlock_(elem) {
+      var _this2 = this;
+
+      // Wraps the slide around a container
+      var wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(elem.el, 'div');
+      wrap.className = CLASSES.WRAP;
+      // Slide container, need due to flexbox styles
+      var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
+      div.className = CLASSES.DIV;
+      // Adding some layer for controling click events
+      var divLayer = document.createElement('div');
+      divLayer.className = 'zoom-layer';
+      divLayer.addEventListener('click', function (e) {
+        _this2.zoomOut();
+        _this2.ws_.goToSlide(elem.i);
+        e.stopPropagation();
+      });
+      wrap.appendChild(divLayer);
+      // Slide number
+      var slideNumber = document.createElement('span');
+      slideNumber.className = 'slide-number';
+      slideNumber.textContent = elem.i + 1 + ' / ' + this.zws_.slides.length;
+      div.appendChild(slideNumber);
+      // Zoom out when click in slide "border"
+      div.addEventListener('click', function (e) {
+        _this2.ws_.toggleZoom();
+        e.stopPropagation();
+      });
+
+      this.setSizes_(div, wrap, elem);
     }
 
     /**
@@ -2634,12 +2660,12 @@ var Zoom = function () {
   }, {
     key: 'onWindowResize',
     value: function onWindowResize(ev) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.zws_.slides.forEach(function (elem) {
         var wrap = elem.el.parentElement;
         var div = wrap.parentElement;
-        _this2.setSizes_(div, wrap, elem);
+        _this3.setSizes_(div, wrap, elem);
       });
     }
   }]);

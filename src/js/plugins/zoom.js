@@ -75,22 +75,41 @@ export default class Zoom {
     DOM.after(this.zws_.el, this.ws_.el);
 
     // Creates the container for each slide
-    this.zws_.slides.forEach( elem => {
-      const wrap = DOM.wrap(elem.el, 'div');
-      wrap.className = CLASSES.WRAP;
-      const div = DOM.wrap(wrap, 'div');
-      div.className = CLASSES.DIV;
-      // Adding some layer for controling click events
-      const divLayer = document.createElement('div');
-      divLayer.className = 'zoom-layer';
-      divLayer.addEventListener('click', e => {
-        this.zoomOut();
-        this.ws_.goToSlide(elem.i);
-      });
-      wrap.appendChild(divLayer);
+    this.zws_.slides.forEach( elem => this.createSlideBlock_(elem));
+  }
 
-      this.setSizes_(div, wrap, elem);
+  /**
+   * Creates a block structure around the slide
+   * @param {Element} elem slide element
+   */
+  createSlideBlock_(elem) {
+    // Wraps the slide around a container
+    const wrap = DOM.wrap(elem.el, 'div');
+    wrap.className = CLASSES.WRAP;
+    // Slide container, need due to flexbox styles
+    const div = DOM.wrap(wrap, 'div');
+    div.className = CLASSES.DIV;
+    // Adding some layer for controling click events
+    const divLayer = document.createElement('div');
+    divLayer.className = 'zoom-layer';
+    divLayer.addEventListener('click', e => {
+      this.zoomOut();
+      this.ws_.goToSlide(elem.i);
+      e.stopPropagation();
     });
+    wrap.appendChild(divLayer);
+    // Slide number
+    const slideNumber = document.createElement('span');
+    slideNumber.className = 'slide-number';
+    slideNumber.textContent = `${elem.i+1} / ${this.zws_.slides.length}`;
+    div.appendChild(slideNumber);
+    // Zoom out when click in slide "border"
+    div.addEventListener('click', e => {
+      this.ws_.toggleZoom();
+      e.stopPropagation();
+    });
+
+    this.setSizes_(div, wrap, elem);
   }
 
   /**
