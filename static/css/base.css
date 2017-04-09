@@ -50,10 +50,9 @@
 	15. Longform Elements
 	16. Safari Bug (flex-wrap)
 	17. Print
-	18. Zoom
+	18. Zoom: Index of slides (grid)
 
 ----------------------------------------------------------------------------------- */
-
 /*=========================================
 0. CSS Reset & Normalize
 =========================================== */
@@ -1594,7 +1593,7 @@ padding: 2.4rem;
   bottom: 0;
   left: 0;
   /* hover/visibility */
-  z-index: 3;
+  z-index: 4;
 }
 #navigation  {
   -webkit-animation: fadeIn 16s;
@@ -3332,23 +3331,34 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 }
 
 /*=========================================
-18. ZOOM
+18. Zoom: Index of slides (grid)
 =========================================== */
-
-#webslides-zoomed.grid {
-  background: #ccc;
-}
-
-#webslides-zoomed.grid > .column {
-  position: relative;
+#webslides-zoomed.grid{
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
 }
 #webslides-zoomed.grid > .column > .wrap-zoom {
   position: relative;
-  background: #fff;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 #webslides-zoomed.grid > .column {
   width: 25%;
+      -webkit-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    align-self: auto;
 }
+
 #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
   transform: scale(0.25) translate(-150%, -150vh);
   display: flex !important;
@@ -3357,6 +3367,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   left: 0;
   clip: rect(0px auto auto 0);
 }
+
 #webslides-zoomed.grid > .column > .wrap-zoom > .zoom-layer {
   position: absolute;
   background: transparent;
@@ -3364,3 +3375,14 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   height: 100%;
   cursor: pointer;
 }
+#webslides-zoomed.grid > .column > .wrap-zoom:hover {
+transform: scale(1.02);
+}
+
+.text-slide-number {
+  text-align: center;
+  display: inline-block;
+  /*border-radius: .3rem;
+  padding: 0 1.6rem;*/
+  margin: .8rem auto;
+ }
