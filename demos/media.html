@@ -12,8 +12,8 @@
       https://github.com/webslides/webslides
       
       Thanks!
-      -->
-      
+    -->
+    
     <!-- SEO -->
     <title>WebSlides Tutorial: Videos, Images, and Maps</title>
     <meta name="description" content="How to embed images, videos, and maps in your presentation.">
@@ -48,6 +48,7 @@
     
     <!-- EDIT -->
     <meta property="og:image" content="../static/images/share-webslides.jpg" >
+    
     <!-- EDIT -->
     
     <!-- TWITTER -->
@@ -107,15 +108,16 @@
         </ul>
       </nav>
     </header>
+    
     <main role="main">
       <article id="webslides">
-        
+      
         <!-- Quick Guide
           - Each parent <section> in the <article id="webslides"> element is an individual slide.
           - Vertical sliding = <article id="webslides" class="vertical">
           - <div class="wrap"> = container 90% / <div class="wrap size-50"> = 45%;
-          -->
-          
+        -->
+        
         <section class="bg-black-blue aligncenter">
           <span class="background dark" style="background-image:url('https://source.unsplash.com/Zq_K89I9E-8/)"></span>
           <!--.wrap = container (width: 90%) -->
@@ -160,7 +162,7 @@
                   <h3><a target="_blank" href="#slide=17">Videos</a></h3>
                   <ol>
                     <li><a target="_blank" href="#slide=18">Background Videos (hosted & overlay)</a></li>
-                    <li><a target="_blank" href="#slide=22">Embed YouTube videos</a></li>
+                    <li><a target="_blank" href="#slide=22">Embedding YouTube videos</a></li>
                     <li><a target="_blank" href="#slide=24">Fullscreen YouTube videos</a></li>
                     <li>
                       <a target="_blank" href="#slide=26"><strong>YouTube API:</strong></a>
@@ -179,8 +181,8 @@
                   <h3><a target="_blank" href="#slide=34">Maps & Charts</a></h3>
                   <ol>
                     <li><a target="_blank" href="#slide=35">Embedding maps</a></li>
-                    <li><a target="_blank" href="#slide=36">Fullscreen maps</a></li>
-                    <li><a target="_blank" href="#slide=37">Fullscreen map with frame</a></li>
+                    <li><a target="_blank" href="#slide=36">Embedding the map in a card</a></li>
+                    <li><a target="_blank" href="#slide=37">Fullscreen maps</a></li>
                     <li><a target="_blank" href="#slide=38">Embedding charts</a></li>
                   </ol>
                 </div>
@@ -602,7 +604,7 @@
             <video autoplay loop poster="https://webslides.tv/static/images/peggy.jpg">
               <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
             </video>
-         </div>
+          </div>
         </section>
         <section>
           <div class="wrap size-60">
@@ -621,17 +623,17 @@
           <!-- .end .wrap -->
         </section>
         <section class="fullscreen bg-blue aligncenter">
-         <div class="embed dark">
-          <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
-            <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-          </video>
+          <div class="embed dark">
+            <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+              <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+            </video>
           </div>
           <!-- .end .embed -->
           <div class="wrap">
             <h2><strong>Muted</strong></h2>
             <p>Overlay: <code>section.fullscreen.bg-blue > embed.dark</code> or .light</p>
-           </div>
-           <!-- .end .wrap -->
+          </div>
+          <!-- .end .wrap -->
         </section>
         <section>
           <div class="wrap">
@@ -688,45 +690,54 @@
           <!-- .end .embed -->
         </section>
         <section class="frame">
-         <p class="aligncenter"><svg class="fa-thumbs-up large">
-                <use xlink:href="#fa-thumbs-up"></use>
-              </svg></p>
+          <p class="aligncenter">
+            <svg class="fa-thumbs-up large">
+              <use xlink:href="#fa-thumbs-up"></use>
+            </svg>
+          </p>
           <div class="wrap size-60 bg-white">
-            <h3><a href="https://developers.google.com/youtube"><svg class="fa-youtube">
-                <use xlink:href="#fa-youtube"></use>
-              </svg> YouTube API</a></h3>
+            <h3>
+              <a href="https://developers.google.com/youtube">
+                <svg class="fa-youtube">
+                  <use xlink:href="#fa-youtube"></use>
+                </svg>
+                YouTube API
+              </a>
+            </h3>
             <p class="text-intro">Embed videos with <strong>loop, autoplay, and muted</strong> attributes. The video will automatically play when the slide is loaded.</p>
-            
             <p><strong>You should use a local or a remote server</strong> since the YouTube API doesn't seem to work nicely when using the file directly on the browser.</p>
           </div>
           <!-- .end .wrap -->
         </section>
         <section>
           <div class="wrap">
-            <h3><svg class="fa-youtube">
+            <h3>
+              <svg class="fa-youtube">
                 <use xlink:href="#fa-youtube"></use>
-              </svg>YouTube API Parameters</h3>
-              <p>Syntax: <code>data-autoplay, data-loop, data-no-controls, data-mute</code>.</p>
-              <hr>
-           <div class="grid">
-            <div class="column">
-             <pre>&lt;div class="embed"&gt;
+              </svg>
+              YouTube API Parameters
+            </h3>
+            <p>Syntax: <code>data-autoplay, data-loop, data-no-controls, data-mute</code>.</p>
+            <hr>
+            <div class="grid">
+              <div class="column">
+                <pre>&lt;div class="embed"&gt;
   <strong>&lt;div data-youtube data-youtube-id=&quot;CQY3KUR3VzM&quot; data-autoplay data-loop&gt; 
   &lt;/div&gt;</strong>
-&lt;/div&gt;</pre> 
-<p>autoplay + loop</p>
-            </div>
-            <!-- .end .column -->
-            <div class="column">
-            <pre>&lt;div class="embed"&gt;
+&lt;/div&gt;</pre>
+                <p>autoplay + loop</p>
+              </div>
+              <!-- .end .column -->
+              <div class="column">
+                <pre>&lt;div class="embed"&gt;
   <strong>&lt;div data-youtube data-youtube-id=&quot;CQY3KUR3VzM&quot; data-autoplay data-mute data-no-controls&gt; 
   &lt;/div&gt;</strong>
 &lt;/div&gt;</pre>
-<p>autoplay + mute + no controls.</p>
+                <p>autoplay + mute + no controls.</p>
+              </div>
+              <!-- .end .column -->
             </div>
-            <!-- .end .column -->
-           </div>
-           <!-- .end .grid -->
+            <!-- .end .grid -->
           </div>
           <!-- .end .wrap -->
         </section>
@@ -754,9 +765,12 @@
         </section>
         <section class="frame">
           <div class="wrap size-60 bg-white">
-            <h3><svg class="fa-info-circle large">
+            <h3>
+              <svg class="fa-info-circle large">
                 <use xlink:href="#fa-info-circle"></use>
-              </svg> <strong>Autoplay Feature</strong></h3>
+              </svg>
+              <strong>Autoplay Feature</strong>
+            </h3>
             <p class="text-intro">Autoplay is generally disabled on all mobile devices to prevent bandwidth consumption. User must execute the play manually.</p>
           </div>
           <!-- .end .wrap -->
@@ -765,14 +779,14 @@
           <div class="wrap size-70">
             <h3><strong>Let's make some magic with the YouTube API</strong></h3>
             <p>How to make a fullscreen YouTube video? <code>.fullscreen > .embed</code></p>
-              <hr>
-              <pre><strong>&lt;section class="fullscreen"&gt;</strong>
+            <hr>
+            <pre><strong>&lt;section class="fullscreen"&gt;</strong>
   &lt;div class="embed"&gt;
     &lt;div data-youtube data-youtube-id=&quot;dmkwb2KfLW8&quot; <strong>data-autoplay data-loop data-no-controls</strong>&lt;/div&gt;
   &lt;/div&gt;
 <strong>&lt;/section&gt;</strong>
 </pre>
-<p>The video will automatically play when the slide is loaded.</p>
+            <p>The video will automatically play when the slide is loaded.</p>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -787,14 +801,14 @@
           <div class="wrap size-70">
             <h3><strong>Fullscreen YouTube video background</strong></h3>
             <p>Overlaying a transparent background on an embedded Youtube video:</p>
-              <hr>
-              <pre><strong>&lt;section class="fullscreen bg-black"&gt;</strong>
+            <hr>
+            <pre><strong>&lt;section class="fullscreen bg-black"&gt;</strong>
   &lt;div class="embed dark"&gt;
     &lt;div data-youtube data-youtube-id=&quot;c9psfOxJysw&quot; <strong>data-autoplay data-loop data-mute data-no-controls</strong>&lt;/div&gt;
   &lt;/div&gt;
 <strong>&lt;/section&gt;</strong>
 </pre>
-<p><code>.fullscreen[class*="bg-"] > .embed.dark</code> or .light</p>
+            <p><code>.fullscreen[class*="bg-"] > .embed.dark</code> or .light</p>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -818,7 +832,7 @@
                 <use xlink:href="#fa-map"></use>
               </svg>
               Maps & Charts
-            </h3> 
+            </h3>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -832,15 +846,46 @@
           </div>
           <!-- .end .wrap -->
         </section>
+        <section>
+          <div class="wrap">
+            <div class="card-50 bg-white">
+              <figure>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.254536199183!2d-5.994303837186783!3d37.38381233311839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbaa976bfaec1fe87!2sReal+Alc%C3%A1zar+de+Sevilla!5e0!3m2!1ses!2ses!4v1489408674667" width="800" height="600" allowfullscreen></iframe>
+                <figcaption>
+                  <a href="https://maps.google.com" title="Google Maps">
+                    <svg class="fa-map">
+                      <use xlink:href="#fa-map"></use>
+                    </svg>
+                    Google Maps
+                  </a>
+                </figcaption>
+              </figure>
+              <!-- end figure-->
+              <div class="flex-content">
+                <h2>
+                  Discover Seville
+                </h2>
+                <p>.card-50.bg-white</p>
+                <ul class="description">
+                  <li>
+                    <strong class="text-label" title="Density">Density:</strong> 140/km<sup>2</sup>
+                  </li>
+                  <li><strong class="text-label" title="Population">Population:</strong> 703,021</li>
+                  <li><strong class="text-label" title="Website">Website:</strong> <a href="http://www.visitasevilla.es/en">visitasevilla.es</a></li>
+                </ul>
+                <p>
+                  There are many reasons to visit Seville. Its Old Town contains three UNESCO World Heritage Sites: the Alcazar palace complex, the Cathedral and the General Archive of the Indies. 
+                </p>
+              </div>
+              <!-- end .flex-content-->
+            </div>
+            <!-- end .card-50-->
+          </div>
+          <!-- .end .wrap -->
+        </section>
         <section class="fullscreen">
           <div class="embed">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.254536199183!2d-5.994303837186783!3d37.38381233311839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbaa976bfaec1fe87!2sReal+Alc%C3%A1zar+de+Sevilla!5e0!3m2!1ses!2ses!4v1489408674667" width="600" height="450" allowfullscreen></iframe> 
-          </div>
-          <!-- .end .embed -->
-        </section>
-        <section class="fullscreen frame">
-          <div class="embed">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.254536199183!2d-5.994303837186783!3d37.38381233311839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbaa976bfaec1fe87!2sReal+Alc%C3%A1zar+de+Sevilla!5e0!3m2!1ses!2ses!4v1489408674667" width="600" height="450" allowfullscreen></iframe> 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.254536199183!2d-5.994303837186783!3d37.38381233311839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbaa976bfaec1fe87!2sReal+Alc%C3%A1zar+de+Sevilla!5e0!3m2!1ses!2ses!4v1489408674667" width="800" height="600" allowfullscreen></iframe> 
           </div>
           <!-- .end .embed -->
         </section>
@@ -850,7 +895,8 @@
             <!-- Responsive video/iframe/chart... Add <div class="embed"> -->
             <div class="embed">
               <!-- I love Quartz's charts -->
-              <div class="atlas-chart" data-id="rJt91kGnx" data-width="640" data-height="449"><img alt="Chart" src="https://www.theatlas.com/i/atlas_rJt91kGnx.png" style="max-width: 100%;"></div><script src="https://www.theatlas.com/javascripts/atlas.js"></script>
+              <div class="atlas-chart" data-id="rJt91kGnx" data-width="640" data-height="449"><img alt="Chart" src="https://www.theatlas.com/i/atlas_rJt91kGnx.png" style="max-width: 100%;"></div>
+              <script src="https://www.theatlas.com/javascripts/atlas.js"></script>
             </div>
             <!-- end .embed -->
           </div>
@@ -862,7 +908,7 @@
             <h2><strong>Start in seconds</strong></h2>
             <p class="text-intro">120+ prebuilt slides ready to use.</p>
             <p>
-              <a class="button" href="https://webslides.tv/webslides-latest.zip" title="Download WebSlides">
+              <a href="https://webslides.tv/webslides-latest.zip" class="button ga-track" data-ga-text="Download WebSlides (last slide demos)" title="Download WebSlides">
                 <svg class="fa-cloud-download">
                   <use xlink:href="#fa-cloud-download"></use>
                 </svg>
@@ -880,23 +926,24 @@
           </div>
           <!-- .end .wrap -->
         </section>
-        <section class="aligncenter">
-          <h2 class="text-emoji zoomIn"><strong>😘</strong></h2>
-          <p><a href="https://twitter.com/webslides" title="@WebSlides on Twitter">@WebSlides</a></p>
+        <section class="bg-primary aligncenter">
+          <h2 class="text-emoji zoomIn"><strong><a href="https://webslides.tv" title="WebSlides">😎</a></strong></h2>
+          <h3><a href="https://twitter.com/webslides" title="WebSlides on Twitter">@WebSlides</a></h3>
         </section>
         
       </article>
     </main>
     <!--main-->
-    
     <!-- Required -->
+    
     <script src="../static/js/webslides.js"></script>
+    
     <script>
       window.ws = new WebSlides();
     </script>
     
     <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="../static/js/svg-icons.js"></script>
-    
+  
   </body>
 </html>
