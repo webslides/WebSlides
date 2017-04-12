@@ -95,19 +95,15 @@ export default class Zoom {
     divLayer.addEventListener('click', e => {
       this.zoomOut();
       this.ws_.goToSlide(elem.i);
-      e.stopPropagation();
     });
     wrap.appendChild(divLayer);
     // Slide number
     const slideNumber = document.createElement('span');
     slideNumber.className = 'slide-number';
-    slideNumber.textContent = `${elem.i+1} / ${this.zws_.slides.length}`;
+    slideNumber.textContent = `${elem.i+1}`;
     div.appendChild(slideNumber);
     // Zoom out when click in slide "border"
-    div.addEventListener('click', e => {
-      this.ws_.toggleZoom();
-      e.stopPropagation();
-    });
+    div.addEventListener('click', this.ws_.toggleZoom);
 
     this.setSizes_(div, wrap, elem);
   }
@@ -130,11 +126,20 @@ export default class Zoom {
     const scale = divCSS.width.includes('%') ?
       100 / DOM.parseSize(divCSS.width) :
       window.innerWidth / DOM.parseSize(divCSS.width);
-    elem.el.style.width = `${window.innerWidth - marginW * scale}px`;
-    elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
-
-    // Because of flexbox, wrap height is required
-    wrap.style.height = `${window.innerHeight / scale}px`;
+    if (scale == 1) {
+      // If the scale is 100% means it is mobile
+      const wsW = this.ws_.el.clientWidth;
+      elem.el.style.width = `${(wsW - marginW) * 2}px`;
+      elem.el.style.height = `${(wsW - marginH) * 1.5}px`;
+      elem.el.style.minHeight = scale == 1? 'auto' : '';
+      // Because of flexbox, wrap height is required
+      wrap.style.height = `${window.innerWidth / 1.5}px`;
+    } else {
+      elem.el.style.width = `${window.innerWidth - marginW * scale}px`;
+      elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
+      // Because of flexbox, wrap height is required
+      wrap.style.height = `${window.innerHeight / scale}px`;
+    }
   }
 
   /**

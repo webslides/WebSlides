@@ -705,7 +705,7 @@ footer,
   height: 100%;
   margin: 0;
 }
-/* -- Responsive background video 
+/* -- Responsive background video
 https://fvsch.com/code/video-background/ -- */
 
 .fullscreen > .embed {
@@ -723,18 +723,18 @@ https://fvsch.com/code/video-background/ -- */
   .fullscreen > .embed > iframe,
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
-  .fullscreen > .embed > video { 
-    height: 300%; 
-    top: -100%; 
+  .fullscreen > .embed > video {
+    height: 300%;
+    top: -100%;
   }
 }
 @media (max-aspect-ratio: 16/9) {
   .fullscreen > .embed > iframe,
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
-  .fullscreen > .embed > video { 
-    width: 300%; 
-    left: -100%; 
+  .fullscreen > .embed > video {
+    width: 300%;
+    left: -100%;
   }
 }
 /* 2. If supporting object-fit, overriding (1): */
@@ -743,9 +743,9 @@ https://fvsch.com/code/video-background/ -- */
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
   .fullscreen > .embed > video {
-    top: 0; 
+    top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
@@ -3227,14 +3227,14 @@ button:disabled:hover {
 }
 
 /*=========================================
-15. Longform 
+15. Longform
 =========================================== */
 
 /* -- Posts = .wrap.longform -- */
 
 .longform {
-width: 72rem; 
-/* Why 72rem=720px? 
+width: 72rem;
+/* Why 72rem=720px?
 90-95 characters per line = better reading speed */
 }
 .longform .alignleft, .longform .alignright {
@@ -3351,12 +3351,12 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 }
 #webslides-zoomed.grid > .column {
   width: 25%;
-      -webkit-order: 0;
-    order: 0;
-    -webkit-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-align-self: auto;
-    align-self: auto;
+  -webkit-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  align-self: auto;
 }
 
 #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
@@ -3376,7 +3376,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   cursor: pointer;
 }
 #webslides-zoomed.grid > .column > .wrap-zoom:hover {
-transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .text-slide-number {
@@ -3386,3 +3386,21 @@ transform: scale(1.02);
   padding: 0 1.6rem;*/
   margin: .8rem auto;
  }
+
+@media all and (orientation: portrait) {
+  #webslides-zoomed.grid > .column {
+    width: 50%;
+  }
+  #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
+    transform: scale(0.5) translate(-50%, -50vh);
+  }
+}
+
+@media (max-aspect-ratio: 2/3) {
+  #webslides-zoomed.grid > .column {
+    width: 100%;
+  }
+  #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
+    transform: scale(0.5) translate(-50%, -30vh);
+  }
+}

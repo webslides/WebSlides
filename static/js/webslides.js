@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-09
+ * Date: 2017-04-12
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2571,19 +2571,15 @@ var Zoom = function () {
       divLayer.addEventListener('click', function (e) {
         _this2.zoomOut();
         _this2.ws_.goToSlide(elem.i);
-        e.stopPropagation();
       });
       wrap.appendChild(divLayer);
       // Slide number
       var slideNumber = document.createElement('span');
       slideNumber.className = 'slide-number';
-      slideNumber.textContent = elem.i + 1 + ' / ' + this.zws_.slides.length;
+      slideNumber.textContent = '' + (elem.i + 1);
       div.appendChild(slideNumber);
       // Zoom out when click in slide "border"
-      div.addEventListener('click', function (e) {
-        _this2.ws_.toggleZoom();
-        e.stopPropagation();
-      });
+      div.addEventListener('click', this.ws_.toggleZoom);
 
       this.setSizes_(div, wrap, elem);
     }
@@ -2605,11 +2601,20 @@ var Zoom = function () {
 
       // Sets element size: window size - relative margins
       var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
-      elem.el.style.width = window.innerWidth - marginW * scale + 'px';
-      elem.el.style.height = window.innerHeight - marginH * scale + 'px';
-
-      // Because of flexbox, wrap height is required
-      wrap.style.height = window.innerHeight / scale + 'px';
+      if (scale == 1) {
+        // If the scale is 100% means it is mobile
+        var wsW = this.ws_.el.clientWidth;
+        elem.el.style.width = (wsW - marginW) * 2 + 'px';
+        elem.el.style.height = (wsW - marginH) * 1.5 + 'px';
+        elem.el.style.minHeight = scale == 1 ? 'auto' : '';
+        // Because of flexbox, wrap height is required
+        wrap.style.height = window.innerWidth / 1.5 + 'px';
+      } else {
+        elem.el.style.width = window.innerWidth - marginW * scale + 'px';
+        elem.el.style.height = window.innerHeight - marginH * scale + 'px';
+        // Because of flexbox, wrap height is required
+        wrap.style.height = window.innerHeight / scale + 'px';
+      }
     }
 
     /**
