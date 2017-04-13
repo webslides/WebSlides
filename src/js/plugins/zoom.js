@@ -133,7 +133,7 @@ export default class Zoom {
       elem.el.style.height = `${(wsW - marginH) * 1.5}px`;
       elem.el.style.minHeight = scale == 1? 'auto' : '';
       // Because of flexbox, wrap height is required
-      wrap.style.height = `${window.innerWidth / 1.5}px`;
+      wrap.style.height = `${(wsW - marginH) * 1.5 / 2}px`;
     } else {
       elem.el.style.width = `${window.innerWidth - marginW * scale}px`;
       elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
@@ -178,6 +178,8 @@ export default class Zoom {
    * @param {Event} ev
    */
   onWindowResize(ev) {
+    if (this.isZoomed_) this.zoomOut();
+
     this.zws_.slides.forEach( elem => {
       const wrap = elem.el.parentElement;
       const div = wrap.parentElement;

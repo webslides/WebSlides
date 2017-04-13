@@ -3385,7 +3385,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   /*border-radius: .3rem;
   padding: 0 1.6rem;*/
   margin: .8rem auto;
- }
+}
 
 @media all and (orientation: portrait) {
   #webslides-zoomed.grid > .column {
@@ -3401,6 +3401,6 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
     width: 100%;
   }
   #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
-    transform: scale(0.5) translate(-50%, -30vh);
+    transform: scale(0.5) translate(-50%, -50%);
   }
 }

@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-12
+ * Date: 2017-04-13
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2608,7 +2608,7 @@ var Zoom = function () {
         elem.el.style.height = (wsW - marginH) * 1.5 + 'px';
         elem.el.style.minHeight = scale == 1 ? 'auto' : '';
         // Because of flexbox, wrap height is required
-        wrap.style.height = window.innerWidth / 1.5 + 'px';
+        wrap.style.height = (wsW - marginH) * 1.5 / 2 + 'px';
       } else {
         elem.el.style.width = window.innerWidth - marginW * scale + 'px';
         elem.el.style.height = window.innerHeight - marginH * scale + 'px';
@@ -2666,6 +2666,8 @@ var Zoom = function () {
     key: 'onWindowResize',
     value: function onWindowResize(ev) {
       var _this3 = this;
+
+      if (this.isZoomed_) this.zoomOut();
 
       this.zws_.slides.forEach(function (elem) {
         var wrap = elem.el.parentElement;
