@@ -3348,6 +3348,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   position: relative;
   -webkit-transition: .3s;
   transition: .3s;
+  overflow: hidden;
 }
 #webslides-zoomed.grid > .column {
   width: 25%;
@@ -3387,12 +3388,12 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   margin: .8rem auto;
 }
 
-@media all and (orientation: portrait) {
+@media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation:landscape) {
   #webslides-zoomed.grid > .column {
     width: 50%;
   }
   #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
-    transform: scale(0.5) translate(-50%, -50vh);
+    transform: scale(0.5) translate(-50%, -50%);
   }
 }
 
