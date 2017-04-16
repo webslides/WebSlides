@@ -77,7 +77,6 @@ export default class Touch {
       this.isEnabled = true;
       document.addEventListener(events.START, this.onStart_.bind(this), false);
       document.addEventListener(events.MOVE, this.onMove_.bind(this), false);
-      document.addEventListener(events.MOVE, this.onMove_.bind(this), false);
       document.addEventListener(events.END, this.onStop_.bind(this), false);
     }
   }
