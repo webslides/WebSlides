@@ -2,7 +2,7 @@
 
 ## Misc
 
-- 3 new demos: longform, interview, and media (YouTube API, videos, images, maps...)
+- 4 new demos: Longforms, Interviews, Netflix Culture, and Media (YouTube API, videos, images, maps...)
 - Deps updated.
 - Now using [eslint](http://eslint.org/) to enforce code style.
 - Adding a new badge so the release number is quickly seen.
@@ -30,7 +30,7 @@
   - Introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
   - .card is now a card: width: 100%.
 - Fluid .wrap (width: 90%).
-- .gallery li: auto-fill removed. Now: equal width (useful for gallery layouts).
+- .gallery li:nth-child(n+4): auto-fill removed. Now: equal width (useful for gallery layouts).
 - Adding padding to form[class*="bg-"].
 - A better CSS print: A4 landscape.
 
