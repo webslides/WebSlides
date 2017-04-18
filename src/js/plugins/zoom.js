@@ -103,7 +103,8 @@ export default class Zoom {
     slideNumber.textContent = `${elem.i+1}`;
     div.appendChild(slideNumber);
     // Zoom out when click in slide "border"
-    div.addEventListener('click', this.ws_.toggleZoom);
+    const obj = this;
+    div.addEventListener('click', () => obj.toggleZoom());
 
     this.setSizes_(div, wrap, elem);
   }

@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-14
+ * Date: 2017-04-18
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -14,9 +14,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -2631,7 +2631,10 @@ var Zoom = function () {
       slideNumber.textContent = '' + (elem.i + 1);
       div.appendChild(slideNumber);
       // Zoom out when click in slide "border"
-      div.addEventListener('click', this.ws_.toggleZoom);
+      var obj = this;
+      div.addEventListener('click', function () {
+        return obj.toggleZoom();
+      });
 
       this.setSizes_(div, wrap, elem);
     }
