@@ -573,7 +573,8 @@ var Keys = {
   RIGHT: 39,
   DOWN: 40,
   PLUS: [107, 171],
-  MINUS: [109, 173]
+  MINUS: [109, 173],
+  ESCAPE: 27
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Keys);
@@ -2567,7 +2568,7 @@ var Zoom = function () {
     value: function onKeyDown(event) {
       if (!this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].MINUS.includes(event.which)) {
         this.zoomIn();
-      } else if (this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which)) {
+      } else if (this.isZoomed_ && (__WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which) || event.which == __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].ESCAPE)) {
         this.zoomOut();
       }
     }
