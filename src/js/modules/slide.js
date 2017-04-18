@@ -5,10 +5,17 @@ const CLASSES = {
   CURRENT: 'current'
 };
 
+const Events = {
+  ENTER: 'dom:enter',
+  LEAVE: 'dom:leave',
+  ENABLE: 'slide:enable',
+  DISABLE: 'slide:disable'
+};
+
 /**
  * Wrapper for the Slide section.
  */
-export default class Slide {
+class Slide {
   /**
    * Bootstraps the slide by saving some data, adding a class and hiding it.
    * @param {Element} el Section element.
@@ -28,18 +35,6 @@ export default class Slide {
      * @type {number}
      */
     this.i = i;
-    /**
-     * Enable callbacks.
-     * @type {Array<Function>}
-     * @private
-     */
-    this.onEnable_ = [];
-    /**
-     * Disable callbacks
-     * @type {Array<Function>}
-     * @private
-     */
-    this.onDisable_ = [];
 
     this.el.id = `section-${(i + 1)}`;
     this.el.classList.add(CLASSES.SLIDE);
@@ -66,50 +61,55 @@ export default class Slide {
 
   /**
    * Moves the section to the bottom of the section's list.
+   * @fires Slide#dom:leave
+   * @fires Slide#dom:enter
    */
   moveAfterLast() {
     const last = this.parent.childNodes[this.parent.childElementCount - 1];
 
+    this.fire_(Events.LEAVE);
     this.parent.insertBefore(this.el, last.nextSibling);
+    this.fire_(Events.ENTER);
   }
 
   /**
    * Moves the section to the top of the section's list.
+   * @fires Slide#dom:leave
+   * @fires Slide#dom:enter
    */
   moveBeforeFirst() {
     const first = this.parent.childNodes[0];
 
+    this.fire_(Events.LEAVE);
     this.parent.insertBefore(this.el, first);
+    this.fire_(Events.ENTER);
   }
 
   /**
-   * Adds a callback to the enable event.
-   * @param {Function} cb Callback to add.
-   */
-  onEnable(cb) {
-    this.onEnable_.push(cb);
-  }
-
-  /**
-   * Adds a callback to the disable event.
-   * @param {Function} cb Callback to add.
-   */
-  onDisable(cb) {
-    this.onDisable_.push(cb);
-  }
-
-  /**
-   * Runs every on enable callback.
+   * Fires an enable event.
+   * @fires Slide#slide:enable
    */
   enable() {
-    this.onEnable_.forEach(f => f(this));
+    this.fire_(Events.ENABLE);
   }
 
   /**
-   * Runs every on disable callback.
+   * Fires a disable event.
+   * @fires Slide#slide:disable
    */
   disable() {
-    this.onDisable_.forEach(f => f(this));
+    this.fire_(Events.DISABLE);
+  }
+
+  /**
+   * Fires an event passing the slide instance on the detail.
+   * @param {String} name Name of the event to fire.
+   * @private
+   */
+  fire_(name) {
+    DOM.fireEvent(this.el, name, {
+      slide: this
+    });
   }
 
   /**
@@ -146,3 +146,8 @@ export default class Slide {
     return {section, i};
   }
 }
+
+export {
+  Slide as default,
+  Events
+};
