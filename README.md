@@ -21,7 +21,7 @@ Good karma and productivity. Just a basic knowledge of HTML and CSS is required.
 - Slide counter.
 - Permalinks: go to a specific slide.
 - Autoslide.
-- Click to nav. [Read more](docs/click-to-nav.md)!
+- Click to nav.
 - Simple CSS alignments. Put content wherever you want (vertical centering...)
 - 40+ components: background images/videos, quotes, cards, covers...
 - Flexible blocks with auto-fill and equal height.
@@ -112,7 +112,7 @@ Use it to make something cool.
 
 Please check out:
 
- - Want to get techie? Read [our technical docs](docs/technical.md)
+ - Want to get techie? Read [our wiki](wiki)
  - Do not miss [our demos](https://webslides.tv/) 
  
 ### Credits
