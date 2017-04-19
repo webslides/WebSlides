@@ -51,7 +51,10 @@ export default class AutoSlide {
    * automatically.
    */
   play(time) {
-    time = time || this.time;
+    if (typeof time !== 'number') {
+      time = this.time;
+    }
+
     this.time = time;
 
     if (!this.interval_ && typeof time === 'number' && time > 0) {
