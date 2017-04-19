@@ -1,6 +1,6 @@
 /* global YT */
 import DOM from '../utils/dom';
-import Slide from '../modules/slide';
+import {default as Slide, Events as SlideEvents} from '../modules/slide';
 
 /**
  * Player wrapper around the YT player. This is mostly to get around the event
@@ -37,40 +37,72 @@ class Player {
      */
     this.isMuted = typeof el.dataset.mute !== 'undefined';
 
-    const playerVars = this.getPlayerVars(el);
-
     /**
-     * Youtube player.
-     * @type {YT.Player}
+     * Options with which the player is created.
+     * @type {Object}
      */
-    this.player = new YT.Player(el, {
+    this.options = {
       videoId: el.dataset.youtubeId,
-      playerVars,
+      playerVars: this.getPlayerVars(el),
       events: {
-        onReady: () => {
-          this.ready = true;
-          if (this.timeout && this.player.getPlayerState() !== 1) {
-            this.play();
-          }
-
-          if (this.onReadyCb) {
-            this.onReadyCb();
-            this.onReadyCb = null;
-          }
-        }
+        onReady: this.onPlayerReady.bind(this)
       }
-    });
+    };
 
     /**
      * The iframe in which the video is loaded.
      * @type {Element}
      */
-    this.el = this.player.getIframe();
+    this.el = el;
     /**
      * Timeout id.
      * @type {?number}
      */
     this.timeout = null;
+
+    this.create();
+  }
+
+  /**
+   * Destroys the iframe. Saves the current time in case it gets restored.
+   */
+  destroy() {
+    this.currentTime = this.player.getCurrentTime();
+    this.player.destroy();
+    this.player = null;
+    this.el = this.slide.querySelector('[data-youtube]');
+    this.ready = false;
+  }
+
+  /**
+   * Creates the player.
+   */
+  create() {
+    this.player = new YT.Player(this.el, this.options);
+    this.el = this.player.getIframe();
+  }
+
+  /**
+   * Player ready callback. Will play the video if it was intended to be played
+   * and will also call any pending callbacks.
+   */
+  onPlayerReady() {
+    this.ready = true;
+
+    // Restoring the current time if saved
+    if (this.currentTime) {
+      this.player.seekTo(this.currentTime, true);
+      this.currentTime = null;
+    }
+
+    if (this.timeout && this.player.getPlayerState() !== 1) {
+      this.play();
+    }
+
+    if (this.onReadyCb) {
+      this.onReadyCb();
+      this.onReadyCb = null;
+    }
   }
 
   /**
@@ -170,8 +202,11 @@ export default class YouTube {
         const slide = this.ws_.slides[i - 1];
 
         slide.player = player;
-        slide.onEnable(YouTube.onSectionEnabled);
-        slide.onDisable(YouTube.onSectionDisabled);
+
+        slide.el.addEventListener(SlideEvents.ENABLE, YouTube.onSlideEvent);
+        slide.el.addEventListener(SlideEvents.DISABLE, YouTube.onSlideEvent);
+        slide.el.addEventListener(SlideEvents.ENTER, YouTube.onSlideEvent);
+        slide.el.addEventListener(SlideEvents.LEAVE, YouTube.onSlideEvent);
 
         if (this.ws_.currentSlide_ === slide) {
           YouTube.onSectionEnabled(slide);
@@ -189,6 +224,29 @@ export default class YouTube {
     tag.src = `https://www.youtube.com/iframe_api`;
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+
+  /**
+   * Reacts to any event on the slide.
+   * @param {CustomEvent} event
+   */
+  static onSlideEvent(event) {
+    const slide = event.detail.slide;
+
+    switch (event.type) {
+      case SlideEvents.ENABLE:
+        YouTube.onSectionEnabled(slide);
+        break;
+      case SlideEvents.DISABLE:
+        YouTube.onSectionDisabled(slide);
+        break;
+      case SlideEvents.LEAVE:
+        slide.player.destroy();
+        break;
+      case SlideEvents.ENTER:
+        slide.player.create();
+        break;
+    }
   }
 
   /**
