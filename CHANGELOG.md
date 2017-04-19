@@ -6,32 +6,29 @@
 - Deps updated.
 - Now using [eslint](http://eslint.org/) to enforce code style.
 - Adding a new badge so the release number is quickly seen.
-- [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide is now a plugin.
+- [[#51](https://github.com/webslides/webslides/issues/51)] Autoslide is now a plugin.
 - Updated docs.
 - Moved to org!
 - Demos: GitHub links updated.
 
 ## New features
 
-- [[#46](https://github.com/webslides/webslides/issues/46)]Added slide animation for mobile devices.
-- [[#56](https://github.com/webslides/webslides/issues/56)]Added option to disable looping.
-- [[#54](https://github.com/webslides/webslides/issues/54)]Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
-- [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide now pauses if a focusable element gains focus.
-- Added `ws-ready` to actually lock the scroll.
-
-## CSS
-
-- 2 new animations: .slideInLeft and .slideInRight.
+- [[#46](https://github.com/webslides/webslides/issues/46)] Added slide animation for mobile devices. `.slideInLeft` and `.slideInRight`.
+- [[#51](https://github.com/webslides/webslides/issues/51)] Autoslide now pauses if a focusable element gains focus.
+- [[#54](https://github.com/webslides/webslides/issues/54)] Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
+- [[#56](https://github.com/webslides/webslides/issues/56)] Added option to disable looping.
 - [[#68](https://github.com/webslides/webslides/issues/68)] Responsive background videos (`<video>`).
+- [[#72](https://github.com/webslides/webslides/issues/72)] Integration with YouTube's API.
+- [[#74](https://github.com/webslides/webslides/issues/74)] Added `ws-ready` to actually lock the scroll.
 - Adding longform elements.
 - Naming conventions: 
-  - Introducing .text-emoji.
-  - Introducing .text-quote.
-  - Introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
-  - .card is now a card: width: 100%.
-- Fluid .wrap (width: 90%).
-- .gallery li:nth-child(n+4): auto-fill removed. Now: equal width (useful for gallery layouts).
-- Adding padding to form[class*="bg-"].
+  - Introducing `.text-emoji`.
+  - Introducing `.text-quote`.
+  - Introducing `.text-interview` = `dl.text-interview`, dt (name), dd (question/answer).
+  - `.card` is now a `card: width: 100%`.
+- Fluid `.wrap` (`width: 90%`).
+- `.gallery li:nth-child(n+4)`: `auto-fill` removed. Now: equal width (useful for gallery layouts).
+- Adding padding to `form[class*="bg-"]`.
 - A better CSS print: A4 landscape.
 
 ## Bugfixes
