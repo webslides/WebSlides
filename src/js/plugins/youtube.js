@@ -92,6 +92,7 @@ class Player {
     // Restoring the current time if saved
     if (this.currentTime) {
       this.player.seekTo(this.currentTime, true);
+      this.player.pauseVideo();
       this.currentTime = null;
     }
 
