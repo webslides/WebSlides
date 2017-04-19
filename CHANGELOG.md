@@ -14,11 +14,11 @@
 ## New features
 
 - Videos
+  - [[#72](https://github.com/webslides/webslides/issues/72)] Integration with YouTube's API.
   - [[#54](https://github.com/webslides/webslides/issues/54)] Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
   - [[#68](https://github.com/webslides/webslides/issues/68)] Responsive background videos (`<video>`).
-  - [[#72](https://github.com/webslides/webslides/issues/72)] Integration with YouTube's API.
 - [[#46](https://github.com/webslides/webslides/issues/46)] Added slide animation for mobile devices. `.slideInLeft` and `.slideInRight`.
-- Adding longform elements.
+- Added longform elements.
 - Naming conventions: 
   - Introducing `.text-emoji`.
   - Introducing `.text-quote`.
@@ -29,7 +29,7 @@
 - [[#74](https://github.com/webslides/webslides/issues/74)] Added `ws-ready` to actually lock the scroll.
 - Fluid `.wrap` (`width: 90%`).
 - `.gallery li:nth-child(n+4)`: `auto-fill` removed. Now: equal width (useful for gallery layouts).
-- Adding padding to `form[class*="bg-"]`.
+- Added padding to `form[class*="bg-"]`.
 - A better CSS print: A4 landscape.
 
 ## Bugfixes
