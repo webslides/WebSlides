@@ -385,10 +385,6 @@ export default class WebSlides {
   /**
    * Registers a plugin to be loaded when the instance is created. It allows
    * (on purpose) to replace default plugins.
-   * Those being:
-   *  - Navigation
-   *  - Hash
-   *  - Keyboard
    * @param {!string} key They key under which it'll be stored inside of the
    * instance, inside the plugins dict.
    * @param {!Function} cto Plugin constructor.
