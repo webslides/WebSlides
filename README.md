@@ -1,10 +1,10 @@
-# WebSlides = Good Karma
+# WebSlides = Create stories with Karma
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/release/webslides/webslides.svg)](https://github.com/webslides/webslides/releases/latest)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/webslides/webslides.svg?style=social)](https://twitter.com/webslides)
 
-Finally, everything you need to make HTML presentations in a beautiful way. Just the essentials. You can create your own presentation instantly. A new release (at least) every 8th day of the month — [https://webslides.tv/demos](https://webslides.tv/demos).
+Finally, everything you need to make HTML presentations, landings, and longforms in a beautiful way. Just the essentials. A new release (at least) every 8th day of the month — [https://webslides.tv/demos](https://webslides.tv/demos).
 
 * * *
 ### Download
@@ -12,8 +12,8 @@ Simply choose a demo and customize it in minutes. Latest version: [webslides.tv/
 * * *
 
 
-### Why WebSlides?
-Good karma and productivity. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
+### Why WebSlides? Productivity
+This is about telling the story, and sharing it in a beautiful way. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
 
 ## Features
 
@@ -80,20 +80,6 @@ webslides/
 - Cards: `.card-50`, `.card-40`...
 - Flexible Blocks: `.flexblock.clients`, `.flexblock.metrics`...
 
-### Key Navigation
-
-There's a handful of keys that can be used to achieve navigation within WebSlides. Here's the list:
-
-* `←`: If WebSlides is not vertical, it will go to the previous slide.
-* `→`: If WebSlides is not vertical, it will go to the next slide.
-* `↑`: If WebSlides is vertical, it will go to the previous slide.
-* `↓`: If WebSlides is vertical, it will go to the next slide.
-* `Page Up`: Go to the previous slide.
-* `Page Down`: Go to the next slide.
-* `Space`: Go to the next slide.
-* `Home`: Go to the first slide.
-* `End`: Go to the last slide.
-
 ### Extensions
 
 You can add:
@@ -101,19 +87,18 @@ You can add:
 - [Unsplash](https://unsplash.com) photos
 - [animate.css](https://daneden.github.io/animate.css)
 - [particles.js](https://github.com/VincentGarreau/particles.js)
+- [Animate on scroll](http://michalsnik.github.io/aos/) (Useful for longform articles)
 - [pt](http://williamngan.github.io/pt/)
 
-### License
-
-WebSlides is licensed under the [MIT License](https://opensource.org/licenses/MIT). 
-Use it to make something cool.
 
 ### Dive In!
 
-Please check out:
-
- - Want to get techie? Read [our wiki](wiki)
- - Do not miss [our demos](https://webslides.tv/) 
+- Do not miss [our demos](https://webslides.tv/). 
+- Want to get techie? Read [our wiki](wiki):
+  - [FAQ](https://github.com/webslides/WebSlides/wiki)
+  - [Core API](https://github.com/webslides/WebSlides/wiki/Core-API)
+  - [Plugin Docs](https://github.com/webslides/WebSlides/wiki/Plugin-docs)
+  - [Plugin Development](https://github.com/webslides/WebSlides/wiki/Plugin-development)
  
 ### Credits
 
