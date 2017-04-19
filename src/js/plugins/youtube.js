@@ -183,7 +183,7 @@ export default class YouTube {
      */
     this.ws_ = wsInstance;
 
-    this.videos = DOM.toArray(this.ws_.el.querySelectorAll('[data-youtube'));
+    this.videos = DOM.toArray(this.ws_.el.querySelectorAll('[data-youtube]'));
 
     if (this.videos.length) {
       this.inject();
