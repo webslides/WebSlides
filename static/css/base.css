@@ -1,8 +1,8 @@
 /*---------------------------------------------------------------------------------
 
 	App: WebSlides
-	Version: 1.0.0
-	Date: 2017-02-11
+	Version: 1.3.0
+	Date: 2017-04-20
 	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios.
 	Authors: @jlantunez, @belelros, and @luissacristan
 	Author URI: http://twitter.com/webslides
@@ -410,6 +410,7 @@ width: 90%;
 .frame,.shadow {
   padding: 2.4rem;
 }
+
 .radius {border-radius: .4rem;}
 
 .alignright {
@@ -1474,8 +1475,8 @@ Vertically and horizontally centered
 * = All HTML elements will have those styles.*/
 
 section * {
-  -webkit-animation: fadeIn 0.3s ease-in-out;
-  animation: fadeIn 0.3s ease-in-out;
+  -webkit-animation: fadeIn 0.6s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
 }
 section .background,section .light,section .dark {
   -webkit-animation-duration:0s;
@@ -1596,8 +1597,8 @@ padding: 2.4rem;
   z-index: 4;
 }
 #navigation  {
-  -webkit-animation: fadeIn 16s;
-  animation: fadeIn 16s;
+  -webkit-animation: fadeIn 8s;
+  animation: fadeIn 8s;
   opacity:0;
 }
 #navigation:hover {
@@ -1682,6 +1683,7 @@ a#previous {
   background-position: bottom;
   background-size: cover;
 }
+
 
 /*fullscreen video
   <video class="background-video">
@@ -1771,6 +1773,13 @@ a#previous {
   -webkit-animation: anim 80s linear infinite;
   animation: anim 80s linear infinite;
 
+}
+/*=== Background with a frame === */
+/*<span class="background" style="background-image:url('image.jpg')"></span>
+<span class="background frame"></span>*/
+
+[class*="background"].frame {
+margin: 2.4rem;
 }
 
 /*===============================================================
