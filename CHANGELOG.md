@@ -7,7 +7,7 @@
 - Now using [eslint](http://eslint.org/) to enforce code style.
 - Adding a new badge so the release number is quickly seen.
 - [[#51](https://github.com/webslides/webslides/issues/51)] Autoslide is now a plugin.
-- Updated docs.
+- Docs moved to [Wiki](https://github.com/webslides/WebSlides/wiki)!
 - Moved to org!
 - Demos: GitHub links updated.
 
@@ -36,7 +36,7 @@
 
 - Fixed issues with the grid.
 - [[#33](https://github.com/webslides/webslides/issues/33)] Fixed video issue.
-- [[#61](https://github.com/webslides/webslides/issues/61)]Fixed print issue which prevented to export the slides to PDF in an easy way.
+- [[#61](https://github.com/webslides/webslides/issues/61)] Fixed print issue which prevented to export the slides to PDF in an easy way.
 
 
 # 1.2.1 (2017-03-02)
