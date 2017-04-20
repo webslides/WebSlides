@@ -1,11 +1,11 @@
 /*---------------------------------------------------------------------------------
 
 	App: WebSlides
-	Version: 1.0.0
-	Date: 2017-02-11
+	Version: 1.3.0
+	Date: 2017-04-20
 	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios.
-	Author: José Luis Antúnez
-	Author URI: http://twitter.com/jlantunez
+	Authors: @jlantunez, @belelros, and @luissacristan
+	Author URI: http://twitter.com/webslides
 	License: The MIT License (MIT)
 	License URI: https://opensource.org/licenses/MIT
 
@@ -47,8 +47,9 @@
 	12. Avatars
 	13. Tables
 	14. Forms
-	15. Safari Bug (flex-wrap)
-	16. Print
+  15. Longform Elements
+	16. Safari Bug (flex-wrap)
+	17. Print
 
 ----------------------------------------------------------------------------------- */
 
@@ -302,10 +303,11 @@ dd {
 1. Base --> Baseline: 8px = .8rem
 =========================================== */
 
-/* -- Disable elastic scrolling/bounce  -- */
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
 
-html,
-body {
+html.ws-ready,
+html.ws-ready body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -393,16 +395,22 @@ nav a[rel="external"] em,
 
 .wrap,header nav, footer nav {
   position: relative;
-  width: 1200px;
+  width: 100%;
   max-width: 100%;
   margin-right:auto;
   margin-left: auto;
   z-index: 2;
 }
+@media (min-width: 1024px) {
+.wrap,header nav, footer nav {
+width: 90%;
+ }
+}
 
 .frame,.shadow {
   padding: 2.4rem;
 }
+
 .radius {border-radius: .4rem;}
 
 .alignright {
@@ -419,29 +427,28 @@ nav a[rel="external"] em,
   text-align: center;
 }
 
-img.aligncenter {
+img.aligncenter,figure.aligncenter {
   display: block;
 }
 
-img.alignleft,
-img.alignright,
-img.aligncenter {
-  margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+img.alignleft,figure.alignleft,
+img.alignright,figure.alignright,
+img.aligncenter,figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
-@media (min-width: 768px) {
-  img.aligncenter {
-    margin-top: .8rem;
-    margin-bottom: .8rem;
-  }
-  img.alignright,svg.alignright {
-    margin: .8rem 0 .8rem 4.8rem
-  }
-  img.alignleft,svg.alignright {
-    margin: .8rem 4.8rem .8rem 0;
-  }
+img.aligncenter,figure.aligncenter {
+  margin-top: .8rem;
+  margin-bottom: .8rem;
 }
+img.alignright,svg.alignright,figure.alignright {
+  margin: .8rem 0 .8rem 2.4rem
+}
+img.alignleft,svg.alignleft,figure.alignleft {
+  margin: .8rem 2.4rem .8rem 0;
+}
+
 @media (min-width: 1024px) {
 
   /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
@@ -499,7 +506,7 @@ pre code {
 
 /*=== 1.2 Animations ================
 Just 5 basic animations:
-.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, slideInRight  
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, slideInRight
 https://github.com/daneden/animate.css*/
 
 /*-- fadeIn -- */
@@ -614,6 +621,7 @@ https://github.com/daneden/animate.css*/
 .slideInLeft {
   -webkit-animation: slideInLeft 1s;
   animation: slideInLeft 1s;
+  animation-fill-mode: both;
 }
 
 /*-- slideInRight -- */
@@ -632,6 +640,7 @@ https://github.com/daneden/animate.css*/
 .slideInRight {
   -webkit-animation: slideInRight 1s;
   animation: slideInRight 1s;
+  animation-fill-mode: both;
 }
 
 /* Animated Background (Matrix) */
@@ -689,13 +698,58 @@ footer,
 
 .embed iframe,
 .embed object,
-.embed embed {
+.embed embed,.embed video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   margin: 0;
+}
+/* -- Responsive background video 
+https://fvsch.com/code/video-background/ -- */
+
+.fullscreen > .embed {
+  position: fixed;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 0;
+}
+
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video { 
+    height: 300%; 
+    top: -100%; 
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video { 
+    width: 300%; 
+    left: -100%; 
+  }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video {
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /*=== Browser (Screenshots) ================ */
@@ -739,14 +793,10 @@ li .browser {margin-bottom: 0;
     font-size: 1.6rem;
   }
 }
-
-
 .browser img {
   width: 100%;
   margin-top: 3.2rem;
 }
-
-
 
 /*=== 1.4. Basic Grid (Flexible blocks)
 Auto-fill & Equal height === */
@@ -842,6 +892,8 @@ textarea {
 
 p,
 li,
+dt,
+dd,
 time,
 table,
 big,
@@ -890,7 +942,7 @@ h1 svg,
 h2 svg, h3 svg, h4 svg {
   margin-top: -.8rem;
 }
-.text-intro svg,.wall p svg,.try svg {
+.text-intro svg,.text-quote p svg,.wall p svg,.try svg {
   margin-top: -.4rem;
 }
 .flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
@@ -1028,9 +1080,22 @@ p.text-subtitle svg {vertical-align: text-top;}
   margin-top: 3.2rem;
 }
 
-
 .text-uppercase {text-transform: uppercase;}
 .text-lowercase {text-transform: lowercase;}
+
+/* -- Emoji (you'll love this) -- */
+
+.text-emoji {
+font-size: 6.8rem;
+line-height: 8.8rem;
+}
+
+@media (min-width: 768px) {
+.text-emoji {
+font-size: 12.8rem;
+line-height: 16rem;
+ }
+}
 
 /* -- Numbers (results, sales... 23,478,289 iphones) -- */
 
@@ -1137,6 +1202,7 @@ p.text-subtitle svg {vertical-align: text-top;}
   line-height: 4rem;
   font-weight: 400;
   margin-right: 2.4rem;
+  margin-bottom: 3.2rem;
   margin-left: 2.4rem;
 }
 
@@ -1147,13 +1213,13 @@ p.text-subtitle svg {vertical-align: text-top;}
 
 @media (min-width: 1024px) {
   [class*="text-pull"] {
-    margin-right: -4rem;
-    margin-left: -4rem;
+    margin-right: -4.8rem;
+    margin-left: -4.8rem;
   }
 }
 @media (min-width: 568px) {
   [class*="text-pull-"] {
-    width: 32rem;
+    max-width: 40%;
   }
   .text-pull-right {
     float: right;
@@ -1166,12 +1232,38 @@ p.text-subtitle svg {vertical-align: text-top;}
     margin-right: 2.4rem;
   }
 }
+img[class*="text-pull-"],figure[class*="text-pull-"] {
+  padding-top:0;
+  margin-top: .8rem;
+}
+
+/* -- Interviews (Questions & Answers)  --- */
+/* -- <dl class="text-interview">
+<dt>name</dt>
+<dd><p>question or answer</p>
+</dd>
+--- */
+
+.text-interview dt {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+.text-interview dt {
+    margin-left: -34%;
+    position: absolute;
+    text-align: right;
+    white-space: nowrap;
+    width: 30%;
+  }
+}
+
 /* -- Info Messages (error, warning, success... -- */
 
 .text-info {font-size: 1.6rem;line-height: 2.4rem;
 }
-
-
 /*=========================================
 2.1. San Francisco Font (Apple's new font)
 =========================================== */
@@ -1180,7 +1272,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-family: "San Francisco", helvetica, arial, sans-serif;
 }
 
-
 /* Ultra Light */
 
 @font-face {
@@ -1188,7 +1279,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   font-weight: 100;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2");
 }
-
 
 /* Thin */
 
@@ -1207,7 +1297,6 @@ p.text-subtitle svg {vertical-align: text-top;}
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2");
 }
 
-
 /* Bold */
 
 @font-face {
@@ -1216,10 +1305,12 @@ p.text-subtitle svg {vertical-align: text-top;}
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2");
 }
 
-
 /*=========================================
 3. Header & Footer
 =========================================== */
+
+/* -- If you want an unique, global header/footer,read this:
+https://github.com/webslides/webslides/issues/57 -- */
 
 header,
 footer,
@@ -1239,24 +1330,27 @@ footer img {
   height: 4rem;
   vertical-align: middle;
 }
-
-header,
-section footer {
-  position: absolute;
-  top: 0;
-  left: 0;
+footer {
+  position: relative;
+}
+header, footer {
   /* hover/visibility */
   z-index: 3;
 }
 
-section footer {
+header,.ws-ready footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ws-ready footer {
   top: auto;
   bottom: 0;
 }
-
 /*=== Hide header[role=banner] === */
 
-/*desktop only? Add @media (min-width: 1025px)*/
+/*Remove "opacity=0" if you want an unique, visible header on each slide*/
 header[role=banner] {
   opacity: 0;
 }
@@ -1271,7 +1365,6 @@ header[role=banner]:hover {
     display: block;
   }
 }
-
 
 /*=== 3.1. Logo === */
 
@@ -1302,7 +1395,6 @@ header[role=banner]:hover {
 /*=========================================
 4. Navigation
 =========================================== */
-
 
 /*=== 4.1. Navbars === */
 
@@ -1383,11 +1475,10 @@ Vertically and horizontally centered
 * = All HTML elements will have those styles.*/
 
 section * {
-  -webkit-animation: fadeIn 0.3s ease-in-out;
-  animation: fadeIn 0.3s ease-in-out;
+  -webkit-animation: fadeIn 0.6s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
 }
-section .background,section .background-video,
-[class*="background-"].light,[class*="background-"].dark {
+section .background,section .light,section .dark {
   -webkit-animation-duration:0s;
   animation-duration:0s;
 }
@@ -1436,8 +1527,8 @@ section,.slide
 }
 
 
-/*== 5.1. Mini container width:50% (600px)
-.wrap:1200px; / Aligned items [class*="content-"]=== */
+/*== 5.1. Mini container width:50%
+Aligned items [class*="content-"]=== */
 
 [class*="content-"] {
   position: relative;
@@ -1449,7 +1540,9 @@ section,.slide
 [class*="content-"].frame, [class*="align"][class*="bg-"]{
   padding: 4.8rem;
 }
-
+form[class*="bg-"] {
+padding: 2.4rem;
+}
 [class*="content-"] > [class*="content-"] p {
   font-size: 1.8rem;
   line-height: 3.2rem;
@@ -1489,6 +1582,7 @@ section,.slide
     clear: both;
   }
 }
+
 /* === 5.2 Counter / Navigation Slides  === */
 
 #navigation {
@@ -1500,11 +1594,11 @@ section,.slide
   bottom: 0;
   left: 0;
   /* hover/visibility */
-  z-index: 3;
+  z-index: 4;
 }
 #navigation  {
-  -webkit-animation: fadeIn 16s;
-  animation: fadeIn 16s;
+  -webkit-animation: fadeIn 8s;
+  animation: fadeIn 8s;
   opacity:0;
 }
 #navigation:hover {
@@ -1527,12 +1621,14 @@ opacity: 1;
   text-align: center;
   line-height: 4.8rem;
 }
-
+#counter a:hover {
+padding: .8rem;
+}
 #navigation p {
   margin-bottom: 0;
 }
 
-#navigation a {
+a#next,a#previous {
   position: absolute;
   width: 4rem;
   height: 4rem;
@@ -1561,7 +1657,7 @@ a#previous {
   }
 }
 
-/*=== 5.3 Slides - Background Images === */
+/*=== 5.3 Slides - Background Images/Videos === */
 
 .background,
 [class*="background-"] {
@@ -1570,9 +1666,11 @@ a#previous {
   right: 0;
   bottom: 0;
   left: 0;
+}
+.background,
+[class*="background-"]{
   background-repeat: no-repeat;
 }
-
 .background {
   background-position: center;
   background-size: cover
@@ -1585,6 +1683,7 @@ a#previous {
   background-position: bottom;
   background-size: cover;
 }
+
 
 /*fullscreen video
   <video class="background-video">
@@ -1633,19 +1732,18 @@ a#previous {
   }
 }
 
+/*=== bg image/video overlay === */
+/*-- [class*="bg-"] .background.dark, [class*="bg-"] .embed.dark...  -- */
 
-
-/*=== bg image light overlay === */
-
-[class*="bg-"] .background.light,
-[class*="bg-"] [class*="background-"].light {
+[class*="bg-"] .light,
+[class*="bg-"] .light {
   filter: alpha(opacity=8000);
   opacity: 0.80;
   filter: alpha(opacity=8);
 }
 
-[class*="bg-"] .background.dark,
-[class*="bg-"] [class*="background-"].dark {
+[class*="bg-"] .dark,
+[class*="bg-"] .dark {
   filter: alpha(opacity=2000);
   opacity: 0.20;
   filter: alpha(opacity=2);
@@ -1675,6 +1773,13 @@ a#previous {
   -webkit-animation: anim 80s linear infinite;
   animation: anim 80s linear infinite;
 
+}
+/*=== Background with a frame === */
+/*<span class="background" style="background-image:url('image.jpg')"></span>
+<span class="background frame"></span>*/
+
+[class*="background"].frame {
+margin: 2.4rem;
 }
 
 /*===============================================================
@@ -1737,8 +1842,6 @@ Blocks Links li>a = .flexblock.blink (.blink required)
   padding: 0;
 }
 
-
-
 @media (min-width:600px) {
   .flexblock li {
     width: 50%;
@@ -1796,7 +1899,6 @@ div + ul, div + ol{
   }
 }
 
-
 .features li h2 {
   text-transform: uppercase;
 }
@@ -1831,7 +1933,6 @@ div + ul, div + ol{
     margin-right: .8rem;
   }
 }
-
 
 /*=====================================================================
 6.2 Clients Logos <ul class="flexblock clients">
@@ -2037,7 +2138,10 @@ img size recommended:800x600px
 .flexblock.gallery li {
   margin-bottom: 4.8rem;
 }
-
+.flexblock.gallery li:nth-child(n+4) {
+  -webkit-flex:inherit;
+  flex:inherit;
+}
 .flexblock.gallery li,
 .flexblock.gallery.blink li>a {
   padding: 0;
@@ -2649,7 +2753,7 @@ p + .work {
   min-height: 100vh;
 }
 
-[class*="card-"] figure img {
+[class*="card-"] figure img,[class*="card-"] figure iframe {
   margin: 0 auto;
   display: block;
 }
@@ -2659,15 +2763,19 @@ p + .work {
 object-fit to re-frame images rather than just stretch and resize them  === */
 
 @media (min-width: 768px) {
-  [class*="card-"][class*="bg-"] figure,
-  .fullscreen [class*="card-"] figure {
+  [class*="card"][class*="bg-"] figure,
+  .fullscreen [class*="card"] figure {
     vertical-align: middle;
     text-align: center;
     min-width: 380px;
     max-height: 100%;
   }
+  /* -- imgs/frames size recommended:800x600 -- */
   [class*="card-"][class*="bg-"] figure img,
-  .fullscreen [class*="card-"] figure img {
+  [class*="card-"][class*="bg-"] figure iframe,
+  /* -- Make small images/iframes larger -- */
+  .fullscreen [class*="card-"] figure img,
+  .fullscreen [class*="card-"] figure iframe {
     position: absolute;
     z-index: 1;
     top: 0;
@@ -2679,14 +2787,17 @@ object-fit to re-frame images rather than just stretch and resize them  === */
 }
 
 .flex-content,
-[class*="card-"] blockquote {
+[class*="card"] blockquote {
   position: relative;
+  padding: 2.4rem;
+}
+[class*="card-"] .flex-content,
+[class*="card-"] blockquote {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   justify-content: center;
-  padding: 2.4rem;
 }
 
 .flex-content p {
@@ -2720,18 +2831,18 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   .card-30 blockquote {
     width: 70%;
   }
-  [class*="card-"]:nth-child(odd) figure {
+  [class*="card"]:nth-child(odd) figure {
     order: 0
   }
-  [class*="card-"]:nth-child(even) figure {
+  [class*="card"]:nth-child(even) figure {
     order: 1;
   }
   .flex-content,
-  [class*="card-"] blockquote {
+  [class*="card"] blockquote {
     padding: 4.8rem;
   }
-  .fullscreen [class*="card-"] .flex-content,
-  .fullscreen [class*="card-"] blockquote {
+  .fullscreen [class*="card"] .flex-content,
+  .fullscreen [class*="card"] blockquote {
     padding: 6.4rem;
   }
 }
@@ -2750,10 +2861,9 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   }
 }
 
-
 /*== Ficaption Cards === */
 
-[class*="card-"] figure figcaption {
+[class*="card"] figure figcaption {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2764,20 +2874,7 @@ object-fit to re-frame images rather than just stretch and resize them  === */
   z-index: 2;
 }
 
-[class*="card-"] figure figcaption.cover {
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-[class*="card-"] figure figcaption svg {
+[class*="card"] figure figcaption svg {
   font-size: 1rem;
 }
 
@@ -2795,7 +2892,13 @@ blockquote p {
   font-size: 2.4rem;
   line-height: 4rem;
 }
-
+blockquote p:last-child {
+margin-bottom: 3.2rem;
+}
+/* -- Interviews dl.text-interview -- */
+dd blockquote p:last-child {
+margin-bottom: 0;
+}
 .bg-apple blockquote p {
   font-family: "San Francisco", "Roboto", helvetica, arial, sans-serif;
   font-weight: 300;
@@ -2814,29 +2917,35 @@ cite:before {
   content: "\2014 \2009";
   margin-right: 6px;
 }
-blockquote.wall:before {
+/* -- Big Blockquote -- */
+/* Info: .wall will be deprecated soon. Use .text-quote ;) */
+
+.text-quote,.wall {
+position: relative; /* Versatility: blockquote, p, h2... */
+}
+.text-quote:before,.wall:before {
   position: absolute;
-  top: -6.4rem;
+  top: -4rem;
   left: -.8rem;
   content: "\201C";
   font-family: arial, sans-serif;
-  width: 6.4rem;
-  height: 6.4rem;
-  font-size: 16rem;
+  width: 5.6rem;
+  height: 5.6rem;
+  font-size: 12rem;
   line-height: 1;
   text-align: center;
 }
 
 @media (min-width:768px) {
-  blockquote.wall {
-    padding-left: 8rem;
+  .text-quote,.wall {
+    padding-left: 6.4rem;
   }
-  blockquote.wall p {
+  .text-quote p,.wall p {
     font-size: 3.2rem;
     line-height: 4.8rem;
   }
-  blockquote.wall:before {
-    top: -3.2rem;
+  .text-quote:before,.wall:before {
+    top: -1.6rem;
     left: .8rem;
   }
 }
@@ -3127,7 +3236,60 @@ button:disabled:hover {
 }
 
 /*=========================================
-15. SAFARI BUGS (flex-wrap)
+15. Longform 
+=========================================== */
+
+/* -- Posts = .wrap.longform -- */
+
+.longform {
+width: 72rem; 
+/* Why 72rem=720px? 
+90-95 characters per line = better reading speed */
+}
+.longform .alignleft, .longform .alignright {
+    max-width: 40%;
+}
+.longform img.aligncenter,.longform figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+.longform ul,.longform ol {
+margin-bottom: 3.2rem;
+}
+.longform ul ol,.longform ol ul,.longform ul ul,.longform ol ol {
+margin-bottom: 0;
+}
+.longform figcaption p,.longform [class*="text-pull-"] p{
+line-height: 2.4rem;
+font-size: 1.6rem;
+}
+/* Mobile: video full width */
+.text-pull.embed {
+padding-bottom: 60.6%; /*without black borders; */
+margin-right: -2.4rem;
+margin-left: -2.4rem;
+}
+@media (min-width:1280px) {
+.longform [class*="text-pull-"] {
+max-width: 32%;
+}
+.longform .text-pull-right {
+margin-right:-256px;
+}
+.longform .text-pull-left {
+margin-left:-256px;
+ }
+}
+@media (min-width:1024px) {
+.longform .text-quote {
+margin-right: -4.8rem;
+margin-left: -4.8rem;
+ }
+}
+
+
+/*=========================================
+16. SAFARI BUGS (flex-wrap)
 Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 =========================================== */
 
@@ -3137,17 +3299,42 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 }
 
 /*=========================================
-16. PRINT
+17. PRINT
 =========================================== */
 
 @media print {
-  section,.slide {
-    /* not static, just in case slide contents take advantage of positioning */
-    position: relative;
-    display: block !important;
+  @page {
+    size: A4 landscape;
+    margin: 0.5cm;
   }
-  #counter,
-  #navigation {
+  /* Black prints faster */
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  html, body, #webslides {
+    width: auto !important;
+    height: auto !important;
+    overflow: auto !important;
+  }
+  #webslides {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+  section, .slide {
+    display: flex !important;
+    height: auto !important;
+  }
+  section * {
+    -webkit-animation: none;
+    animation: none;
+  }
+  table, figure {
+    page-break-inside: avoid;
+  }
+  #counter, #navigation {
     display: none;
   }
 }

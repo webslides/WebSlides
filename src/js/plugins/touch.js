@@ -13,9 +13,13 @@ const EVENTS = {
   }
 };
 
+/**
+ * Touch plugin.
+ */
 export default class Touch {
   /**
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**
@@ -25,14 +29,14 @@ export default class Touch {
     this.ws_ = wsInstance;
 
     /**
-     * Start position for the X coord.
+     * Start position for the X coordinate.
      * @type {number}
      * @private
      */
     this.startX_ = 0;
 
     /**
-     * Start position for the Y coord.
+     * Start position for the Y coordinate.
      * @type {number}
      * @private
      */
@@ -73,14 +77,13 @@ export default class Touch {
       this.isEnabled = true;
       document.addEventListener(events.START, this.onStart_.bind(this), false);
       document.addEventListener(events.MOVE, this.onMove_.bind(this), false);
-      document.addEventListener(events.MOVE, this.onMove_.bind(this), false);
       document.addEventListener(events.END, this.onStop_.bind(this), false);
     }
   }
 
   /**
    * Start touch handler. Saves starting points.
-   * @param event
+   * @param {Event} event The Touch event.
    * @private
    */
   onStart_(event) {
@@ -94,7 +97,7 @@ export default class Touch {
 
   /**
    * Move touch handler. Saves end points.
-   * @param event
+   * @param {Event} event The Touch event.
    * @private
    */
   onMove_(event) {
@@ -125,25 +128,22 @@ export default class Touch {
   /**
    * Normalizes an event to deal with differences between PointerEvent and
    * TouchEvent.
-   * @param event
-   * @return {*}
+   * @param {Event} event
+   * @return {Object} Normalised touch points.
    */
   static normalizeEventInfo(event) {
-    let x;
-    let y;
-    let touchEvent = { pageX : 0, pageY : 0};
+    let touchEvent = {pageX: 0, pageY: 0};
 
-    if (typeof event.changedTouches !== 'undefined'){
+    if (typeof event.changedTouches !== 'undefined') {
       touchEvent = event.changedTouches[0];
-    }
-    else if (typeof event.originalEvent !== 'undefined' &&
-        typeof event.originalEvent.changedTouches !== 'undefined'){
+    } else if (typeof event.originalEvent !== 'undefined' &&
+        typeof event.originalEvent.changedTouches !== 'undefined') {
       touchEvent = event.originalEvent.changedTouches[0];
     }
 
-    x = event.offsetX || event.layerX || touchEvent.pageX;
-    y = event.offsetY || event.layerY || touchEvent.pageY;
+    const x = event.offsetX || event.layerX || touchEvent.pageX;
+    const y = event.offsetY || event.layerY || touchEvent.pageY;
 
-    return { x, y };
+    return {x, y};
   }
-};
+}

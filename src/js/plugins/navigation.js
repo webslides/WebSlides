@@ -18,11 +18,13 @@ const LABELS = {
   }
 };
 
+/**
+ * Navigation plugin.
+ */
 export default class Navigation {
   /**
-   * The Navigation constructor. It'll create all the nodes needed for the
-   * navigation such as the arrows and the counter.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     const arrowLabels = wsInstance.isVertical ?

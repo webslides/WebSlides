@@ -7,10 +7,13 @@ const CLICKABLE_ELS = [
   'TEXTAREA'
 ];
 
+/**
+ * ClickNav plugin that allows to click on the page to get to the next slide.
+ */
 export default class ClickNav {
   /**
-   * ClickNav plugin that allows to click on the page to get to the next slide.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**

@@ -4,27 +4,36 @@ import DOM from '../utils/dom';
 import scrollTo from '../utils/scroll-to';
 
 const CLASSES = {
-  VERTICAL: 'vertical'
+  VERTICAL: 'vertical',
+  READY: 'ws-ready'
 };
 
 // Default plugins
 const PLUGINS = {
+  'autoslide': Plugins.AutoSlide,
   'clickNav': Plugins.ClickNav,
   'grid': Plugins.Grid,
   'hash': Plugins.Hash,
   'keyboard': Plugins.Keyboard,
   'nav': Plugins.Navigation,
   'scroll': Plugins.Scroll,
-  'touch': Plugins.Touch
+  'touch': Plugins.Touch,
+  'video': Plugins.Video,
+  'youtube': Plugins.YouTube
 };
 
+
+/**
+ * WebSlides module.
+ */
 export default class WebSlides {
   /**
    * Options for WebSlides
    * @param {number|boolean} autoslide If a number is provided, it will allow
-   * autosliding by said amount of miliseconds.
+   * autosliding by said amount of milliseconds.
    * @param {boolean} changeOnClick If true, it will allow
    * clicking on any place to change the slide.
+   * @param {boolean} loop Whether to go to first slide from last one or not.
    * @param {number} minWheelDelta Controls the amount of needed scroll to
    * trigger navigation.
    * @param {number} scrollWait Controls the amount of time to wait till
@@ -35,6 +44,7 @@ export default class WebSlides {
   constructor({
     autoslide = false,
     changeOnClick = false,
+    loop = true,
     minWheelDelta = 40,
     scrollWait = 450,
     slideOffset = 50
@@ -44,6 +54,11 @@ export default class WebSlides {
      * @type {Element}
      */
     this.el = document.getElementById('webslides');
+
+    if (!this.el) {
+      throw new Error('Couldn\'t find the webslides container!');
+    }
+
     /**
      * Moving flag.
      * @type {boolean}
@@ -83,33 +98,28 @@ export default class WebSlides {
      */
     this.plugins = {};
     /**
-     * Interval ID reference for the autoslide.
-     * @type {?number}
-     * @private
-     */
-    this.interval_ = null;
-    /**
      * Options dictionary.
      * @type {Object}
      */
     this.options = {
       autoslide,
       changeOnClick,
+      loop,
       minWheelDelta,
       scrollWait,
       slideOffset
     };
-
-    if (!this.el) {
-      throw new Error('Couldn\'t find the webslides container!');
-    }
+    /**
+     * Initialisation flag.
+     * @type {boolean}
+     */
+    this.initialised = false;
 
     // Bootstrapping
     this.removeChildren_();
     this.grabSlides_();
     this.createPlugins_();
     this.initSlides_();
-    this.play();
     // Finished
     this.onInit_();
   }
@@ -139,8 +149,8 @@ export default class WebSlides {
    */
   createPlugins_() {
     Object.keys(PLUGINS).forEach(pluginName => {
-      const pluginCto = PLUGINS[pluginName];
-      this.plugins[pluginName] = new pluginCto(this);
+      const PluginCto = PLUGINS[pluginName];
+      this.plugins[pluginName] = new PluginCto(this);
     });
   }
 
@@ -150,7 +160,9 @@ export default class WebSlides {
    * @fires WebSlide#ws:init
    */
   onInit_() {
+    this.initialised = true;
     DOM.fireEvent(this.el, 'ws:init');
+    document.documentElement.classList.add(CLASSES.READY);
   }
 
   /**
@@ -167,7 +179,7 @@ export default class WebSlides {
   /**
    * Goes to a given slide.
    * @param {!number} slideI The slide index.
-   * @param {?boolean} forward Whether we're forcing moving forward/backwards.
+   * @param {?boolean=} forward Whether we're forcing moving forward/backwards.
    * This parameter is used only from the goNext, goPrev functions to adjust the
    * scroll animations.
    */
@@ -226,12 +238,15 @@ export default class WebSlides {
       }
 
       this.el.style.overflow = 'auto';
-      setTimeout(() => { callback.call(this, nextSlide); }, 150);
+      setTimeout(() => {
+        callback.call(this, nextSlide);
+      }, 150);
     });
   }
 
   /**
-   * Transitions to a slide, without doing the scroll animation.
+   * Transitions to a slide, without doing the scroll animation. If the page is
+   * already initialised and on mobile device, it will do a slide animation.
    * @param {boolean} isMovingForward Whether we're going forward or backwards.
    * @param {Slide} nextSlide Next slide.
    * @param {Function} callback Callback to be called upon finishing. This is a
@@ -240,9 +255,11 @@ export default class WebSlides {
    */
   transitionToSlide_(isMovingForward, nextSlide, callback) {
     scrollTo(0, 0);
+    let className = 'slideInRight';
 
     if (!isMovingForward) {
       nextSlide.moveBeforeFirst();
+      className = 'slideInLeft';
     }
 
     if (this.currentSlide_) {
@@ -254,7 +271,19 @@ export default class WebSlides {
     }
 
     nextSlide.show();
-    callback.call(this, nextSlide);
+
+    if (this.initialised &&
+        this.plugins.touch &&
+        this.plugins.touch.isEnabled) {
+      DOM.once(nextSlide.el, DOM.getAnimationEvent(), () => {
+        nextSlide.el.classList.remove(className);
+        callback.call(this, nextSlide);
+      });
+
+      nextSlide.el.classList.add(className);
+    } else {
+      callback.call(this, nextSlide);
+    }
   }
 
   /**
@@ -266,8 +295,13 @@ export default class WebSlides {
    * @private
    */
   onSlideChange_(slide) {
+    if (this.currentSlide_) {
+      this.currentSlide_.disable();
+    }
+
     this.currentSlide_ = slide;
     this.currentSlideI_ = slide.i;
+    this.currentSlide_.enable();
     this.isMoving = false;
 
     DOM.fireEvent(this.el, 'ws:slide-change', {
@@ -284,6 +318,10 @@ export default class WebSlides {
     let nextIndex = this.currentSlideI_ + 1;
 
     if (nextIndex >= this.maxSlide_) {
+      if (!this.options.loop) {
+        return;
+      }
+
       nextIndex = 0;
     }
 
@@ -297,6 +335,10 @@ export default class WebSlides {
     let prevIndex = this.currentSlideI_ - 1;
 
     if (prevIndex < 0) {
+      if (!this.options.loop) {
+        return;
+      }
+
       prevIndex = this.maxSlide_ - 1;
     }
 
@@ -343,39 +385,11 @@ export default class WebSlides {
   /**
    * Registers a plugin to be loaded when the instance is created. It allows
    * (on purpose) to replace default plugins.
-   * Those being:
-   *  - Navigation
-   *  - Hash
-   *  - Keyboard
    * @param {!string} key They key under which it'll be stored inside of the
    * instance, inside the plugins dict.
    * @param {!Function} cto Plugin constructor.
    */
   static registerPlugin(key, cto) {
     PLUGINS[key] = cto;
-  }
-
-  /**
-   * Starts autosliding all the slides if it's not currently doing it and the
-   * autoslide option was a number greater than 0.
-   * @param {?number} time Amount of milliseconds to wait to go to next slide
-   * automatically.
-   */
-  play(time) {
-    time = time || this.options.autoslide;
-
-    if (!this.interval_ && typeof time === 'number' && time > 0) {
-      this.interval_ = setInterval(this.goNext.bind(this), time);
-    }
-  }
-
-  /**
-   * Stops autosliding all the slides.
-   */
-  stop() {
-    if (this.interval_) {
-      clearInterval(this.interval_);
-      this.interval_ = null;
-    }
   }
 }

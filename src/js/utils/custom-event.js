@@ -5,12 +5,16 @@ const NativeCustomEvent = window.CustomEvent;
  * completely on IE.
  * @return {boolean} Whether it can be used or not.
  */
-function canIuseNativeCustom () {
+function canIuseNativeCustom() {
   try {
-    const p = new NativeCustomEvent('t', { detail: { a: 'b' } });
-    return  't' === p.type && 'b' === p.detail.a;
-  } catch (e) {
-  }
+    const p = new NativeCustomEvent('t', {
+      detail: {
+        a: 'b'
+      }
+    });
+    return 't' === p.type && 'b' === p.detail.a;
+  } catch (e) { }
+
   return false;
 }
 

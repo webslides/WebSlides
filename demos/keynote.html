@@ -9,10 +9,9 @@
 
       you're a curious person and a fast learner ;)
       Let's make something beautiful together. Contribute on Github:
-      https://github.com/jlantunez/webslides
+      https://github.com/webslides/webslides
 
-      Thanks,
-      @jlantunez.
+      Thanks!
     -->
 
     <!-- SEO -->
@@ -71,7 +70,7 @@
         <p class="logo"><a href="../index.html" title="WebSlides">WebSlides</a></p>
         <ul>
           <li class="github">
-            <a rel="external" href="https://github.com/jlantunez/webslides" title="Github">
+            <a rel="external" href="https://github.com/webslides/webslides" title="Github">
               <svg class="fa-github">
                 <use xlink:href="#fa-github"></use>
               </svg>
@@ -86,7 +85,7 @@
               <em>@WebSlides</em>
             </a>
           </li>
-          <!--  <li class="dribbble"><a rel="external" href="http://dribbble.com/jlantunez" title="Dribbble"><svg class="fa-dribbble"><use xlink:href="#fa-dribbble"></use></svg> <em>jlantunez</em></a></li> -->
+          <!--  <li class="dribbble"><a rel="external" href="http://dribbble.com/webslides" title="Dribbble"><svg class="fa-dribbble"><use xlink:href="#fa-dribbble"></use></svg> <em>webslides</em></a></li> -->
         </ul>
       </nav>
     </header>
@@ -97,18 +96,18 @@
         <!-- Quick Guide
           - Each parent <section> in the <article id="webslides"> element is an individual slide.
           - Vertical sliding = <article id="webslides" class="vertical">
-          - <div class="wrap"> = container 1200px
+          - <div class="wrap"> = container 90% / <div class="wrap size-50"> = 45%;
         -->
 
         <section class="bg-apple aligncenter">
-          <!--.wrap = container 1200px -->
+          <!--.wrap = container (width: 90%) -->
           <div class="wrap">
             <h1><img class="whitelogo" src="../static/images/logos/apple.svg" alt="Apple Logo"></h1>
           </div>
           <!-- .end .wrap -->
         </section>
         <section class="bg-apple">
-          <!--.wrap = container 1200px -->
+          <!--.wrap = container (width: 90%) -->
           <div class="wrap size-50">
             <h1>Make a Keynote presentation using HTML</h1>
             <p class="text-intro">WebSlides is an open source framework for building HTML presentations, landings, and portfolios.</p>
@@ -117,7 +116,7 @@
           <!-- .end .wrap -->
         </section>
         <section class="bg-apple aligncenter">
-          <!--.wrap = container 1200px -->
+          <!--.wrap = container (width: 90%) -->
           <div class="wrap">
             <h2>HTML presentations can be easy</h2>
           </div>
@@ -328,7 +327,7 @@
           <!-- .end .wrap -->
         </section>
         <section class="bg-apple aligncenter">
-          <!--.wrap = container 1200px -->
+          <!--.wrap = container (width: 90%) -->
           <div class="wrap">
             <h2 class="text-data">$48 Billion</h2>
             <h3>Revenue in Q4 2024</h3>
@@ -490,7 +489,7 @@
         </section>
         <section class="bg-apple">
           <span class="background-right-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
-          <!--.wrap = container 1200px -->
+          <!--.wrap = container (width: 90%) -->
           <div class="wrap">
             <div class="content-left">
               <h2>Payments Made Simple</h2>
@@ -568,9 +567,9 @@
           <!-- .end .wrap -->
         </section>
         <section class="bg-apple">
-          <!--.wrap = container 1200px -->
+          <!--.wrap = container (width: 90%) -->
           <div class="wrap">
-            <blockquote class="wall">
+            <blockquote class="text-quote">
               <p>I'm an optimist in the sense that I believe humans are noble and honorable, and some of them are really smart. I have a very optimistic view of individuals.</p>
               <p>
                 <cite>
@@ -723,7 +722,7 @@
     &lt;/div&gt;
   &lt;/section&gt;
 &lt;/article&gt;</pre>
-            <p>Just 3 basic animations: .fadeIn, .fadeInUp, and .zoomIn.</p>
+            <p>Just 5 basic animations: .fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight.</p>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -737,18 +736,18 @@
         <section class="bg-apple">
           <div class="wrap">
             <div class="content-left">
-              <h3>Responsive Videos</h3>
+              <h3><a href="https://webslides.tv/demos/media#slide=2">YouTube API</a></h3>
+              <p>Embed videos with loop, autoplay, and muted attributes. The video will automatically play when the slide is loaded.</p>
               <pre>&lt;div class="embed"&gt;
- &lt;iframe src="https://www.youtube.com/embed/XjJQBjWYDTs"&gt;
- &lt;/iframe&gt;
+ &lt;div data-youtube data-youtube-id=&quot;CQY3KUR3VzM&quot; data-autoplay &gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
-              <p><code>.embed</code></p>
+              <p><code>.embed</code> (responsive)</p>
             </div>
             <!-- end .content-left -->
             <div class="content-left">
               <!-- <div class="embed"> = Responsive -->
               <div class="embed">
-                <iframe src="https://www.youtube.com/embed/CQY3KUR3VzM" allowfullscreen></iframe>
+                <div data-youtube data-youtube-id="CQY3KUR3VzM" data-autoplay data-no-controls></div>
               </div>
               <!-- end .embed -->
             </div>
@@ -759,26 +758,31 @@
         <section class="bg-apple fullscreen">
           <!-- Fullscreen Video -->
           <div class="embed">
-            <iframe width="800" height="450" src="https://www.youtube.com/embed/F-UO9vMS7AI" allowfullscreen></iframe>
+            <div data-youtube data-youtube-id="lvOKBQvbLhg" data-autoplay></div>
           </div>
           <!-- .end .embed -->
         </section>
-        <section class="bg-black aligncenter">
-          <video class="background-video" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+        <section class="fullscreen bg-apple aligncenter">
+         <div class="embed">
+           <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
             <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-          </video>
+           </video>
+          </div><!-- .embed -->
+          <!-- .wrap = container (width: 90%) -->
           <div class="wrap size-50">
             <h2><strong>Be Awesome</strong></h2>
           </div>
         </section>
-        <section class="bg-black aligncenter">
-          <video class="background-video dark" autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
-            <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-          </video>
-          <!-- .wrap = container 1200px -->
+        <section class="fullscreen bg-black aligncenter">
+          <div class="embed dark">
+             <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
+             <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+            </video>
+          </div><!-- .embed -->
+          <!-- .wrap = container (width: 90%) -->
           <div class="wrap size-50">
             <h2><strong>Think Different</strong></h2>
-            <p>0verlay: <code>.bg-black > .background-video.dark</code> or .light</p>
+            <p>Overlay: <code>fullscreen.bg-black > .embed.dark</code> or .light</p>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -810,7 +814,7 @@
           <!-- .end .wrap -->
         </section>
         <section class="bg-apple aligncenter">
-          <!-- .wrap = container 1200px -->
+          <!-- .wrap = container (width: 90%) -->
           <div class="wrap">
             <h2><strong>Start in seconds</strong></h2>
             <p class="text-intro">120+ prebuilt slides ready to use.</p>
@@ -835,7 +839,7 @@
         </section>
         <section class="bg-apple aligncenter">
           <h2><strong>Thank you!</strong></h2>
-          <p><a href="https://twitter.com/webslides" title="@jlantunez on Twitter">@jlantunez</a></p>
+          <p><a href="https://twitter.com/webslides" title="@WebSlides on Twitter">@WebSlides</a></p>
           <p class="text-symbols">* * *</p>
         </section>
 
@@ -845,6 +849,7 @@
 
     <!-- Required -->
     <script src="../static/js/webslides.js"></script>
+    
     <script>
       window.ws = new WebSlides();
     </script>

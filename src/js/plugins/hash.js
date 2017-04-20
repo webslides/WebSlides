@@ -7,8 +7,8 @@ const slideRegex = /#slide=(\d+)/;
  */
 export default class Hash {
   /**
-   * Listens to the slide change event and the hash change events.
-   * @param wsInstance
+   * @param {WebSlides} wsInstance
+   * @constructor
    */
   constructor(wsInstance) {
     this.ws_ = wsInstance;
@@ -29,6 +29,11 @@ export default class Hash {
     }
   }
 
+  /**
+   * Handler for the slide change event which updates the slide on the hash.
+   * @param {Event} event
+   * @private
+   */
   static onSlideChange_(event) {
     Hash.setSlideNumber(event.detail.currentSlide);
   }
@@ -40,7 +45,7 @@ export default class Hash {
    * @return {?number}
    */
   static getSlideNumber() {
-    let results = document.location.hash.match(slideRegex);
+    const results = document.location.hash.match(slideRegex);
     let slide = 0;
 
     if (Array.isArray(results)) {

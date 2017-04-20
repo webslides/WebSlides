@@ -1,6 +1,6 @@
 import Easings from './easing';
 
-let SCROLLABLE_CONTAINER = document.getElementById('webslides');
+const SCROLLABLE_CONTAINER = document.getElementById('webslides');
 
 /**
  * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a

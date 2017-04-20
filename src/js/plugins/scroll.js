@@ -1,9 +1,13 @@
 import MobileDetector from '../utils/mobile-detector';
 
+
+/**
+ * Scroll plugin.
+ */
 export default class Scroll {
   /**
-   * Scroll handler for the WebSlides.
    * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
    */
   constructor(wsInstance) {
     /**
@@ -54,7 +58,9 @@ export default class Scroll {
    */
   onSlideChange_() {
     this.timeout_ = setTimeout(
-        () => { this.timeout_ = null; },
+        () => {
+          this.timeout_ = null;
+        },
         this.ws_.options.scrollWait);
   }
 
@@ -70,7 +76,7 @@ export default class Scroll {
       return;
     }
 
-    const { deltaY: wheelDeltaY, deltaX: wheelDeltaX } = event;
+    const {deltaY: wheelDeltaY, deltaX: wheelDeltaX} = event;
     const isVertical = this.ws_.isVertical;
     const isHorizontalMovement = Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY);
     this.isGoingUp_ = wheelDeltaY < 0;
@@ -100,4 +106,4 @@ export default class Scroll {
       event.preventDefault();
     }
   }
-};
+}
