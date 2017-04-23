@@ -1,4 +1,4 @@
-# 1.3.0
+# 1.3.0 (2017-04-20)
 
 ## Misc
 
@@ -6,39 +6,37 @@
 - Deps updated.
 - Now using [eslint](http://eslint.org/) to enforce code style.
 - Adding a new badge so the release number is quickly seen.
-- [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide is now a plugin.
-- Updated docs.
+- [[#51](https://github.com/webslides/webslides/issues/51)] Autoslide is now a plugin.
+- Docs moved to [Wiki](https://github.com/webslides/WebSlides/wiki)!
 - Moved to org!
 - Demos: GitHub links updated.
 
 ## New features
 
-- [[#46](https://github.com/webslides/webslides/issues/46)]Added slide animation for mobile devices.
-- [[#56](https://github.com/webslides/webslides/issues/56)]Added option to disable looping.
-- [[#54](https://github.com/webslides/webslides/issues/54)]Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
-- [[#51](https://github.com/webslides/webslides/issues/51)]Autoslide now pauses if a focusable element gains focus.
-- Added `ws-ready` to actually lock the scroll.
-
-## CSS
-
-- 2 new animations: .slideInLeft and .slideInRight.
-- [[#68](https://github.com/webslides/webslides/issues/68)] Responsive background videos (`<video>`).
-- Adding longform elements.
+- Videos
+  - [[#72](https://github.com/webslides/webslides/issues/72)] Integration with YouTube's API.
+  - [[#54](https://github.com/webslides/webslides/issues/54)] Added video and youtube plugins to allow autoplaying videos (and pausing) entering and leaving the slide.
+  - [[#68](https://github.com/webslides/webslides/issues/68)] Responsive background videos (`<video>`).
+- [[#46](https://github.com/webslides/webslides/issues/46)] Added slide animation for mobile devices. `.slideInLeft` and `.slideInRight`.
+- Added longform elements.
 - Naming conventions: 
-  - Introducing .text-emoji.
-  - Introducing .text-quote.
-  - Introducing .text-interview = dl.text-interview, dt (name), dd (question/answer).
-  - .card is now a card: width: 100%.
-- Fluid .wrap (width: 90%).
-- .gallery li:nth-child(n+4): auto-fill removed. Now: equal width (useful for gallery layouts).
-- Adding padding to form[class*="bg-"].
+  - Introducing `.text-emoji`.
+  - Introducing `.text-quote`.
+  - Introducing `.text-interview` = `dl.text-interview`, dt (name), dd (question/answer).
+  - `.card` is now a `card: width: 100%`.
+- [[#51](https://github.com/webslides/webslides/issues/51)] Autoslide now pauses if a focusable element gains focus.
+- [[#56](https://github.com/webslides/webslides/issues/56)] Added option to disable looping.
+- [[#74](https://github.com/webslides/webslides/issues/74)] Added `ws-ready` to actually lock the scroll.
+- Fluid `.wrap` (`width: 90%`).
+- `.gallery li:nth-child(n+4)`: `auto-fill` removed. Now: equal width (useful for gallery layouts).
+- Added padding to `form[class*="bg-"]`.
 - A better CSS print: A4 landscape.
 
 ## Bugfixes
 
 - Fixed issues with the grid.
 - [[#33](https://github.com/webslides/webslides/issues/33)] Fixed video issue.
-- [[#61](https://github.com/webslides/webslides/issues/61)]Fixed print issue which prevented to export the slides to PDF in an easy way.
+- [[#61](https://github.com/webslides/webslides/issues/61)] Fixed print issue which prevented to export the slides to PDF in an easy way.
 
 
 # 1.2.1 (2017-03-02)

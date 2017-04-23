@@ -26,6 +26,8 @@ export default class Video {
         }
 
         video.removeAttribute('autoplay');
+        video.pause();
+        video.currentTime = 0;
         const {i} = Slide.getSectionFromEl(video);
         const slide = wsInstance.slides[i - 1];
 
