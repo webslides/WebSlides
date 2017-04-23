@@ -24,19 +24,25 @@ test.serial("Page loaded", async t => {
 test.serial('#webslides exits', async t => {
   await page_
     .evaluate( () => document.querySelector('#webslides') != null )
-    .then( ws => { t.truthy(ws); } );
+    .then( ok => { t.truthy(ok); } );
 });
 
 test.serial('WebSlides object exits', async t => {
   await page_
     .evaluate( () => window.ws != null )
-    .then( ws => { t.truthy(ws); } );
+    .then( ok => { t.truthy(ok); } );
+});
+
+test.serial('Has slides', async t => {
+  await page_
+    .evaluate( () => window.ws.slides.length > 0 )
+    .then( ok => { t.truthy(ok); } );
 });
 
 test.serial('First slide visible', async t => {
   await page_
-      .evaluate( () => window.ws.slides[0].el.style.display != 'none' )
-    .then( ws => { t.truthy(ws); } );
+    .evaluate( () => window.ws.slides[0].el.style.display != 'none' )
+    .then( ok => { t.truthy(ok); } );
 });
 
 /**
