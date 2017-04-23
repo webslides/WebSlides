@@ -33,6 +33,12 @@ test.serial('WebSlides object exits', async t => {
     .then( ws => { t.truthy(ws); } );
 });
 
+test.serial('First slide visible', async t => {
+  await page_
+      .evaluate( () => window.ws.slides[0].el.style.display != 'none' )
+    .then( ws => { t.truthy(ws); } );
+});
+
 /**
  * Last test
  */
