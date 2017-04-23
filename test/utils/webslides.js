@@ -16,6 +16,10 @@ const load = async () => {
   }).catch(e => console.log(e));
 }
 
+const timeout = async ms => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 test.serial("Page loaded", async t => {
   await load();
   t.is(status_, 'success');
@@ -45,13 +49,29 @@ test.serial('First slide visible', async t => {
     .then( ok => { t.truthy(ok); } );
 });
 
-test.serial('Has only one slide visible', async t => {
+const onlyOneVisible = async t => {
   await page_
     .evaluate( () => window.ws.slides.filter(
         slide => slide.el.style.display != 'none'
       ).length == 1 )
     .then( ok => { t.truthy(ok); } );
+}
+test.serial('Has only one slide visible', onlyOneVisible);
+/*
+test.serial('goNext', async t => {
+  await page_
+    .evaluate( () => {
+      //console.log(window.ws.goNext);
+      const ant = window.ws.slides[1].el.style.display+'...';
+      window.ws.goNext();
+      //await timeout(1000);
+console.log(68, window.ws.slides[1].el.style.display);
+return ant;
+      return window.ws.slides[1].el.style.display;
+    }).then( ok => { t.truthy(ok); } );
 });
+*/
+test.serial('Has only one slide visible', onlyOneVisible);
 
 
 /**
