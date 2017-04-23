@@ -45,6 +45,15 @@ test.serial('First slide visible', async t => {
     .then( ok => { t.truthy(ok); } );
 });
 
+test.serial('Has only one slide visible', async t => {
+  await page_
+    .evaluate( () => window.ws.slides.filter(
+        slide => slide.el.style.display != 'none'
+      ).length == 1 )
+    .then( ok => { t.truthy(ok); } );
+});
+
+
 /**
  * Last test
  */
