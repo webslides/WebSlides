@@ -9,7 +9,7 @@ const load = async () => {
     return await ph_.createPage();
   }).then(page => {
     page_ = page;
-    return page_.open('https://stackoverflow.com/');
+    return page_.open('http://webslides.tv/');
   }).then(status => {
     status_ = status;
     return true;
@@ -23,8 +23,14 @@ test.serial("Page loaded", async t => {
 
 test.serial('#webslides exits', async t => {
   await page_
-    .evaluate( () => document.querySelector('#webslides') )
-    .then( ws => { t.not(ws, null); } );
+    .evaluate( () => document.querySelector('#webslides') != null )
+    .then( ws => { t.truthy(ws); } );
+});
+
+test.serial('WebSlides object exits', async t => {
+  await page_
+    .evaluate( () => window.ws != null )
+    .then( ws => { t.truthy(ws); } );
 });
 
 /**
