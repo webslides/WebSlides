@@ -4,13 +4,17 @@ import test from 'ava';
 let ph_, page_, status_;
 
 const load = async () => {
-  await phantom.create().then(async ph => {
+  const log = console.log;
+  const nolog = function() {};
+  await phantom.create([], { logger: { warn: log, debug: nolog, error: log } }
+  ).then(async ph => {
     ph_ = ph;
     return await ph_.createPage();
   }).then(page => {
     page_ = page;
-    return page_.open('http://webslides.tv/');
-  }).then(status => {
+    return page_.open('file:///'+__dirname.replace(/\\/g, '/')+'/../../index.html');
+  }).then(async status => {
+    const content = await page_.property('content');
     status_ = status;
     return true;
   }).catch(e => console.log(e));
