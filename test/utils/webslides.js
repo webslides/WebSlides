@@ -3,6 +3,9 @@ import test from 'ava';
 
 let ph_, page_, status_;
 
+/**
+ * Functions
+ */
 const load = async () => {
   const log = console.log;
   const nolog = function() {};
@@ -21,9 +24,20 @@ const load = async () => {
 }
 
 const timeout = async ms => {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+const onlyOneVisible = async t => {
+  await page_
+    .evaluate( () => window.ws.slides.filter(
+        slide => slide.el.style.display != 'none'
+      ).length == 1 )
+    .then( ok => { t.true(ok); } );
+}
+
+/**
+ * Tests
+ */
 test.serial("Page loaded", async t => {
   await load();
   t.is(status_, 'success');
@@ -32,49 +46,44 @@ test.serial("Page loaded", async t => {
 test.serial('#webslides exits', async t => {
   await page_
     .evaluate( () => document.querySelector('#webslides') != null )
-    .then( ok => { t.truthy(ok); } );
+    .then( ok => { t.true(ok); } );
 });
 
 test.serial('WebSlides object exits', async t => {
   await page_
     .evaluate( () => window.ws != null )
-    .then( ok => { t.truthy(ok); } );
+    .then( ok => { t.true(ok); } );
 });
 
 test.serial('Has slides', async t => {
   await page_
     .evaluate( () => window.ws.slides.length > 0 )
-    .then( ok => { t.truthy(ok); } );
+    .then( ok => { t.true(ok); } );
 });
 
 test.serial('First slide visible', async t => {
   await page_
     .evaluate( () => window.ws.slides[0].el.style.display != 'none' )
-    .then( ok => { t.truthy(ok); } );
+    .then( ok => { t.true(ok); } );
 });
 
-const onlyOneVisible = async t => {
-  await page_
-    .evaluate( () => window.ws.slides.filter(
-        slide => slide.el.style.display != 'none'
-      ).length == 1 )
-    .then( ok => { t.truthy(ok); } );
-}
 test.serial('Has only one slide visible', onlyOneVisible);
-/*
+
 test.serial('goNext', async t => {
-  await page_
+  // First needs to execute the function
+  page_
     .evaluate( () => {
-      //console.log(window.ws.goNext);
-      const ant = window.ws.slides[1].el.style.display+'...';
       window.ws.goNext();
-      //await timeout(1000);
-console.log(68, window.ws.slides[1].el.style.display);
-return ant;
-      return window.ws.slides[1].el.style.display;
-    }).then( ok => { t.truthy(ok); } );
+      return true;
+    });
+  // Then wait
+  await timeout(600);
+  // Finally test
+  await page_
+    .evaluate( () => window.ws.slides[1].el.style.display != 'none' )
+    .then( ok => { t.true(ok); } );
 });
-*/
+
 test.serial('Has only one slide visible', onlyOneVisible);
 
 
