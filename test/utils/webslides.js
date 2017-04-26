@@ -87,6 +87,24 @@ test.serial('goNext', async t => {
 test.serial('Has only one slide visible', onlyOneVisible);
 
 
+test.serial('goPrev', async t => {
+  // First needs to execute the function
+  page_
+    .evaluate( () => {
+      window.ws.goPrev();
+      return true;
+    });
+  // Then wait
+  await timeout(600);
+  // Finally test
+  await page_
+    .evaluate( () => window.ws.slides[0].el.style.display != 'none' )
+    .then( ok => { t.true(ok); } );
+});
+
+test.serial('Has only one slide visible', onlyOneVisible);
+
+
 /**
  * Last test
  */
