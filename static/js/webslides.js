@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
- * Version: 1.3.0
- * Date: 2017-04-20
+ * Version: 1.3.1
+ * Date: 2017-04-26
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -587,7 +587,7 @@ var MobileDetector = function () {
   }, {
     key: "isiOS",
     value: function isiOS() {
-      return !!UA.match(/iPhone/i);
+      return !!UA.match(/iPad|iPhone|iPod/i);
     }
 
     /**
