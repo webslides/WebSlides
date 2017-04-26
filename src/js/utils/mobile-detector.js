@@ -26,7 +26,7 @@ export default class MobileDetector {
    * @return {Boolean}
    */
   static isiOS() {
-    return !!UA.match(/iPhone/i);
+    return !!UA.match(/iPad|iPhone|iPod/i);
   }
 
   /**
