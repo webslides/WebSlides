@@ -71,7 +71,7 @@ export default class Scroll {
    * @private
    */
   onMouseWheel_(event) {
-    if (!this.ws_.isDisabled()) {
+    if (this.ws_.isDisabled()) {
       return;
     }
 

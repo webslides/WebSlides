@@ -1161,12 +1161,13 @@ var WebSlides = function () {
 
     /**
      * Checks if it is disabled
+     * @return {boolean}
      */
 
   }, {
     key: 'isDisabled',
     value: function isDisabled() {
-      this.el.classList.contains(CLASSES.DISABLED);
+      return this.el.classList.contains(CLASSES.DISABLED);
     }
 
     /**
@@ -1586,7 +1587,7 @@ var Keyboard = function () {
       var method = void 0;
       var argument = void 0;
 
-      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement() || !this.ws_.isDisabled()) {
+      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement() || this.ws_.isDisabled()) {
         return;
       }
 
@@ -1939,7 +1940,7 @@ var Scroll = function () {
   }, {
     key: 'onMouseWheel_',
     value: function onMouseWheel_(event) {
-      if (!this.ws_.isDisabled()) {
+      if (this.ws_.isDisabled()) {
         return;
       }
 
@@ -2110,7 +2111,7 @@ var Touch = function () {
   _createClass(Touch, [{
     key: 'onStart_',
     value: function onStart_(event) {
-      if (!this.ws_.isDisabled()) {
+      if (this.ws_.isDisabled()) {
         return;
       }
 
@@ -2137,7 +2138,7 @@ var Touch = function () {
   }, {
     key: 'onMove_',
     value: function onMove_(event) {
-      if (!this.ws_.isDisabled()) {
+      if (this.ws_.isDisabled()) {
         return;
       }
 
@@ -2159,7 +2160,7 @@ var Touch = function () {
   }, {
     key: 'onStop_',
     value: function onStop_() {
-      if (!this.ws_.isDisabled()) {
+      if (this.ws_.isDisabled()) {
         return;
       }
 

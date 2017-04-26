@@ -108,7 +108,7 @@ export default class Touch {
    * @private
    */
   onStart_(event) {
-    if (!this.ws_.isDisabled()) {
+    if (this.ws_.isDisabled()) {
       return;
     }
 
@@ -132,7 +132,7 @@ export default class Touch {
    * @private
    */
   onMove_(event) {
-    if (!this.ws_.isDisabled()) {
+    if (this.ws_.isDisabled()) {
       return;
     }
 
@@ -151,7 +151,7 @@ export default class Touch {
    * @private
    */
   onStop_() {
-    if (!this.ws_.isDisabled()) {
+    if (this.ws_.isDisabled()) {
       return;
     }
 

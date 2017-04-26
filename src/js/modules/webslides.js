@@ -407,9 +407,10 @@ export default class WebSlides {
 
   /**
    * Checks if it is disabled
+   * @return {boolean}
    */
   isDisabled() {
-    this.el.classList.contains(CLASSES.DISABLED);
+    return this.el.classList.contains(CLASSES.DISABLED);
   }
 
   /**
