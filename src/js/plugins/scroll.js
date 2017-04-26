@@ -1,4 +1,3 @@
-import DOM from '../utils/dom';
 import MobileDetector from '../utils/mobile-detector';
 
 
@@ -72,7 +71,7 @@ export default class Scroll {
    * @private
    */
   onMouseWheel_(event) {
-    if (!DOM.isVisible(this.ws_.el)) {
+    if (!this.ws_.isDisabled()) {
       return;
     }
 

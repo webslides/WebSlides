@@ -29,7 +29,7 @@ export default class Keyboard {
     let method;
     let argument;
 
-    if (DOM.isFocusableElement() || !DOM.isVisible(this.ws_.el)) {
+    if (DOM.isFocusableElement() || !this.ws_.isDisabled()) {
       return;
     }
 

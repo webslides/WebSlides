@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.2.1
- * Date: 2017-04-18
+ * Date: 2017-04-26
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -703,7 +703,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var CLASSES = {
   VERTICAL: 'vertical',
-  READY: 'ws-ready'
+  READY: 'ws-ready',
+  DISABLED: 'disabled'
 };
 
 // Default plugins
@@ -1139,6 +1140,36 @@ var WebSlides = function () {
     }
 
     /**
+     * Disables the webslides element adding a class "disabled"
+     */
+
+  }, {
+    key: 'disable',
+    value: function disable() {
+      this.el.classList.add(CLASSES.DISABLED);
+    }
+
+    /**
+     * Enables the webslides element removing a class "disabled"
+     */
+
+  }, {
+    key: 'enable',
+    value: function enable() {
+      this.el.classList.remove(CLASSES.DISABLED);
+    }
+
+    /**
+     * Checks if it is disabled
+     */
+
+  }, {
+    key: 'isDisabled',
+    value: function isDisabled() {
+      this.el.classList.contains(CLASSES.DISABLED);
+    }
+
+    /**
      * Registers a plugin to be loaded when the instance is created. It allows
      * (on purpose) to replace default plugins.
      * Those being:
@@ -1555,7 +1586,7 @@ var Keyboard = function () {
       var method = void 0;
       var argument = void 0;
 
-      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement() || !__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement() || !this.ws_.isDisabled()) {
         return;
       }
 
@@ -1823,12 +1854,10 @@ var Navigation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 
 
 
@@ -1874,7 +1903,7 @@ var Scroll = function () {
      */
     this.timeout_ = null;
 
-    if (!__WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isAny()) {
+    if (!__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
       this.scrollContainer_.addEventListener('wheel', this.onMouseWheel_.bind(this));
 
       if (!wsInstance.isVertical) {
@@ -1910,7 +1939,7 @@ var Scroll = function () {
   }, {
     key: 'onMouseWheel_',
     value: function onMouseWheel_(event) {
-      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+      if (!this.ws_.isDisabled()) {
         return;
       }
 
@@ -1960,12 +1989,10 @@ var Scroll = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 
 
 
@@ -2058,9 +2085,9 @@ var Touch = function () {
 
     var events = void 0;
 
-    if (__WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isAny()) {
+    if (__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isAny()) {
       // Likely IE
-      if (window.PointerEvent && (__WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isWindows() || __WEBPACK_IMPORTED_MODULE_1__utils_mobile_detector__["a" /* default */].isWindowsPhone())) {
+      if (window.PointerEvent && (__WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isWindows() || __WEBPACK_IMPORTED_MODULE_0__utils_mobile_detector__["a" /* default */].isWindowsPhone())) {
         events = EVENTS.pointer;
       } else {
         events = EVENTS.touch;
@@ -2083,7 +2110,7 @@ var Touch = function () {
   _createClass(Touch, [{
     key: 'onStart_',
     value: function onStart_(event) {
-      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+      if (!this.ws_.isDisabled()) {
         return;
       }
 
@@ -2110,7 +2137,7 @@ var Touch = function () {
   }, {
     key: 'onMove_',
     value: function onMove_(event) {
-      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+      if (!this.ws_.isDisabled()) {
         return;
       }
 
@@ -2132,7 +2159,7 @@ var Touch = function () {
   }, {
     key: 'onStop_',
     value: function onStop_() {
-      if (!__WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].isVisible(this.ws_.el)) {
+      if (!this.ws_.isDisabled()) {
         return;
       }
 
@@ -2587,6 +2614,11 @@ var Zoom = function () {
       this.zws_.el = this.ws_.el.cloneNode();
       this.zws_.el.id = ID;
       this.zws_.el.className = CLASSES.ZOOM;
+
+      this.zws_.el.addEventListener('click', function () {
+        return _this.toggleZoom();
+      });
+
       // Clone the slides
       this.zws_.slides = [].map.call(this.ws_.slides, function (slide, i) {
         var s_ = slide.el.cloneNode(true);
@@ -2622,6 +2654,7 @@ var Zoom = function () {
       var divLayer = document.createElement('div');
       divLayer.className = 'zoom-layer';
       divLayer.addEventListener('click', function (e) {
+        e.stopPropagation();
         _this2.zoomOut();
         _this2.ws_.goToSlide(elem.i);
       });
@@ -2631,11 +2664,6 @@ var Zoom = function () {
       slideNumber.className = 'slide-number';
       slideNumber.textContent = '' + (elem.i + 1);
       div.appendChild(slideNumber);
-      // Zoom out when click in slide "border"
-      var obj = this;
-      div.addEventListener('click', function () {
-        return obj.toggleZoom();
-      });
 
       this.setSizes_(div, wrap, elem);
     }
@@ -2694,7 +2722,7 @@ var Zoom = function () {
   }, {
     key: 'zoomIn',
     value: function zoomIn() {
-      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.ws_.el);
+      this.ws_.disable();
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
       this.isZoomed_ = true;
       document.body.style.overflow = 'auto';
@@ -2708,7 +2736,7 @@ var Zoom = function () {
     key: 'zoomOut',
     value: function zoomOut() {
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
-      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.ws_.el);
+      this.ws_.enable();
       this.isZoomed_ = false;
       document.body.style.overflow = '';
     }

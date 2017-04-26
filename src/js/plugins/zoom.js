@@ -65,6 +65,9 @@ export default class Zoom {
     this.zws_.el = this.ws_.el.cloneNode();
     this.zws_.el.id = ID;
     this.zws_.el.className = CLASSES.ZOOM;
+
+    this.zws_.el.addEventListener('click', () => this.toggleZoom());
+
     // Clone the slides
     this.zws_.slides = [].map.call(this.ws_.slides,
         (slide, i) => {
@@ -94,6 +97,7 @@ export default class Zoom {
     const divLayer = document.createElement('div');
     divLayer.className = 'zoom-layer';
     divLayer.addEventListener('click', e => {
+      e.stopPropagation();
       this.zoomOut();
       this.ws_.goToSlide(elem.i);
     });
@@ -103,9 +107,6 @@ export default class Zoom {
     slideNumber.className = 'slide-number';
     slideNumber.textContent = `${elem.i+1}`;
     div.appendChild(slideNumber);
-    // Zoom out when click in slide "border"
-    const obj = this;
-    div.addEventListener('click', () => obj.toggleZoom());
 
     this.setSizes_(div, wrap, elem);
   }
@@ -159,7 +160,7 @@ export default class Zoom {
    * Zoom In the slider, scales the slides and uses a grid layout to show them
    */
   zoomIn() {
-    DOM.hide(this.ws_.el);
+    this.ws_.disable();
     DOM.show(this.zws_.el);
     this.isZoomed_ = true;
     document.body.style.overflow = 'auto';
@@ -170,7 +171,7 @@ export default class Zoom {
    */
   zoomOut() {
     DOM.hide(this.zws_.el);
-    DOM.show(this.ws_.el);
+    this.ws_.enable();
     this.isZoomed_ = false;
     document.body.style.overflow = '';
   }

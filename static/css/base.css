@@ -3333,6 +3333,12 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 /*=========================================
 18. Zoom: Index of slides (grid)
 =========================================== */
+#webslides.disabled {
+	position: absolute;
+	width: 100%;
+	z-index: 0;
+	filter: blur(10px);
+}
 #webslides-zoomed.grid{
   -webkit-flex-direction: row;
   flex-direction: row;

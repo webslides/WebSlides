@@ -5,7 +5,8 @@ import scrollTo from '../utils/scroll-to';
 
 const CLASSES = {
   VERTICAL: 'vertical',
-  READY: 'ws-ready'
+  READY: 'ws-ready',
+  DISABLED: 'disabled'
 };
 
 // Default plugins
@@ -388,6 +389,27 @@ export default class WebSlides {
    */
   toggleZoom() {
     this.plugins.zoom.toggleZoom();
+  }
+
+  /**
+   * Disables the webslides element adding a class "disabled"
+   */
+  disable() {
+    this.el.classList.add(CLASSES.DISABLED);
+  }
+
+  /**
+   * Enables the webslides element removing a class "disabled"
+   */
+  enable() {
+    this.el.classList.remove(CLASSES.DISABLED);
+  }
+
+  /**
+   * Checks if it is disabled
+   */
+  isDisabled() {
+    this.el.classList.contains(CLASSES.DISABLED);
   }
 
   /**
