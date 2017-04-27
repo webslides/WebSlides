@@ -5,10 +5,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/jlantunez/8)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/webslides/webslides.svg?style=social)](https://twitter.com/webslides)
 
-Finally, everything you need to make HTML presentations, landings, and longforms in a beautiful way. Just the essentials. A new release (at least) every 8th day of the month — [https://webslides.tv/demos](https://webslides.tv/demos).
-
-### Why WebSlides? Productivity
-This is about telling the story, and sharing it in a beautiful way. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
+Finally, everything you need to make HTML presentations, landings, and longforms in a beautiful way. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content. — [https://webslides.tv/demos](https://webslides.tv/demos).
 
 * * *
 ### Download
