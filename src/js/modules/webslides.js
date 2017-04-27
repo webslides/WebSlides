@@ -36,7 +36,8 @@ export default class WebSlides {
    * @param {boolean} loop Whether to go to first slide from last one or not.
    * @param {number} minWheelDelta Controls the amount of needed scroll to
    * trigger navigation.
-   * @param {boolean} navigateOnScroll Whether scroll can trigger navigation or not.
+   * @param {boolean} navigateOnScroll Whether scroll can trigger navigation or
+   * not.
    * @param {number} scrollWait Controls the amount of time to wait till
    * navigation can occur again with scroll.
    * @param {number} slideOffset Controls the amount of needed touch delta to

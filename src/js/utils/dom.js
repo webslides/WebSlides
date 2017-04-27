@@ -161,8 +161,9 @@ export default class DOM {
     let result = false;
 
     if (document.activeElement) {
-      const isContentEditable = document.activeElement
-          .contentEditable !== 'inherit' && document.activeElement.contentEditable !== undefined;
+      const isContentEditable =
+          document.activeElement.contentEditable !== 'inherit' &&
+          document.activeElement.contentEditable !== undefined;
       const isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA']
           .indexOf(document.activeElement.tagName) > -1;
       result = isInput || isContentEditable;
