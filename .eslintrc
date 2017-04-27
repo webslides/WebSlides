@@ -1,11 +1,15 @@
 {
   "env": {
+    "jest/globals": true,
     "browser": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
   },
+  "plugins": [
+    "jest"
+  ],
   "rules": {
     "no-cond-assign": 0,
     "no-console": 2,

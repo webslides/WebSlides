@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
- * Version: 1.2.1
- * Date: 2017-04-19
+ * Version: 1.3.1
+ * Date: 2017-04-26
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -587,7 +587,7 @@ var MobileDetector = function () {
   }, {
     key: "isiOS",
     value: function isiOS() {
-      return !!UA.match(/iPhone/i);
+      return !!UA.match(/iPad|iPhone|iPod/i);
     }
 
     /**
@@ -1102,10 +1102,6 @@ var WebSlides = function () {
     /**
      * Registers a plugin to be loaded when the instance is created. It allows
      * (on purpose) to replace default plugins.
-     * Those being:
-     *  - Navigation
-     *  - Hash
-     *  - Keyboard
      * @param {!string} key They key under which it'll be stored inside of the
      * instance, inside the plugins dict.
      * @param {!Function} cto Plugin constructor.

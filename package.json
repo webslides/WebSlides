@@ -1,6 +1,6 @@
 {
   "name": "webslides",
-  "version": "1.2.1",
+  "version": "1.3.1",
   "description": "Making HTML presentations easy",
   "main": "index.js",
   "repository": {
@@ -28,20 +28,19 @@
   },
   "homepage": "https://github.com/webslides/webslides#readme",
   "devDependencies": {
-    "ava": "^0.19.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
-    "babel-polyfill": "^6.23.0",
+    "babel-jest": "^19.0.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "browser-env": "^2.0.30",
     "eslint": "^3.19.0",
     "eslint-loader": "^1.7.1",
+    "eslint-plugin-jest": "^19.0.1",
+    "jest": "^19.0.2",
     "npm-run-all": "^4.0.2",
-    "phantom": "^4.0.2",
     "rimraf": "^2.6.1",
+    "simulant": "^0.2.2",
     "smart-banner-webpack-plugin": "^3.0.1",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.4"
@@ -52,7 +51,7 @@
     "build:main": "webpack",
     "build:main.min": "webpack --output-filename [name].min.js -p",
     "dev": "webpack-dev-server",
-    "test": "ava test/utils/*.js --verbose"
+    "test": "jest"
   },
   "babel": {
     "presets": [
@@ -60,24 +59,8 @@
         "es2015",
         {
           "modules": false
-        },
-        "@ava/stage-4",
-        "@ava/transform-test-files"
+        }
       ]
-    ]
-  },
-  "ava": {
-    "babel": {
-      "presets": [
-        "es2015",
-        "stage-0",
-        "react"
-      ]
-    },
-    "require": [
-      "babel-regenerator-runtime",
-      "babel-register",
-      "./test/helpers/setup-browser-env.js"
     ]
   }
 }

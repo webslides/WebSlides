@@ -46,14 +46,17 @@ export default class DOM {
 
   /**
    * Gets the prefixed transitionend event.
+   * @param {?Element} optEl Element to check
    * @return {string}
    */
-  static getTransitionEvent() {
-    if (transitionEvent) {
+  static getTransitionEvent(optEl) {
+    if (transitionEvent && !optEl) {
       return transitionEvent;
     }
 
-    const el = document.createElement('ws');
+    transitionEvent = '';
+
+    const el = optEl || document.createElement('ws');
     const transitions = {
       'transition': 'transitionend',
       'OTransition': 'oTransitionEnd',
@@ -76,14 +79,17 @@ export default class DOM {
 
   /**
    * Gets the prefixed animation end event.
+   * @param {?Element} optEl Element to check
    * @return {string}
    */
-  static getAnimationEvent() {
-    if (animationEvent) {
+  static getAnimationEvent(optEl) {
+    if (animationEvent && !optEl) {
       return animationEvent;
     }
 
-    const el = document.createElement('ws');
+    animationEvent = '';
+
+    const el = optEl || document.createElement('ws');
     const animations = {
       'animation': 'animationend',
       'OAnimation': 'oAnimationEnd',
@@ -156,10 +162,9 @@ export default class DOM {
 
     if (document.activeElement) {
       const isContentEditable = document.activeElement
-          .contentEditable !== 'inherit';
+          .contentEditable !== 'inherit' && document.activeElement.contentEditable !== undefined;
       const isInput = ['INPUT', 'SELECT', 'OPTION', 'TEXTAREA']
           .indexOf(document.activeElement.tagName) > -1;
-
       result = isInput || isContentEditable;
     }
 
