@@ -40,6 +40,11 @@ export default class Scroll {
      */
     this.timeout_ = null;
 
+    // Disabling from option
+    if (!this.ws_.options.navigateOnScroll) {
+      return;
+    }
+
     if (!MobileDetector.isAny()) {
         this.scrollContainer_.addEventListener(
             'wheel', this.onMouseWheel_.bind(this));
