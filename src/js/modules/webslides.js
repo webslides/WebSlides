@@ -109,6 +109,7 @@ export default class WebSlides {
       changeOnClick,
       loop,
       minWheelDelta,
+      navigateOnScroll,
       scrollWait,
       slideOffset
     };
