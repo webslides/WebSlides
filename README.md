@@ -7,14 +7,33 @@
 
 Finally, everything you need to make HTML presentations, landings, and longforms in a beautiful way. Just the essentials. A new release (at least) every 8th day of the month — [https://webslides.tv/demos](https://webslides.tv/demos).
 
-* * *
-### Download
-Simply choose a demo and customize it in minutes. Latest version: [webslides.tv/webslides-latest.zip](https://webslides.tv/webslides-latest.zip).
-* * *
-
-
 ### Why WebSlides? Productivity
 This is about telling the story, and sharing it in a beautiful way. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content.
+
+* * *
+### Download
+Simply choose a demo and customize it in seconds. Latest version: [webslides.tv/webslides-latest.zip](https://webslides.tv/webslides-latest.zip).
+* * *
+
+
+### What's in the download?
+
+The download includes demos and images (devices and logos). 
+All content is for demo purposes only. Images are property of their respective owners.
+
+```
+webslides/
+├── index.html
+├── css/
+│   ├── base.css
+│   └── colors.css
+│   └── svg-icons.css (optional)
+├── js/
+│   ├── webslides.js
+│   └── svg-icons.js (optional)
+└── demos/
+└── images/
+```
 
 ## Features
 
@@ -52,25 +71,6 @@ This is about telling the story, and sharing it in a beautiful way. Just a basic
 
 ```html
 <article id="webslides" class="vertical">
-```
-
-### What's in the download?
-
-The download includes demos and images (devices and logos). 
-All content is for demo purposes only. Images are property of their respective owners.
-
-```
-webslides/
-├── index.html
-├── css/
-│   ├── base.css
-│   └── colors.css
-│   └── svg-icons.css (optional)
-├── js/
-│   ├── webslides.js
-│   └── svg-icons.js (optional)
-└── demos/
-└── images/
 ```
 
 ### CSS Syntax (classes)
