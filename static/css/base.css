@@ -47,16 +47,10 @@
 	12. Avatars
 	13. Tables
 	14. Forms
-<<<<<<< HEAD
-  15. Longform Elements
-	16. Safari Bug (flex-wrap)
-	17. Print
-=======
 	15. Longform Elements
 	16. Safari Bug (flex-wrap)
 	17. Print
 	18. Zoom: Index of slides (grid)
->>>>>>> feature/zoom
 
 ----------------------------------------------------------------------------------- */
 /*=========================================
@@ -712,11 +706,7 @@ footer,
   height: 100%;
   margin: 0;
 }
-<<<<<<< HEAD
-/* -- Responsive background video 
-=======
 /* -- Responsive background video
->>>>>>> feature/zoom
 https://fvsch.com/code/video-background/ -- */
 
 .fullscreen > .embed {
@@ -734,30 +724,18 @@ https://fvsch.com/code/video-background/ -- */
   .fullscreen > .embed > iframe,
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
-<<<<<<< HEAD
-  .fullscreen > .embed > video { 
-    height: 300%; 
-    top: -100%; 
-=======
   .fullscreen > .embed > video {
     height: 300%;
     top: -100%;
->>>>>>> feature/zoom
   }
 }
 @media (max-aspect-ratio: 16/9) {
   .fullscreen > .embed > iframe,
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
-<<<<<<< HEAD
-  .fullscreen > .embed > video { 
-    width: 300%; 
-    left: -100%; 
-=======
   .fullscreen > .embed > video {
     width: 300%;
     left: -100%;
->>>>>>> feature/zoom
   }
 }
 /* 2. If supporting object-fit, overriding (1): */
@@ -766,15 +744,9 @@ https://fvsch.com/code/video-background/ -- */
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
   .fullscreen > .embed > video {
-<<<<<<< HEAD
-    top: 0; 
-    left: 0;
-    width: 100%; 
-=======
     top: 0;
     left: 0;
     width: 100%;
->>>>>>> feature/zoom
     height: 100%;
     object-fit: cover;
   }
@@ -3264,23 +3236,14 @@ button:disabled:hover {
 }
 
 /*=========================================
-<<<<<<< HEAD
-15. Longform 
-=======
 15. Longform
->>>>>>> feature/zoom
 =========================================== */
 
 /* -- Posts = .wrap.longform -- */
 
 .longform {
-<<<<<<< HEAD
-width: 72rem; 
-/* Why 72rem=720px? 
-=======
 width: 72rem;
 /* Why 72rem=720px?
->>>>>>> feature/zoom
 90-95 characters per line = better reading speed */
 }
 .longform .alignleft, .longform .alignright {
@@ -3374,9 +3337,6 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   #counter, #navigation {
     display: none;
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 /*=========================================
@@ -3567,4 +3527,3 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
     filter: blur(10px);
   }
 }
->>>>>>> feature/zoom
