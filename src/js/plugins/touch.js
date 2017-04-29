@@ -120,7 +120,7 @@ export default class Touch {
       this.endX_ = info.x;
       this.endY_ = info.y;
     } else if (event.touches.length > 1) {
-      this.startTouches = this.getTouchCoorinates(event);
+      this.startTouches = Touch.getTouchCoordinates(event);
       this.endTouches = this.startTouches;
       this.isGesture = true;
     }
@@ -139,7 +139,7 @@ export default class Touch {
     const info = Touch.normalizeEventInfo(event);
 
     if (this.isGesture) {
-      this.endTouches = this.getTouchCoorinates(event);
+      this.endTouches = Touch.getTouchCoordinates(event);
     } else {
       this.endX_ = info.x;
       this.endY_ = info.y;
@@ -189,9 +189,17 @@ export default class Touch {
    * @param {Event} event
    * @return {array}
    */
-  getTouchCoorinates(event) {
-    return [{x: event.touches[0].clientX, y: event.touches[0].clientY},
-      {x: event.touches[1].clientX, y: event.touches[1].clientY}];
+  static getTouchCoordinates(event) {
+    return [
+      {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY
+      },
+      {
+        x: event.touches[1].clientX,
+        y: event.touches[1].clientY
+      }
+    ];
   }
 
   /**
