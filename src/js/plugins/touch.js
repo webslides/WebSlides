@@ -114,7 +114,7 @@ export default class Touch {
 
     const info = Touch.normalizeEventInfo(event);
 
-    if (event.touches.length == 1) {
+    if (event.touches.length === 1) {
       this.startX_ = info.x;
       this.startY_ = info.y;
       this.endX_ = info.x;
@@ -185,9 +185,9 @@ export default class Touch {
   }
 
   /**
-   * Get X,Y coordinates from touchs pointers
+   * Get X,Y coordinates from touch pointers.
    * @param {Event} event
-   * @return {array}
+   * @return {Object}
    */
   static getTouchCoordinates(event) {
     return [
