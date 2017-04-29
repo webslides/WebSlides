@@ -5,7 +5,8 @@ import scrollTo from '../utils/scroll-to';
 
 const CLASSES = {
   VERTICAL: 'vertical',
-  READY: 'ws-ready'
+  READY: 'ws-ready',
+  DISABLED: 'disabled'
 };
 
 // Default plugins
@@ -19,7 +20,8 @@ const PLUGINS = {
   'scroll': Plugins.Scroll,
   'touch': Plugins.Touch,
   'video': Plugins.Video,
-  'youtube': Plugins.YouTube
+  'youtube': Plugins.YouTube,
+  'zoom': Plugins.Zoom
 };
 
 
@@ -384,6 +386,35 @@ export default class WebSlides {
     }
 
     this.goToSlide(slideNumber);
+  }
+
+  /**
+   * Toggles zoom
+   */
+  toggleZoom() {
+    this.plugins.zoom.toggleZoom();
+  }
+
+  /**
+   * Disables the webslides element adding a class "disabled"
+   */
+  disable() {
+    this.el.classList.add(CLASSES.DISABLED);
+  }
+
+  /**
+   * Enables the webslides element removing a class "disabled"
+   */
+  enable() {
+    this.el.classList.remove(CLASSES.DISABLED);
+  }
+
+  /**
+   * Checks if it is disabled
+   * @return {boolean}
+   */
+  isDisabled() {
+    return this.el.classList.contains(CLASSES.DISABLED);
   }
 
   /**

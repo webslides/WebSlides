@@ -8,7 +8,10 @@ const Keys = {
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
-  DOWN: 40
+  DOWN: 40,
+  PLUS: [107, 171],
+  MINUS: [109, 173],
+  ESCAPE: 27
 };
 
 export default Keys;

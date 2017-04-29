@@ -1,7 +1,12 @@
 /*!
  * Name: WebSlides
+<<<<<<< HEAD
  * Version: 1.3.1
  * Date: 2017-04-26
+=======
+ * Version: 1.2.1
+ * Date: 2017-04-29
+>>>>>>> feature/zoom
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -79,12 +84,16 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(18);
+>>>>>>> feature/zoom
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _customEvent = __webpack_require__(17);
@@ -241,6 +250,19 @@ var DOM = function () {
     }
 
     /**
+     * Checks if the element is visible.This is only intended
+     * to be used in conjunction with DOM.hide and DOM.show
+     * @param {Element} el Element to check.
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'isVisible',
+    value: function isVisible(el) {
+      return el.style.display == '';
+    }
+
+    /**
      * Fires a custom event on the given target.
      * @param {Element} target The target of the event.
      * @param {string} eventType The event type.
@@ -292,6 +314,53 @@ var DOM = function () {
       }
 
       return result;
+    }
+
+    /**
+     * Gets the integer value of a style property
+     * @param {string} prop CSS property value
+     * @return {integer} The property without the units
+     */
+
+  }, {
+    key: 'parseSize',
+    value: function parseSize(prop) {
+      return Number(prop.replace(/[^\d\.]/g, ''));
+    }
+
+    /**
+     * Wraps a HTML structure arrond a element
+     * @param {Element} elem the element to be wrapped
+     * @param {string} tag the new element tag
+     * @return {Element} the new element
+     */
+
+  }, {
+    key: 'wrap',
+    value: function wrap(elem, tag) {
+      var wrap = document.createElement(tag);
+      elem.parentElement.insertBefore(wrap, elem);
+      wrap.appendChild(elem);
+
+      return wrap;
+    }
+
+    /**
+     * Inserts and element after another element
+     * @param {Element} elem the element to be inserted
+     * @param {Element} target the element to be inserted after
+     */
+
+  }, {
+    key: 'after',
+    value: function after(elem, target) {
+      var parent = target.parentNode;
+
+      if (parent.lastChild == target) {
+        parent.appendChild(elem);
+      } else {
+        parent.insertBefore(elem, target.nextSibling);
+      }
     }
   }]);
 
@@ -525,7 +594,10 @@ var Keys = {
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
-  DOWN: 40
+  DOWN: 40,
+  PLUS: [107, 171],
+  MINUS: [109, 173],
+  ESCAPE: 27
 };
 
 exports.default = Keys;
@@ -645,12 +717,19 @@ exports.default = MobileDetector;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(20);
+>>>>>>> feature/zoom
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _plugins = __webpack_require__(12);
@@ -675,11 +754,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var CLASSES = {
   VERTICAL: 'vertical',
-  READY: 'ws-ready'
+  READY: 'ws-ready',
+  DISABLED: 'disabled'
 };
 
 // Default plugins
 var PLUGINS = {
+<<<<<<< HEAD
   'autoslide': _plugins2.default.AutoSlide,
   'clickNav': _plugins2.default.ClickNav,
   'grid': _plugins2.default.Grid,
@@ -690,6 +771,19 @@ var PLUGINS = {
   'touch': _plugins2.default.Touch,
   'video': _plugins2.default.Video,
   'youtube': _plugins2.default.YouTube
+=======
+  'autoslide': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].AutoSlide,
+  'clickNav': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].ClickNav,
+  'grid': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Grid,
+  'hash': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Hash,
+  'keyboard': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Keyboard,
+  'nav': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Navigation,
+  'scroll': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Scroll,
+  'touch': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Touch,
+  'video': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Video,
+  'youtube': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].YouTube,
+  'zoom': __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__["a" /* default */].Zoom
+>>>>>>> feature/zoom
 };
 
 /**
@@ -1097,6 +1191,47 @@ var WebSlides = function () {
       }
 
       this.goToSlide(slideNumber);
+    }
+
+    /**
+     * Toggles zoom
+     */
+
+  }, {
+    key: 'toggleZoom',
+    value: function toggleZoom() {
+      this.plugins.zoom.toggleZoom();
+    }
+
+    /**
+     * Disables the webslides element adding a class "disabled"
+     */
+
+  }, {
+    key: 'disable',
+    value: function disable() {
+      this.el.classList.add(CLASSES.DISABLED);
+    }
+
+    /**
+     * Enables the webslides element removing a class "disabled"
+     */
+
+  }, {
+    key: 'enable',
+    value: function enable() {
+      this.el.classList.remove(CLASSES.DISABLED);
+    }
+
+    /**
+     * Checks if it is disabled
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'isDisabled',
+    value: function isDisabled() {
+      return this.el.classList.contains(CLASSES.DISABLED);
     }
 
     /**
@@ -1558,7 +1693,11 @@ var Keyboard = function () {
       var method = void 0;
       var argument = void 0;
 
+<<<<<<< HEAD
       if (_dom2.default.isFocusableElement()) {
+=======
+      if (__WEBPACK_IMPORTED_MODULE_1__utils_dom__["a" /* default */].isFocusableElement() || this.ws_.isDisabled()) {
+>>>>>>> feature/zoom
         return;
       }
 
@@ -1674,7 +1813,11 @@ var Navigation = function () {
      * Counter Element.
      * @type {Element}
      */
+<<<<<<< HEAD
     this.counter = _dom2.default.createNode('span', ELEMENT_ID.COUNTER);
+=======
+    this.counter = Navigation.createCounter(ELEMENT_ID.COUNTER);
+>>>>>>> feature/zoom
     /**
      * @type {WebSlides}
      * @private
@@ -1701,6 +1844,7 @@ var Navigation = function () {
       this.ws_.el.addEventListener('ws:slide-change', this.onSlideChanged_.bind(this));
       this.next.addEventListener('click', this.onButtonClicked_.bind(this));
       this.prev.addEventListener('click', this.onButtonClicked_.bind(this));
+      this.counter.addEventListener('click', this.onButtonClicked_.bind(this));
     }
 
     /**
@@ -1712,7 +1856,7 @@ var Navigation = function () {
   }, {
     key: 'updateCounter',
     value: function updateCounter(current, max) {
-      this.counter.textContent = current + ' / ' + max;
+      this.counter.childNodes[0].textContent = current + ' / ' + max;
     }
 
     /**
@@ -1747,8 +1891,10 @@ var Navigation = function () {
       event.preventDefault();
       if (event.target === this.next) {
         this.ws_.goNext();
-      } else {
+      } else if (event.target === this.prev) {
         this.ws_.goPrev();
+      } else {
+        this.ws_.toggleZoom();
       }
     }
   }], [{
@@ -1759,6 +1905,24 @@ var Navigation = function () {
       arrow.title = 'Arrow Keys';
 
       return arrow;
+    }
+
+    /**
+     * Creates the navigation counter.
+     * @param {!String} id Desired ID for the counter.
+     * @return {Element} The arrow element.
+     */
+
+  }, {
+    key: 'createCounter',
+    value: function createCounter(id) {
+      var counter = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('span', id);
+      var link = document.createElement('a');
+      link.href = '#';
+      link.title = 'View all slides';
+      counter.appendChild(link);
+
+      return counter;
     }
   }]);
 
@@ -1772,6 +1936,21 @@ exports.default = Navigation;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__autoslide__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__click_nav__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grid__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hash__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__keyboard__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__navigation__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scroll__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__zoom__ = __webpack_require__(17);
+
+>>>>>>> feature/zoom
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -1796,6 +1975,7 @@ var _hash2 = _interopRequireDefault(_hash);
 
 var _keyboard = __webpack_require__(10);
 
+<<<<<<< HEAD
 var _keyboard2 = _interopRequireDefault(_keyboard);
 
 var _navigation = __webpack_require__(11);
@@ -1832,6 +2012,21 @@ exports.default = {
   Video: _video2.default,
   YouTube: _youtube2.default
 };
+=======
+/* harmony default export */ __webpack_exports__["a"] = ({
+  AutoSlide: __WEBPACK_IMPORTED_MODULE_0__autoslide__["a" /* default */],
+  ClickNav: __WEBPACK_IMPORTED_MODULE_1__click_nav__["a" /* default */],
+  Grid: __WEBPACK_IMPORTED_MODULE_2__grid__["a" /* default */],
+  Hash: __WEBPACK_IMPORTED_MODULE_3__hash__["a" /* default */],
+  Keyboard: __WEBPACK_IMPORTED_MODULE_4__keyboard__["a" /* default */],
+  Navigation: __WEBPACK_IMPORTED_MODULE_5__navigation__["a" /* default */],
+  Scroll: __WEBPACK_IMPORTED_MODULE_6__scroll__["a" /* default */],
+  Touch: __WEBPACK_IMPORTED_MODULE_7__touch__["a" /* default */],
+  Video: __WEBPACK_IMPORTED_MODULE_8__video__["a" /* default */],
+  YouTube: __WEBPACK_IMPORTED_MODULE_9__youtube__["a" /* default */],
+  Zoom: __WEBPACK_IMPORTED_MODULE_10__zoom__["a" /* default */]
+});
+>>>>>>> feature/zoom
 
 /***/ }),
 /* 13 */
@@ -1931,6 +2126,10 @@ var Scroll = function () {
   }, {
     key: 'onMouseWheel_',
     value: function onMouseWheel_(event) {
+      if (this.ws_.isDisabled()) {
+        return;
+      }
+
       if (this.ws_.isMoving || this.timeout_) {
         event.preventDefault();
         return;
@@ -2059,6 +2258,27 @@ var Touch = function () {
      */
     this.isEnabled = false;
 
+    /**
+     * Whether is a gesture or not.
+     * @type {boolean}
+     * @private
+     */
+    this.isGesture = false;
+
+    /**
+     * Stores start touch event (x, y).
+     * @type {array}
+     * @private
+     */
+    this.startTouches = [];
+
+    /**
+     * Stores end touch event (x, y).
+     * @type {array}
+     * @private
+     */
+    this.endTouches = [];
+
     var events = void 0;
 
     if (_mobileDetector2.default.isAny()) {
@@ -2086,12 +2306,22 @@ var Touch = function () {
   _createClass(Touch, [{
     key: 'onStart_',
     value: function onStart_(event) {
+      if (this.ws_.isDisabled()) {
+        return;
+      }
+
       var info = Touch.normalizeEventInfo(event);
 
-      this.startX_ = info.x;
-      this.startY_ = info.y;
-      this.endX_ = info.x;
-      this.endY_ = info.y;
+      if (event.touches.length == 1) {
+        this.startX_ = info.x;
+        this.startY_ = info.y;
+        this.endX_ = info.x;
+        this.endY_ = info.y;
+      } else if (event.touches.length > 1) {
+        this.startTouches = this.getTouchCoorinates(event);
+        this.endTouches = this.startTouches;
+        this.isGesture = true;
+      }
     }
 
     /**
@@ -2103,10 +2333,18 @@ var Touch = function () {
   }, {
     key: 'onMove_',
     value: function onMove_(event) {
+      if (this.ws_.isDisabled()) {
+        return;
+      }
+
       var info = Touch.normalizeEventInfo(event);
 
-      this.endX_ = info.x;
-      this.endY_ = info.y;
+      if (this.isGesture) {
+        this.endTouches = this.getTouchCoorinates(event);
+      } else {
+        this.endX_ = info.x;
+        this.endY_ = info.y;
+      }
     }
 
     /**
@@ -2117,17 +2355,43 @@ var Touch = function () {
   }, {
     key: 'onStop_',
     value: function onStop_() {
-      var diffX = this.startX_ - this.endX_;
-      var diffY = this.startY_ - this.endY_;
+      if (this.ws_.isDisabled()) {
+        return;
+      }
 
-      // It's an horizontal drag
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX < -this.ws_.options.slideOffset) {
-          this.ws_.goPrev();
-        } else if (diffX > this.ws_.options.slideOffset) {
-          this.ws_.goNext();
+      if (this.isGesture) {
+        var startDistance = Math.sqrt(Math.pow(this.startTouches[0].x - this.startTouches[1].x, 2) + Math.pow(this.startTouches[0].y - this.startTouches[1].y, 2));
+        var endDistance = Math.sqrt(Math.pow(this.endTouches[0].x - this.endTouches[1].x, 2) + Math.pow(this.endTouches[0].y - this.endTouches[1].y, 2));
+        if (startDistance > endDistance) {
+          // Pinch gesture
+          this.ws_.toggleZoom();
+        }
+        this.isGesture = false;
+      } else {
+        var diffX = this.startX_ - this.endX_;
+        var diffY = this.startY_ - this.endY_;
+
+        // It's an horizontal drag
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX < -this.ws_.options.slideOffset) {
+            this.ws_.goPrev();
+          } else if (diffX > this.ws_.options.slideOffset) {
+            this.ws_.goNext();
+          }
         }
       }
+    }
+
+    /**
+     * Get X,Y coordinates from touchs pointers
+     * @param {Event} event
+     * @return {array}
+     */
+
+  }, {
+    key: 'getTouchCoorinates',
+    value: function getTouchCoorinates(event) {
+      return [{ x: event.touches[0].clientX, y: event.touches[0].clientY }, { x: event.touches[1].clientX, y: event.touches[1].clientY }];
     }
 
     /**
@@ -2347,7 +2611,11 @@ var Player = function () {
   }
 
   /**
+<<<<<<< HEAD
    * Destroys the iframe. Saves the current time in case it gets restored.
+=======
+   * Plays the video.
+>>>>>>> feature/zoom
    */
 
 
@@ -2608,11 +2876,271 @@ exports.default = YouTube;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_keys__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_slide__ = __webpack_require__(1);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+var CLASSES = {
+  ZOOM: 'grid',
+  DIV: 'column',
+  WRAP: 'wrap-zoom'
+};
+
+var ID = 'webslides-zoomed';
+
+/**
+ * Zoom plugin.
+ */
+
+var Zoom = function () {
+  /**
+   * @param {WebSlides} wsInstance The WebSlides instance
+   * @constructor
+   */
+  function Zoom(wsInstance) {
+    _classCallCheck(this, Zoom);
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.ws_ = wsInstance;
+
+    /**
+     * @type {WebSlides}
+     * @private
+     */
+    this.zws_ = {};
+
+    /**
+     * @type {boolean}
+     * @private
+     */
+    this.isZoomed_ = false;
+
+    this.preBuildZoom_();
+    document.body.addEventListener('keydown', this.onKeyDown.bind(this));
+    window.addEventListener('resize', this.onWindowResize.bind(this));
+  }
+
+  /**
+   * On key down handler. Will decide if Zoom in or out
+   * @param {Event} event Key down event
+   */
+
+
+  _createClass(Zoom, [{
+    key: 'onKeyDown',
+    value: function onKeyDown(event) {
+      if (!this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].MINUS.includes(event.which)) {
+        this.zoomIn();
+      } else if (this.isZoomed_ && (__WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which) || event.which == __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].ESCAPE)) {
+        this.zoomOut();
+      }
+    }
+
+    /**
+     * Prepare zoom structure, scales the slides and uses a grid layout
+     * to show them
+     */
+
+  }, {
+    key: 'preBuildZoom_',
+    value: function preBuildZoom_() {
+      var _this = this;
+
+      // Clone #webslides element
+      this.zws_.el = this.ws_.el.cloneNode();
+      this.zws_.el.id = ID;
+      this.zws_.el.className = CLASSES.ZOOM;
+
+      this.zws_.el.addEventListener('click', function () {
+        return _this.toggleZoom();
+      });
+
+      // Clone the slides
+      this.zws_.slides = [].map.call(this.ws_.slides, function (slide, i) {
+        var s_ = slide.el.cloneNode(true);
+        _this.zws_.el.appendChild(s_);
+        return new __WEBPACK_IMPORTED_MODULE_2__modules_slide__["a" /* default */](s_, i);
+      });
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].after(this.zws_.el, this.ws_.el);
+
+      // Creates the container for each slide
+      this.zws_.slides.forEach(function (elem) {
+        return _this.createSlideBlock_(elem);
+      });
+    }
+
+    /**
+     * Creates a block structure around the slide
+     * @param {Element} elem slide element
+     */
+
+  }, {
+    key: 'createSlideBlock_',
+    value: function createSlideBlock_(elem) {
+      var _this2 = this;
+
+      // Wraps the slide around a container
+      var wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(elem.el, 'div');
+      wrap.className = CLASSES.WRAP;
+      // Slide container, need due to flexbox styles
+      var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
+      div.className = CLASSES.DIV;
+      // Adding some layer for controling click events
+      var divLayer = document.createElement('div');
+      divLayer.className = 'zoom-layer';
+      divLayer.addEventListener('click', function (e) {
+        e.stopPropagation();
+        _this2.zoomOut();
+        _this2.ws_.goToSlide(elem.i);
+      });
+      wrap.appendChild(divLayer);
+      // Slide number
+      var slideNumber = document.createElement('span');
+      slideNumber.className = 'slide-number';
+      slideNumber.textContent = '' + (elem.i + 1);
+      div.appendChild(slideNumber);
+
+      this.setSizes_(div, wrap, elem);
+    }
+
+    /**
+     * Sets layers size
+     * @param {Element} div flexbox element
+     * @param {Element} wrap wrapping element
+     * @param {Element} elem slide element
+     */
+
+  }, {
+    key: 'setSizes_',
+    value: function setSizes_(div, wrap, elem) {
+      // Calculates the margins in relation to window width
+      var divCSS = window.getComputedStyle(div);
+      var marginW = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingLeft) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingRight);
+      var marginH = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingTop) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingBottom);
+
+      // Sets element size: window size - relative margins
+      var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
+      if (scale == 1) {
+        // If the scale is 100% means it is mobile
+        var wsW = this.ws_.el.clientWidth;
+        elem.el.style.width = (wsW - marginW) * 2 + 'px';
+        elem.el.style.height = (wsW - marginH) * 1.5 + 'px';
+        elem.el.style.minHeight = scale == 1 ? 'auto' : '';
+        // Because of flexbox, wrap height is required
+        wrap.style.height = (wsW - marginH) * 1.5 / 2 + 'px';
+      } else {
+        elem.el.style.width = window.innerWidth - marginW * scale + 'px';
+        elem.el.style.height = window.innerHeight - marginH * scale + 'px';
+        // Because of flexbox, wrap height is required
+        wrap.style.height = window.innerHeight / scale + 'px';
+      }
+    }
+
+    /**
+     * Toggles zoom
+     */
+
+  }, {
+    key: 'toggleZoom',
+    value: function toggleZoom() {
+      if (this.isZoomed_) {
+        this.zoomOut();
+      } else {
+        this.zoomIn();
+      }
+    }
+
+    /**
+     * Zoom In the slider, scales the slides and uses a grid layout to show them
+     */
+
+  }, {
+    key: 'zoomIn',
+    value: function zoomIn() {
+      var _this3 = this;
+
+      this.ws_.el.classList.add('zooming', 'in');
+      this.zws_.el.classList.add('zooming', 'in');
+      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
+      setTimeout(function () {
+        _this3.ws_.el.classList.remove('zooming', 'in');
+        _this3.zws_.el.classList.remove('zooming', 'in');
+        _this3.ws_.disable();
+      }, 400);
+      this.isZoomed_ = true;
+      document.body.style.overflow = 'auto';
+    }
+
+    /**
+     * Zoom Out the slider, remove scale from the slides
+     */
+
+  }, {
+    key: 'zoomOut',
+    value: function zoomOut() {
+      var _this4 = this;
+
+      this.ws_.el.classList.add('zooming', 'out');
+      this.zws_.el.classList.add('zooming', 'out');
+      setTimeout(function () {
+        _this4.ws_.el.classList.remove('zooming', 'out');
+        _this4.zws_.el.classList.remove('zooming', 'out');
+        __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(_this4.zws_.el);
+        _this4.ws_.enable();
+      }, 400);
+      this.isZoomed_ = false;
+      document.body.style.overflow = '';
+    }
+
+    /**
+     * When windows resize it is necessary to recalculate layers sizes
+     * @param {Event} ev
+     */
+
+  }, {
+    key: 'onWindowResize',
+    value: function onWindowResize(ev) {
+      var _this5 = this;
+
+      if (this.isZoomed_) this.zoomOut();
+
+      this.zws_.slides.forEach(function (elem) {
+        var wrap = elem.el.parentElement;
+        var div = wrap.parentElement;
+        _this5.setSizes_(div, wrap, elem);
+      });
+    }
+  }]);
+
+  return Zoom;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Zoom);
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+>>>>>>> feature/zoom
 var NativeCustomEvent = window.CustomEvent;
 
 /**
@@ -2657,8 +3185,13 @@ var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 exports.default = WSCustomEvent;
 
 /***/ }),
+<<<<<<< HEAD
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
+=======
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+>>>>>>> feature/zoom
 
 "use strict";
 
@@ -2687,10 +3220,19 @@ function linear(p) {
 exports.default = { swing: swing, linear: linear };
 
 /***/ }),
+<<<<<<< HEAD
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+=======
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(19);
+/* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
+>>>>>>> feature/zoom
 
 
 Object.defineProperty(exports, "__esModule", {

@@ -76,6 +76,10 @@ export default class Scroll {
    * @private
    */
   onMouseWheel_(event) {
+    if (this.ws_.isDisabled()) {
+      return;
+    }
+
     if (this.ws_.isMoving || this.timeout_) {
       event.preventDefault();
       return;

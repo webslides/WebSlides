@@ -128,6 +128,16 @@ export default class DOM {
   }
 
   /**
+   * Checks if the element is visible.This is only intended
+   * to be used in conjunction with DOM.hide and DOM.show
+   * @param {Element} el Element to check.
+   * @return {boolean}
+   */
+  static isVisible(el) {
+    return el.style.display == '';
+  }
+
+  /**
    * Fires a custom event on the given target.
    * @param {Element} target The target of the event.
    * @param {string} eventType The event type.
@@ -170,5 +180,43 @@ export default class DOM {
     }
 
     return result;
+  }
+
+  /**
+   * Gets the integer value of a style property
+   * @param {string} prop CSS property value
+   * @return {integer} The property without the units
+   */
+  static parseSize(prop) {
+    return Number( prop.replace( /[^\d\.]/g, '' ) );
+  }
+
+  /**
+   * Wraps a HTML structure arrond a element
+   * @param {Element} elem the element to be wrapped
+   * @param {string} tag the new element tag
+   * @return {Element} the new element
+   */
+  static wrap(elem, tag) {
+    const wrap = document.createElement(tag);
+    elem.parentElement.insertBefore(wrap, elem);
+    wrap.appendChild(elem);
+
+    return wrap;
+  }
+
+  /**
+   * Inserts and element after another element
+   * @param {Element} elem the element to be inserted
+   * @param {Element} target the element to be inserted after
+   */
+  static after(elem, target) {
+    const parent = target.parentNode;
+
+    if (parent.lastChild == target) {
+      parent.appendChild(elem);
+    } else {
+      parent.insertBefore(elem, target.nextSibling);
+    }
   }
 }

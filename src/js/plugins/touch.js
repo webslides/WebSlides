@@ -63,6 +63,27 @@ export default class Touch {
      */
     this.isEnabled = false;
 
+    /**
+     * Whether is a gesture or not.
+     * @type {boolean}
+     * @private
+     */
+    this.isGesture = false;
+
+    /**
+     * Stores start touch event (x, y).
+     * @type {array}
+     * @private
+     */
+    this.startTouches = [];
+
+    /**
+     * Stores end touch event (x, y).
+     * @type {array}
+     * @private
+     */
+    this.endTouches = [];
+
     let events;
 
     if (MobileDetector.isAny()) {
@@ -87,12 +108,22 @@ export default class Touch {
    * @private
    */
   onStart_(event) {
+    if (this.ws_.isDisabled()) {
+      return;
+    }
+
     const info = Touch.normalizeEventInfo(event);
 
-    this.startX_ = info.x;
-    this.startY_ = info.y;
-    this.endX_ = info.x;
-    this.endY_ = info.y;
+    if (event.touches.length == 1) {
+      this.startX_ = info.x;
+      this.startY_ = info.y;
+      this.endX_ = info.x;
+      this.endY_ = info.y;
+    } else if (event.touches.length > 1) {
+      this.startTouches = this.getTouchCoorinates(event);
+      this.endTouches = this.startTouches;
+      this.isGesture = true;
+    }
   }
 
   /**
@@ -101,10 +132,18 @@ export default class Touch {
    * @private
    */
   onMove_(event) {
+    if (this.ws_.isDisabled()) {
+      return;
+    }
+
     const info = Touch.normalizeEventInfo(event);
 
-    this.endX_ = info.x;
-    this.endY_ = info.y;
+    if (this.isGesture) {
+      this.endTouches = this.getTouchCoorinates(event);
+    } else {
+      this.endX_ = info.x;
+      this.endY_ = info.y;
+    }
   }
 
   /**
@@ -112,17 +151,47 @@ export default class Touch {
    * @private
    */
   onStop_() {
-    const diffX = this.startX_ - this.endX_;
-    const diffY = this.startY_ - this.endY_;
+    if (this.ws_.isDisabled()) {
+      return;
+    }
 
-    // It's an horizontal drag
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-      if (diffX < -this.ws_.options.slideOffset) {
-        this.ws_.goPrev();
-      } else if(diffX > this.ws_.options.slideOffset) {
-        this.ws_.goNext();
+    if (this.isGesture) {
+      const startDistance = Math.sqrt(
+        Math.pow(this.startTouches[0].x - this.startTouches[1].x, 2) +
+        Math.pow(this.startTouches[0].y - this.startTouches[1].y, 2)
+      );
+      const endDistance = Math.sqrt(
+        Math.pow(this.endTouches[0].x - this.endTouches[1].x, 2) +
+        Math.pow(this.endTouches[0].y - this.endTouches[1].y, 2)
+      );
+      if (startDistance > endDistance) {
+        // Pinch gesture
+        this.ws_.toggleZoom();
+      }
+      this.isGesture = false;
+    } else {
+      const diffX = this.startX_ - this.endX_;
+      const diffY = this.startY_ - this.endY_;
+
+      // It's an horizontal drag
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < -this.ws_.options.slideOffset) {
+          this.ws_.goPrev();
+        } else if(diffX > this.ws_.options.slideOffset) {
+          this.ws_.goNext();
+        }
       }
     }
+  }
+
+  /**
+   * Get X,Y coordinates from touchs pointers
+   * @param {Event} event
+   * @return {array}
+   */
+  getTouchCoorinates(event) {
+    return [{x: event.touches[0].clientX, y: event.touches[0].clientY},
+      {x: event.touches[1].clientX, y: event.touches[1].clientY}];
   }
 
   /**
