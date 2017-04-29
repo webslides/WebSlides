@@ -128,13 +128,12 @@ export default class DOM {
   }
 
   /**
-   * Checks if the element is visible.This is only intended
-   * to be used in conjunction with DOM.hide and DOM.show
+   * Checks if the element is visible.
    * @param {Element} el Element to check.
    * @return {boolean}
    */
   static isVisible(el) {
-    return el.style.display == '';
+    return (el.offsetParent !== null);
   }
 
   /**
