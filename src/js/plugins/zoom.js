@@ -2,7 +2,6 @@ import DOM from '../utils/dom';
 import Keys from '../utils/keys';
 import Slide from '../modules/slide';
 
-
 const CLASSES = {
   ZOOM: 'grid',
   DIV: 'column',
@@ -45,7 +44,7 @@ export default class Zoom {
 
   /**
    * On key down handler. Will decide if Zoom in or out
-   * @param {Event} event Key down event
+   * @param {Event} event Key down event.
    */
   onKeyDown(event) {
     if (!this.isZoomed_ && Keys.MINUS.includes(event.which)) {
@@ -58,7 +57,7 @@ export default class Zoom {
 
   /**
    * Prepare zoom structure, scales the slides and uses a grid layout
-   * to show them
+   * to show them.
    */
   preBuildZoom_() {
     // Clone #webslides element
@@ -83,8 +82,8 @@ export default class Zoom {
   }
 
   /**
-   * Creates a block structure around the slide
-   * @param {Element} elem slide element
+   * Creates a block structure around the slide.
+   * @param {Element} elem slide element.
    */
   createSlideBlock_(elem) {
     // Wraps the slide around a container
@@ -145,7 +144,7 @@ export default class Zoom {
   }
 
   /**
-   * Toggles zoom
+   * Toggles zoom.
    */
   toggleZoom() {
     if (this.isZoomed_) {
@@ -156,7 +155,7 @@ export default class Zoom {
   }
 
   /**
-   * Zoom In the slider, scales the slides and uses a grid layout to show them
+   * Zoom In the slider, scales the slides and uses a grid layout to show them.
    */
   zoomIn() {
     this.ws_.el.classList.add('zooming', 'in');
@@ -172,7 +171,7 @@ export default class Zoom {
   }
 
   /**
-   * Zoom Out the slider, remove scale from the slides
+   * Zoom Out the slider, remove scale from the slides.
    */
   zoomOut() {
     this.ws_.el.classList.add('zooming', 'out');
@@ -188,10 +187,9 @@ export default class Zoom {
   }
 
   /**
-   * When windows resize it is necessary to recalculate layers sizes
-   * @param {Event} ev
+   * When windows resize it is necessary to recalculate layers sizes.
    */
-  onWindowResize(ev) {
+  onWindowResize() {
     if (this.isZoomed_) this.zoomOut();
 
     this.zws_.slides.forEach(elem => {

@@ -182,19 +182,19 @@ export default class DOM {
   }
 
   /**
-   * Gets the integer value of a style property
-   * @param {string} prop CSS property value
-   * @return {integer} The property without the units
+   * Gets the integer value of a style property.
+   * @param {string} prop CSS property value.
+   * @return {Number} The property without the units.
    */
   static parseSize(prop) {
     return Number(prop.replace(/[^\d\.]/g, ''));
   }
 
   /**
-   * Wraps a HTML structure arrond a element
-   * @param {Element} elem the element to be wrapped
-   * @param {string} tag the new element tag
-   * @return {Element} the new element
+   * Wraps a HTML structure around an element.
+   * @param {Element} elem the element to be wrapped.
+   * @param {string} tag the new element tag.
+   * @return {Element} the new element.
    */
   static wrap(elem, tag) {
     const wrap = document.createElement(tag);
@@ -205,9 +205,9 @@ export default class DOM {
   }
 
   /**
-   * Inserts and element after another element
-   * @param {Element} elem the element to be inserted
-   * @param {Element} target the element to be inserted after
+   * Inserts and element after another element.
+   * @param {Element} elem the element to be inserted.
+   * @param {Element} target the element to be inserted after.
    */
   static after(elem, target) {
     const parent = target.parentNode;
