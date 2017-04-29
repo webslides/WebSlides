@@ -2792,8 +2792,8 @@ var Zoom = function () {
       });
       wrap.appendChild(divLayer);
       // Slide number
-      var slideNumber = document.createElement('span');
-      slideNumber.className = 'slide-number';
+      var slideNumber = document.createElement('p');
+      slideNumber.className = 'text-slide-number';
       slideNumber.textContent = '' + (elem.i + 1);
       div.appendChild(slideNumber);
 

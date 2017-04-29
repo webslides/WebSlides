@@ -103,8 +103,8 @@ export default class Zoom {
     });
     wrap.appendChild(divLayer);
     // Slide number
-    const slideNumber = document.createElement('span');
-    slideNumber.className = 'slide-number';
+    const slideNumber = document.createElement('p');
+    slideNumber.className = 'text-slide-number';
     slideNumber.textContent = `${elem.i+1}`;
     div.appendChild(slideNumber);
 
