@@ -128,12 +128,12 @@ export default class Zoom {
     const scale = divCSS.width.includes('%') ?
       100 / DOM.parseSize(divCSS.width) :
       window.innerWidth / DOM.parseSize(divCSS.width);
-    if (scale == 1) {
+    if (scale === 1) {
       // If the scale is 100% means it is mobile
       const wsW = this.ws_.el.clientWidth;
       elem.el.style.width = `${(wsW - marginW) * 2}px`;
       elem.el.style.height = `${(wsW - marginH) * 1.5}px`;
-      elem.el.style.minHeight = scale == 1? 'auto' : '';
+      elem.el.style.minHeight = scale === 1 ? 'auto' : '';
       // Because of flexbox, wrap height is required
       wrap.style.height = `${(wsW - marginH) * 1.5 / 2}px`;
     } else {

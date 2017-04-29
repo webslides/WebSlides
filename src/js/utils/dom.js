@@ -213,7 +213,7 @@ export default class DOM {
   static after(elem, target) {
     const parent = target.parentNode;
 
-    if (parent.lastChild == target) {
+    if (parent.lastChild === target) {
       parent.appendChild(elem);
     } else {
       parent.insertBefore(elem, target.nextSibling);
