@@ -3333,12 +3333,6 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 /*=========================================
 18. Zoom: Index of slides (grid)
 =========================================== */
-#webslides.disabled {
-	position: absolute;
-	width: 100%;
-	z-index: 0;
-	filter: blur(10px);
-}
 #webslides-zoomed.grid{
   -webkit-flex-direction: row;
   flex-direction: row;
@@ -3389,10 +3383,9 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 .text-slide-number {
   text-align: center;
   display: inline-block;
-  /*border-radius: .3rem;
-  padding: 0 1.6rem;*/
   margin: .8rem auto;
 }
+
 
 @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation:landscape) {
   #webslides-zoomed.grid > .column {
@@ -3409,5 +3402,119 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   }
   #webslides-zoomed.grid > .column > .wrap-zoom > .slide {
     transform: scale(0.5) translate(-50%, -50%);
+  }
+}
+
+#webslides.disabled, #webslides.zooming {
+	position: absolute;
+	width: 100%;
+	z-index: 0;
+}
+#webslides.disabled {
+  filter: blur(10px);
+}
+#webslides-zoomed.zooming {
+  opacity: 1;
+  transform: scale(1);
+}
+#webslides.zooming.in {
+  -webkit-animation: bg-zoom-in 0.4s 1;
+  animation: bg-zoom-in 0.4s 1;
+}
+
+#webslides.zooming.out {
+  -webkit-animation: bg-zoom-out 0.4s 1;
+  animation: bg-zoom-out 0.4s 1;
+}
+
+#webslides-zoomed.zooming.in {
+  -webkit-animation: grid-zoom-in 0.4s 1;
+  animation: grid-zoom-in 0.4s 1;
+}
+
+#webslides-zoomed.zooming.out {
+  -webkit-animation: grid-zoom-out 0.4s 1;
+  animation: grid-zoom-out 0.4s 1;
+}
+
+@-webkit-keyframes bg-zoom-in {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(10px);
+  }
+}
+@keyframes bg-zoom-in {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(10px);
+  }
+}
+
+@-webkit-keyframes bg-zoom-out {
+  0% {
+    filter: blur(10px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+@keyframes bg-zoom-out {
+  0% {
+    filter: blur(10px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes grid-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes grid-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes grid-zoom-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+    filter: blur(10px);
+  }
+}
+@keyframes grid-zoom-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+    filter: blur(10px);
   }
 }

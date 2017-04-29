@@ -39,7 +39,7 @@ WebSlides - Colors
 Base
 =========================================== */
 
-body, 
+body,
 /*index of slides: mini-slides same bg color as body */
 #webslides-zoomed.grid > .column > .wrap-zoom {
   color: #333;
@@ -379,7 +379,7 @@ nav li.email a:hover {
 }
 
 /*=========================================
-Features & Clients List 
+Features & Clients List
 =========================================== */
 
 .features li,.clients li  {
@@ -415,7 +415,7 @@ box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
 }
 
 /*===========================================
-flexblock.steps 
+flexblock.steps
 ============================================= */
 
 .steps li:nth-child(1) {
@@ -708,7 +708,7 @@ background-color: rgba(0, 20, 80, 0.06);
     border-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
     -webkit-border-image: -webkit-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
     -moz-border-image: -moz-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
-    
+
   }
 }
 
@@ -742,7 +742,7 @@ tr:nth-child(even)>td:hover {
 
 
 /*============================
-Browser (Screenshots) 
+Browser (Screenshots)
 ============================== */
 
 .browser {
@@ -802,7 +802,7 @@ button[type="submit"],
 input[type="submit"],
 .button,.button:hover,
 button[type="submit"]:hover,
-input[type="submit"]:hover 
+input[type="submit"]:hover
 {
   border: 1px solid #44d;
 }
@@ -823,7 +823,7 @@ background-color: #17d;
 .bg-primary .button,
 .bg-primary button,.bg-primary button:hover,
 .bg-primary input,
-[class*="bg-gradient-"] .button,[class*="bg-"] a.button.ghost 
+[class*="bg-gradient-"] .button,[class*="bg-"] a.button.ghost
 {
   border-color: #fff;
 }
@@ -923,10 +923,6 @@ background-color:rgba(255,255,255 , 0.3);
 /*============================
 Zoom: Index of slides
 ============================== */
-
-#webslides-zoomed.grid {
-  background: #e3e5e9;
-}
 
 #webslides-zoomed.grid > .column > .wrap-zoom {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
