@@ -3352,6 +3352,9 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   -webkit-align-items: flex-start;
   align-items: flex-start;
   min-height: 100vh;
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 #webslides-zoomed.grid > .column > .wrap-zoom {
   position: relative;
@@ -3415,7 +3418,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 }
 
 #webslides.disabled, #webslides.zooming {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	z-index: 0;
 }
