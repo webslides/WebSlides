@@ -48,10 +48,10 @@ export default class Zoom {
    * @param {Event} event Key down event
    */
   onKeyDown(event) {
-    if ( !this.isZoomed_ && Keys.MINUS.includes( event.which ) ) {
+    if (!this.isZoomed_ && Keys.MINUS.includes(event.which)) {
       this.zoomIn();
-    } else if ( this.isZoomed_ &&
-      (Keys.PLUS.includes( event.which ) || event.which == Keys.ESCAPE ) ) {
+    } else if (this.isZoomed_ &&
+      (Keys.PLUS.includes(event.which) || event.which === Keys.ESCAPE)) {
       this.zoomOut();
     }
   }
@@ -79,7 +79,7 @@ export default class Zoom {
     DOM.after(this.zws_.el, this.ws_.el);
 
     // Creates the container for each slide
-    this.zws_.slides.forEach( elem => this.createSlideBlock_(elem));
+    this.zws_.slides.forEach(elem => this.createSlideBlock_(elem));
   }
 
   /**
@@ -195,7 +195,7 @@ export default class Zoom {
   onWindowResize(ev) {
     if (this.isZoomed_) this.zoomOut();
 
-    this.zws_.slides.forEach( elem => {
+    this.zws_.slides.forEach(elem => {
       const wrap = elem.el.parentElement;
       const div = wrap.parentElement;
       this.setSizes_(div, wrap, elem);

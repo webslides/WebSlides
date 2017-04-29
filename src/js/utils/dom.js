@@ -188,7 +188,7 @@ export default class DOM {
    * @return {integer} The property without the units
    */
   static parseSize(prop) {
-    return Number( prop.replace( /[^\d\.]/g, '' ) );
+    return Number(prop.replace(/[^\d\.]/g, ''));
   }
 
   /**
