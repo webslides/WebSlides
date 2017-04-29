@@ -94,7 +94,7 @@ export default class Zoom {
     const div = DOM.wrap(wrap, 'div');
     div.className = CLASSES.DIV;
     // Adding some layer for controling click events
-    const divLayer = document.createElement('div');
+    const divLayer = DOM.createNode('div');
     divLayer.className = 'zoom-layer';
     divLayer.addEventListener('click', e => {
       e.stopPropagation();
@@ -103,9 +103,8 @@ export default class Zoom {
     });
     wrap.appendChild(divLayer);
     // Slide number
-    const slideNumber = document.createElement('p');
+    const slideNumber = DOM.createNode('p', '', `${elem.i+1}`);
     slideNumber.className = 'text-slide-number';
-    slideNumber.textContent = `${elem.i+1}`;
     div.appendChild(slideNumber);
 
     this.setSizes_(div, wrap, elem);
