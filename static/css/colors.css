@@ -260,9 +260,7 @@ text-shadow: none;
 .frame {
   border: .8rem solid #fff;
 }
-[class*="background"].frame {
-border-width: .2rem;
-}
+
 /*Layer/Box Shadow*/
 .shadow,.pre {
 position: relative;
@@ -923,7 +921,7 @@ background-color:rgba(255,255,255 , 0.3);
 */
 
 /*============================
-Zoom: Index of slides
+Slides Index
 ============================== */
 
 #webslides-zoomed.grid > .column > .wrap-zoom {
