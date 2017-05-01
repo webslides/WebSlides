@@ -1,0 +1,3340 @@
+/*---------------------------------------------------------------------------------
+
+	App: WebSlides
+	Version: 1.3.0
+	Date: 2017-04-20
+	Description: A simple and versatile framework for building HTML presentations, landings, and portfolios.
+	Authors: @jlantunez, @belelros, and @luissacristan
+	Author URI: http://twitter.com/webslides
+	License: The MIT License (MIT)
+	License URI: https://opensource.org/licenses/MIT
+
+-----------------------------------------------------------------------------------
+
+	0. CSS Reset & Normalize
+	1. Base
+		1.1 Wrap/Container
+		1.2 Animations
+		1.3 Responsive Media (videos, iframe, screenshots...)
+		1.4 Basic Grid (2,3,4 columns)
+	2. Typography & Lists
+		2.1 Headings with background
+		2.2 Classes: .text-
+		2.3 San Francisco Font (Apple)
+	3. Header & Footer
+		3.1 Logo
+	4. Navigation
+		4.1 Navbars
+	5. SLIDES (vertically and horizontally centered)
+		5.1 Mini container & Alignment
+		5.2 Counter / Navigation Slides
+		5.3 Background Images/Video
+	6. Magic blocks = .flexblock (Flexible blocks with auto-fill and equal height).
+		6.1 .flexblock.features
+		6.2 .flexblock.clients
+		6.3 .flexblock.steps
+		6.4 .flexblock.metrics
+		6.5 .flexblock.specs
+		6.6 .flexblock.reasons
+		6.7 .flexblock.gallery
+		6.8 .flexblock.plans
+		6.9. flexblock.activity
+	7. Promos/Offers (pricing, tagline, CTA...)
+	8. Work / Resume / CV
+	9. Table of contents
+	10. Cards
+	11. Quotes
+	12. Avatars
+	13. Tables
+	14. Forms
+  15. Longform Elements
+	16. Safari Bug (flex-wrap)
+	17. Print
+
+----------------------------------------------------------------------------------- */
+
+/*=========================================
+0. CSS Reset & Normalize
+=========================================== */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 }
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+
+blockquote,
+q {
+  quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+ul {
+  list-style: square;
+  text-indent: inherit;
+}
+
+ol {
+  list-style: decimal;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+sup,
+sub {
+  font-size: 0.75em;
+  line-height: 2.2em;
+  height: 0;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  bottom: 1ex;
+}
+
+sub {
+  top: 0.5ex;
+}
+
+small {
+  font-size: 0.75em;
+  line-height: 1.72;
+}
+
+big {
+  font-size: 1.25em;
+}
+
+hr {
+  border: none;
+  clear: both;
+  display: block;
+  height: 1px;
+  width: 100%;
+  text-align: center;
+  margin: 3.2rem auto;
+}
+
+h2 + hr,
+h3 + hr {
+  margin-bottom: 4.8rem;
+}
+
+p + hr {
+  margin-bottom: 4rem;
+}
+
+/*
+hr::after {
+    position: relative;
+    top: -2.4rem;
+    font-size: 2.4rem;
+    content: "\00A7";
+    display: inline-block;
+    border-radius: 50%;
+    width: 4.8rem;
+    height: 4.8rem;
+    line-height: 4.8rem;
+}*/
+dfn,
+cite,
+em,
+i {
+  font-style: italic;
+}
+
+abbr,
+acronym {
+  cursor: help;
+}
+
+mark,
+ins {
+  text-decoration: none;
+  padding: 0 4px;
+  text-shadow: none;
+
+}
+
+::-moz-selection {
+  text-shadow: none;
+}
+
+::-webkit-selection {
+  text-shadow: none;
+}
+
+::selection {
+  text-shadow: none;
+}
+
+img {
+  /* Make sure images are scaled correctly. */
+  border: 0;
+  height: auto;
+  max-width: 100%;
+}
+
+img:hover {
+  opacity: 0.90;
+  filter: alpha(opacity=90);
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  position: relative;
+  margin: 0;
+  line-height: 0;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 24px;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+
+blockquote,
+q {
+  quotes: "" "";
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
+
+/*=== Clearing === */
+.clear:before, .clear:after, header:before, header:after, main:before, main:after, .wrap:before, .wrap:after, group:before, group:after, section:before, section:after, aside:before, aside:after,footer:before, footer:after{ content: ""; display: table; }
+.clear:after, header:after, main:after, .wrap:after, group:after, section:after, aside:after, footer:after { clear: both; }
+
+/*=========================================
+1. Base --> Baseline: 8px = .8rem
+=========================================== */
+
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
+
+html.ws-ready,
+html.ws-ready body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#webslides {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+/* -- Hide scrollbar, but still being able to scroll -- */
+
+#webslides {
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+#webslides::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* -- Prototype faster - Vertical rhythm  -- */
+
+body.baseline {
+  background: url(../images/baseline.png) left top .8rem/.8rem;
+}
+/*
+#webslides.vertical {cursor: s-resize; }
+*/
+
+li li {
+  margin-left: 1.6rem;
+}
+
+a,
+a:active,
+a:focus,
+a:visited,
+input:focus,
+textarea:focus,
+button{
+  text-decoration: none;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
+p a:active {
+  position: relative;
+  top: 2px;
+}
+
+nav a[rel="external"] em,
+.hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+/*Layer/Box Shadow*/
+.shadow {
+  position: relative;
+}
+.shadow:before,.shadow:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 1.6rem;
+  left: 2.4rem;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  transform: rotate(-3deg);
+}
+.shadow:after
+{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 2.4rem;
+  left: auto;
+}
+
+/*=== 1.1 WRAP/CONTAINER === */
+
+.wrap,header nav, footer nav {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-right:auto;
+  margin-left: auto;
+  z-index: 2;
+}
+@media (min-width: 1024px) {
+  .wrap,header nav, footer nav {
+    width: 90%;
+  }
+}
+
+.frame,.shadow {
+  padding: 2.4rem;
+}
+
+.radius {border-radius: .4rem;}
+
+.alignright {
+  float: right;
+}
+
+.alignleft {
+  float: left;
+}
+
+.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+img.aligncenter,figure.aligncenter {
+  display: block;
+}
+
+img.alignleft,figure.alignleft,
+img.alignright,figure.alignright,
+img.aligncenter,figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+img.aligncenter,figure.aligncenter {
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+}
+img.alignright,svg.alignright,figure.alignright {
+  margin: .8rem 0 .8rem 2.4rem
+}
+img.alignleft,svg.alignleft,figure.alignleft {
+  margin: .8rem 2.4rem .8rem 0;
+}
+
+@media (min-width: 1024px) {
+
+  /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
+  .size-80 {
+    width: 80%;
+  }
+  .size-70 {
+    width: 70%;
+  }
+  .size-60 {
+    width: 60%;
+  }
+  .size-50 {
+    width: 50%;
+  }
+  .size-40 {
+    width: 40%;
+  }
+  .size-30 {
+    width: 30%;
+  }
+  .size-20 {
+    width: 20%;
+  }
+}
+
+pre,
+code {
+  font-family: 'Cousine', monospace;
+}
+
+pre {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  padding: 2.4rem;
+  overflow: auto;
+  width: 100%;
+}
+
+pre + p {
+  margin-top: 3.2rem;
+}
+
+code {
+  padding: .4rem;
+}
+
+pre code {
+  padding: 0;
+}
+
+
+/*=== 1.2 Animations ================
+Just 5 basic animations:
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, slideInRight
+https://github.com/daneden/animate.css*/
+
+/*-- fadeIn -- */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/*-- fadeInUp -- */
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  -webkit-animation: fadeInUp 1s;
+  animation: fadeInUp 1s;
+}
+
+/*-- zoomIn -- */
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  -webkit-animation: zoomIn 1s;
+  animation: zoomIn 1s;
+}
+
+/*-- slideInLeft -- */
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  -webkit-animation: slideInLeft 1s;
+  animation: slideInLeft 1s;
+  animation-fill-mode: both;
+}
+
+/*-- slideInRight -- */
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  -webkit-animation: slideInRight 1s;
+  animation: slideInRight 1s;
+  animation-fill-mode: both;
+}
+
+/* Animated Background (Matrix) */
+@-webkit-keyframes anim {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-1200px);
+    transform: translateY(-1200px);
+  }
+}
+
+@keyframes anim {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-1200px);
+    transform: translateY(-1200px);
+  }
+}
+/* Duration */
+.slow {
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+}
+.slow + .slow {
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+}
+
+/* Transitions */
+
+header,
+footer,
+#navigation {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/*=== 1.3 Responsive Media (videos, iframe...) === */
+
+.embed {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  /*aspect ratio:16:9*/
+  padding-bottom: 56.6%;
+  /*aspect ratio: 4:3*/
+  /*padding-bottom: 75%;*/
+}
+
+.embed iframe,
+.embed object,
+.embed embed,.embed video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+/* -- Responsive background video
+https://fvsch.com/code/video-background/ -- */
+
+.fullscreen > .embed {
+  position: fixed;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 0;
+}
+
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video {
+    height: 300%;
+    top: -100%;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video {
+    width: 300%;
+    left: -100%;
+  }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  .fullscreen > .embed > iframe,
+  .fullscreen > .embed > object,
+  .fullscreen > .embed > embed,
+  .fullscreen > .embed > video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/*=== Browser (Screenshots) ================ */
+
+h1 + .browser,
+h2 + .browser,
+p + .browser {
+  margin-top: 4.8rem;
+}
+
+
+/* <figure class="browser"> img </figure> */
+
+.browser {
+  overflow: hidden;
+  border-radius: .3rem;
+  max-width: 1024px;
+  margin: 0 auto 3.2rem;
+}
+.browser figcaption {padding: 2.4rem;
+}
+li .browser {margin-bottom: 0;
+}
+
+/*=== Topbar === */
+
+.browser:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  font-size: .8rem;
+  padding: 1.6rem;
+  width: 100%;
+  line-height: 0;
+  /*copypastecharacter.com/graphic-shapes */
+  content: "● ● ●";
+}
+@media (min-width:768px) {
+  .browser:before {
+    font-size: 1.6rem;
+  }
+}
+.browser img {
+  width: 100%;
+  margin-top: 3.2rem;
+}
+
+/*=== 1.4. Basic Grid (Flexible blocks)
+Auto-fill & Equal height === */
+
+.grid {
+  margin-right: auto;
+  margin-left: auto;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  clear: both;
+}
+
+.grid:before {
+  content: "";
+  display: table;
+}
+
+.grid:after {
+  clear: both;
+}
+
+.grid > .column {
+  position: relative;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  flex: auto;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-transition: .3s;
+  transition: .3s;
+  padding: 2.4rem;
+}
+
+.grid.vertical-align .column {
+  justify-content: center;
+}
+
+@media (min-width:768px) {
+  .grid > .column {
+    width: 25%;
+  }
+  /* Grid (Sidebar + Main) .grid.sm */
+  .grid.sm .column:nth-child(1) {
+    width: 30%
+  }
+  .grid.sm .column:nth-child(2) {
+    width: 70%;
+  }
+  /* Grid (Main + Sidebar) .grid.ms */
+  .grid.ms .column:nth-child(1) {
+    width: 70%
+  }
+  .grid.ms .column:nth-child(2) {
+    width: 30%;
+  }
+  /* Grid (Sidebar + Main + Sidebar) .grid.sms */
+  .grid.sms .column:nth-child(2) {
+    width: 50%;
+  }
+}
+
+
+/*============================
+2. TYPOGRAPHY & LISTS
+============================== */
+
+html,
+body {
+  line-height: 1;
+  /*Sometimes fonts don't display optimally on all devices*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+  /*-webkit-font-smoothing: antialiased;*/
+  text-rendering: optimizeLegibility;
+  font-weight: 300;
+}
+
+html,
+body,
+input,
+select,
+textarea {
+  font-family: "Roboto", "San Francisco", helvetica, arial, sans-serif;
+  font-size: 62.5%;
+}
+
+body,
+textarea {
+  font-size: 1.8rem;
+}
+
+p,
+li,
+dt,
+dd,
+time,
+table,
+big,
+textarea,
+label {
+  line-height: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+li,p:last-child {
+  margin-bottom: 0;
+}
+
+
+ul>li,ol>li {margin-left: 3.2rem;}
+li li {
+  font-size: 100%;
+}
+
+/*== List .description (Product/Specs) === */
+
+ul.description {
+  padding: 0;
+}
+
+.description + p{
+  margin-top: 3.2rem;
+}
+
+.description li {
+  position: relative;
+  padding-top:.8rem;
+  padding-bottom: .8rem;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.description li:hover{
+  padding-left: .4rem;
+}
+ul.description li,.column ul li {list-style: none;margin-left: 0;}
+
+.column ol>li {margin-left: 1.6rem;
+}
+
+h1 svg,
+h2 svg, h3 svg, h4 svg {
+  margin-top: -.8rem;
+}
+.text-intro svg,.text-quote p svg,.wall p svg,.try svg {
+  margin-top: -.4rem;
+}
+.flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 5.6rem;
+}
+
+h1 span {
+  font-style: italic;
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 4.8rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+  line-height: 4rem;
+}
+
+h4 {
+  font-size: 2.2rem;
+  line-height: 4rem;
+}
+
+h5 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 3.2rem;
+}
+
+h6 {
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  font-weight: 600;
+}
+h2.alignleft + p.alignright {margin-top: 1.2rem;margin-bottom: 0;}
+h3.alignleft + p.alignright {margin-top: .4rem;margin-bottom: 0;}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5.6rem;
+    line-height: 7.2rem;
+  }
+  h2 {
+    font-size: 4.8rem;
+    line-height: 6.4rem;
+  }
+  h3 {
+    font-size: 4rem;
+    line-height: 5.6rem;
+  }
+  h4 {
+    font-size: 3.2rem;
+    line-height: 4.8rem;
+  }
+}
+
+h1+h1,h1+h2,h1+h3,h1+h4,h1+h5,h1+h6,
+h2+h1,h2+h2,h2+h3,h2+h4,h2+h5,h2+h6,
+h3+h1,h3+h2,h3+h3,h3+h4,h3+h5,h3+h6,
+h4+h1,h4+h2,h4+h3,h4+h4,h4+h5,h4+h6,
+h5+h1,h5+h2,h5+h3,h5+h4,h5+h5,h5+h6,
+h6+h1,h6+h2,h6+h3,h6+h4,h6+h5,h6+h6 {
+  margin-top: .8rem;
+}
+
+h1+img,h2+img,h3+img {
+  margin-top: 4.8rem;
+  margin-bottom: 4.8rem;
+}
+[class*="content-"] > [class*="content-"] h2,
+[class*="content-"] > [class*="content-"] h3,
+[class*="content-"] > [class*="content-"] h4 {
+  font-size: 2.4rem;
+  line-height: 4rem;
+}
+/*=========================================
+2.1. Headings with background
+=========================================== */
+
+h1[class*="bg-"],h2[class*="bg-"],h3[class*="bg-"],h4[class*="bg-"],
+h5[class*="bg-"],h6[class*="bg-"],ul[class*="bg-"],ol[class*="bg-"],
+li[class*="bg-"],p[class*="bg-"] {
+  padding: 2.4rem;
+}
+
+h1 [class*="bg-"],h2 [class*="bg-"],h3 [class*="bg-"] {
+  padding: .4rem .8rem;
+}
+
+/*=========================================
+2.2. Typography Classes = .text-
+=========================================== */
+
+.text-intro,[class*="content-"] p {
+  font-size: 2.4rem;
+  line-height: 4rem;
+}
+/* -- Serif -- */
+.text-serif, h1 span {
+  font-family: "Maitree", times, serif;
+
+}
+
+/* -- h1,h2... Promo/Landings -- */
+.text-landing {
+  /*font-weight: 600;*/
+  letter-spacing: .4rem;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .text-landing {
+    letter-spacing: 1.6rem;
+  }
+}
+/* -- Subtitle (Before h1, h2) --
+p.subtitle + h1/h2 */
+
+p.text-subtitle {
+  font-size: 1.6rem;
+}
+p.text-subtitle svg {vertical-align: text-top;}
+
+.text-subtitle {
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  margin-bottom: 0;
+}
+.text-subtitle + p  {
+  margin-top: 3.2rem;
+}
+
+.text-uppercase {text-transform: uppercase;}
+.text-lowercase {text-transform: lowercase;}
+
+/* -- Emoji (you'll love this) -- */
+
+.text-emoji {
+  font-size: 6.8rem;
+  line-height: 8.8rem;
+}
+
+@media (min-width: 768px) {
+  .text-emoji {
+    font-size: 12.8rem;
+    line-height: 16rem;
+  }
+}
+
+/* -- Numbers (results, sales... 23,478,289 iphones) -- */
+
+.text-data {
+  font-size: 6.4rem;
+  line-height: 8rem;
+  margin-bottom: .8rem;
+}
+
+@media (min-width: 768px) {
+  .text-data {
+    font-size: 15.2rem;
+    line-height: 16.8rem;
+  }
+}
+
+.text-label {
+  font-weight: 600;
+  display: inline-block;
+  width: 12.8rem;
+  text-transform: uppercase;
+}
+
+/* -- Magazine Two Columns -- */
+
+@media (min-width: 768px) {
+  .text-cols {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 4.8rem;
+    -moz-column-gap: 4.8rem;
+    column-gap: 4.8rem;
+    text-align: left;
+  }
+  .text-landing + .text-cols{
+    margin-top: 3.2rem;
+  }
+}
+.text-cols p:first-child:first-letter {
+  font-size: 11rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  float: left;
+  padding: 0;
+  margin: -.4rem 1.6rem 0 0;
+  line-height: 1;
+}
+
+/* -- Heading with border -- */
+
+.text-context {
+  position: relative;
+  /*letter-spacing: .1rem;*/
+}
+.text-context.text-uppercase {
+  letter-spacing: .1rem
+}
+
+.text-context:before {
+  content: "";
+  display: block;
+  width: 12rem;
+  height: .2rem;
+  margin-bottom: .6rem;
+}
+.column .text-context:before {
+  width:100%;
+}
+
+/* -- Separator/Symbols (stars ***...) -- */
+
+.text-symbols {font-weight: 600; letter-spacing: .8rem;text-align: center;
+}
+
+/* -- Separator -- */
+.text-separator {
+  margin-top:2.4rem;
+}
+.text-separator:before {
+  position: absolute;
+  width: 16%;
+  height: .4rem;
+  content: "";
+  margin-top:-1.6rem;
+  left: 0;
+}
+@media (min-width: 568px) {
+  .text-separator {
+    width: 80%;
+    margin-top: 0;
+    margin-left: 20%;
+  }
+  .text-separator:before {
+    margin-top: 1.2rem;
+  }
+}
+
+/* -- Pull Quote (Right/Left)  -- */
+
+[class*="text-pull"] {
+  position: relative;
+  font-size: 2.4rem;
+  line-height: 4rem;
+  font-weight: 400;
+  margin-right: 2.4rem;
+  margin-bottom: 3.2rem;
+  margin-left: 2.4rem;
+}
+
+[class*="text-pull-"] {
+  padding-top: 1.4rem;
+  margin-top: .8rem;
+}
+
+@media (min-width: 1024px) {
+  [class*="text-pull"] {
+    margin-right: -4.8rem;
+    margin-left: -4.8rem;
+  }
+}
+@media (min-width: 568px) {
+  [class*="text-pull-"] {
+    max-width: 40%;
+  }
+  .text-pull-right {
+    float: right;
+    margin-right: -2.4rem;
+    margin-left: 2.4rem;
+  }
+  .text-pull-left {
+    float: left;
+    margin-left: -2.4rem;
+    margin-right: 2.4rem;
+  }
+}
+img[class*="text-pull-"],figure[class*="text-pull-"] {
+  padding-top:0;
+  margin-top: .8rem;
+}
+
+/* -- Interviews (Questions & Answers)  --- */
+/* -- <dl class="text-interview">
+<dt>name</dt>
+<dd><p>question or answer</p>
+</dd>
+--- */
+
+.text-interview dt {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .text-interview dt {
+    margin-left: -34%;
+    position: absolute;
+    text-align: right;
+    white-space: nowrap;
+    width: 30%;
+  }
+}
+
+/* -- Info Messages (error, warning, success... -- */
+
+.text-info {font-size: 1.6rem;line-height: 2.4rem;
+}
+/*=========================================
+2.1. San Francisco Font (Apple's new font)
+=========================================== */
+
+.text-apple,.bg-apple {
+  font-family: "San Francisco", helvetica, arial, sans-serif;
+}
+
+/* Ultra Light */
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2");
+}
+
+/* Thin */
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2");
+}
+
+
+/* Regular */
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2");
+}
+
+/* Bold */
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: bold;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2");
+}
+
+/*=========================================
+3. Header & Footer
+=========================================== */
+
+/* -- If you want an unique, global header/footer,read this:
+https://github.com/webslides/webslides/issues/57 -- */
+
+header,
+footer,
+#navigation {
+  width: 100%;
+  padding: 2.4rem;
+}
+
+header p,
+footer p {
+  line-height: 4.8rem;
+  margin-bottom: 0;
+}
+
+header[role=banner] img,
+footer img {
+  height: 4rem;
+  vertical-align: middle;
+}
+footer {
+  position: relative;
+}
+header, footer {
+  /* hover/visibility */
+  z-index: 3;
+}
+
+header,.ws-ready footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ws-ready footer {
+  top: auto;
+  bottom: 0;
+}
+/*=== Hide header[role=banner] === */
+
+/*Remove "opacity=0" if you want an unique, visible header on each slide*/
+header[role=banner] {
+  opacity: 0;
+}
+/*=== Show Header[role=banner] === */
+header[role=banner]:hover {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  footer .alignleft, footer .alignright {
+    float: none;
+    display: block;
+  }
+}
+
+/*=== 3.1. Logo === */
+
+.logo {
+  text-transform: lowercase;
+  /*float: left;
+  font-size: 4.8rem;*/
+}
+
+.logo a {
+  background: url(../images/logos/logo.svg) no-repeat 0 0;
+  background-size: 4.8rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  vertical-align: middle;
+  float: left;
+  text-indent: -4000px;
+  /*If you remove text-indent */
+  /*padding-left: 6rem;*/
+}
+
+
+/*@media (max-width: 600px){
+.logo a {text-indent: -4000px;
+ }
+}*/
+
+/*=========================================
+4. Navigation
+=========================================== */
+
+/*=== 4.1. Navbars === */
+
+nav ul {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  /*====align left====*/
+  justify-content: flex-start;
+  /* ==== align center ====*/
+  /*justify-content: center; */
+  /*====align right====*/
+  /* justify-content: flex-end; */
+  /*====separated columns li a====*/
+  /* justify-content: space-between; */
+  /*====separated columns centered li a====*/
+  /*justify-content: space-around;*/
+}
+
+nav ul li {
+  position: relative;
+  float: left;
+  list-style: none;
+}
+
+nav ul li:first-child,
+nav[role=navigation] ul li {
+  margin-left: 0;
+}
+
+nav[role=navigation] li a {
+  position: relative;
+  padding: 0 1.6rem;
+  line-height: 4.8rem;
+  text-decoration: none;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  /*full li>a when you decide*/
+}
+nav[role=navigation] li a svg {margin: 1.5rem .4rem 1.5rem 0;}
+
+header nav ul {
+  margin: 0;
+  justify-content: flex-end;
+}
+
+nav.aligncenter ul, .aligncenter nav ul {
+  /* ==== align center ====*/
+  justify-content: center;
+}
+
+nav.navbar ul li {
+  /*====full float li a ====*/
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 568px) {
+  nav.navbar ul {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  nav.navbar li a {
+    justify-content:flex-start;
+  }
+}
+
+/*============================================
+5. SLIDES (Full Screen)
+Vertically and horizontally centered
+============================================== */
+
+/* Fade transition to all slides.
+* = All HTML elements will have those styles.*/
+
+section * {
+  -webkit-animation: fadeIn 0.6s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
+}
+section .background,section .light,section .dark {
+  -webkit-animation-duration:0s;
+  animation-duration:0s;
+}
+
+/*=== Section = Slide === */
+
+section,.slide
+{
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  /*Fixed/Visible header? padding-top: 12rem; */
+  padding: 2.4rem;
+  word-wrap: break-word;
+  page-break-after: always;
+  min-height: 100vh; /*Fullscreen*/
+  /* Prototyping? min-height: 720px (Baseline: 8px = .8rem)*/
+}
+
+@media (min-width: 1024px) {
+  section, .slide {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+/*slide no padding (full card, .embed> youtube video...) */
+.fullscreen {
+  padding: 0;
+  /* Fixed/Visible header?
+  padding:8.2rem 0 0 0;
+  */
+}
+
+/* slide alignment - top */
+.slide-top {
+  justify-content: flex-start;
+}
+
+
+/* slide alignment - bottom */
+.slide-bottom {
+  justify-content: flex-end;
+}
+
+
+/*== 5.1. Mini container width:50%
+Aligned items [class*="content-"]=== */
+
+[class*="content-"] {
+  position: relative;
+  /*display: table;*/
+  text-align: left;
+}
+.wrap[class*="bg-"],.wrap.frame,
+[class*="content-"][class*="bg-"],
+[class*="content-"].frame, [class*="align"][class*="bg-"]{
+  padding: 4.8rem;
+}
+form[class*="bg-"] {
+  padding: 2.4rem;
+}
+[class*="content-"] > [class*="content-"] p {
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+}
+
+.content-center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  [class*="content-"] {
+    width: 50%;
+  }
+  .content-left {
+    float: left;
+  }
+  .content-right {
+    float: right;
+  }
+  [class*="content-"] + [class*="content-"] {
+    padding-left:2.4rem;
+    margin-bottom: 4.8rem;
+  }
+  [class*="content-"] + [class*="size-"] {
+    margin-top: 6.4rem;
+    clear:both;
+  }
+
+  [class*="content-"]:before,
+  [class*="content-"]:after {
+    content: "";
+    display: table;
+  }
+
+  [class*="content-"]:after {
+    clear: both;
+  }
+}
+
+/* === 5.2 Counter / Navigation Slides  === */
+
+#navigation {
+  position: fixed;
+  width: 24.4rem;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* hover/visibility */
+  z-index: 4;
+}
+#navigation  {
+  -webkit-animation: fadeIn 8s;
+  animation: fadeIn 8s;
+  opacity:0;
+}
+#navigation:hover {
+  opacity: 1;
+}
+/* -- navigation arrow always visible? -- */
+
+/*
+#webslides:hover #navigation {
+opacity: 1;
+}
+*/
+
+#counter {
+  position: relative;
+  display: block;
+  width: 10rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  line-height: 4.8rem;
+}
+#counter a:hover {
+  padding: .8rem;
+}
+#navigation p {
+  margin-bottom: 0;
+}
+
+a#next,a#previous {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  border-radius: .4rem;
+  text-align: center;
+  font-size: 2.4rem;
+  padding: .8rem;
+  cursor: pointer;
+}
+a#next {
+  right: 3.2rem;
+}
+
+a#previous {
+  left: 3.2rem;
+}
+@media (max-width:1024px) {
+  #navigation {
+    background: url('../images/swipe.svg') no-repeat center top;
+    background-size: 4.8rem;
+    -webkit-animation: fadeIn 6s;
+    animation: fadeIn 6s;
+  }
+  #navigation a, #counter {display: none;
+  }
+}
+
+/*=== 5.3 Slides - Background Images/Videos === */
+
+.background,
+[class*="background-"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.background,
+[class*="background-"]{
+  background-repeat: no-repeat;
+}
+.background {
+  background-position: center;
+  background-size: cover
+}
+.background-top {
+  background-position: top;
+  background-size: cover;
+}
+.background-bottom {
+  background-position: bottom;
+  background-size: cover;
+}
+
+
+/*fullscreen video
+  <video class="background-video">
+*/
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/*=== BG Positions === */
+
+.background-center {
+  background-position: center;
+}
+
+.background-center-top {
+  background-position: center top;
+}
+.background-right-top {
+  background-position: right top;
+}
+.background-left-top {
+  background-position: left top;
+}
+.background-center-bottom,
+.background-left-bottom,
+.background-right-bottom,
+.background-left,.background-right {
+  background-position: center bottom;
+}
+
+@media (min-width:1024px) {
+  .background-left-bottom {
+    background-position: left bottom;
+  }
+  .background-right-bottom {
+    background-position: right bottom;
+  }
+  .background-right {
+    background-position: right;
+  }
+  .background-left {
+    background-position: left;
+  }
+}
+
+/*=== bg image/video overlay === */
+/*-- [class*="bg-"] .background.dark, [class*="bg-"] .embed.dark...  -- */
+
+[class*="bg-"] .light,
+[class*="bg-"] .light {
+  filter: alpha(opacity=8000);
+  opacity: 0.80;
+  filter: alpha(opacity=8);
+}
+
+[class*="bg-"] .dark,
+[class*="bg-"] .dark {
+  filter: alpha(opacity=2000);
+  opacity: 0.20;
+  filter: alpha(opacity=2);
+}
+[class*="bg-"] .background-video.dark {
+  filter: alpha(opacity=5000);
+  opacity: 0.50;
+  filter: alpha(opacity=5);
+}
+@media (max-width:1023px) {
+  [class*="background-"] {
+    opacity: 0.20;
+    -webkit-animation: fadeIn ease-in 0.20;
+    animation: fadeIn ease-in 0.20;
+  }
+  .background-video {
+    opacity: 0.80;
+  }
+}
+/*=== Animated Background Image === */
+
+.background.anim {
+  height: 200%;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-position: center top;
+  -webkit-animation: anim 80s linear infinite;
+  animation: anim 80s linear infinite;
+
+}
+/*=== Background with a frame === */
+/*<span class="background" style="background-image:url('image.jpg')"></span>
+<span class="background frame"></span>*/
+
+[class*="background"].frame {
+  margin: 2.4rem;
+}
+
+/*===============================================================
+6. Magic blocks with flexbox (Auto-fill & Equal Height)
+Blocks Links li>a = .flexblock.blink (.blink required)
+================================================================= */
+
+.flexblock {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  clear: both;
+}
+
+.flexblock:before {
+  content: "";
+  display: table;
+}
+
+.flexblock:after {
+  clear: both;
+}
+
+.flexblock li,
+.flexblock.blink li>a {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  /*making paragraphs and linked block*/
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  margin: 0;
+  padding: 2.4rem;
+
+}
+
+.flexblock li {
+  flex: auto;
+  text-align: left;
+  /*float: left;*/
+  width: 100%;/* more control */
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.flexblock li:hover{
+  -webkit-transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
+}
+.flexblock.aligncenter li {text-align: center;}
+
+.flexblock.vertical-align li {
+  justify-content: center;
+}
+
+.flexblock.blink li {
+  padding: 0;
+}
+
+@media (min-width:600px) {
+  .flexblock li {
+    width: 50%;
+  }
+}
+
+@media (min-width:1024px) {
+  .flexblock li {
+    width: 25%;
+  }
+}
+
+h1 + .flexblock,
+h2 + .flexblock,
+h3 + .flexblock,
+div + ul, div + ol{
+  margin-top: 3.2rem;
+}
+
+.flexblock li h2,
+.flexblock li h3,footer .column h2,footer .column h3 {
+  margin-bottom: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 3.2rem;
+}
+
+/*====================================================================
+6.1 Features <ul class="flexblock features">
+====================================================================== */
+
+.flexblock.features>li {
+  width: 100%;
+  border-radius: .4rem;
+  margin-bottom: 4.8rem;
+}
+
+
+@media (min-width:768px) {
+  .flexblock.features {
+    margin-right: -2%;
+    margin-left: -2%;
+  }
+  .flexblock.features>li {
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 29%;
+  }
+  .size-50 .flexblock.features>li{
+    width: 46%;
+  }
+  .column .flexblock.features>li{width: 100%;}
+
+  footer .flexblock.features>li {margin-bottom: 0;
+  }
+}
+
+.features li h2 {
+  text-transform: uppercase;
+}
+
+.features li span {
+  font-weight: 300;
+}
+
+.features li p {
+  margin: 0;
+}
+
+.features li p em {
+  display: block;
+}
+.features li span,.features li svg {
+  font-size: 6.4rem;
+  line-height: 1;
+  display: block;
+  margin: 0;
+}
+.features li img {width: 6.4rem;}
+
+.features li span sup {
+  font-size: 3rem;
+}
+
+@media (min-width:1200px) {
+  .features li span,
+  .features li svg,.features li img {
+    float: left;
+    margin-right: .8rem;
+  }
+}
+
+/*=====================================================================
+6.2 Clients Logos <ul class="flexblock clients">
+======================================================================= */
+
+.flexblock.clients.blink li>a,.flexblock.clients li {
+  padding: 0;
+}
+
+.flexblock.clients li figcaption {
+  padding: 0 2.4rem 2.4rem;
+}
+.flexblock.clients.border li figcaption {
+  padding-top: 2.4rem;
+}
+
+.clients.blink li>a,
+.clients li {
+  justify-content: inherit;
+}
+
+.clients li img,.clients li svg {
+  display: block;
+  padding: 2.4rem;
+}
+
+.clients.border li img,.clients.border li svg {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+.clients li:hover  {
+  z-index: 1;
+}
+/*==================================================
+6.3 flexblock.steps <ul class="flexblock steps">
+About, Philosophy...
+=================================================== */
+
+.steps li {
+  width: 100%;
+}
+
+.steps li img,
+.steps li span {
+  margin: 0 auto .8rem;
+  display: block;
+}
+
+.steps li span {
+  font-size: 6.4rem;
+}
+
+@media (min-width: 768px) {
+  .steps li {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps li {
+    width: 25%;
+    /*width: 33.3333%;*/
+  }
+  .process {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left-style: solid;
+    border-left-width: 15px;
+  }
+}
+
+
+/*=================================================
+6.4 Block Numbers - <ul class="flexblock metrics">
+=================================================== */
+
+.metrics li {
+  text-align: center;
+  width: 100%;
+}
+
+.metrics li strong {
+  display: block;
+}
+
+.metrics li span,.metrics li svg {
+  font-size: 6.4rem;
+  line-height: 7.2rem;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 568px) {
+  .metrics li {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .metrics li {
+    width: 25%;
+  }
+}
+.card-50 .metrics li {
+  width: 50%;
+}
+
+/*=====================================================
+6.5 Specs/Items: <ul class="flexblock specs">
+======================================================= */
+
+.specs li {
+  width: 100%;
+  text-align: left;
+}
+
+.specs li:after {
+  content: "";
+  height: 1px;
+  display: block;
+  position: relative;
+  bottom: -2.4rem;
+}
+
+.specs li:hover {
+  -webkit-transform: translateX(.2rem);
+  transform: translateX(.2rem);
+}
+
+.specs li span,.specs li svg {
+  font-size: 6.4rem;
+  line-height: 1;
+  display: block;
+  margin: 0;
+}
+.specs li img {width: 6.4rem;}
+
+.specs li span  {
+  font-weight: 300;
+
+}
+.specs li span sup {
+  font-size: 3rem;
+
+}
+
+@media (min-width:1024px) {
+  .specs li span,
+  .specs li svg,.specs li img {
+    float: left;
+    margin-right: 2.4rem;
+  }
+}
+/*=================================================
+6.6 Reasons/Why/Numbers (counter-increment)
+<ul class="flexblock reasons">
+=================================================== */
+
+.flexblock.reasons li {
+  text-align: left;
+  width: 100%;
+  counter-increment: list;
+}
+.reasons li:hover{
+  -webkit-transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
+}
+.reasons li:before {
+  content: counter(list)'.';
+  font-size: 6.4rem;
+  line-height: 1;
+}
+.reasons li:after {
+  position: relative;
+  bottom: -2.4rem;
+  content: "";
+  height: 1px;
+  display: block;
+}
+@media (min-width: 768px) {
+  .reasons li {
+    padding-left: 8.8rem;
+    /* You need two digits? (1-10)*/
+    /*padding-left: 12rem; */
+  }
+  .reasons li:before {
+    position: absolute;
+    left: 2.4rem;
+  }
+}
+
+/*=================================================
+6.7 Gallery - <ul class="flexblock gallery">
+Block Thumbnails li+.overlay+image
+img size recommended:800x600px
+=================================================== */
+
+.flexblock.gallery li {
+  margin-bottom: 4.8rem;
+}
+.flexblock.gallery li:nth-child(n+4) {
+  -webkit-flex:inherit;
+  flex:inherit;
+}
+.flexblock.gallery li,
+.flexblock.gallery.blink li>a {
+  padding: 0;
+}
+.gallery h2 {text-transform: uppercase;}
+
+.gallery h2 + p,.gallery h3 + p {
+  margin-top: .8rem;
+}
+.gallery p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-bottom: 0;
+}
+
+.flexblock.gallery li figcaption {
+  position: relative;
+  padding: 1.6rem;
+}
+/*Arrow */
+
+.gallery li figcaption:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin-left: -0.5em;
+  top: .4rem;
+  left: 20%;
+  transform-origin: 0 0;
+  transform: rotate(135deg);
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+.gallery li:hover figcaption:before {
+  top:.3rem;
+}
+.aligncenter .gallery li figcaption:before {
+  margin-left: 0;
+  left: 55%;
+}
+
+.gallery li footer {
+  position: relative;
+  padding:1.2rem 0 0;
+  margin-top: .8rem;
+}
+@media (min-width:600px) {
+  .flexblock.gallery {
+    margin-right: -2%;
+    margin-left: -2%;
+  }
+  .flexblock.gallery li {
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 46%;
+  }
+}
+
+@media (min-width:1024px) {
+  .flexblock.gallery li {
+    width: 21%;
+  }
+  .grid.sm .flexblock.gallery li,.grid.ms .flexblock.gallery li {
+    width: 29%;
+  }
+  .grid.sms .flexblock.gallery li {
+    width: 46%;
+  }
+}
+
+.gallery li img {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+/* Overlay */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s linear;
+}
+li .overlay {
+  align-items: center;
+}
+li .overlay h2 {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 2.4rem;
+  letter-spacing: .2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay p,
+.overlay time {
+  margin-bottom: 0;
+}
+
+li:hover .overlay {
+  cursor: pointer;
+}
+
+/*===============================================
+6.8 Plans / Pricing <ul class="flexblock plans">
+================================================= */
+
+.flexblock.plans>li {
+  text-align: center;
+  border-radius: 3px;
+  z-index: 1;
+  margin-bottom: 4.8rem;
+}
+
+.plans li,
+.plans.blink li>a {
+  padding: 0;
+}
+
+.plans.blink li>a div,
+.plans li div {
+  padding-bottom: 3.2rem;
+}
+
+.plans li p,
+.plans li h2 {
+  padding: .8rem 3.2rem;
+}
+
+.plans li h2 {
+  float: left;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  font-weight: 400;
+}
+
+.plans .price {
+  font-size: 4.8rem;
+  line-height: 6.2rem;
+  padding: 2.4rem;
+  font-weight: 400;
+  display: block;
+  clear: both;
+}
+
+.price sup {
+  font-size: 1.8rem;
+  margin-right: .4rem;
+}
+
+.plans li ul {
+  margin-bottom: 2.4rem;
+}
+
+
+/* Specs  ----------- */
+
+.flexblock.plans li ul li {
+  width: 100%;
+  padding: .8rem 3.2rem;
+  text-align: left;
+  display: block;
+}
+
+@media (min-width:1024px) {
+  .flexblock.plans {
+    margin-right: -2%;
+    margin-left: -2%;
+  }
+  .flexblock.plans>li {
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 29%;
+  }
+  .plans>li:hover,
+  .plans>li:nth-child(2) {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.08);
+  }
+  .plans:hover li:nth-child(2):not(:hover) {
+    position: relative;
+    z-index: 1;
+    transform: scale(1);
+  }
+}
+
+
+/*===========================================
+6.9 Block Activity <ul class="activity">
+CV / News
+============================================= */
+
+.flexblock.activity {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.activity li {
+  position: relative;
+  -webkit-flex: 1;
+  flex: 1;
+  width: auto;
+}
+
+.activity p {
+  vertical-align: top;
+  margin-bottom: 0;
+}
+
+.activity img {
+  display: block;
+}
+
+.activity .year,
+.activity .title {
+  display: inline;
+  font-weight: 600;
+}
+
+.activity .summary {
+  width: 100%;
+}
+
+.activity .title {
+  margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  .activity p {
+    float: left;
+  }
+  .activity .year {
+    width: 15%;
+  }
+  .activity .title {
+    width: 27%;
+    margin-right: 4%;
+    margin-left: 4%;
+  }
+  .activity .summary {
+    width: 50%;
+  }
+}
+
+/*=========================================
+.flexblock sublist
+=========================================== */
+
+.flexblock li li,
+.flexblock.blink li li {
+  padding: 0;
+  width: 100%;
+}
+
+/*.flexblock li li:before {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  content: "*";
+  font-weight: 400;
+}
+*/
+
+/*=== Mini container .flexblock li === */
+
+[class*="content-"] .flexblock li p {
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+}
+.content-right .flexblock.features li,
+.content-left .flexblock.features li {
+  width: 46%;
+}
+
+/*=============================================
+7. Promos/Offers (pricing, tagline, CTA...)
+=============================================== */
+
+.cta {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.number,
+.cta .benefit {
+  padding: .8rem;
+  max-width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.number {
+  text-align: center;
+}
+
+.cta .benefit {
+  max-width: 100%;
+  text-align: center;
+}
+
+.number span {
+  font-size: 8rem;
+  line-height: 8rem;
+  display: block
+}
+
+.number span sup {
+  font-size: 4rem;
+}
+
+.cta p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .number,
+  .cta .benefit {
+    padding: 4.8rem;
+    max-width: 50%;
+  }
+  .cta .benefit {
+    text-align: left;
+  }
+  .number span {
+    font-size: 16rem;
+    line-height: 16rem;
+  }
+  .number span sup {
+    font-size: 6rem;
+    vertical-align: middle;
+  }
+}
+
+
+/* --- Header CTA --- */
+
+.cta-cover {
+  display: table;
+  width: 100%;
+}
+
+.cta-cover h1 strong {
+  font-weight: 400;
+}
+
+@media (min-width: 1024px) {
+  .cta-cover h1 {
+    max-width: 80%;
+    float: left;
+  }
+  .cta-cover h1 strong {
+    display: block;
+  }
+  .cta-cover .button {
+    margin-top: 1.2rem;
+  }
+  .cta-cover .try {
+    text-align: center;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cta-cover .alignright {
+    float: none;
+  }
+}
+
+
+/*=========================================
+8. Work/Resumé/CV <ul class="work">
+=========================================== */
+
+h1 + .work,
+h2 + .work,
+h3 + .work,
+p + .work {
+  margin-top: 4.8rem;
+}
+
+.work {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  clear: both;
+  text-align: left;
+}
+
+.work li {
+  position: relative;
+  -webkit-flex: 1;
+  flex: 1;
+  list-style: none;
+  margin: 0;
+
+}
+
+.work-label {
+  float: left;
+  width: 100%;
+  padding: 0 0 2.4rem;
+  font-weight: 600;
+}
+
+.work p {
+  margin-bottom: 0;
+}
+
+.work li a {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding: 2.4rem 0;
+}
+
+.work-title {
+  display: block;
+  width: 75%;
+  padding-right: 1.2rem;
+}
+
+.work li a p,
+.work li:first-child a:hover p:first-child {
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.work li p {
+  padding-left: 1.2rem;
+}
+
+.work li.work-label p {
+  padding-left: 0;
+}
+
+.work li a:hover p:first-child {
+  padding-left: 1.6rem;
+}
+
+.work li p:last-child {
+  position: absolute;
+  top: 2.4rem;
+  right: 1.2rem;
+}
+
+.work li.work-label p:last-child {
+  top: 0;
+  right: 0;
+}
+
+@media (min-width: 768px) {
+  .work-label p,
+  .work li p {
+    width: 25%;
+    margin-right: 2%;
+    float: left;
+  }
+  .work li.work-label p:last-child,
+  .work li p:last-child {
+    position: relative;
+    float: right;
+    top: auto;
+    right: auto;
+    margin-right: 0;
+    text-align: right;
+    padding-right: 1.2rem;
+  }
+  .work li p.work-date {
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-client,
+  .work-label .work-services {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+}
+
+
+/*===========================================
+9. Table of contents
+============================================= */
+
+.toc,
+.toc ol>li:before,
+.chapter {
+  position: relative;
+  z-index: 2;
+}
+
+/*.toc {
+  padding: 2.4rem;
+}
+*/
+
+.toc ol {
+  position: relative;
+  counter-reset: item;
+}
+
+.toc ol>li:before {
+  content: counters(item, ".") ". ";
+  display: table-cell;
+  width: 2.4rem;
+  padding-right: .8rem;
+}
+
+.toc ol li li:before {
+  content: counters(item, ".") " ";
+}
+
+.toc li {
+  width: 100%;
+  display: table;
+  counter-increment: item;
+  font-weight: 400;
+  margin-bottom: .8rem;
+  margin-left: 0;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.toc li li {
+  font-weight: 300;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.chapter {
+  display: inline-block;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  padding-right: .8rem;
+}
+
+.toc-page {
+  float: right;
+}
+
+.toc li .toc-page:before {
+  position: absolute;
+  /* width: 100%; */
+  right: 4rem;
+  left: 0;
+  margin-top: 1.8rem;
+  content: "";
+  display: block;
+}
+
+.toc li>a {
+  display: inline-block;
+  width: 100%;
+}
+
+.toc li a:hover span {
+  font-weight: 600;
+}
+
+.toc li a:hover .toc-page:before {
+  border-bottom-width: 2px;
+}
+
+
+/*===========================================
+10. Cards
+============================================= */
+
+[class*="card-"],
+[class*="card-"]>a {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  clear: both;
+  /*width: 100%;*/
+}
+
+.fullscreen [class*="card-"],
+.fullscreen [class*="card-"]>a {
+  min-height: 100vh;
+}
+
+[class*="card-"] figure img,[class*="card-"] figure iframe {
+  margin: 0 auto;
+  display: block;
+}
+
+
+/*==  Images inside container:
+object-fit to re-frame images rather than just stretch and resize them  === */
+
+@media (min-width: 768px) {
+  [class*="card"][class*="bg-"] figure,
+  .fullscreen [class*="card"] figure {
+    vertical-align: middle;
+    text-align: center;
+    min-width: 380px;
+    max-height: 100%;
+  }
+  /* -- imgs/frames size recommended:800x600 -- */
+  [class*="card-"][class*="bg-"] figure img,
+  [class*="card-"][class*="bg-"] figure iframe,
+    /* -- Make small images/iframes larger -- */
+  .fullscreen [class*="card-"] figure img,
+  .fullscreen [class*="card-"] figure iframe {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.flex-content,
+[class*="card"] blockquote {
+  position: relative;
+  padding: 2.4rem;
+}
+[class*="card-"] .flex-content,
+[class*="card-"] blockquote {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-content p {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  /*== Cards (Sizes) - Reference: figure img:-70,60,50,40,30... === */
+  .card-50 figure,
+  .card-50 blockquote,
+  .card-50 .flex-content {
+    width: 50%;
+  }
+  .card-30 figure,
+  .card-70 .flex-content,
+  .card-70 blockquote {
+    width: 30%;
+  }
+  .card-40 figure,
+  .card-60 .flex-content,
+  .card-60 blockquote {
+    width: 40%;
+  }
+  .card-60 figure,
+  .card-40 .flex-content,
+  .card-40 blockquote {
+    width: 60%;
+  }
+  .card-70 figure,
+  .card-30 .flex-content,
+  .card-30 blockquote {
+    width: 70%;
+  }
+  [class*="card"]:nth-child(odd) figure {
+    order: 0
+  }
+  [class*="card"]:nth-child(even) figure {
+    order: 1;
+  }
+  .flex-content,
+  [class*="card"] blockquote {
+    padding: 4.8rem;
+  }
+  .fullscreen [class*="card"] .flex-content,
+  .fullscreen [class*="card"] blockquote {
+    padding: 6.4rem;
+  }
+}
+
+
+/*== Card - Headings === */
+
+@media (max-width: 767px) {
+  [class*="card-"],
+  [class*="card-"]>a {
+    flex-flow: column;
+  }
+  .card figure,
+  .card header {
+    width: 100%
+  }
+}
+
+/*== Ficaption Cards === */
+
+[class*="card"] figure figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: .8rem 2.4rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  /* Visibility */
+  z-index: 2;
+}
+
+[class*="card"] figure figcaption svg {
+  font-size: 1rem;
+}
+
+
+/*=========================================
+11. Quotes
+=========================================== */
+
+blockquote {
+  position: relative;
+  display: inline-block;
+}
+
+blockquote p {
+  font-size: 2.4rem;
+  line-height: 4rem;
+}
+blockquote p:last-child {
+  margin-bottom: 3.2rem;
+}
+/* -- Interviews dl.text-interview -- */
+dd blockquote p:last-child {
+  margin-bottom: 0;
+}
+.bg-apple blockquote p {
+  font-family: "San Francisco", "Roboto", helvetica, arial, sans-serif;
+  font-weight: 300;
+}
+
+cite {
+  display: block;
+  text-align: center;
+}
+
+cite span {
+  display: block;
+}
+
+cite:before {
+  content: "\2014 \2009";
+  margin-right: 6px;
+}
+/* -- Big Blockquote -- */
+/* Info: .wall will be deprecated soon. Use .text-quote ;) */
+
+.text-quote,.wall {
+  position: relative; /* Versatility: blockquote, p, h2... */
+}
+.text-quote:before,.wall:before {
+  position: absolute;
+  top: -4rem;
+  left: -.8rem;
+  content: "\201C";
+  font-family: arial, sans-serif;
+  width: 5.6rem;
+  height: 5.6rem;
+  font-size: 12rem;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (min-width:768px) {
+  .text-quote,.wall {
+    padding-left: 6.4rem;
+  }
+  .text-quote p,.wall p {
+    font-size: 3.2rem;
+    line-height: 4.8rem;
+  }
+  .text-quote:before,.wall:before {
+    top: -1.6rem;
+    left: .8rem;
+  }
+}
+
+/*=========================================
+12. Avatars - uifaces.com
+=========================================== */
+
+cite img,
+img[class*="avatar-"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+img[class*="avatar-"] {
+  border-radius: 50%
+}
+
+img.avatar-80 {
+  width: 80px;
+  height: 80px;
+}
+img.avatar-72 {
+  width: 72px;
+  height: 72px;
+}
+img.avatar-64 {
+  width: 64px;
+  height: 64px;
+}
+
+img.avatar-56 {
+  width: 56px;
+  height: 56px;
+}
+
+img.avatar-48 {
+  width: 48px;
+  height: 48px;
+}
+
+img.avatar-40 {
+  width: 40px;
+  height: 40px;
+}
+
+/*=========================================
+13. Tables
+=========================================== */
+
+table {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+table td,
+th,
+thead {
+  border-spacing: 0;
+  padding: .7rem 2.4rem;
+}
+
+thead th,
+th {
+  text-align: left;
+  cursor: default;
+  white-space: nowrap;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+thead,
+td.goals {
+  font-weight: 600;
+  text-shadow: none;
+}
+
+tr>td {
+  font-weight: 400;
+}
+
+
+/*.slide tr>td {
+  width: 25%;
+}*/
+
+
+/*=========================================
+14. Forms
+=========================================== */
+
+form {text-align: left;}
+
+form + p,input + p,textarea + p {margin-top: .8rem;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=url],
+input[type=search],
+input[type=password] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+}
+input,
+button,
+select {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+  height: 4.8rem;
+  padding: .7rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+
+}
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  padding: 4px;
+}
+button[type="submit"],textarea {
+  width: 100%;
+}
+textarea {
+  padding: .7rem;
+}
+
+button {
+  width: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button {
+  display: inline-block;
+  line-height: 4.8rem;
+  /*border-radius:4.8rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;*/
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  min-width: 16rem;
+  padding: 0 1.6rem;
+  cursor: pointer;
+}
+
+.button.radius, button.radius,input.radius {border-radius: 2.4rem;}
+
+button,
+input[type="submit"] {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .1rem;
+}
+
+.button svg {
+  font-size: 2.4rem;
+}
+
+.plans .button {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.try {
+  display: block;
+  font-size: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+fieldset {
+  padding: 2.4rem;
+}
+
+legend {
+  padding: 1.6rem 2.4rem;
+  border: none;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing:.1rem;
+  font-weight: 400;
+}
+/*=== Focus === */
+input:focus,
+textarea:focus,
+select:focus {
+  border-width: 1px;
+}
+
+/*=== App Store Badges === */
+/* Change width and height: 216x64px, 162x48px, 135x40... */
+
+[class*="badge-"] {
+  width: 135px;
+  height: 40px;
+  line-height: 4rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  text-indent: -4000px;
+  border-radius: .6rem;
+}
+
+@media (min-width:1024px) {
+  [class*="badge-"] {
+    width: 162px;
+    height: 48px;
+    line-height: 4.8rem;
+  }
+}
+.badge-ios {
+  background-image: url("../images/bt-appstore.png");
+}
+
+.badge-android {
+  background-image: url("../images/bt-playstore.png");
+}
+
+
+/* Buttons/Badges - Hover */
+
+a.button:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  -webkit-transform:scale(1.01);
+  transform: scale(1.01);
+}
+[class*="badge-"]:hover {
+  opacity: 0.7;
+}
+
+/*=== Sign Up/Login Form - Landings === */
+
+.user input {
+  margin-bottom: 0;
+}
+
+.user input[type="email"],
+.user input[type="search"],.user input[type="text"] {
+  width: 100%;
+}
+
+.user button,
+.user input[type="submit"] {
+  left: 0;
+  width: 100%;
+}
+
+@media (min-width:500px) {
+  .user input[type="email"],
+  .user input[type="search"],
+  .user input[type="text"] {
+    width: 70%;
+    float: left;
+  }
+  .user button,
+  .user input[type="submit"] {
+    width: 30%;
+    cursor: pointer;
+  }
+  [class*="button"] + [class*="button"],[class*="badge"] + [class*="badge"] {
+    margin-left: 1.8rem;
+  }
+}
+@media (max-width:499px) {
+
+  [class*="button"] + [class*="button"],[class*="badge"] + [class*="badge"] {
+    margin-top: .8rem;
+
+  }
+}
+
+:disabled,
+button:disabled:hover {
+  cursor: not-allowed;
+}
+
+/*=========================================
+15. Longform
+=========================================== */
+
+/* -- Posts = .wrap.longform -- */
+
+.longform {
+  width: 72rem;
+  /* Why 72rem=720px?
+  90-95 characters per line = better reading speed */
+}
+.longform .alignleft, .longform .alignright {
+  max-width: 40%;
+}
+.longform img.aligncenter,.longform figure.aligncenter {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+.longform ul,.longform ol {
+  margin-bottom: 3.2rem;
+}
+.longform ul ol,.longform ol ul,.longform ul ul,.longform ol ol {
+  margin-bottom: 0;
+}
+.longform figcaption p,.longform [class*="text-pull-"] p{
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+}
+/* Mobile: video full width */
+.text-pull.embed {
+  padding-bottom: 60.6%; /*without black borders; */
+  margin-right: -2.4rem;
+  margin-left: -2.4rem;
+}
+@media (min-width:1280px) {
+  .longform [class*="text-pull-"] {
+    max-width: 32%;
+  }
+  .longform .text-pull-right {
+    margin-right:-256px;
+  }
+  .longform .text-pull-left {
+    margin-left:-256px;
+  }
+}
+@media (min-width:1024px) {
+  .longform .text-quote {
+    margin-right: -4.8rem;
+    margin-left: -4.8rem;
+  }
+}
+
+
+/*=========================================
+16. SAFARI BUGS (flex-wrap)
+Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
+=========================================== */
+
+.flexblock:before, .flexblock:after,
+.grid:before,.grid:after, .cta:before,.cta:after{
+  width: 0;
+}
+
+/*=========================================
+17. PRINT
+=========================================== */
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0.5cm;
+  }
+  /* Black prints faster */
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  html, body, #webslides {
+    width: auto !important;
+    height: auto !important;
+    overflow: auto !important;
+  }
+  #webslides {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+  section, .slide {
+    display: flex !important;
+    height: auto !important;
+  }
+  section * {
+    -webkit-animation: none;
+    animation: none;
+  }
+  table, figure {
+    page-break-inside: avoid;
+  }
+  #counter, #navigation {
+    display: none;
+  }
+}
