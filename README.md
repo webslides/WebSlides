@@ -9,6 +9,10 @@ Finally, everything you need to make HTML presentations, landings, and longforms
 
 * * *
 ### Download
+
+[![GitHub version](https://img.shields.io/github/release/jlantunez/webslides.svg)](https://github.com/jlantunez/webslides)
+
+
 Simply choose a demo and customize it in minutes. Latest version: [webslides.tv/webslides-latest.zip](https://webslides.tv/webslides-latest.zip).
 * * *
 
