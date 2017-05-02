@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-04-29
+ * Date: 2017-05-01
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -238,8 +238,7 @@ var DOM = function () {
     }
 
     /**
-     * Checks if the element is visible.This is only intended
-     * to be used in conjunction with DOM.hide and DOM.show
+     * Checks if the element is visible.
      * @param {Element} el Element to check.
      * @return {boolean}
      */
@@ -247,7 +246,7 @@ var DOM = function () {
   }, {
     key: 'isVisible',
     value: function isVisible(el) {
-      return el.style.display == '';
+      return el.offsetParent !== null;
     }
 
     /**
@@ -304,9 +303,9 @@ var DOM = function () {
     }
 
     /**
-     * Gets the integer value of a style property
-     * @param {string} prop CSS property value
-     * @return {integer} The property without the units
+     * Gets the integer value of a style property.
+     * @param {string} prop CSS property value.
+     * @return {Number} The property without the units.
      */
 
   }, {
@@ -316,10 +315,10 @@ var DOM = function () {
     }
 
     /**
-     * Wraps a HTML structure arrond a element
-     * @param {Element} elem the element to be wrapped
-     * @param {string} tag the new element tag
-     * @return {Element} the new element
+     * Wraps a HTML structure around an element.
+     * @param {Element} elem the element to be wrapped.
+     * @param {string} tag the new element tag.
+     * @return {Element} the new element.
      */
 
   }, {
@@ -333,9 +332,9 @@ var DOM = function () {
     }
 
     /**
-     * Inserts and element after another element
-     * @param {Element} elem the element to be inserted
-     * @param {Element} target the element to be inserted after
+     * Inserts and element after another element.
+     * @param {Element} elem the element to be inserted.
+     * @param {Element} target the element to be inserted after.
      */
 
   }, {
@@ -343,7 +342,7 @@ var DOM = function () {
     value: function after(elem, target) {
       var parent = target.parentNode;
 
-      if (parent.lastChild == target) {
+      if (parent.lastChild === target) {
         parent.appendChild(elem);
       } else {
         parent.insertBefore(elem, target.nextSibling);
@@ -2122,13 +2121,13 @@ var Touch = function () {
 
       var info = Touch.normalizeEventInfo(event);
 
-      if (event.touches.length == 1) {
+      if (event.touches.length === 1) {
         this.startX_ = info.x;
         this.startY_ = info.y;
         this.endX_ = info.x;
         this.endY_ = info.y;
       } else if (event.touches.length > 1) {
-        this.startTouches = this.getTouchCoorinates(event);
+        this.startTouches = Touch.getTouchCoordinates(event);
         this.endTouches = this.startTouches;
         this.isGesture = true;
       }
@@ -2150,7 +2149,7 @@ var Touch = function () {
       var info = Touch.normalizeEventInfo(event);
 
       if (this.isGesture) {
-        this.endTouches = this.getTouchCoorinates(event);
+        this.endTouches = Touch.getTouchCoordinates(event);
       } else {
         this.endX_ = info.x;
         this.endY_ = info.y;
@@ -2193,15 +2192,21 @@ var Touch = function () {
     }
 
     /**
-     * Get X,Y coordinates from touchs pointers
+     * Get X,Y coordinates from touch pointers.
      * @param {Event} event
-     * @return {array}
+     * @return {Object}
      */
 
-  }, {
-    key: 'getTouchCoorinates',
-    value: function getTouchCoorinates(event) {
-      return [{ x: event.touches[0].clientX, y: event.touches[0].clientY }, { x: event.touches[1].clientX, y: event.touches[1].clientY }];
+  }], [{
+    key: 'getTouchCoordinates',
+    value: function getTouchCoordinates(event) {
+      return [{
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY
+      }, {
+        x: event.touches[1].clientX,
+        y: event.touches[1].clientY
+      }];
     }
 
     /**
@@ -2211,7 +2216,7 @@ var Touch = function () {
      * @return {Object} Normalised touch points.
      */
 
-  }], [{
+  }, {
     key: 'normalizeEventInfo',
     value: function normalizeEventInfo(event) {
       var touchEvent = { pageX: 0, pageY: 0 };
@@ -2718,7 +2723,7 @@ var Zoom = function () {
 
   /**
    * On key down handler. Will decide if Zoom in or out
-   * @param {Event} event Key down event
+   * @param {Event} event Key down event.
    */
 
 
@@ -2727,14 +2732,14 @@ var Zoom = function () {
     value: function onKeyDown(event) {
       if (!this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].MINUS.includes(event.which)) {
         this.zoomIn();
-      } else if (this.isZoomed_ && (__WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which) || event.which == __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].ESCAPE)) {
+      } else if (this.isZoomed_ && (__WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which) || event.which === __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].ESCAPE)) {
         this.zoomOut();
       }
     }
 
     /**
      * Prepare zoom structure, scales the slides and uses a grid layout
-     * to show them
+     * to show them.
      */
 
   }, {
@@ -2767,8 +2772,8 @@ var Zoom = function () {
     }
 
     /**
-     * Creates a block structure around the slide
-     * @param {Element} elem slide element
+     * Creates a block structure around the slide.
+     * @param {Element} elem slide element.
      */
 
   }, {
@@ -2783,7 +2788,7 @@ var Zoom = function () {
       var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
       div.className = CLASSES.DIV;
       // Adding some layer for controling click events
-      var divLayer = document.createElement('div');
+      var divLayer = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('div');
       divLayer.className = 'zoom-layer';
       divLayer.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -2792,9 +2797,8 @@ var Zoom = function () {
       });
       wrap.appendChild(divLayer);
       // Slide number
-      var slideNumber = document.createElement('p');
+      var slideNumber = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('p', '', '' + (elem.i + 1));
       slideNumber.className = 'text-slide-number';
-      slideNumber.textContent = '' + (elem.i + 1);
       div.appendChild(slideNumber);
 
       this.setSizes_(div, wrap, elem);
@@ -2817,12 +2821,12 @@ var Zoom = function () {
 
       // Sets element size: window size - relative margins
       var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
-      if (scale == 1) {
+      if (scale === 1) {
         // If the scale is 100% means it is mobile
         var wsW = this.ws_.el.clientWidth;
         elem.el.style.width = (wsW - marginW) * 2 + 'px';
         elem.el.style.height = (wsW - marginH) * 1.5 + 'px';
-        elem.el.style.minHeight = scale == 1 ? 'auto' : '';
+        elem.el.style.minHeight = scale === 1 ? 'auto' : '';
         // Because of flexbox, wrap height is required
         wrap.style.height = (wsW - marginH) * 1.5 / 2 + 'px';
       } else {
@@ -2834,7 +2838,7 @@ var Zoom = function () {
     }
 
     /**
-     * Toggles zoom
+     * Toggles zoom.
      */
 
   }, {
@@ -2848,7 +2852,7 @@ var Zoom = function () {
     }
 
     /**
-     * Zoom In the slider, scales the slides and uses a grid layout to show them
+     * Zoom In the slider, scales the slides and uses a grid layout to show them.
      */
 
   }, {
@@ -2869,7 +2873,7 @@ var Zoom = function () {
     }
 
     /**
-     * Zoom Out the slider, remove scale from the slides
+     * Zoom Out the slider, remove scale from the slides.
      */
 
   }, {
@@ -2890,13 +2894,12 @@ var Zoom = function () {
     }
 
     /**
-     * When windows resize it is necessary to recalculate layers sizes
-     * @param {Event} ev
+     * When windows resize it is necessary to recalculate layers sizes.
      */
 
   }, {
     key: 'onWindowResize',
-    value: function onWindowResize(ev) {
+    value: function onWindowResize() {
       var _this5 = this;
 
       if (this.isZoomed_) this.zoomOut();
