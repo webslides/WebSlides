@@ -38,8 +38,6 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-jest": "^19.0.1",
     "jest": "^19.0.2",
-    "jest-css-modules": "^1.1.0",
-    "jsdom": "^10.1.0",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
     "simulant": "^0.2.2",
@@ -64,10 +62,5 @@
         }
       ]
     ]
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
-    }
   }
 }
