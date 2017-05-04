@@ -5,7 +5,7 @@ beforeAll(() => {
   document.body.innerHTML = `<div id="webslides" data-test="test"><p>Text</p></div>`;
 });
 
-test('AutoSlide plugin', () => {
+test('Click nav plugin', () => {
   const next = jest.fn();
   const ws = document.getElementById('webslides');
   // Simulates dataset
