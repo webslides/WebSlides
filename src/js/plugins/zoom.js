@@ -5,7 +5,8 @@ import Slide from '../modules/slide';
 const CLASSES = {
   ZOOM: 'grid',
   DIV: 'column',
-  WRAP: 'wrap-zoom'
+  WRAP: 'wrap-zoom',
+  WRAP_CONTAINER: 'wrap'
 };
 
 const ID = 'webslides-zoomed';
@@ -63,7 +64,12 @@ export default class Zoom {
     // Clone #webslides element
     this.zws_.el = this.ws_.el.cloneNode();
     this.zws_.el.id = ID;
-    this.zws_.el.className = CLASSES.ZOOM;
+    this.zws_.wrap = DOM.createNode('div');
+    this.zws_.wrap.className = CLASSES.WRAP_CONTAINER;
+    this.zws_.el.appendChild(this.zws_.wrap);
+    this.zws_.grid = DOM.createNode('div');
+    this.zws_.grid.className = CLASSES.ZOOM;
+    this.zws_.wrap.appendChild(this.zws_.grid);
 
     this.zws_.el.addEventListener('click', () => this.toggleZoom());
 
@@ -71,7 +77,7 @@ export default class Zoom {
     this.zws_.slides = [].map.call(this.ws_.slides,
         (slide, i) => {
           const s_ = slide.el.cloneNode(true);
-          this.zws_.el.appendChild(s_);
+          this.zws_.grid.appendChild(s_);
           return new Slide(s_, i);
         });
     DOM.hide(this.zws_.el);

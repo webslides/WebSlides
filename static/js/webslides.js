@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-05-01
+ * Date: 2017-05-05
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2681,7 +2681,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var CLASSES = {
   ZOOM: 'grid',
   DIV: 'column',
-  WRAP: 'wrap-zoom'
+  WRAP: 'wrap-zoom',
+  WRAP_CONTAINER: 'wrap'
 };
 
 var ID = 'webslides-zoomed';
@@ -2750,7 +2751,12 @@ var Zoom = function () {
       // Clone #webslides element
       this.zws_.el = this.ws_.el.cloneNode();
       this.zws_.el.id = ID;
-      this.zws_.el.className = CLASSES.ZOOM;
+      this.zws_.wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('div');
+      this.zws_.wrap.className = CLASSES.WRAP_CONTAINER;
+      this.zws_.el.appendChild(this.zws_.wrap);
+      this.zws_.grid = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('div');
+      this.zws_.grid.className = CLASSES.ZOOM;
+      this.zws_.wrap.appendChild(this.zws_.grid);
 
       this.zws_.el.addEventListener('click', function () {
         return _this.toggleZoom();
@@ -2759,7 +2765,7 @@ var Zoom = function () {
       // Clone the slides
       this.zws_.slides = [].map.call(this.ws_.slides, function (slide, i) {
         var s_ = slide.el.cloneNode(true);
-        _this.zws_.el.appendChild(s_);
+        _this.zws_.grid.appendChild(s_);
         return new __WEBPACK_IMPORTED_MODULE_2__modules_slide__["a" /* default */](s_, i);
       });
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
