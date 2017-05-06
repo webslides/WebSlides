@@ -18,7 +18,9 @@ export default class DOM {
    */
   static createNode(tag, id = '', text = '') {
     const node = document.createElement(tag);
-    node.id = id;
+    if (id) {
+      node.id = id;
+    }
 
     if (text) {
       node.textContent = text;
