@@ -41,7 +41,7 @@ Base
 
 body,
 /*index of slides: mini-slides same bg color as body */
-#webslides-zoomed.grid > .column > .wrap-zoom {
+#webslides-zoomed .column > .wrap-zoom {
   color: #333;
   background-color: #f7f9fb;
 }
@@ -924,14 +924,13 @@ background-color:rgba(255,255,255 , 0.3);
 Slides Index
 ============================== */
 
-#webslides-zoomed.grid > .column > .wrap-zoom {
+#webslides-zoomed .column > .wrap-zoom {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
-#webslides-zoomed.grid > .column > .wrap-zoom:hover {
+#webslides-zoomed .column > .wrap-zoom:hover {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 .text-slide-number {
   /*background-color: rgba(255, 255, 255, 0.1);*/
-  color: #456;
-  text-shadow: 0 1px 0 #fafafa;
+  color: #abc;
  }
