@@ -1,0 +1,37 @@
+// =========
+// Colours. Names from http://chir.ag/projects/name-that-color/
+// =========
+$black: #000;
+$white: #fff;
+$royal-blue: #44d;
+$havelock-blue: #67d;
+$catskill-white: #edf2f7;
+$cod-gray: #111;
+$big-stone: #123;
+$rhino: #346;
+$athens-gray: #f8f8f9;
+$mischka: #d5d9e2;
+$pine-green: #077;
+$purple-heart: #62b;
+$cardinal: #c23;
+$mirage: #1a2028;
+$pickled-bluewood: #293845;
+$facebook: #3b5998;
+
+$bg-colours: (
+  'primary': $royal-blue,
+  'secondary': $havelock-blue,
+  'light': $catskill-white,
+  'black': $cod-gray,
+  'black-blue': $big-stone,
+  'blue': $rhino,
+  'brown': $athens-gray,
+  'gray': $mischka,
+  'green': $pine-green,
+  'purple': $purple-heart,
+  'red': $cardinal,
+  'white': $white,
+  // Branding
+  'apple': linear-gradient(to bottom, $black 0%, $mirage 50%, $pickled-bluewood 100%),
+  'facebook': $facebook
+) !default;
