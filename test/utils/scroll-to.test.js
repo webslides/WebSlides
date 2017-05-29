@@ -1,3 +1,5 @@
+import scrollTo from '../../src/js/utils/scroll-to';
+
 jest.useFakeTimers();
 
 beforeAll(() => {
@@ -7,11 +9,9 @@ beforeAll(() => {
 
 test('ScrollTo utility', () => {
   const ws = document.getElementById('webslides');
-  // Needs to be required and not imported because const defined in top level
-  const scrollTo = require('../../src/js/utils/scroll-to');
   const cb = jest.fn();
 
-  scrollTo.default(100, 500, cb);
+  scrollTo(100, 500, cb);
 
   expect(cb).not.toBeCalled();
   expect(ws.scrollTop).toBe(0);
