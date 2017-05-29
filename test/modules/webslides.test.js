@@ -1,32 +1,32 @@
-import DOM from '../../src/js/utils/dom';
+import WebSlides from '../../src/js/modules/webslides';
 
 jest.useFakeTimers();
 
 beforeAll(() => {
-  const slides = '<section class="slide"><div class="content">Content</section>'.repeat(20);
-  document.body.innerHTML = `<div id="webslides">${slides}<div id="other"></div></div>`;
+  const slides =
+    '<section class="slide"><div class="content">Content</section>'.repeat(20);
+  document.body.innerHTML =
+      `<div id="webslides">${slides}<div id="other"></div></div>`;
 });
 
 test('WebSlides utility', () => {
   let webslides;
-  // Needs to be required and not imported because const defined in top level
-  // in utils/scroll-to
-  const WebSlides = require('../../src/js/modules/webslides');
   const ws = document.getElementById('webslides');
   const change = jest.fn();
   expect(() => {
     ws.setAttribute('id', '');
-    webslides = new WebSlides.default();
+    webslides = new WebSlides();
   }).toThrow();
 
   ws.setAttribute('id', 'webslides');
   expect(() => {
-    webslides = new WebSlides.default();
+    webslides = new WebSlides();
   }).not.toThrow();
   webslides.el.addEventListener('ws:slide-change', change);
   expect(document.getElementById('other')).toBe(null);
-  expect(webslides.slides.length).toBe(document.querySelectorAll('#webslides .slide').length);
-  webslides.slides.forEach( slide => {
+  expect(webslides.slides.length)
+      .toBe(document.querySelectorAll('#webslides .slide').length);
+  webslides.slides.forEach(slide => {
     expect(typeof slide).toBe('object');
   });
   expect(webslides.plugins.autoslide).not.toBe(null);
@@ -72,5 +72,4 @@ test('WebSlides utility', () => {
   expect(webslides.isDisabled()).toBe(true);
   webslides.enable();
   expect(webslides.isDisabled()).toBe(false);
-
 });

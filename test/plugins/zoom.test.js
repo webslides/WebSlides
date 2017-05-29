@@ -5,7 +5,7 @@ jest.useFakeTimers();
 
 // Copy of DOM.fireEvent, but using keydown
 const simulateKeyEvent = (el, code) => {
-  const evt = new KeyboardEvent("keydown", {
+  const evt = new KeyboardEvent('keydown', {
     bubbles: true,
     cancelableCode: true,
     which: code,
@@ -14,12 +14,12 @@ const simulateKeyEvent = (el, code) => {
 };
 
 beforeAll(() => {
-  const slides = '12345'.replace(/(\d)/g, '<div id="section-$1" class="slide"><div>Slide $1</div></div>');
+  const slides = '12345'.replace(/(\d)/g,
+      '<div id="section-$1" class="slide"><div>Slide $1</div></div>');
   document.body.innerHTML = `<div id="webslides">${slides}</div>`;
 });
 
 test('Zoom utility', () => {
-
   const ws = document.getElementById('webslides');
   const slides = ws.querySelectorAll('.slide');
   const goto = jest.fn();
@@ -33,9 +33,9 @@ test('Zoom utility', () => {
     enable: enable,
     disable: disable
   };
-  slides.forEach( slide => webslides.slides.push({el: slide}));
+  slides.forEach(slide => webslides.slides.push({el: slide}));
 
-  const zoom = new Zoom(webslides);
+  new Zoom(webslides);
 
   const zws = document.querySelector('#webslides-zoomed');
   const zoomSlides = zws.querySelectorAll('.slide');
@@ -62,5 +62,4 @@ test('Zoom utility', () => {
   expect(disable.mock.calls.length).toBe(1);
   expect(enable.mock.calls.length).toBe(1);
   expect(goto.mock.calls.length).toBe(1);
-
 });

@@ -1,9 +1,9 @@
-import DOM from '../../src/js/utils/dom';
 import Keyboard from '../../src/js/plugins/keyboard';
 import Keys from '../../src/js/utils/keys';
 
+// @TODO: Check to do this with simulant
 const simulateKeyEvent = (el, code) => {
-  const evt = new KeyboardEvent("keydown", {
+  const evt = new KeyboardEvent('keydown', {
     bubbles: true,
     cancelableCode: true,
     which: code,
@@ -12,7 +12,10 @@ const simulateKeyEvent = (el, code) => {
 };
 
 beforeAll(() => {
-  document.body.innerHTML = `<div id="webslides" data-test="test"><p>Text</p></div><input id="focusable" />`;
+  document.body.innerHTML = `<div id="webslides" data-test="test">
+                              <p>Text</p>
+                             </div>
+                             <input id="focusable" />`;
 });
 
 test('Keyboard plugin', () => {
@@ -20,7 +23,6 @@ test('Keyboard plugin', () => {
   const next = jest.fn();
   const prev = jest.fn();
   const ws = document.getElementById('webslides');
-  const focusable = document.getElementById('focusable');
 
   let disabled = true;
 
@@ -29,11 +31,11 @@ test('Keyboard plugin', () => {
     goNext: next,
     goPrev: prev,
     isVertical: false,
-    isDisabled: () => {return disabled;},
+    isDisabled: () => disabled,
     el: ws
   };
 
-  const keyboard = new Keyboard(webslides);
+  new Keyboard(webslides);
 
   expect(goto).not.toBeCalled();
   expect(next).not.toBeCalled();

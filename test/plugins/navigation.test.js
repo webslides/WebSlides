@@ -31,7 +31,7 @@ test('Navigation plugin', () => {
   expect(fakeCounter.childNodes[0].href).toBe('about:blank#');
   expect(fakeCounter.childNodes[0].title).toBe('View all slides');
 
-  const nav = new Navigation(webslides);
+  new Navigation(webslides);
 
   const navElem = ws.querySelector('#navigation');
   const counter = navElem.querySelector('#counter');

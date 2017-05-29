@@ -18,7 +18,9 @@ beforeAll(() => {
 
 test('Scroll utility', () => {
   // Forces mobile detection
-  window.navigator = {userAgent: 'Android'};
+  window.navigator = {
+    userAgent: 'Android'
+  };
   const ws = document.getElementById('webslides');
   const next = jest.fn();
   const prev = jest.fn();
@@ -26,7 +28,7 @@ test('Scroll utility', () => {
   let disabled = true;
   const webslides = {
     el: ws,
-    isDisabled: () => {return disabled;},
+    isDisabled: () => disabled,
     isMoving: false,
     isVertical: false,
     goNext: next,
@@ -38,7 +40,7 @@ test('Scroll utility', () => {
     }
   };
 
-  const scroll = new Scroll(webslides);
+  new Scroll(webslides);
   fireEvent(ws, 'wheel', 300, 200);
 
   expect(next).not.toBeCalled();
@@ -61,5 +63,4 @@ test('Scroll utility', () => {
   jest.runTimersToTime(201);
   expect(next.mock.calls.length).toBe(1);
   expect(prev.mock.calls.length).toBe(1);
-
 });

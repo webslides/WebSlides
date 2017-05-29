@@ -4,7 +4,8 @@ import AutoSlide from '../../src/js/plugins/autoslide';
 jest.useFakeTimers();
 
 beforeAll(() => {
-  document.body.innerHTML = `<div id="webslides"></div><input id="focusable" />`;
+  document.body.innerHTML =
+      `<div id="webslides"></div><input id="focusable" />`;
 });
 
 test('AutoSlide plugin', () => {
@@ -20,7 +21,7 @@ test('AutoSlide plugin', () => {
 
   expect(next).not.toBeCalled();
 
-  const autoslide = new AutoSlide(webslides);
+  new AutoSlide(webslides);
   DOM.fireEvent(ws, 'ws:init');
 
   // Wait until next execution
@@ -39,5 +40,4 @@ test('AutoSlide plugin', () => {
   jest.runTimersToTime(101);
 
   expect(next.mock.calls.length).toBe(2);
-
 });

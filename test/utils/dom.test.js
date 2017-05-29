@@ -142,7 +142,6 @@ describe('Animation', () => {
     expect(DOM.getAnimationEvent(fakeEl)).toBe('oAnimationEnd');
   });
 
-
   test('Prefixed Gecko', () => {
     const fakeEl = {
       style: {
@@ -152,7 +151,6 @@ describe('Animation', () => {
 
     expect(DOM.getAnimationEvent(fakeEl)).toBe('animationend');
   });
-
 
   test('Prefixed Webkit', () => {
     const fakeEl = {
@@ -268,3 +266,4 @@ describe('Focusble Element', () => {
     expect(DOM.isFocusableElement()).toBe(true);
   });
 });
+

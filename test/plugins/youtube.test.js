@@ -1,24 +1,16 @@
 import YouTube from '../../src/js/plugins/youtube';
 import DOM from '../../src/js/utils/dom';
 
-// Copy of DOM.fireEvent, but using touch offets
-const fireEvent = (target, eventType, offsetX, offsetY, touches) => {
-  const event = new CustomEvent(eventType);
-
-  event.offsetX = offsetX;
-  event.offsetY = offsetY;
-  event.touches = touches;
-
-  target.dispatchEvent(event);
-};
-
 beforeAll(() => {
-  const video = '<div id="section-1" class="slide"><div class="embed"><div data-youtube="video" data-youtube-id="CQY3KUR3VzM" data-autoplay data-loop></div></div></div>';
-  document.body.innerHTML = `<script></script><div id="webslides">${video}</div>`;
+  const video = '<div id="section-1" class="slide"><div class="embed">' +
+    '<div data-youtube="video" ' +
+    '     data-youtube-id="CQY3KUR3VzM" ' +
+    '     data-autoplay data-loop></div></div></div>';
+  document.body.innerHTML =
+    `<script></script><div id="webslides">${video}</div>`;
 });
 
 test('YouTube utility', () => {
-
   const ws = document.getElementById('webslides');
   const slides = ws.querySelectorAll('.slide');
   const play = jest.fn();
@@ -30,23 +22,32 @@ test('YouTube utility', () => {
     el: ws,
     slides: []
   };
-  slides.forEach( slide => webslides.slides.push({el: slide}));
+  slides.forEach(slide => webslides.slides.push({el: slide}));
 
   window.YT = {
     Player: function(a, b) {
-      return { getIframe: () => {
-        const div = DOM.createNode('div');
-        div.innerHTML = '<iframe id="widget8" src="https://www.youtube.com/embed/_m67JbGjWnc" title="YouTube video player" allowfullscreen="1" data-youtube-id="_m67JbGjWnc" frameborder="0" height="360" width="640"></iframe>';
-        webslides.slides[0].el.appendChild(div);
-        return div.querySelector('iframe');
-      } }
+      return {
+        getIframe: () => {
+          const div = DOM.createNode('div');
+          div.innerHTML =
+            `<iframe id="widget8" 
+                     src="https://www.youtube.com/embed/_m67JbGjWnc" 
+                     data-youtube-id="_m67JbGjWnc" 
+                     frameborder="0" height="360" width="640"></iframe>`;
+          webslides.slides[0].el.appendChild(div);
+          return div.querySelector('iframe');
+        }
+      };
     }
-  }
+  };
 
-  const youtube = new YouTube(webslides);
+  new YouTube(webslides);
 
   expect(typeof window.onYouTubeIframeAPIReady).toBe('function');
-  webslides.el.querySelector('[data-youtube]').dataset = {autoplay: true, youtubeId: 'CQY3KUR3VzM'};
+  webslides.el.querySelector('[data-youtube]').dataset = {
+    autoplay: true,
+    youtubeId: 'CQY3KUR3VzM'
+  };
 
   window.onYouTubeIframeAPIReady();
 
@@ -85,5 +86,4 @@ test('YouTube utility', () => {
   expect(pause.mock.calls.length).toBe(1);
   expect(destroy.mock.calls.length).toBe(1);
   expect(create.mock.calls.length).toBe(1);
-
 });

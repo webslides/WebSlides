@@ -2,7 +2,8 @@ import DOM from '../../src/js/utils/dom';
 import ClickNav from '../../src/js/plugins/click-nav';
 
 beforeAll(() => {
-  document.body.innerHTML = `<div id="webslides" data-test="test"><p>Text</p></div>`;
+  document.body.innerHTML =
+      `<div id="webslides" data-test="test"><p>Text</p></div>`;
 });
 
 test('Click nav plugin', () => {
@@ -20,7 +21,7 @@ test('Click nav plugin', () => {
 
   expect(next).not.toBeCalled();
 
-  const clicknav = new ClickNav(webslides);
+  new ClickNav(webslides);
   DOM.fireEvent(ws, 'click');
   expect(next.mock.calls.length).toBe(1);
 });

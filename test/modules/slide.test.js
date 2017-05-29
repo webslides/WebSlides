@@ -1,7 +1,8 @@
 import Slide from '../../src/js/modules/slide';
 
 beforeAll(() => {
-  const slides = '<section class="slide"><div class="content">Content</section>'.repeat(5);
+  const slides = '<section class="slide"><div class="content">Content</section>'
+      .repeat(5);
   document.body.innerHTML = `<div id="webslides">${slides}</div>`;
 });
 
@@ -19,9 +20,9 @@ test('Slide utility', () => {
   };
 
   expect(Slide.isCandidate(slides[0])).toBe(true);
-  slides.forEach( (slide, i) => webslides.slides.push(new Slide(slide, i)));
+  slides.forEach((slide, i) => webslides.slides.push(new Slide(slide, i)));
   expect(webslides.slides.length).toBe(slides.length);
-  webslides.slides.forEach( (slide, i) => {
+  webslides.slides.forEach((slide, i) => {
     expect(typeof slide).toBe('object');
     expect(slide.el).toBe(slides[i]);
     expect(slide.el.id).toBe(`section-${i+1}`);
