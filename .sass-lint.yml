@@ -1,95 +1,96 @@
+files:
+  include: 'src/scss/**/*.scss'
 options:
   formatter: stylish
-files:
-  include: '**/*.s+(a|c)ss'
+  merge-default-rules: false
 rules:
   # Extends
-  extends-before-mixins: 1
-  extends-before-declarations: 1
-  placeholder-in-extend: 1
+  extends-before-mixins: 2
+  extends-before-declarations: 2
+  placeholder-in-extend: 2
 
   # Mixins
-  mixins-before-declarations: 1
+  mixins-before-declarations: 2
 
   # Line Spacing
-  one-declaration-per-line: 1
-  empty-line-between-blocks: 1
-  single-line-per-selector: 1
+  one-declaration-per-line: 2
+  empty-line-between-blocks: 2
+  single-line-per-selector: 2
 
   # Disallows
   no-attribute-selectors: 0
   no-color-hex: 0
-  no-color-keywords: 1
-  no-color-literals: 1
+  no-color-keywords: 2
+  no-color-literals: 2
   no-combinators: 0
-  no-css-comments: 1
-  no-debug: 1
+  no-css-comments: 2
+  no-debug: 2
   no-disallowed-properties: 0
-  no-duplicate-properties: 1
-  no-empty-rulesets: 1
+  no-duplicate-properties: 2
+  no-empty-rulesets: 2
   no-extends: 0
   no-ids: 0
-  no-important: 1
-  no-invalid-hex: 1
-  no-mergeable-selectors: 1
-  no-misspelled-properties: 1
+  no-important: 2
+  no-invalid-hex: 2
+  no-mergeable-selectors: 2
+  no-misspelled-properties: 2
   no-qualifying-elements: 0
-  no-trailing-whitespace: 1
-  no-trailing-zero: 1
+  no-trailing-whitespace: 2
+  no-trailing-zero: 2
   no-transition-all: 0
   no-universal-selectors: 0
   no-url-domains: 0
   no-url-protocols: 0
-  no-vendor-prefixes: 1
-  no-warn: 1
+  no-vendor-prefixes: 2
+  no-warn: 2
   property-units: 0
 
   # Nesting
-  declarations-before-nesting: 1
+  declarations-before-nesting: 2
   force-attribute-nesting: 0
   force-element-nesting: 0
   force-pseudo-nesting: 0
 
   # Name Formats
   class-name-format: 0
-  function-name-format: 1
+  function-name-format: 2
   id-name-format: 0
-  mixin-name-format: 1
-  placeholder-name-format: 1
-  variable-name-format: 1
+  mixin-name-format: 2
+  placeholder-name-format: 2
+  variable-name-format: 2
 
   # Style Guide
-  attribute-quotes: 1
+  attribute-quotes: 2
   bem-depth: 0
-  border-zero: 1
-  brace-style: 1
-  clean-import-paths: 1
-  empty-args: 1
-  hex-length: 1
-  hex-notation: 1
-  indentation: 1
-  leading-zero: 1
+  border-zero: 2
+  brace-style: 2
+  clean-import-paths: 2
+  empty-args: 2
+  hex-length: 2
+  hex-notation: 2
+  indentation: 2
+  leading-zero: 2
   max-line-length: 0
   max-file-line-count: 0
-  nesting-depth: 1
-  property-sort-order: 1
+  nesting-depth: 2
+  property-sort-order: 2
   pseudo-element: 0
-  quotes: 1
-  shorthand-values: 1
-  url-quotes: 1
+  quotes: 2
+  shorthand-values: 2
+  url-quotes: 2
   variable-for-property: 0
-  zero-unit: 1
+  zero-unit: 2
 
   # Inner Spacing
-  space-after-comma: 1
-  space-before-colon: 1
-  space-after-colon: 1
-  space-before-brace: 1
-  space-before-bang: 1
-  space-after-bang: 1
-  space-between-parens: 1
-  space-around-operator: 1
+  space-after-comma: 2
+  space-before-colon: 2
+  space-after-colon: 2
+  space-before-brace: 2
+  space-before-bang: 2
+  space-after-bang: 2
+  space-between-parens: 2
+  space-around-operator: 2
 
   # Final Items
-  trailing-semicolon: 1
-  final-newline: 1
+  trailing-semicolon: 2
+  final-newline: 2
