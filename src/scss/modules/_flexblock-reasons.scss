@@ -1,0 +1,35 @@
+.flexblock.reasons {
+  li {
+    counter-increment: list;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-.2rem);
+    }
+
+    &:after {
+      bottom: -2.4rem;
+      content: '';
+      display: block;
+      height: 1px;
+      position: relative;
+    }
+
+    &:before {
+      content: counter(list)'.';
+      font-size: 6.4rem;
+      line-height: 1;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding-left: 8.8rem;
+
+    &:before {
+      left: 2.4rem;
+      position: absolute;
+    }
+  }
+}
+

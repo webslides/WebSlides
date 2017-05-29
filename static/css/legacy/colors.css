@@ -39,9 +39,7 @@ WebSlides - Colors
 Base
 =========================================== */
 
-body,
-/*index of slides: mini-slides same bg color as body */
-#webslides-zoomed .column > .wrap-zoom {
+body {
   color: #333;
   background-color: #f7f9fb;
 }
@@ -90,20 +88,20 @@ acronym {
 
 mark,
 ins {
-background-color: rgba(221,238,255, 0.8);
-color: inherit;
+  background-color: rgba(221,238,255, 0.8);
+  color: inherit;
 }
 
 ::-moz-selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221,238,255, 0.8);
 }
 
 ::-webkit-selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221,238,255, 0.8);
 }
 
 ::selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221,238,255, 0.8);
 }
 
 pre {
@@ -121,7 +119,7 @@ code,[class*="bg-"] pre {
 }
 
 .bg-white code{
-    background: rgba(0, 20, 80, 0.03);
+  background: rgba(0, 20, 80, 0.03);
 }
 /*================================================
 Slides - Backgrounds <section class="bg-primary">
@@ -220,7 +218,7 @@ Slides - Backgrounds <section class="bg-primary">
 
 /*Covers/Longforms...*/
 .bg-trans-gradient{
-background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
 }
 
 /*Horizontal Gradient*/
@@ -252,18 +250,20 @@ background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
 
 /*Gray Gradient (horizontal)*/
 .bg-gradient-gray{
-background: linear-gradient(90deg,#f7f9fb 0,#dee2e6 100%);
-color: #333;
-text-shadow: none;
+  background: linear-gradient(90deg,#f7f9fb 0,#dee2e6 100%);
+  color: #333;
+  text-shadow: none;
 }
 /*Border/Frame*/
 .frame {
   border: .8rem solid #fff;
 }
-
+[class*="background"].frame {
+  border-width: .2rem;
+}
 /*Layer/Box Shadow*/
 .shadow,.pre {
-position: relative;
+  position: relative;
 }
 .shadow:before,.shadow:after {
   box-shadow: 0 16px 24px rgba(0, 20, 80, 0.3);
@@ -276,16 +276,16 @@ TYPOGRAPHY
 /* -- Horizontal separator  -- */
 
 .text-separator:before {
-    background-color: rgba(170, 0, 0, 0.8);
+  background-color: rgba(170, 0, 0, 0.8);
 }
 
 /* -- Pull Quote (Right/Left)  -- */
 
 [class*="text-pull-"] {
-border-top: 4px solid rgba(0, 0, 0, 0.5);
+  border-top: 4px solid rgba(0, 0, 0, 0.5);
 }
 img[class*="text-pull-"],figure[class*="text-pull-"] {
-border-top: none;
+  border-top: none;
 }
 /* -- Context  -- */
 
@@ -392,7 +392,7 @@ Features & Clients List
 }
 
 .features li:hover,.clients li:hover  {
-box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
+  box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
 }
 /*.features li span,.features li svg{color: #44d;}*/
 
@@ -524,7 +524,7 @@ Gallery li+.overlay+image
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 .gallery li footer {
-border-top:1px solid rgba(0,20,80,0.1);
+  border-top:1px solid rgba(0,20,80,0.1);
 }
 
 .gallery li a {
@@ -689,7 +689,7 @@ Cards
 /*== Figure Background === */
 
 [class*="card-"][class*="bg-"] figure {
-background-color: rgba(0, 20, 80, 0.06);
+  background-color: rgba(0, 20, 80, 0.06);
 }
 
 /*== Ficaption Cards === */
@@ -815,7 +815,7 @@ input[type="submit"],
   text-shadow: 0 1px 0 #123;
 }
 .button:active,button[type="submit"]:active,input[type="submit"]:active {
-background-color: #17d;
+  background-color: #17d;
 }
 .ghost,.ghost:hover {background: none;color: inherit;text-shadow: none;}
 .bg-primary select,
@@ -919,18 +919,3 @@ footer[role=contentinfo] {
 background-color:rgba(255,255,255 , 0.3);
 }
 */
-
-/*============================
-Slides Index
-============================== */
-
-#webslides-zoomed .column > .wrap-zoom {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
-}
-#webslides-zoomed .column > .wrap-zoom:hover {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
-}
-.text-slide-number {
-  /*background-color: rgba(255, 255, 255, 0.1);*/
-  color: #abc;
- }
