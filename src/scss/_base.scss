@@ -1,5 +1,4 @@
 // sass-lint:disable no-vendor-prefixes
-// sass-lint:disable no-misspelled-properties
 .ws-ready {
   &,
   body {
@@ -11,7 +10,7 @@
 
 #webslides {
   -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-misspelled-properties
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -150,7 +149,7 @@ $sizes: 80, 70, 60, 50, 40, 30, 20;
 
 @media (min-width: 1024px) {
   @each $size in $sizes {
-    .size#{$size} {
+    .size-#{$size} {
       width: $size + '%';
     }
   }
