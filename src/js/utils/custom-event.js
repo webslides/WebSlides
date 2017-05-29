@@ -15,6 +15,7 @@ function canIuseNativeCustom() {
     return 't' === p.type && 'b' === p.detail.a;
   } catch (e) { }
 
+  /* istanbul ignore next: hard to reproduce on test environment  */
   return false;
 }
 
@@ -25,6 +26,7 @@ function canIuseNativeCustom() {
  * @return {Event}
  * @constructor
  */
+/* istanbul ignore next: hard to reproduce on test environment  */
 const IECustomEvent = function CustomEvent(type, params) {
   const e = document.createEvent('CustomEvent');
 
@@ -37,6 +39,7 @@ const IECustomEvent = function CustomEvent(type, params) {
   return e;
 };
 
+/* istanbul ignore next: hard to reproduce on test environment  */
 const WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 
 export default WSCustomEvent;
