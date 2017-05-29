@@ -2,6 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/release/webslides/webslides.svg)](https://github.com/webslides/webslides/releases/latest)
+[![codecov](https://codecov.io/gh/webslides/WebSlides/branch/master/graph/badge.svg)](https://codecov.io/gh/webslides/WebSlides)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/jlantunez/8)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/webslides/webslides.svg?style=social)](https://twitter.com/webslides)
 
