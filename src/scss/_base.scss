@@ -94,7 +94,6 @@ footer nav {
   }
 }
 
-
 .frame,
 .shadow {
   padding: 2.4rem;
@@ -148,12 +147,6 @@ figure.alignleft {
 }
 
 $sizes: 80, 70, 60, 50, 40, 30, 20;
-
-@each $size in $avatar-sizes {
-  img.avatar-#{$size} {
-    @include square(#{$size}px);
-  }
-}
 
 @media (min-width: 1024px) {
   @each $size in $sizes {

@@ -487,7 +487,7 @@ img.graylogo:hover {
 
 [class*='card'] figcaption,
 [class*='card'] figcaption a {
-  background: linear-gradient(to bottom, rgba($black 0) 0%, rgba($black, .2) 100%);
+  background: linear-gradient(to bottom, rgba($black, 0) 0%, rgba($black, .2) 100%);
   color: $white;
 }
 
