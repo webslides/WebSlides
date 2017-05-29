@@ -2,7 +2,8 @@ import DOM from '../../src/js/utils/dom';
 import Hash from '../../src/js/plugins/hash';
 
 beforeAll(() => {
-  document.body.innerHTML = `<div id="webslides" data-test="test"><p>Text</p></div>`;
+  document.body.innerHTML =
+      `<div id="webslides" data-test="test"><p>Text</p></div>`;
 });
 
 test('Hash plugin', () => {
@@ -21,7 +22,7 @@ test('Hash plugin', () => {
 
   expect(goto).not.toBeCalled();
 
-  const hash = new Hash(webslides);
+  new Hash(webslides);
 
   expect(Hash.getSlideNumber()).toBe(0);
   DOM.fireEvent(ws, 'ws:slide-change', {

@@ -5,6 +5,7 @@
 # Third Party #
 ###############
 node_modules/
+coverage
 
 # OS generated files #
 ######################

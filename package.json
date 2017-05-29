@@ -35,6 +35,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-es2015": "^6.24.1",
+    "codecov": "^2.2.0",
     "css-loader": "^0.28.3",
     "eslint": "^3.19.0",
     "eslint-loader": "^1.7.1",
@@ -58,7 +59,10 @@
     "build:normal": "webpack",
     "build:min": "webpack --output-filename [name].min.js -p",
     "dev": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest && codecov"
+  },
+  "jest": {
+    "collectCoverage": true
   },
   "babel": {
     "presets": [
