@@ -7,6 +7,47 @@
  * Credits: @jlantunez, @LuisSacristan, @Belelros
  */
 @charset "UTF-8";
+/*-----------------------------------------------------------------------------------
+	0. CSS Reset & Normalize
+	1. Base
+		1.1 Wrap/Container
+		1.2 Animations
+		1.3 Responsive Media (videos, iframe, screenshots...)
+		1.4 Basic Grid (2,3,4 columns)
+	2. Typography & Lists
+		2.1 Headings with background
+		2.2 Classes: .text-
+		2.3 San Francisco Font (Apple)
+	3. Header & Footer
+		3.1 Logo
+	4. Navigation
+		4.1 Navbars
+	5. SLIDES (vertically and horizontally centered)
+		5.1 Mini container & Alignment
+		5.2 Counter / Navigation Slides
+		5.3 Background Images/Video
+	6. Magic blocks = .flexblock (Flexible blocks with auto-fill and equal height).
+		6.1 .flexblock.features
+		6.2 .flexblock.clients
+		6.3 .flexblock.steps
+		6.4 .flexblock.metrics
+		6.5 .flexblock.specs
+		6.6 .flexblock.reasons
+		6.7 .flexblock.gallery
+		6.8 .flexblock.plans
+		6.9. flexblock.activity
+	7. Promos/Offers (pricing, tagline, CTA...)
+	8. Work / Resume / CV
+	9. Table of contents
+	10. Cards
+	11. Quotes
+	12. Avatars
+	13. Tables
+	14. Forms
+  15. Longform Elements
+	16. Safari Bug (flex-wrap)
+	17. Print
+----------------------------------------------------------------------------------- */
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }
@@ -135,6 +176,11 @@
     -webkit-animation-duration: 5s;
             animation-duration: 5s; }
 
+/*
+=========================================
+0. CSS Reset & Normalize
+=========================================
+*/
 html,
 body,
 div,
@@ -515,19 +561,19 @@ figure.alignleft {
   margin: .8rem 2.4rem .8rem 0; }
 
 @media (min-width: 1024px) {
-  .size80 {
+  .size-80 {
     width: "80%"; }
-  .size70 {
+  .size-70 {
     width: "70%"; }
-  .size60 {
+  .size-60 {
     width: "60%"; }
-  .size50 {
+  .size-50 {
     width: "50%"; }
-  .size40 {
+  .size-40 {
     width: "40%"; }
-  .size30 {
+  .size-30 {
     width: "30%"; }
-  .size20 {
+  .size-20 {
     width: "20%"; } }
 
 pre,
