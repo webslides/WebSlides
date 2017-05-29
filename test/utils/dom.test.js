@@ -191,6 +191,23 @@ describe('Show/hide', () => {
     DOM.hide(el);
     expect(el.style.display).toBe('none');
   });
+
+  test('Is visible', () => {
+    // offsetParent doesn't work nice with JSDom
+    const el = DOM.createNode('div');
+    let offsetParent = document.body;
+    el.style.display = 'block';
+
+    document.body.appendChild(el);
+    Object.defineProperty(el, 'offsetParent', {get: () => offsetParent});
+    expect(DOM.isVisible(el)).toBe(true);
+
+    DOM.hide(el);
+    offsetParent = null;
+
+    expect(DOM.isVisible(el)).toBe(false);
+    document.body.removeChild(el);
+  });
 });
 
 describe('Custom Event', () => {
@@ -229,7 +246,7 @@ describe('To Array', () => {
   });
 });
 
-describe('Focusble Element', () => {
+describe('Focusable Element', () => {
   beforeEach(() => {
     document.body.innerHTML = `      
       <p id="noContent" tabindex="0"></p>
