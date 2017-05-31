@@ -1,3 +1,5 @@
+/* === 5.2 Counter / Navigation Slides  === */
+
 #navigation {
   animation: fadeIn 8s;
   bottom: 0;
@@ -8,6 +10,7 @@
   position: fixed;
   right: 0;
   width: 24.4rem;
+  /* hover/visibility */
   z-index: 4;
 
   &:hover {

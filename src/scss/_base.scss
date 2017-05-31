@@ -1,4 +1,12 @@
 // sass-lint:disable no-vendor-prefixes
+
+/*=========================================
+1. Base --> Baseline: 8px = .8rem
+=========================================== */
+
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
+
 .ws-ready {
   &,
   body {

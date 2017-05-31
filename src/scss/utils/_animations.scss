@@ -1,3 +1,10 @@
+/* === 1.2 Animations ================
+Just 5 basic animations:
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight
+https://github.com/daneden/animate.css */
+
+/*-- fadeIn -- */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -12,6 +19,7 @@
   animation: fadeIn 1s;
 }
 
+/*-- fadeInUp -- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -28,6 +36,7 @@
   animation: fadeInUp 1s;
 }
 
+/*-- zoomIn -- */
 @keyframes zoomIn {
   from {
     transform: scale3d(.3, .3, .3);
@@ -42,6 +51,7 @@
   animation: zoomIn 1s;
 }
 
+/*-- slideInLeft -- */
 @keyframes slideInLeft {
   from {
     transform: translate3d(-100%, 0, 0);
@@ -58,6 +68,7 @@
   animation-fill-mode: both;
 }
 
+/*-- slideInRight -- */
 @keyframes slideInRight {
   from {
     transform: translate3d(100%, 0, 0);
@@ -74,7 +85,7 @@
   animation-fill-mode: both;
 }
 
-
+/* Animated Background (Matrix) */
 @keyframes anim {
   0% {
     transform: translateY(0);
@@ -85,7 +96,7 @@
   }
 }
 
-
+/* Duration */
 .slow {
   animation-duration: 4s;
 

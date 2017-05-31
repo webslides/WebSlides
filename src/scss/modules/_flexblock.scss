@@ -1,3 +1,8 @@
+/*===============================================================
+6. Magic blocks with flexbox (Auto-fill & Equal Height)
+Blocks Links li>a = .flexblock.blink (.blink required)
+================================================================= */
+
 .flexblock {
   clear: both;
   display: flex;
@@ -78,8 +83,6 @@ footer .column h3 {
   line-height: 3.2rem;
   margin-bottom: 0;
 }
-
-
 
 .flexblock li li,
 .flexblock.blink li li {

@@ -1,5 +1,13 @@
 // sass-lint:disable no-color-literals
 // sass-lint:disable no-vendor-prefixes
+
+/*=========================================
+Colors
+=========================================== */
+
+/* -- Disable elastic scrolling/bounce:
+webslides.js will add .ws-ready automatically. Don't worry :) -- */
+
 body {
   background-color: $body-bg;
   color: $body-color;

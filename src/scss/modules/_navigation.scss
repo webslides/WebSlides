@@ -1,7 +1,22 @@
+/*=========================================
+4. Navigation
+=========================================== */
+
+/*=== 4.1. Navbars === */
+
 nav ul {
   display: flex;
   flex-wrap: wrap;
+  /*====align left====*/
   justify-content: flex-start;
+  /* ==== align center ====*/
+  /*justify-content: center; */
+  /*====align right====*/
+  /* justify-content: flex-end; */
+  /*====separated columns li a====*/
+  /* justify-content: space-between; */
+  /*====separated columns centered li a====*/
+  /*justify-content: space-around;*/
 
   li {
     float: left;
@@ -36,10 +51,12 @@ header nav ul {
 
 nav.aligncenter ul,
 .aligncenter nav ul {
+  /* ==== align center ====*/
   justify-content: center;
 }
 
 nav.navbar ul li {
+  /*====full float li a ====*/
   flex: 1 1 auto;
 }
 

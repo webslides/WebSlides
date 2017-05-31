@@ -25,11 +25,12 @@
 
   @media (min-width: 768px) {
     padding-left: 8.8rem;
-
+    /* You need two digits? (1-10)*/
+    /*padding-left: 12rem; */
+}
     &:before {
       left: 2.4rem;
       position: absolute;
     }
   }
 }
-

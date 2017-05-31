@@ -1,3 +1,11 @@
+/*============================================
+5. SLIDES (Full Screen)
+Vertically and horizontally centered
+============================================== */
+
+/* Fade transition to all slides.
+* = All HTML elements will have those styles.*/
+
 section * {
   animation: fadeIn .6s ease-in-out;
 }
@@ -8,13 +16,17 @@ section .dark {
   animation-duration: 0s;
 }
 
+/*=== Section = Slide === */
+
 section,
 .slide {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100vh; /*Fullscreen*/
+  /* Prototyping? min-height: 720px (Baseline: 8px = .8rem)*/
   padding: 2.4rem;
+  /*Fixed/Visible header? padding-top: 12rem; */
   page-break-after: always;
   position: relative;
   word-wrap: break-word;
@@ -24,18 +36,24 @@ section,
     padding-top: 12rem;
   }
 }
-
+/*slide with no padding (full card, .embed youtube video...) */
 .fullscreen {
-  padding: 0;
+  padding: 0
+  /* Fixed/Visible header?
+  padding:8.2rem 0 0 0;
+  */
 }
-
+/* slide alignment - top */
 .slide-top {
   justify-content: flex-start;
 }
-
+/* slide alignment - bottom */
 .slide-bottom {
   justify-content: flex-end;
 }
+
+/*== 5.1. Mini container width:50%
+Aligned items [class*="content-"]=== */
 
 [class*='content-'] {
   position: relative;

@@ -1,3 +1,5 @@
+/*=== 3.1. Logo === */
+
 .logo {
   text-transform: lowercase;
 
@@ -7,6 +9,8 @@
     float: left;
     height: 4.8rem;
     text-indent: -4000px;
+    /*If you remove text-indent and add: */
+    /*padding-left: 6rem;*/
     vertical-align: middle;
     width: 4.8rem;
   }

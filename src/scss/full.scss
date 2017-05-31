@@ -44,41 +44,51 @@
 @import 'utils/mixins';
 @import 'utils/animations';
 @import 'utils/reset';
-@import 'base';
-@import 'color';
-@import 'typography';
-
-@import 'utils/bugs';
 @import 'utils/clear';
 
-@import 'modules/avatars';
-@import 'modules/badges';
+@import 'base';
+@import 'typography';
+
+@import 'modules/media';
 @import 'modules/browser';
-@import 'modules/button';
-@import 'modules/cards';
-@import 'modules/flexblock';
-@import 'modules/flexblock-activity';
-@import 'modules/flexblock-clients';
-@import 'modules/flexblock-features';
-@import 'modules/flexblock-gallery';
-@import 'modules/flexblock-metrics';
-@import 'modules/flexblock-plans';
-@import 'modules/flexblock-reasons';
-@import 'modules/flexblock-specs';
-@import 'modules/flexblock-steps';
-@import 'modules/form';
 @import 'modules/grid';
+
 @import 'modules/header-footer';
 @import 'modules/logo';
-@import 'modules/longform';
-@import 'modules/media';
 @import 'modules/navigation';
-@import 'modules/print';
-@import 'modules/promos';
-@import 'modules/quotes';
+
 @import 'modules/slides';
 @import 'modules/slides-bg';
 @import 'modules/slides-navigation';
-@import 'modules/tables';
-@import 'modules/toc';
+
+@import 'modules/flexblock';
+@import 'modules/flexblock-features';
+@import 'modules/flexblock-clients';
+@import 'modules/flexblock-steps';
+@import 'modules/flexblock-metrics';
+@import 'modules/flexblock-specs';
+@import 'modules/flexblock-reasons';
+@import 'modules/flexblock-gallery';
+@import 'modules/flexblock-plans';
+@import 'modules/flexblock-activity';
+@import 'modules/promos';
 @import 'modules/work';
+@import 'modules/toc';
+
+@import 'modules/cards';
+
+@import 'modules/quotes';
+@import 'modules/avatars';
+
+@import 'modules/tables';
+
+@import 'modules/form';
+@import 'modules/button';
+@import 'modules/badges';
+
+@import 'modules/longform';
+
+@import 'utils/bugs';
+@import 'modules/print';
+
+@import 'color';

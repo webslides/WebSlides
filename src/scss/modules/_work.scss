@@ -1,3 +1,7 @@
+/*=========================================
+8. Work/Resumé/CV <ul class="work">
+=========================================== */
+
 .work {
   clear: both;
   display: flex;
@@ -20,6 +24,7 @@
 
   p {
     margin-bottom: 0;
+    transition: .3s
   }
 
   li a {
@@ -28,11 +33,6 @@
     height: 100%;
     padding: 2.4rem 0;
     width: 100%;
-  }
-
-  li a p,
-  li:first-child a:hover p:first-child {
-    transition: .3s;
   }
 
   li p {
@@ -105,10 +105,4 @@
     position: absolute;
     width: 1px;
   }
-}
-
-.text-pull.embed {
-  margin-left: -2.4rem;
-  margin-right: -2.4rem;
-  padding-bottom: 60.6%;
 }

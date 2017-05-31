@@ -1,3 +1,7 @@
+/*=========================================
+11. Quotes
+=========================================== */
+
 blockquote {
   display: inline-block;
   position: relative;
@@ -11,14 +15,9 @@ blockquote {
     }
   }
 }
-
+/* -- Interviews dl.text-interview -- */
 dd blockquote p:last-child {
   margin-bottom: 0;
-}
-
-.bg-apple blockquote p {
-  font-family: 'San Francisco', 'Roboto', helvetica, arial, sans-serif;
-  font-weight: 300;
 }
 
 cite {
@@ -34,9 +33,12 @@ cite {
 cite span {
   display: block;
 }
+/* -- A big Blockquote -- */
+/* .wall will be deprecated soon. Use .text-quote ;) */
 
 .text-quote,
 .wall {
+  /* Versatility: blockquote, p, h2... */
   position: relative;
 
   &:before {

@@ -1,3 +1,5 @@
+/*=== 5.3 Slides - Background Images/Videos === */
+
 .background,
 [class*='background-'] {
   background-repeat: no-repeat;
@@ -7,6 +9,8 @@
   right: 0;
   top: 0;
 }
+
+/*=== BG Positions === */
 
 .background {
   background-position: center;
@@ -64,12 +68,18 @@
     }
   }
 
+  /*fullscreen video
+    <video class="background-video">
+  */
+
   &-video {
     height: 100%;
     object-fit: fill;
     width: 100%;
   }
 }
+/*=== bg image/video overlay === */
+/*-- [class*="bg-"] .background.dark, [class*="bg-"] .embed.dark...  -- */
 
 [class*='bg-'] .light,
 [class*='bg-'] .light {
@@ -96,6 +106,8 @@
   }
 }
 
+/*=== Animated Background Image === */
+
 .background.anim {
   animation: anim 80s linear infinite;
   background-position: center top;
@@ -104,6 +116,10 @@
   height: 200%;
 
 }
+
+/*=== Background with a frame === */
+/*<span class="background" style="background-image:url('image.jpg')"></span>
+<span class="background frame"></span>*/
 
 [class*='background'].frame {
   margin: 2.4rem;
