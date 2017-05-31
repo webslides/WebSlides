@@ -17,7 +17,6 @@ section .dark {
 }
 
 /*=== Section = Slide === */
-
 section,
 .slide {
   display: flex;
@@ -36,17 +35,20 @@ section,
     padding-top: 12rem;
   }
 }
+
 /*slide with no padding (full card, .embed youtube video...) */
 .fullscreen {
-  padding: 0
+  padding: 0;
   /* Fixed/Visible header?
   padding:8.2rem 0 0 0;
   */
 }
+
 /* slide alignment - top */
 .slide-top {
   justify-content: flex-start;
 }
+
 /* slide alignment - bottom */
 .slide-bottom {
   justify-content: flex-end;
@@ -54,7 +56,6 @@ section,
 
 /*== 5.1. Mini container width:50%
 Aligned items [class*="content-"]=== */
-
 [class*='content-'] {
   position: relative;
   text-align: left;

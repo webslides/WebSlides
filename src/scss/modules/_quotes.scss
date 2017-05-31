@@ -15,6 +15,7 @@ blockquote {
     }
   }
 }
+
 /* -- Interviews dl.text-interview -- */
 dd blockquote p:last-child {
   margin-bottom: 0;
@@ -33,9 +34,9 @@ cite {
 cite span {
   display: block;
 }
+
 /* -- A big Blockquote -- */
 /* .wall will be deprecated soon. Use .text-quote ;) */
-
 .text-quote,
 .wall {
   /* Versatility: blockquote, p, h2... */

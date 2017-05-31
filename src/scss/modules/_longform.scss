@@ -36,12 +36,14 @@
     font-size: 1.6rem;
     line-height: 2.4rem;
   }
+
   /* Mobile: video full width */
   .text-pull.embed {
     margin-left: -2.4rem;
     margin-right: -2.4rem;
     padding-bottom: 60.6%;
   }
+
   @media (min-width: 1280px) {
     [class*='text-pull-'] {
       max-width: 32%;
