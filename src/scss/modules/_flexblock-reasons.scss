@@ -4,11 +4,11 @@
     text-align: left;
     width: 100%;
 
-    &:hover {
+    li:hover {
       transform: translateY(-.2rem);
     }
 
-    &:after {
+    li:after {
       bottom: -2.4rem;
       content: '';
       display: block;
@@ -16,7 +16,7 @@
       position: relative;
     }
 
-    &:before {
+    li:before {
       content: counter(list)'.';
       font-size: 6.4rem;
       line-height: 1;
@@ -24,11 +24,11 @@
   }
 
   @media (min-width: 768px) {
-    padding-left: 8.8rem;
+    li { padding-left: 8.8rem;
     /* You need two digits? (1-10)*/
     /*padding-left: 12rem; */
 }
-    &:before {
+    li:before {
       left: 2.4rem;
       position: absolute;
     }
