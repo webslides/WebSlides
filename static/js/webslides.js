@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-05-29
+ * Date: 2017-05-31
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2954,6 +2954,7 @@ function canIuseNativeCustom() {
     return 't' === p.type && 'b' === p.detail.a;
   } catch (e) {}
 
+  /* istanbul ignore next: hard to reproduce on test environment  */
   return false;
 }
 
@@ -2964,6 +2965,7 @@ function canIuseNativeCustom() {
  * @return {Event}
  * @constructor
  */
+/* istanbul ignore next: hard to reproduce on test environment  */
 var IECustomEvent = function CustomEvent(type, params) {
   var e = document.createEvent('CustomEvent');
 
@@ -2976,6 +2978,7 @@ var IECustomEvent = function CustomEvent(type, params) {
   return e;
 };
 
+/* istanbul ignore next: hard to reproduce on test environment  */
 var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 
 /* harmony default export */ __webpack_exports__["a"] = (WSCustomEvent);
@@ -2994,16 +2997,7 @@ function swing(p) {
   return 0.5 - Math.cos(p * Math.PI) / 2;
 }
 
-/**
- * Linear easing function.
- * @param {number} p The percentage of time that has passed.
- * @return {number}
- */
-function linear(p) {
-  return p;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = ({ swing: swing, linear: linear });
+/* harmony default export */ __webpack_exports__["a"] = ({ swing: swing });
 
 /***/ }),
 /* 21 */
