@@ -401,8 +401,8 @@ nav a[rel='external'] em,
     z-index: -1; }
   .shadow:after {
     right: 2.4rem;
-    -webkit-transform: rotate(-3deg);
-            transform: rotate(-3deg); }
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg); }
   .shadow:before {
     left: 2.4rem;
     -webkit-transform: rotate(-3deg);
