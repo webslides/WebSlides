@@ -47,141 +47,8 @@
   15. Longform Elements
 	16. Safari Bug (flex-wrap)
 	17. Print
+  18. Colors
 ----------------------------------------------------------------------------------- */
-/* === 1.2 Animations ================
-Just 5 basic animations:
-.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight
-https://github.com/daneden/animate.css */
-/*-- fadeIn -- */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
-.fadeIn {
-  -webkit-animation: fadeIn 1s;
-          animation: fadeIn 1s; }
-
-/*-- fadeInUp -- */
-@-webkit-keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0); }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none; } }
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0); }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none; } }
-
-.fadeInUp {
-  -webkit-animation: fadeInUp 1s;
-          animation: fadeInUp 1s; }
-
-/*-- zoomIn -- */
-@-webkit-keyframes zoomIn {
-  from {
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-            transform: scale3d(0.3, 0.3, 0.3); }
-  50% {
-    opacity: 1; } }
-@keyframes zoomIn {
-  from {
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-            transform: scale3d(0.3, 0.3, 0.3); }
-  50% {
-    opacity: 1; } }
-
-.zoomIn {
-  -webkit-animation: zoomIn 1s;
-          animation: zoomIn 1s; }
-
-/*-- slideInLeft -- */
-@-webkit-keyframes slideInLeft {
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); } }
-@keyframes slideInLeft {
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); } }
-
-.slideInLeft {
-  -webkit-animation: slideInLeft 1s;
-          animation: slideInLeft 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both; }
-
-/*-- slideInRight -- */
-@-webkit-keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-    visibility: visible; }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); } }
-@keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-    visibility: visible; }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); } }
-
-.slideInRight {
-  -webkit-animation: slideInRight 1s;
-          animation: slideInRight 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both; }
-
-/* Animated Background (Matrix) */
-@-webkit-keyframes anim {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  100% {
-    -webkit-transform: translateY(-1200px);
-            transform: translateY(-1200px); } }
-@keyframes anim {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
-  100% {
-    -webkit-transform: translateY(-1200px);
-            transform: translateY(-1200px); } }
-
-/* Duration */
-.slow {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s; }
-  .slow + .slow {
-    -webkit-animation-duration: 5s;
-            animation-duration: 5s; }
-
 /*
 =========================================
 0. CSS Reset & Normalize
@@ -491,6 +358,7 @@ webslides.js will add .ws-ready automatically. Don't worry :) -- */
   #webslides::-webkit-scrollbar {
     display: none; }
 
+/* -- Prototype faster - Vertical rhythm  -- */
 .baseline {
   background: url("../images/baseline.png") left top 0.8rem/0.8rem; }
 
@@ -539,6 +407,7 @@ nav a[rel='external'] em,
     -webkit-transform: rotate(-3deg);
             transform: rotate(-3deg); }
 
+/*=== 1.1 WRAP/CONTAINER === */
 .wrap,
 header nav,
 footer nav {
@@ -597,21 +466,22 @@ svg.alignleft,
 figure.alignleft {
   margin: .8rem 2.4rem .8rem 0; }
 
+/*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
 @media (min-width: 1024px) {
   .size-80 {
-    width: 80%; }
+    width: "80%"; }
   .size-70 {
-    width: 70%; }
+    width: "70%"; }
   .size-60 {
-    width: 60%; }
+    width: "60%"; }
   .size-50 {
-    width: 50%; }
+    width: "50%"; }
   .size-40 {
-    width: 40%; }
+    width: "40%"; }
   .size-30 {
-    width: 30%; }
+    width: "30%"; }
   .size-20 {
-    width: 20%; } }
+    width: "20%"; } }
 
 pre,
 code {
@@ -633,6 +503,280 @@ pre {
 
 code {
   padding: .4rem; }
+
+/* === 1.2 Animations ================
+Just 5 basic animations:
+.fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight
+https://github.com/daneden/animate.css */
+/*-- fadeIn -- */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fadeIn {
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s; }
+
+/*-- fadeInUp -- */
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none; } }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none; } }
+
+.fadeInUp {
+  -webkit-animation: fadeInUp 1s;
+          animation: fadeInUp 1s; }
+
+/*-- zoomIn -- */
+@-webkit-keyframes zoomIn {
+  from {
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+            transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+@keyframes zoomIn {
+  from {
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+            transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+
+.zoomIn {
+  -webkit-animation: zoomIn 1s;
+          animation: zoomIn 1s; }
+
+/*-- slideInLeft -- */
+@-webkit-keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+.slideInLeft {
+  -webkit-animation: slideInLeft 1s;
+          animation: slideInLeft 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both; }
+
+/*-- slideInRight -- */
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+.slideInRight {
+  -webkit-animation: slideInRight 1s;
+          animation: slideInRight 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both; }
+
+/* Animated Background (Matrix) */
+@-webkit-keyframes anim {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  100% {
+    -webkit-transform: translateY(-1200px);
+            transform: translateY(-1200px); } }
+@keyframes anim {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  100% {
+    -webkit-transform: translateY(-1200px);
+            transform: translateY(-1200px); } }
+
+/* Duration */
+.slow {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s; }
+  .slow + .slow {
+    -webkit-animation-duration: 5s;
+            animation-duration: 5s; }
+
+/*=== 1.3 Responsive Media (videos, iframe...) === */
+.embed {
+  height: 0;
+  overflow: hidden;
+  /*aspect ratio:16:9*/
+  padding-bottom: 56.6%;
+  /*aspect ratio: 4:3*/
+  /*padding-bottom: 75%;*/
+  position: relative;
+  /* -- Responsive background video
+  https://fvsch.com/code/video-background/ -- */ }
+  .embed iframe,
+  .embed object,
+  .embed embed,
+  .embed video {
+    height: 100%;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100%; }
+  .fullscreen > .embed {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    padding-bottom: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    /* 1. No object-fit support: */ }
+    .fullscreen > .embed > iframe,
+    .fullscreen > .embed > object,
+    .fullscreen > .embed > embed,
+    .fullscreen > .embed > video {
+      /* 2. If supporting object-fit, overriding (1): */ }
+      @media (min-aspect-ratio: 16 / 9) {
+        .fullscreen > .embed > iframe,
+        .fullscreen > .embed > object,
+        .fullscreen > .embed > embed,
+        .fullscreen > .embed > video {
+          height: 300%;
+          top: -100%; } }
+      @media (max-aspect-ratio: 16 / 9) {
+        .fullscreen > .embed > iframe,
+        .fullscreen > .embed > object,
+        .fullscreen > .embed > embed,
+        .fullscreen > .embed > video {
+          left: -100%;
+          width: 300%; } }
+      @supports ((-o-object-fit: cover) or (object-fit: cover)) {
+        .fullscreen > .embed > iframe,
+        .fullscreen > .embed > object,
+        .fullscreen > .embed > embed,
+        .fullscreen > .embed > video {
+          height: 100%;
+          left: 0;
+          -o-object-fit: cover;
+             object-fit: cover;
+          top: 0;
+          width: 100%; } }
+
+/*=== HTML Browser (Screenshots) ================ */
+/* <figure class="browser"> img </figure> */
+.browser {
+  border-radius: .3rem;
+  margin: 0 auto 3.2rem;
+  max-width: 1024px;
+  overflow: hidden; }
+  li .browser {
+    margin-bottom: 0; }
+  h1 + .browser,
+  h2 + .browser,
+  p + .browser {
+    margin-top: 4.8rem; }
+  .browser figcaption {
+    padding: 2.4rem; }
+  .browser:before {
+    content: '\25CF   \25CF   \25CF';
+    font-size: .8rem;
+    left: 0;
+    line-height: 0;
+    padding: 1.6rem;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 100%; }
+    @media (min-width: 768px) {
+      .browser:before {
+        font-size: 1.6rem; } }
+
+/*=== 1.4. Basic Grid (Flexible blocks)
+Auto-fill & Equal height === */
+.grid {
+  clear: both;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto; }
+  .grid:after {
+    clear: both; }
+  .grid:before {
+    content: '';
+    display: table; }
+  .grid > .column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 2.4rem;
+    position: relative;
+    -webkit-transition: .3s;
+    transition: .3s;
+    width: 100%; }
+  .grid.vertical-align .column {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  @media (min-width: 768px) {
+    .grid > .column {
+      width: 25%; }
+    .grid.sm .column:nth-child(1) {
+      width: 30%; }
+    .grid.sm .column:nth-child(2) {
+      width: 70%; }
+    .grid.ms .column:nth-child(1) {
+      width: 70%; }
+    .grid.ms .column:nth-child(2) {
+      width: 30%; }
+    .grid.sms .column:nth-child(2) {
+      width: 50%; } }
 
 /*============================
 2. TYPOGRAPHY & LISTS
@@ -1097,146 +1241,6 @@ figure[class*='text-pull-'] {
   font-family: 'San Francisco';
   font-weight: bold;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2"); }
-
-/*=== 1.3 Responsive Media (videos, iframe...) === */
-.embed {
-  height: 0;
-  overflow: hidden;
-  /*aspect ratio:16:9*/
-  padding-bottom: 56.6%;
-  /*aspect ratio: 4:3*/
-  /*padding-bottom: 75%;*/
-  position: relative;
-  /* -- Responsive background video
-  https://fvsch.com/code/video-background/ -- */ }
-  .embed iframe,
-  .embed object,
-  .embed embed,
-  .embed video {
-    height: 100%;
-    left: 0;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    width: 100%; }
-  .fullscreen > .embed {
-    bottom: 0;
-    height: auto;
-    left: 0;
-    padding-bottom: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    /* 1. No object-fit support: */ }
-    .fullscreen > .embed > iframe,
-    .fullscreen > .embed > object,
-    .fullscreen > .embed > embed,
-    .fullscreen > .embed > video {
-      /* 2. If supporting object-fit, overriding (1): */ }
-      @media (min-aspect-ratio: 16 / 9) {
-        .fullscreen > .embed > iframe,
-        .fullscreen > .embed > object,
-        .fullscreen > .embed > embed,
-        .fullscreen > .embed > video {
-          height: 300%;
-          top: -100%; } }
-      @media (max-aspect-ratio: 16 / 9) {
-        .fullscreen > .embed > iframe,
-        .fullscreen > .embed > object,
-        .fullscreen > .embed > embed,
-        .fullscreen > .embed > video {
-          left: -100%;
-          width: 300%; } }
-      @supports ((-o-object-fit: cover) or (object-fit: cover)) {
-        .fullscreen > .embed > iframe,
-        .fullscreen > .embed > object,
-        .fullscreen > .embed > embed,
-        .fullscreen > .embed > video {
-          height: 100%;
-          left: 0;
-          -o-object-fit: cover;
-             object-fit: cover;
-          top: 0;
-          width: 100%; } }
-
-/*=== HTML Browser (Screenshots) ================ */
-/* <figure class="browser"> img </figure> */
-.browser {
-  border-radius: .3rem;
-  margin: 0 auto 3.2rem;
-  max-width: 1024px;
-  overflow: hidden; }
-  li .browser {
-    margin-bottom: 0; }
-  h1 + .browser,
-  h2 + .browser,
-  p + .browser {
-    margin-top: 4.8rem; }
-  .browser figcaption {
-    padding: 2.4rem; }
-  .browser:before {
-    content: '\25CF   \25CF   \25CF';
-    font-size: .8rem;
-    left: 0;
-    line-height: 0;
-    padding: 1.6rem;
-    position: absolute;
-    text-align: left;
-    top: 0;
-    width: 100%; }
-    @media (min-width: 768px) {
-      .browser:before {
-        font-size: 1.6rem; } }
-
-/*=== 1.4. Basic Grid (Flexible blocks)
-Auto-fill & Equal height === */
-.grid {
-  clear: both;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto; }
-  .grid:after {
-    clear: both; }
-  .grid:before {
-    content: '';
-    display: table; }
-  .grid > .column {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: auto;
-            flex: auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 2.4rem;
-    position: relative;
-    -webkit-transition: .3s;
-    transition: .3s;
-    width: 100%; }
-  .grid.vertical-align .column {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
-  @media (min-width: 768px) {
-    .grid > .column {
-      width: 25%; }
-    .grid.sm .column:nth-child(1) {
-      width: 30%; }
-    .grid.sm .column:nth-child(2) {
-      width: 70%; }
-    .grid.ms .column:nth-child(1) {
-      width: 70%; }
-    .grid.ms .column:nth-child(2) {
-      width: 30%; }
-    .grid.sms .column:nth-child(2) {
-      width: 50%; } }
 
 /*=========================================
 3. Header & Footer
@@ -2831,7 +2835,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   width: 0; }
 
 /*=========================================
-16. PRINT
+17. PRINT
 =========================================== */
 @media print {
   @page {
@@ -2869,7 +2873,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
     display: none; } }
 
 /*=========================================
-Colors
+18. Colors
 =========================================== */
 /* -- Disable elastic scrolling/bounce:
 webslides.js will add .ws-ready automatically. Don't worry :) -- */
