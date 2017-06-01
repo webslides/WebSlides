@@ -470,19 +470,19 @@ figure.alignleft {
 /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
 @media (min-width: 1024px) {
   .size-80 {
-    width: "80%"; }
+    width: 80%; }
   .size-70 {
-    width: "70%"; }
+    width: 70%; }
   .size-60 {
-    width: "60%"; }
+    width: 60%; }
   .size-50 {
-    width: "50%"; }
+    width: 50%; }
   .size-40 {
-    width: "40%"; }
+    width: 40%; }
   .size-30 {
-    width: "30%"; }
+    width: 30%; }
   .size-20 {
-    width: "20%"; } }
+    width: 20%; } }
 
 pre,
 code {
