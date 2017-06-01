@@ -95,6 +95,13 @@ h4 svg {
   margin-top: -.4rem;
 }
 
+svg[class^='fa-'] {
+  display: inline-block;
+  height: 1em;
+  vertical-align: middle;
+  width: 1em;
+}
+
 h1 {
   font-size: 4rem;
   line-height: 5.6rem;
