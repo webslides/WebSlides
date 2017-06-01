@@ -28,6 +28,7 @@ webslides.js will add .ws-ready automatically. Don't worry :) -- */
   }
 }
 
+/* -- Prototype faster - Vertical rhythm  -- */
 .baseline {
   background: url('../images/baseline.png') left top .8rem/.8rem;
 }
@@ -86,6 +87,7 @@ nav a[rel='external'] em,
   }
 }
 
+/*=== 1.1 WRAP/CONTAINER === */
 .wrap,
 header nav,
 footer nav {
@@ -155,10 +157,11 @@ figure.alignleft {
 
 $sizes: 80, 70, 60, 50, 40, 30, 20;
 
+/*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
 @media (min-width: 1024px) {
   @each $size in $sizes {
     .size-#{$size} {
-      width: percentage($size / 100);
+      width: $size + '%';
     }
   }
 }

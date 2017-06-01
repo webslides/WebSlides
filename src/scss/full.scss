@@ -38,20 +38,21 @@
   15. Longform Elements
 	16. Safari Bug (flex-wrap)
 	17. Print
+  18. Colors
 ----------------------------------------------------------------------------------- */
 
 @import 'vars';
 @import 'utils/mixins';
-@import 'utils/animations';
 @import 'utils/reset';
 @import 'utils/clear';
 
 @import 'base';
-@import 'typography';
-
+@import 'utils/animations';
 @import 'modules/media';
 @import 'modules/browser';
 @import 'modules/grid';
+
+@import 'typography';
 
 @import 'modules/header-footer';
 @import 'modules/logo';
