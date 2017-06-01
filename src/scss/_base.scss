@@ -158,7 +158,7 @@ $sizes: 80, 70, 60, 50, 40, 30, 20;
 @media (min-width: 1024px) {
   @each $size in $sizes {
     .size-#{$size} {
-      width: $size + '%';
+      width: percentage($size / 100);
     }
   }
 }
