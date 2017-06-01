@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-05-31
+ * Date: 2017-06-01
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1908,15 +1908,14 @@ About, Philosophy...
     content: counter(list) ".";
     font-size: 6.4rem;
     line-height: 1; }
-
-@media (min-width: 768px) {
-  .flexblock.reasons {
-    padding-left: 8.8rem;
-    /* You need two digits? (1-10)*/
-    /*padding-left: 12rem; */ }
-    .flexblock.reasons:before {
-      left: 2.4rem;
-      position: absolute; } }
+  @media (min-width: 768px) {
+    .flexblock.reasons li {
+      padding-left: 8.8rem;
+      /* You need two digits? (1-10)*/
+      /*padding-left: 12rem; */ }
+      .flexblock.reasons li:before {
+        left: 2.4rem;
+        position: absolute; } }
 
 /*=================================================
 6.7 Gallery - <ul class="flexblock gallery">

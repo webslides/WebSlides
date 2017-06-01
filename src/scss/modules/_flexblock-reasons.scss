@@ -21,16 +21,16 @@
       font-size: 6.4rem;
       line-height: 1;
     }
-  }
 
-  @media (min-width: 768px) {
-    padding-left: 8.8rem;
-    /* You need two digits? (1-10)*/
-    /*padding-left: 12rem; */
+    @media (min-width: 768px) {
+      padding-left: 8.8rem;
+      /* You need two digits? (1-10)*/
+      /*padding-left: 12rem; */
 
-    &:before {
-      left: 2.4rem;
-      position: absolute;
+      &:before {
+        left: 2.4rem;
+        position: absolute;
+      }
     }
   }
 }
