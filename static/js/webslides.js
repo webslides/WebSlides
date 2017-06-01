@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-05-31
+ * Date: 2017-06-01
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2875,12 +2875,8 @@ var Zoom = function () {
     value: function zoomIn() {
       var _this3 = this;
 
-      this.ws_.el.classList.add('zooming', 'in');
-      this.zws_.el.classList.add('zooming', 'in');
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
       setTimeout(function () {
-        _this3.ws_.el.classList.remove('zooming', 'in');
-        _this3.zws_.el.classList.remove('zooming', 'in');
         _this3.ws_.disable();
       }, 400);
       this.isZoomed_ = true;
@@ -2896,11 +2892,7 @@ var Zoom = function () {
     value: function zoomOut() {
       var _this4 = this;
 
-      this.ws_.el.classList.add('zooming', 'out');
-      this.zws_.el.classList.add('zooming', 'out');
       setTimeout(function () {
-        _this4.ws_.el.classList.remove('zooming', 'out');
-        _this4.zws_.el.classList.remove('zooming', 'out');
         __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(_this4.zws_.el);
         _this4.ws_.enable();
       }, 400);

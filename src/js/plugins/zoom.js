@@ -164,12 +164,8 @@ export default class Zoom {
    * Zoom In the slider, scales the slides and uses a grid layout to show them.
    */
   zoomIn() {
-    this.ws_.el.classList.add('zooming', 'in');
-    this.zws_.el.classList.add('zooming', 'in');
     DOM.show(this.zws_.el);
     setTimeout(() => {
-      this.ws_.el.classList.remove('zooming', 'in');
-      this.zws_.el.classList.remove('zooming', 'in');
       this.ws_.disable();
     }, 400);
     this.isZoomed_ = true;
@@ -180,11 +176,7 @@ export default class Zoom {
    * Zoom Out the slider, remove scale from the slides.
    */
   zoomOut() {
-    this.ws_.el.classList.add('zooming', 'out');
-    this.zws_.el.classList.add('zooming', 'out');
     setTimeout(() => {
-      this.ws_.el.classList.remove('zooming', 'out');
-      this.zws_.el.classList.remove('zooming', 'out');
       DOM.hide(this.zws_.el);
       this.ws_.enable();
     }, 400);

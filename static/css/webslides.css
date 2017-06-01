@@ -48,6 +48,7 @@
 	16. Safari Bug (flex-wrap)
 	17. Print
   18. Colors
+  19. Slidex index (aka zoom)
 ----------------------------------------------------------------------------------- */
 /*
 =========================================
@@ -3485,3 +3486,104 @@ form .flexblock li:hover {
 
 footer[role='contentinfo'] {
   background-color: #fff; }
+
+#webslides-zoomed .column > .wrap-zoom {
+  background-color: #f7f9fb;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);
+  color: #333; }
+  #webslides-zoomed .column > .wrap-zoom:hover {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.08); }
+
+.text-slide-number {
+  color: #abc; }
+
+/*==============================================
+19. Slides Index: Thumbnails navigation gallery
+================================================ */
+#webslides-zoomed {
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background: transparent;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2; }
+  @media (min-width: 1024px) {
+    #webslides-zoomed > .wrap {
+      padding-bottom: 12rem;
+      padding-top: 12rem;
+      width: 100%; } }
+  #webslides-zoomed > .wrap > .grid > .column {
+    -ms-flex-item-align: auto;
+        align-self: auto;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    width: 25%; }
+    #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom {
+      overflow: hidden;
+      position: relative;
+      -webkit-transition: .3s;
+      transition: .3s; }
+      #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom:hover {
+        -webkit-transform: scale(1.02);
+                transform: scale(1.02);
+        z-index: 2; }
+    #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom > .zoom-layer {
+      background: transparent;
+      cursor: pointer;
+      height: 100%;
+      position: absolute;
+      width: 100%; }
+  #webslides-zoomed .column > .wrap-zoom > .slide {
+    clip: rect(0 auto auto 0);
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transform: scale(0.25) translate(-150%, -150vh);
+            transform: scale(0.25) translate(-150%, -150vh); }
+    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+      #webslides-zoomed .column > .wrap-zoom > .slide {
+        -webkit-transform: scale(0.5) translate(-50%, -50%);
+                transform: scale(0.5) translate(-50%, -50%); } }
+    @media (max-aspect-ratio: 2 / 3) {
+      #webslides-zoomed .column > .wrap-zoom > .slide {
+        -webkit-transform: scale(0.5) translate(-50%, -50%);
+                transform: scale(0.5) translate(-50%, -50%); } }
+  @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+    #webslides-zoomed #webslides-zoomed .column {
+      width: 50%; } }
+  @media (max-aspect-ratio: 2 / 3) {
+    #webslides-zoomed #webslides-zoomed .column {
+      width: 100%; } }
+
+.text-slide-number {
+  display: inline-block;
+  margin: .8rem auto;
+  text-align: center; }
+
+#webslides.disabled, #webslides.zooming {
+  position: fixed;
+  width: 100%;
+  z-index: 0; }
+
+#webslides.disabled {
+  -webkit-filter: blur(10px);
+          filter: blur(10px); }

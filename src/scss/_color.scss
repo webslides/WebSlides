@@ -687,3 +687,17 @@ form .flexblock li:hover {
 footer[role='contentinfo'] {
   background-color: $white;
 }
+
+#webslides-zoomed .column > .wrap-zoom {
+  background-color: $catskill-white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .04);
+  color: $mine-shaft;
+
+  &:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .08);
+  }
+}
+
+.text-slide-number {
+  color: #abc;
+ }

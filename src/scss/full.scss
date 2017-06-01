@@ -39,6 +39,7 @@
 	16. Safari Bug (flex-wrap)
 	17. Print
   18. Colors
+  19. Slidex index (aka zoom)
 ----------------------------------------------------------------------------------- */
 
 @import 'vars';
@@ -93,3 +94,5 @@
 @import 'modules/print';
 
 @import 'color';
+
+@import 'modules/zoom';
