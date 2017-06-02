@@ -38,8 +38,8 @@
   15. Longform Elements
 	16. Safari Bug (flex-wrap)
 	17. Print
-  18. Colors
-  19. Slidex index (aka zoom)
+  18. Slidex index (aka zoom)
+  19. Colors
 ----------------------------------------------------------------------------------- */
 
 @import 'vars';
@@ -93,6 +93,6 @@
 @import 'utils/bugs';
 @import 'modules/print';
 
-@import 'color';
-
 @import 'modules/zoom';
+
+@import 'color';
