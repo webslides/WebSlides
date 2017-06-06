@@ -22,6 +22,7 @@ test('Keyboard plugin', () => {
   const goto = jest.fn();
   const next = jest.fn();
   const prev = jest.fn();
+  const fullscreen = jest.fn();
   const ws = document.getElementById('webslides');
 
   let disabled = true;
@@ -31,6 +32,7 @@ test('Keyboard plugin', () => {
     goNext: next,
     goPrev: prev,
     isVertical: false,
+    fullscreen: fullscreen,
     isDisabled: () => disabled,
     el: ws
   };
@@ -61,4 +63,6 @@ test('Keyboard plugin', () => {
   expect(prev.mock.calls.length).toBe(2);
   simulateKeyEvent(document, Keys.RIGHT);
   expect(next.mock.calls.length).toBe(3);
+  simulateKeyEvent(document, Keys.F);
+  expect(fullscreen.mock.calls.length).toBe(1);
 });
