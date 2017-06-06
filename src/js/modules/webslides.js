@@ -418,6 +418,32 @@ export default class WebSlides {
   }
 
   /**
+   * Puts the browser into fullscreen
+   */
+  fullscreen() {
+    const el = document.documentElement;
+    const isFullscreen = document.fullscreen
+      || document.mozFullScreen
+      || document.webkitIsFullScreen
+      || document.msFullScreenElement;
+
+    if(!isFullscreen) {
+      const requestFullscreen = el.requestFullscreen
+          || el.webkitRequestFullScreen
+          || el.mozRequestFullScreen
+          || el.msRequestFullscreen;
+      requestFullscreen.call(el);
+    } else {
+      const cancelFullscreen = document.exitFullScreen
+        || document.mozCancelFullScreen
+        || document.webkitCancelFullScreen
+        || document.msExitFullscreen;
+
+      cancelFullscreen.call(document);
+    }
+  }
+
+  /**
    * Registers a plugin to be loaded when the instance is created. It allows
    * (on purpose) to replace default plugins.
    * @param {!string} key They key under which it'll be stored inside of the

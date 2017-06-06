@@ -61,6 +61,9 @@ export default class Keyboard {
       case Keys.RIGHT:
         method = !this.ws_.isVertical ? this.ws_.goNext : null;
         break;
+      case Keys.F:
+        method = this.ws_.fullscreen;
+        break;
     }
 
     if (method) {
