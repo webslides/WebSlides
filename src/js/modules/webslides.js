@@ -423,8 +423,8 @@ export default class WebSlides {
   fullscreen() {
     const el = document.documentElement;
     const isFullscreen = document.fullscreen
-      || document.mozFullScreen
       || document.webkitIsFullScreen
+      || document.mozFullScreen
       || document.msFullScreenElement;
 
     if(!isFullscreen) {
@@ -435,8 +435,8 @@ export default class WebSlides {
       requestFullscreen.call(el);
     } else {
       const cancelFullscreen = document.exitFullScreen
-        || document.mozCancelFullScreen
         || document.webkitCancelFullScreen
+        || document.mozCancelFullScreen
         || document.msExitFullscreen;
 
       cancelFullscreen.call(document);
