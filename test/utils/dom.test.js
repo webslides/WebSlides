@@ -284,3 +284,37 @@ describe('Focusable Element', () => {
   });
 });
 
+describe('Parse size', () => {
+  test('Parses a css string to number', () => {
+    expect(DOM.parseSize('10px')).toBe(10);
+  });
+});
+
+describe('After', () => {
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  beforeEach(() => {
+    document.body.innerHTML = '<div id="content">' +
+        '<div id="1"></div>' +
+        '<div id="2"></div>' +
+        '<div id="3"></div>' +
+      '</div>';
+  });
+
+  test('Inserts node after target', () => {
+    const content = document.getElementById('content');
+    const lastDiv = document.getElementById('3');
+    const secondDiv = document.getElementById('2');
+
+    DOM.after(secondDiv, lastDiv);
+    expect(content.innerHTML)
+        .toBe('<div id="1"></div><div id="3"></div><div id="2"></div>');
+    DOM.after(secondDiv, lastDiv);
+    expect(content.innerHTML)
+      .toBe('<div id="1"></div><div id="3"></div><div id="2"></div>');
+  });
+});
+
+
