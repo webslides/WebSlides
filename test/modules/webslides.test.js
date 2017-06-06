@@ -72,4 +72,15 @@ test('WebSlides utility', () => {
   expect(webslides.isDisabled()).toBe(true);
   webslides.enable();
   expect(webslides.isDisabled()).toBe(false);
+
+  const requestFullscreenMock = jest.fn();
+  const exitFullScreenMock = jest.fn();
+  document.fullscreen = false;
+  document.documentElement.requestFullscreen = requestFullscreenMock;
+  document.exitFullScreen = exitFullScreenMock;
+  webslides.fullscreen();
+  expect(requestFullscreenMock.mock.calls.length).toBe(1);
+  document.fullscreen = true;
+  webslides.fullscreen();
+  expect(exitFullScreenMock.mock.calls.length).toBe(1);
 });
