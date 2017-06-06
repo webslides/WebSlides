@@ -73,14 +73,13 @@ test('WebSlides utility', () => {
   webslides.enable();
   expect(webslides.isDisabled()).toBe(false);
 
-  const requestFullscreenMock = jest.fn();
-  const exitFullScreenMock = jest.fn();
+
   document.fullscreen = false;
-  document.documentElement.requestFullscreen = requestFullscreenMock;
-  document.exitFullScreen = exitFullScreenMock;
+  document.documentElement.requestFullscreen = jest.fn();
+  document.exitFullScreen = jest.fn();
   webslides.fullscreen();
-  expect(requestFullscreenMock.mock.calls.length).toBe(1);
+  expect(document.documentElement.requestFullscreen.mock.calls.length).toBe(1);
   document.fullscreen = true;
   webslides.fullscreen();
-  expect(exitFullScreenMock.mock.calls.length).toBe(1);
+  expect(document.exitFullScreen.mock.calls.length).toBe(1);
 });
