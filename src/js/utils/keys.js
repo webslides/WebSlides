@@ -11,7 +11,8 @@ const Keys = {
   DOWN: 40,
   PLUS: [107, 171],
   MINUS: [109, 173],
-  ESCAPE: 27
+  ESCAPE: 27,
+  F: 70
 };
 
 export default Keys;
