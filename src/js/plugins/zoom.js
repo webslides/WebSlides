@@ -98,7 +98,7 @@ export default class Zoom {
     // Slide container, need due to flexbox styles
     const div = DOM.wrap(wrap, 'div');
     div.className = CLASSES.DIV;
-    // Adding some layer for controling click events
+    // Adding some layer for controlling click events
     const divLayer = DOM.createNode('div');
     divLayer.className = 'zoom-layer';
     divLayer.addEventListener('click', e => {
@@ -196,5 +196,4 @@ export default class Zoom {
       this.setSizes_(div, wrap, elem);
     });
   }
-
 }
