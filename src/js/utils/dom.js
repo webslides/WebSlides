@@ -89,7 +89,7 @@ export default class DOM {
       return animationEvent;
     }
 
-    animationEvent = '';
+    animationEvent = 'animationend';
 
     const el = optEl || document.createElement('ws');
     const animations = {
@@ -101,11 +101,12 @@ export default class DOM {
     const animationNames = Object.keys(animations);
 
     for (let i = 0, length = animationNames.length;
-          i < length && !animationEvent; i++) {
+          i < length; i++) {
       const animationName = animationNames[i];
 
       if (typeof el.style[animationName] !== 'undefined') {
         animationEvent = animations[animationName];
+        break;
       }
     }
 
