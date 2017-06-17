@@ -49,10 +49,11 @@ export default class Zoom {
    * @param {Event} event Key down event.
    */
   onKeyDown(event) {
-    if (!this.isZoomed_ && Keys.MINUS.includes(event.which)) {
+    if (!this.isZoomed_ && Keys.MINUS.some(key => key === event.which)) {
       this.zoomIn();
     } else if (this.isZoomed_ &&
-      (Keys.PLUS.includes(event.which) || event.which === Keys.ESCAPE)) {
+      (Keys.PLUS.some(key => key === event.which) ||
+        event.which === Keys.ESCAPE)) {
       this.zoomOut();
     }
   }
@@ -143,6 +144,7 @@ export default class Zoom {
     this.zws_.el
       .querySelector(`#zoomed-${currentId}`)
       .classList.add(CLASSES.CURRENT);
+
     setTimeout(() => {
       this.ws_.disable();
     }, 400);
