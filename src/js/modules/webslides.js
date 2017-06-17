@@ -358,7 +358,7 @@ export default class WebSlides {
    * @private
    */
   isValidIndexSlide_(i) {
-    return i >= 0 && i < this.maxSlide_;
+    return typeof i === 'number' && i >= 0 && i < this.maxSlide_;
   }
 
   /**
@@ -379,6 +379,7 @@ export default class WebSlides {
     // Keeping the order
     if (slideNumber !== 0) {
       let i = 0;
+
       while(i < slideNumber) {
         this.slides[i].moveAfterLast();
         i++;
