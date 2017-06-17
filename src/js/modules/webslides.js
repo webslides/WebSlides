@@ -428,13 +428,15 @@ export default class WebSlides {
       || document.mozFullScreen
       || document.msFullScreenElement;
 
-    if(!isFullscreen) {
+    if (!isFullscreen) {
+      /* istanbul ignore next hard to test prefixes */
       const requestFullscreen = el.requestFullscreen
           || el.webkitRequestFullScreen
           || el.mozRequestFullScreen
           || el.msRequestFullscreen;
       requestFullscreen.call(el);
     } else {
+      /* istanbul ignore next hard to test prefixes */
       const cancelFullscreen = document.exitFullScreen
         || document.webkitCancelFullScreen
         || document.mozCancelFullScreen

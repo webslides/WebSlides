@@ -377,11 +377,14 @@ test('Fullscreen', () => {
   document.fullscreen = false;
   document.documentElement.requestFullscreen = jest.fn();
   document.exitFullScreen = jest.fn();
+
+  expect(document.documentElement.requestFullscreen).not.toHaveBeenCalled();
   webslides.fullscreen();
-  expect(document.documentElement.requestFullscreen.mock.calls.length).toBe(1);
+  expect(document.documentElement.requestFullscreen).toHaveBeenCalled();
   document.fullscreen = true;
+  expect(document.exitFullScreen).not.toHaveBeenCalled();
   webslides.fullscreen();
-  expect(document.exitFullScreen.mock.calls.length).toBe(1);
+  expect(document.exitFullScreen).toHaveBeenCalled();
 });
 
 test('Zoom', () => {
