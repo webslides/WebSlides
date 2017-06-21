@@ -15,7 +15,8 @@ const simulateKeyEvent = (el, code) => {
 
 beforeAll(() => {
   const slides = '12345'.replace(/(\d)/g,
-      '<div id="section-$1" class="slide"><div>Slide $1</div></div>');
+      '<div id="section-$1" class="slide"><div>Slide $1</div></div>')
+      .replace('section-1" class="', 'section-1" class="current ');
   document.body.innerHTML = `<div id="webslides">${slides}</div>`;
 });
 
@@ -50,7 +51,7 @@ test('Zoom utility', () => {
   expect(zws.style.display).toBe('');
 
   // Wait until next execution
-  jest.runTimersToTime(401);
+  jest.runTimersToTime(500);
   expect(disable.mock.calls.length).toBe(1);
   expect(enable.mock.calls.length).toBe(0);
   expect(goto.mock.calls.length).toBe(0);
