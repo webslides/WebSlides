@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-02
+ * Date: 2017-06-21
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -194,7 +194,7 @@ var DOM = function () {
         return animationEvent;
       }
 
-      animationEvent = '';
+      animationEvent = 'animationend';
 
       var el = optEl || document.createElement('ws');
       var animations = {
@@ -205,11 +205,12 @@ var DOM = function () {
       };
       var animationNames = Object.keys(animations);
 
-      for (var i = 0, length = animationNames.length; i < length && !animationEvent; i++) {
+      for (var i = 0, length = animationNames.length; i < length; i++) {
         var animationName = animationNames[i];
 
         if (typeof el.style[animationName] !== 'undefined') {
           animationEvent = animations[animationName];
+          break;
         }
       }
 
@@ -571,7 +572,8 @@ var Keys = {
   DOWN: 40,
   PLUS: [107, 171],
   MINUS: [109, 173],
-  ESCAPE: 27
+  ESCAPE: 27,
+  F: 70
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Keys);
@@ -1099,7 +1101,7 @@ var WebSlides = function () {
   }, {
     key: 'isValidIndexSlide_',
     value: function isValidIndexSlide_(i) {
-      return i >= 0 && i < this.maxSlide_;
+      return typeof i === 'number' && i >= 0 && i < this.maxSlide_;
     }
 
     /**
@@ -1122,6 +1124,7 @@ var WebSlides = function () {
       // Keeping the order
       if (slideNumber !== 0) {
         var i = 0;
+
         while (i < slideNumber) {
           this.slides[i].moveAfterLast();
           i++;
@@ -1170,6 +1173,28 @@ var WebSlides = function () {
     key: 'isDisabled',
     value: function isDisabled() {
       return this.el.classList.contains(CLASSES.DISABLED);
+    }
+
+    /**
+     * Puts the browser into fullscreen
+     */
+
+  }, {
+    key: 'fullscreen',
+    value: function fullscreen() {
+      var el = document.documentElement;
+      var isFullscreen = document.fullscreen || document.webkitIsFullScreen || document.mozFullScreen || document.msFullScreenElement;
+
+      if (!isFullscreen) {
+        /* istanbul ignore next hard to test prefixes */
+        var requestFullscreen = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        requestFullscreen.call(el);
+      } else {
+        /* istanbul ignore next hard to test prefixes */
+        var cancelFullscreen = document.exitFullScreen || document.webkitCancelFullScreen || document.mozCancelFullScreen || document.msExitFullscreen;
+
+        cancelFullscreen.call(document);
+      }
     }
 
     /**
@@ -1626,6 +1651,9 @@ var Keyboard = function () {
           break;
         case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].RIGHT:
           method = !this.ws_.isVertical ? this.ws_.goNext : null;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].F:
+          method = this.ws_.fullscreen;
           break;
       }
 
@@ -2691,7 +2719,9 @@ var CLASSES = {
   ZOOM: 'grid',
   DIV: 'column',
   WRAP: 'wrap-zoom',
-  WRAP_CONTAINER: 'wrap'
+  WRAP_CONTAINER: 'wrap',
+  CURRENT: 'current',
+  SLIDE: 'slide'
 };
 
 var ID = 'webslides-zoomed';
@@ -2777,6 +2807,7 @@ var Zoom = function () {
         _this.zws_.grid.appendChild(s_);
         return new __WEBPACK_IMPORTED_MODULE_2__modules_slide__["a" /* default */](s_, i);
       });
+
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].after(this.zws_.el, this.ws_.el);
 
@@ -2799,10 +2830,11 @@ var Zoom = function () {
       // Wraps the slide around a container
       var wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(elem.el, 'div');
       wrap.className = CLASSES.WRAP;
+      wrap.setAttribute('id', 'zoomed-' + elem.el.getAttribute('id'));
       // Slide container, need due to flexbox styles
       var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
       div.className = CLASSES.DIV;
-      // Adding some layer for controling click events
+      // Adding some layer for controlling click events
       var divLayer = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('div');
       divLayer.className = 'zoom-layer';
       divLayer.addEventListener('click', function (e) {
@@ -2876,6 +2908,12 @@ var Zoom = function () {
       var _this3 = this;
 
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
+      var currentId = this.ws_.el.querySelector('.' + CLASSES.SLIDE + '.' + CLASSES.CURRENT).getAttribute('id');
+      var zoomedCurrent = this.zws_.el.querySelector('.' + CLASSES.WRAP + '.' + CLASSES.CURRENT);
+      if (zoomedCurrent) {
+        zoomedCurrent.classList.remove(CLASSES.CURRENT);
+      }
+      this.zws_.el.querySelector('#zoomed-' + currentId).classList.add(CLASSES.CURRENT);
       setTimeout(function () {
         _this3.ws_.disable();
       }, 400);

@@ -6,7 +6,9 @@ const CLASSES = {
   ZOOM: 'grid',
   DIV: 'column',
   WRAP: 'wrap-zoom',
-  WRAP_CONTAINER: 'wrap'
+  WRAP_CONTAINER: 'wrap',
+  CURRENT: 'current',
+  SLIDE: 'slide'
 };
 
 const ID = 'webslides-zoomed';
@@ -80,6 +82,7 @@ export default class Zoom {
           this.zws_.grid.appendChild(s_);
           return new Slide(s_, i);
         });
+
     DOM.hide(this.zws_.el);
     DOM.after(this.zws_.el, this.ws_.el);
 
@@ -95,6 +98,7 @@ export default class Zoom {
     // Wraps the slide around a container
     const wrap = DOM.wrap(elem.el, 'div');
     wrap.className = CLASSES.WRAP;
+    wrap.setAttribute('id', `zoomed-${elem.el.getAttribute('id')}`);
     // Slide container, need due to flexbox styles
     const div = DOM.wrap(wrap, 'div');
     div.className = CLASSES.DIV;
@@ -165,6 +169,17 @@ export default class Zoom {
    */
   zoomIn() {
     DOM.show(this.zws_.el);
+    const currentId = this.ws_.el
+      .querySelector(`.${CLASSES.SLIDE}.${CLASSES.CURRENT}`)
+      .getAttribute('id');
+    const zoomedCurrent = this.zws_.el
+      .querySelector(`.${CLASSES.WRAP}.${CLASSES.CURRENT}`);
+    if (zoomedCurrent) {
+      zoomedCurrent.classList.remove(CLASSES.CURRENT);
+    }
+    this.zws_.el
+      .querySelector(`#zoomed-${currentId}`)
+      .classList.add(CLASSES.CURRENT);
     setTimeout(() => {
       this.ws_.disable();
     }, 400);

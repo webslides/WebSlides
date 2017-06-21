@@ -14,8 +14,7 @@
 
   > .wrap {
     @media (min-width: 1024px) {
-      padding-bottom: 12rem;
-      padding-top: 12rem;
+      padding: 12rem;
       width: 100%;
     }
   }
@@ -35,6 +34,10 @@
         transform: scale(1.02);
         z-index: 2;
       }
+    }
+
+    > .wrap-zoom.current {
+      box-shadow: $current-zoomed-slide-shadow;
     }
 
     > .wrap-zoom > .zoom-layer {

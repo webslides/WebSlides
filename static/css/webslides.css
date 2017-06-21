@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-02
+ * Date: 2017-06-21
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -823,6 +823,7 @@ ol > li {
 li li {
   font-size: 100%; }
 
+/*== List .description (Product/Specs) === */
 ul.description {
   padding: 0; }
   ul.description + p {
@@ -855,12 +856,6 @@ h4 svg {
 .wall p svg,
 .try svg {
   margin-top: -.4rem; }
-
-svg[class^='fa-'] {
-  display: inline-block;
-  height: 1em;
-  vertical-align: middle;
-  width: 1em; }
 
 h1 {
   font-size: 4rem;
@@ -1035,6 +1030,7 @@ h3 + img {
   font-size: 2.4rem;
   line-height: 4rem; }
 
+/*== 2.1. Headings with background ==*/
 h1[class*='bg-'] {
   padding: 2.4rem; }
 
@@ -1064,15 +1060,18 @@ h2 [class*='bg-'],
 h3 [class*='bg-'] {
   padding: .4rem .8rem; }
 
+/*== 2.2. Typography Classes = .text- == */
 .text-intro,
 [class*='content-'] p {
   font-size: 2.4rem;
   line-height: 4rem; }
 
+/* -- Serif -- */
 .text-serif,
 h1 span {
   font-family: 'Maitree', times, serif; }
 
+/* -- h1,h2... Promo/Landings -- */
 .text-landing {
   letter-spacing: .4rem;
   text-transform: uppercase; }
@@ -1080,6 +1079,7 @@ h1 span {
     .text-landing {
       letter-spacing: 1.6rem; } }
 
+/* -- Subtitle (Before h1, h2) p.subtitle + h1/h2 */
 .text-subtitle {
   letter-spacing: .2rem;
   margin-bottom: 0;
@@ -1097,6 +1097,7 @@ h1 span {
 .text-lowercase {
   text-transform: lowercase; }
 
+/* -- Emoji (you'll love this) -- */
 .text-emoji {
   font-size: 6.8rem;
   line-height: 8.8rem; }
@@ -1105,6 +1106,7 @@ h1 span {
       font-size: 12.8rem;
       line-height: 16rem; } }
 
+/* -- Numbers (results, sales... 23,478,289 iphones) -- */
 .text-data {
   font-size: 6.4rem;
   line-height: 8rem;
@@ -1120,6 +1122,7 @@ h1 span {
   text-transform: uppercase;
   width: 12.8rem; }
 
+/* -- Magazine Two Columns -- */
 @media (min-width: 768px) {
   .text-cols {
     -webkit-column-count: 2;
@@ -1139,6 +1142,7 @@ h1 span {
   padding: 0;
   text-transform: uppercase; }
 
+/* -- Heading with border -- */
 .text-context {
   position: relative; }
   .text-context:before {
@@ -1152,6 +1156,7 @@ h1 span {
   .text-context.text-uppercase {
     letter-spacing: .1rem; }
 
+/* -- Separator/Symbols (stars ***...) -- */
 .text-symbols {
   font-weight: 600;
   letter-spacing: .8rem;
@@ -1174,6 +1179,7 @@ h1 span {
       .text-separator:before {
         margin-top: 1.2rem; } }
 
+/* -- Pull Quote (Right/Left)  -- */
 [class*='text-pull'] {
   font-size: 2.4rem;
   font-weight: 400;
@@ -1208,6 +1214,12 @@ figure[class*='text-pull-'] {
   margin-top: .8rem;
   padding-top: 0; }
 
+/* -- Interviews (Questions & Answers)  --- */
+/* -- <dl class="text-interview">
+<dt>name</dt>
+<dd><p>question or answer</p>
+</dd>
+--- */
 .text-interview dt {
   font-weight: 600;
   margin-bottom: 0;
@@ -1221,29 +1233,37 @@ figure[class*='text-pull-'] {
     white-space: nowrap;
     width: 30%; } }
 
+/* -- Info Messages (error, warning, success... -- */
 .text-info {
   font-size: 1.6rem;
   line-height: 2.4rem; }
 
+/*=========================================
+2.1. San Francisco Font (Apple's new font)
+=========================================== */
 .text-apple,
 .bg-apple {
   font-family: 'San Francisco', helvetica, arial, sans-serif; }
 
+/* Ultra Light */
 @font-face {
   font-family: 'San Francisco';
   font-weight: 100;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2"); }
 
+/* Thin */
 @font-face {
   font-family: 'San Francisco';
   font-weight: 200;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2"); }
 
+/* Regular */
 @font-face {
   font-family: 'San Francisco';
   font-weight: 400;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2"); }
 
+/* Bold */
 @font-face {
   font-family: 'San Francisco';
   font-weight: bold;
@@ -2901,8 +2921,7 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   z-index: 2; }
   @media (min-width: 1024px) {
     #webslides-zoomed > .wrap {
-      padding-bottom: 12rem;
-      padding-top: 12rem;
+      padding: 12rem;
       width: 100%; } }
   #webslides-zoomed > .wrap > .grid > .column {
     -ms-flex-item-align: auto;
@@ -2923,6 +2942,9 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
         -webkit-transform: scale(1.02);
                 transform: scale(1.02);
         z-index: 2; }
+    #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom.current {
+      -webkit-box-shadow: 0 0 7px rgba(0, 187, 255, 0.5);
+              box-shadow: 0 0 7px rgba(0, 187, 255, 0.5); }
     #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom > .zoom-layer {
       background: transparent;
       cursor: pointer;
