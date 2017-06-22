@@ -36,10 +36,6 @@
       }
     }
 
-    > .wrap-zoom.current {
-      box-shadow: $current-zoomed-slide-shadow;
-    }
-
     > .wrap-zoom > .zoom-layer {
       background: transparent;
       cursor: pointer;
