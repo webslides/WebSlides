@@ -42,7 +42,6 @@ export default class Zoom {
 
     this.preBuildZoom_();
     document.body.addEventListener('keydown', this.onKeyDown.bind(this));
-    window.addEventListener('resize', this.onWindowResize.bind(this));
   }
 
   /**
@@ -115,42 +114,6 @@ export default class Zoom {
     const slideNumber = DOM.createNode('p', '', `${elem.i+1}`);
     slideNumber.className = 'text-slide-number';
     div.appendChild(slideNumber);
-
-    this.setSizes_(div, wrap, elem);
-  }
-
-  /**
-   * Sets layers size
-   * @param {Element} div flexbox element
-   * @param {Element} wrap wrapping element
-   * @param {Element} elem slide element
-   */
-  setSizes_(div, wrap, elem) {
-    // Calculates the margins in relation to window width
-    const divCSS = window.getComputedStyle(div);
-    const marginW = DOM.parseSize(divCSS.paddingLeft)
-      + DOM.parseSize(divCSS.paddingRight);
-    const marginH = DOM.parseSize(divCSS.paddingTop)
-      + DOM.parseSize(divCSS.paddingBottom);
-
-    // Sets element size: window size - relative margins
-    const scale = divCSS.width.includes('%') ?
-      100 / DOM.parseSize(divCSS.width) :
-      window.innerWidth / DOM.parseSize(divCSS.width);
-    if (scale === 1) {
-      // If the scale is 100% means it is mobile
-      const wsW = this.ws_.el.clientWidth;
-      elem.el.style.width = `${(wsW - marginW) * 2}px`;
-      elem.el.style.height = `${(wsW - marginH) * 1.5}px`;
-      elem.el.style.minHeight = scale === 1 ? 'auto' : '';
-      // Because of flexbox, wrap height is required
-      wrap.style.height = `${(wsW - marginH) * 1.5 / 2}px`;
-    } else {
-      elem.el.style.width = `${window.innerWidth - marginW * scale}px`;
-      elem.el.style.height = `${window.innerHeight - marginH * scale}px`;
-      // Because of flexbox, wrap height is required
-      wrap.style.height = `${window.innerHeight / scale}px`;
-    }
   }
 
   /**
@@ -197,18 +160,5 @@ export default class Zoom {
     }, 400);
     this.isZoomed_ = false;
     document.body.style.overflow = '';
-  }
-
-  /**
-   * When windows resize it is necessary to recalculate layers sizes.
-   */
-  onWindowResize() {
-    if (this.isZoomed_) this.zoomOut();
-
-    this.zws_.slides.forEach(elem => {
-      const wrap = elem.el.parentElement;
-      const div = wrap.parentElement;
-      this.setSizes_(div, wrap, elem);
-    });
   }
 }

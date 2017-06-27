@@ -12,10 +12,25 @@
   position: relative;
   z-index: 2;
 
+  .slide {
+    height: 100%;
+    width: 400%;
+
+    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+      height: 200%;
+      width: 200%;
+    }
+
+    @media (max-aspect-ratio: 2 / 3) {
+      height: 200%;
+      width: 200%;
+    }
+  }
+
   > .wrap {
     @media (min-width: 1024px) {
+      padding-bottom: 12rem;
       padding-top: 12rem;
-      padding-bottom:12rem;
     }
   }
 
@@ -23,12 +38,31 @@
     align-self: auto;
     flex: 0 1 auto;
     order: 0;
+    position: relative;
     width: 25%;
 
+    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+      width: 50%;
+    }
+
+    @media (max-aspect-ratio: 2 / 3) {
+      width: 100%;
+    }
+
     > .wrap-zoom {
+      display: inline-block;
+      height: 25vh;
       overflow: hidden;
       position: relative;
       transition: .3s;
+
+      @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+        height: 50vh;
+      }
+
+      @media (max-aspect-ratio: 2 / 3) {
+        height: 50vh;
+      }
 
       &:hover {
         transform: scale(1.02);
@@ -59,16 +93,6 @@
 
     @media (max-aspect-ratio: 2 / 3) {
       transform: scale(.5) translate(-50%, -50%);
-    }
-  }
-
-  #webslides-zoomed .column {
-    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
-      width: 50%;
-    }
-
-    @media (max-aspect-ratio: 2 / 3) {
-      width: 100%;
     }
   }
 }

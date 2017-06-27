@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-21
+ * Date: 2017-06-27
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1922,6 +1922,10 @@ About, Philosophy...
       float: left;
       margin-right: 2.4rem; } }
 
+/*=================================================
+6.6 Reasons/Why/Numbers (counter-increment)
+<ul class="flexblock reasons">
+=================================================== */
 .flexblock.reasons li {
   counter-increment: list;
   text-align: left;
@@ -2919,10 +2923,21 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
   min-height: 100vh;
   position: relative;
   z-index: 2; }
+  #webslides-zoomed .slide {
+    height: 100%;
+    width: 400%; }
+    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+      #webslides-zoomed .slide {
+        height: 200%;
+        width: 200%; } }
+    @media (max-aspect-ratio: 2 / 3) {
+      #webslides-zoomed .slide {
+        height: 200%;
+        width: 200%; } }
   @media (min-width: 1024px) {
     #webslides-zoomed > .wrap {
-      padding: 12rem;
-      width: 100%; } }
+      padding-bottom: 12rem;
+      padding-top: 12rem; } }
   #webslides-zoomed > .wrap > .grid > .column {
     -ms-flex-item-align: auto;
         align-self: auto;
@@ -2932,19 +2947,31 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
     -webkit-box-ordinal-group: 1;
         -ms-flex-order: 0;
             order: 0;
+    position: relative;
     width: 25%; }
+    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+      #webslides-zoomed > .wrap > .grid > .column {
+        width: 50%; } }
+    @media (max-aspect-ratio: 2 / 3) {
+      #webslides-zoomed > .wrap > .grid > .column {
+        width: 100%; } }
     #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom {
+      display: inline-block;
+      height: 25vh;
       overflow: hidden;
       position: relative;
       -webkit-transition: .3s;
       transition: .3s; }
+      @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+        #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom {
+          height: 50vh; } }
+      @media (max-aspect-ratio: 2 / 3) {
+        #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom {
+          height: 50vh; } }
       #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom:hover {
         -webkit-transform: scale(1.02);
                 transform: scale(1.02);
         z-index: 2; }
-    #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom.current {
-      -webkit-box-shadow: 0 0 7px rgba(0, 187, 255, 0.5);
-              box-shadow: 0 0 7px rgba(0, 187, 255, 0.5); }
     #webslides-zoomed > .wrap > .grid > .column > .wrap-zoom > .zoom-layer {
       background: transparent;
       cursor: pointer;
@@ -2969,12 +2996,6 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
       #webslides-zoomed .column > .wrap-zoom > .slide {
         -webkit-transform: scale(0.5) translate(-50%, -50%);
                 transform: scale(0.5) translate(-50%, -50%); } }
-  @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
-    #webslides-zoomed #webslides-zoomed .column {
-      width: 50%; } }
-  @media (max-aspect-ratio: 2 / 3) {
-    #webslides-zoomed #webslides-zoomed .column {
-      width: 100%; } }
 
 .text-slide-number {
   display: inline-block;
@@ -3070,6 +3091,10 @@ code,
 .bg-white code {
   background: rgba(0, 20, 80, 0.03); }
 
+/*================================================
+Slides - Backgrounds <section class="bg-primary">
+================================================== */
+/*3 Corp Colors*/
 .bg-primary {
   background-color: #44d; }
 
@@ -3113,10 +3138,12 @@ code,
   color: #333;
   text-shadow: none; }
 
+/* BG Apple Keynote*/
 .bg-apple {
   background: -webkit-gradient(linear, left top, left bottom, from(#000), color-stop(50%, #1a2028), to(#293845));
   background: linear-gradient(to bottom, #000 0%, #1a2028 50%, #293845 100%); }
 
+/*Font Color*/
 .bg-trans-dark,
 .bg-trans-gradient,
 .bg-primary,
@@ -3138,44 +3165,53 @@ code,
 .bg-brown p {
   color: #666; }
 
+/*Transparent/Opacity*/
 .bg-trans-dark {
   background: rgba(0, 0, 0, 0.8); }
 
 .bg-trans-light {
   background: rgba(0, 0, 0, 0.2); }
 
+/*Covers/Longforms...*/
 .bg-trans-gradient {
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.8)), to(transparent));
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%); }
 
+/*Horizontal Gradient*/
 .bg-gradient-h {
   background: linear-gradient(134deg, #32b 0, #62b 100%); }
 
+/*Vertical Gradient*/
 .bg-gradient-v {
   background: -webkit-gradient(linear, left bottom, left top, from(#62b), to(#32b));
   background: linear-gradient(to top, #62b 0%, #32b 100%); }
 
+/*Radial Gradient*/
 .bg-gradient-r {
   background: radial-gradient(ellipse at center, #62b 0%, #32b 100%); }
 
+/*White Gradient (vertical)*/
 .bg-gradient-white {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f4f6), to(#fff));
   background: linear-gradient(180deg, #f2f4f6 0, #fff 100%);
   color: #333;
   text-shadow: none; }
 
+/*Gray Gradient (horizontal)*/
 .bg-gradient-gray {
   background: -webkit-gradient(linear, left top, right top, color-stop(0, #f7f9fb), to(#dee2e6));
   background: linear-gradient(90deg, #f7f9fb 0, #dee2e6 100%);
   color: #333;
   text-shadow: none; }
 
+/*Border/Frame*/
 .frame {
   border: 0.8rem solid #fff; }
 
 [class*='background'].frame {
   border-width: .2rem; }
 
+/*Layer/Box Shadow*/
 .shadow,
 .pre {
   position: relative; }
@@ -3185,9 +3221,14 @@ code,
   -webkit-box-shadow: 0 16px 24px rgba(0, 20, 80, 0.3);
           box-shadow: 0 16px 24px rgba(0, 20, 80, 0.3); }
 
+/*============================
+TYPOGRAPHY
+============================== */
+/* -- Horizontal separator  -- */
 .text-separator:before {
   background-color: rgba(170, 0, 0, 0.8); }
 
+/* -- Pull Quote (Right/Left)  -- */
 [class*='text-pull-'] {
   border-top: 4px solid rgba(0, 0, 0, 0.5); }
 
@@ -3195,6 +3236,7 @@ img[class*='text-pull-'],
 figure[class*='text-pull-'] {
   border-top: 0; }
 
+/* -- Context  -- */
 [class*='bg-'] .text-context:before {
   background-color: #fff; }
 
@@ -3202,17 +3244,24 @@ figure[class*='text-pull-'] {
 .bg-white .text-context:before {
   background-color: rgba(0, 20, 80, 0.2); }
 
+/* -- Text shadow  -- */
 .text-shadow {
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
 
+/* -- time, ampersands, prepositions (for, of...), symbols...  
 [class*='card-'] time,
 h1 span {
-  color: #abd; }
+  color: #abd;
+}
 
+/* -- <pre> comment  -- */
 .code-comment {
   color: rgba(70, 170, 130, 0.9);
   text-shadow: none; }
 
+/*=========================================
+Header/Nav
+=========================================== */
 header[role='banner'] {
   background-color: #fff; }
 
@@ -3246,12 +3295,18 @@ nav li.github a:hover {
 nav li.email a:hover {
   background-color: #dd4b39; }
 
+/*===================================================
+.flexblock li hover/active
+===================================================== */
 .flexblock li.active a,
 .metrics li:hover,
 .specs li:hover,
 .reasons li:hover {
   background-color: rgba(0, 20, 80, 0.03); }
 
+/*=========================================
+Features & Clients List 
+=========================================== */
 .features li,
 .clients li {
   background-color: rgba(255, 255, 255, 0.9); }
@@ -3265,6 +3320,9 @@ nav li.email a:hover {
   -webkit-box-shadow: 0 8px 16px rgba(0, 20, 80, 0.02), 0 4px 16px rgba(0, 0, 0, 0.08);
           box-shadow: 0 8px 16px rgba(0, 20, 80, 0.02), 0 4px 16px rgba(0, 0, 0, 0.08); }
 
+/*============================
+.flexblock with border
+============================== */
 .border {
   border-bottom: 1px solid rgba(0, 20, 80, 0.1);
   border-right: 1px solid rgba(0, 20, 80, 0.1); }
@@ -3276,6 +3334,9 @@ nav li.email a:hover {
 .flexblock.border li li {
   border: 0; }
 
+/*===========================================
+flexblock.steps 
+============================================= */
 .steps li:nth-child(1) {
   background-color: #e8eef7; }
 
@@ -3306,6 +3367,9 @@ nav li.email a:hover {
   .steps li:hover + li [class*='step-'] {
     border-left-color: #b8cef7; } }
 
+/*=========================================================
+Items: You can use for settings, drag&drop, close/delete...
+=========================================================== */
 .specs li:after {
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 20, 80, 0)), color-stop(50%, rgba(0, 20, 80, 0.2)), to(rgba(0, 20, 80, 0)));
   background: linear-gradient(to right, rgba(0, 20, 80, 0) 0%, rgba(0, 20, 80, 0.2) 50%, rgba(0, 20, 80, 0) 100%); }
@@ -3313,6 +3377,9 @@ nav li.email a:hover {
 .specs li:last-child:after {
   background: none; }
 
+/*=========================================================
+Why/Steps/Motivation/Reasons -  Decimal/Numbers
+=========================================================== */
 .reasons li:after {
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 20, 80, 0)), color-stop(50%, rgba(0, 20, 80, 0.2)), to(rgba(0, 20, 80, 0)));
   background: linear-gradient(to right, rgba(0, 20, 80, 0) 0%, rgba(0, 20, 80, 0.2) 50%, rgba(0, 20, 80, 0) 100%); }
@@ -3320,6 +3387,9 @@ nav li.email a:hover {
 .reasons li:last-child:after {
   background: none; }
 
+/*=========================================
+Overlays
+=========================================== */
 .overlay {
   background-color: rgba(0, 0, 0, 0.2); }
 
@@ -3331,6 +3401,9 @@ li:hover .overlay {
   color: #fff;
   text-shadow: 0 1px 0 #111; }
 
+/*=========================================
+Gallery li+.overlay+image
+=========================================== */
 .gallery li {
   background-color: rgba(0, 20, 80, 0.06);
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.03);
@@ -3353,10 +3426,14 @@ li:hover .overlay {
 .flesblock.gallery li a footer {
   color: #aaa; }
 
+/*Arrow */
 .gallery li figcaption:before {
   border: 0.8rem solid #000;
   border-color: transparent transparent #fff #fff; }
 
+/*=========================================
+Plans / Pricing
+=========================================== */
 .plans > li div,
 .flexblock.plans li:hover div {
   background-color: #fff; }
@@ -3383,12 +3460,18 @@ li:hover .overlay {
   color: #333;
   text-shadow: none; }
 
+/*============================
+Activity/CV/Timeline/News
+============================== */
 .activity li {
   border-top: 0.1rem solid rgba(0, 20, 80, 0.1); }
 
 .activity li:hover {
   background-color: rgba(0, 20, 80, 0.02); }
 
+/*=========================================
+Resume/Work/CV/Portfolio
+=========================================== */
 .work-label,
 .work li a {
   border-bottom: 1px solid rgba(0, 20, 80, 0.1); }
@@ -3399,22 +3482,32 @@ li:hover .overlay {
 .work li a:hover {
   background-color: rgba(0, 20, 80, 0.04); }
 
+/*===========================================
+Clients / Services / Logos...
+============================================= */
 .clients.border figcaption {
   border-top: 1px solid rgba(0, 20, 80, 0.1); }
 
+/*====================
+LOGOS
+====================== */
+/* --- Images (black logo/image) --- */
 img.blacklogo {
   background: none;
   -webkit-filter: grayscale(100%) brightness(10%) contrast(100%);
           filter: grayscale(100%) brightness(10%) contrast(100%); }
 
+/* --- Images (gray logo/image) --- */
 img.graylogo {
   -webkit-filter: grayscale(100%) brightness(10%) contrast(10%);
           filter: grayscale(100%) brightness(10%) contrast(10%); }
 
+/* --- Images (white Logo/Image) --- */
 img.whitelogo {
   -webkit-filter: brightness(0) invert(1);
           filter: brightness(0) invert(1); }
 
+/* --- Logo/Images Hover --- */
 li:hover img.blacklogo,
 li:hover img.graylogo,
 img.blacklogo:hover,
@@ -3425,24 +3518,31 @@ img.graylogo:hover {
   -webkit-transition: all .6s ease;
   transition: all .6s ease; }
 
+/*=========================================================
+Cards
+=========================================================== */
 [class*='card-'] > a {
   color: inherit; }
 
+/* ---  card ul specs --- */
 .description > li {
   border-bottom: 1px solid rgba(0, 20, 80, 0.1); }
 
 .description > li:last-child {
   border-bottom: 0; }
 
+/*== Figure Background === */
 [class*='card-'][class*='bg-'] figure {
   background-color: rgba(0, 20, 80, 0.06); }
 
+/*== Ficaption Cards === */
 [class*='card'] figcaption,
 [class*='card'] figcaption a {
   background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.2)));
   background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
   color: #fff; }
 
+/*===CTA (Call to Action - Numbers, Price, Promo...)  ===== */
 @media (min-width: 768px) {
   .cta .benefit {
     -o-border-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent) 1 100%;
@@ -3451,6 +3551,9 @@ img.graylogo:hover {
     border-left-width: 1px;
     border-style: solid; } }
 
+/*=========================================
+Tables
+=========================================== */
 table td,
 th,
 thead {
@@ -3469,6 +3572,9 @@ td:hover,
 tr:nth-child(even) > td:hover {
   background-color: rgba(255, 255, 255, 0.5); }
 
+/*============================
+Browser (Screenshots) 
+============================== */
 .browser {
   border: 1px solid rgba(0, 20, 80, 0.1); }
 
@@ -3476,6 +3582,7 @@ tr:nth-child(even) > td:hover {
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1); }
 
+/*=== Topbar === */
 .browser:before {
   background-color: rgba(0, 20, 80, 0.1);
   border-bottom: 1px solid rgba(0, 20, 80, 0.2);
@@ -3485,6 +3592,9 @@ tr:nth-child(even) > td:hover {
   background-color: rgba(0, 20, 80, 0.12);
   color: #fff; }
 
+/*=========================================
+Forms
+=========================================== */
 input,
 textarea {
   background-color: #fafbfc; }
@@ -3573,11 +3683,13 @@ legend {
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff; }
 
+/* Inputs/Buttons - hover */
 input:hover,
 select:hover {
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); }
 
+/* App Store Badges */
 [class*='badge-'] {
   background-color: #000;
   border: 1px solid #345; }
@@ -3585,6 +3697,9 @@ select:hover {
 form .flexblock li:hover {
   background-color: rgba(0, 0, 0, 0.05); }
 
+/*============================
+Table of Contents
+============================== */
 .toc,
 .toc ol > li:before,
 .chapter {
@@ -3593,6 +3708,9 @@ form .flexblock li:hover {
 .toc li .toc-page:before {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.9); }
 
+/*============================
+Slides (Counter/Arrows)
+============================== */
 #counter,
 #navigation a {
   color: #abc; }
@@ -3601,9 +3719,15 @@ form .flexblock li:hover {
   background-color: rgba(0, 0, 0, 0.9);
   color: #fff; }
 
+/*============================
+Footer
+============================== */
 footer[role='contentinfo'] {
   background-color: #fff; }
 
+/*============================
+Slides Index
+============================== */
 #webslides-zoomed .column > .wrap-zoom {
   background-color: #f7f9fb;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.04);

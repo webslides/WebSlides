@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-21
+ * Date: 2017-06-27
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2758,7 +2758,6 @@ var Zoom = function () {
 
     this.preBuildZoom_();
     document.body.addEventListener('keydown', this.onKeyDown.bind(this));
-    window.addEventListener('resize', this.onWindowResize.bind(this));
   }
 
   /**
@@ -2847,41 +2846,6 @@ var Zoom = function () {
       var slideNumber = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('p', '', '' + (elem.i + 1));
       slideNumber.className = 'text-slide-number';
       div.appendChild(slideNumber);
-
-      this.setSizes_(div, wrap, elem);
-    }
-
-    /**
-     * Sets layers size
-     * @param {Element} div flexbox element
-     * @param {Element} wrap wrapping element
-     * @param {Element} elem slide element
-     */
-
-  }, {
-    key: 'setSizes_',
-    value: function setSizes_(div, wrap, elem) {
-      // Calculates the margins in relation to window width
-      var divCSS = window.getComputedStyle(div);
-      var marginW = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingLeft) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingRight);
-      var marginH = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingTop) + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.paddingBottom);
-
-      // Sets element size: window size - relative margins
-      var scale = divCSS.width.includes('%') ? 100 / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width) : window.innerWidth / __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(divCSS.width);
-      if (scale === 1) {
-        // If the scale is 100% means it is mobile
-        var wsW = this.ws_.el.clientWidth;
-        elem.el.style.width = (wsW - marginW) * 2 + 'px';
-        elem.el.style.height = (wsW - marginH) * 1.5 + 'px';
-        elem.el.style.minHeight = scale === 1 ? 'auto' : '';
-        // Because of flexbox, wrap height is required
-        wrap.style.height = (wsW - marginH) * 1.5 / 2 + 'px';
-      } else {
-        elem.el.style.width = window.innerWidth - marginW * scale + 'px';
-        elem.el.style.height = window.innerHeight - marginH * scale + 'px';
-        // Because of flexbox, wrap height is required
-        wrap.style.height = window.innerHeight / scale + 'px';
-      }
     }
 
     /**
@@ -2936,24 +2900,6 @@ var Zoom = function () {
       }, 400);
       this.isZoomed_ = false;
       document.body.style.overflow = '';
-    }
-
-    /**
-     * When windows resize it is necessary to recalculate layers sizes.
-     */
-
-  }, {
-    key: 'onWindowResize',
-    value: function onWindowResize() {
-      var _this5 = this;
-
-      if (this.isZoomed_) this.zoomOut();
-
-      this.zws_.slides.forEach(function (elem) {
-        var wrap = elem.el.parentElement;
-        var div = wrap.parentElement;
-        _this5.setSizes_(div, wrap, elem);
-      });
     }
   }]);
 
