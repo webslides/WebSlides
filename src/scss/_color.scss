@@ -242,7 +242,7 @@ figure[class*='text-pull-'] {
   text-shadow: 0 0 40px rgba($black, .5);
 }
 
-/* -- time, ampersands, prepositions (for, of...), symbols...  
+/* -- time, ampersands, prepositions (for, of...), symbols...
 [class*='card-'] time,
 h1 span {
   color: #abd;
@@ -273,7 +273,7 @@ nav[role='navigation'] li {
 
   a {
     background-color: rgba(50, 50, 50, .9);
-    color:#fff;
+    color: $white;
 
     &:hover {
       background-color: rgba(50, 50, 50, .7);
@@ -298,7 +298,7 @@ nav[role='navigation'] li {
 }
 
 /*=========================================
-Features & Clients List 
+Features & Clients List
 =========================================== */
 .features li,
 .clients li  {
@@ -333,7 +333,7 @@ Features & Clients List
 }
 
 /*===========================================
-flexblock.steps 
+flexblock.steps
 ============================================= */
 .steps li:nth-child(1) {
   background-color: #e8eef7;
@@ -616,7 +616,7 @@ tr:nth-child(even)>td:hover {
 }
 
 /*============================
-Browser (Screenshots) 
+Browser (Screenshots)
 ============================== */
 .browser {
   border: 1px solid rgba($stratos, .1);

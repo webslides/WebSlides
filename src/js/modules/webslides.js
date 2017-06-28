@@ -402,7 +402,7 @@ export default class WebSlides {
   disable() {
     this.el.classList.add(CLASSES.DISABLED);
 
-    if (this.ws_.plugins.autoslide &&
+    if (this.plugins.autoslide &&
       this.plugins.autoslide.time !== false) {
       this.plugins.autoslide.stop();
     }
@@ -414,9 +414,9 @@ export default class WebSlides {
   enable() {
     this.el.classList.remove(CLASSES.DISABLED);
 
-    if (this.ws_.plugins.autoslide &&
-      this.ws_.plugins.autoslide.time !== false) {
-      this.ws_.plugins.autoslide.play();
+    if (this.plugins.autoslide &&
+      this.plugins.autoslide.time !== false) {
+      this.plugins.autoslide.play();
     }
   }
 
