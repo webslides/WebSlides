@@ -95,6 +95,20 @@
       transform: scale(.5) translate(-50%, -50%);
     }
   }
+
+  & .column {
+    opacity: 0;
+    transform: scale(1.2);
+    transition: opacity .4s, transform .4s;
+    transition-delay: .2s;
+  }
+
+  &.in {
+    .column {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 .text-slide-number {
@@ -104,6 +118,8 @@
 }
 
 #webslides {
+  transition: filter .3s;
+
   &.disabled,
   &.zooming {
     position: fixed;

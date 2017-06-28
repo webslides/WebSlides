@@ -133,9 +133,7 @@ export default class Zoom {
    */
   zoomIn() {
     DOM.show(this.zws_.el);
-    const currentId = this.ws_.el
-      .querySelector(`.${CLASSES.SLIDE}.${CLASSES.CURRENT}`)
-      .getAttribute('id');
+    const currentId = this.ws_.currentSlide_.el.id;
     const zoomedCurrent = this.zws_.el
       .querySelector(`.${CLASSES.WRAP}.${CLASSES.CURRENT}`);
     if (zoomedCurrent) {
@@ -145,22 +143,26 @@ export default class Zoom {
       .querySelector(`#zoomed-${currentId}`)
       .classList.add(CLASSES.CURRENT);
 
-    setTimeout(() => {
-      this.ws_.disable();
-    }, 400);
     this.isZoomed_ = true;
     document.body.style.overflow = 'auto';
+
+    setTimeout(() => {
+      this.ws_.disable();
+      this.zws_.el.classList.add('in');
+    }, 50);
   }
 
   /**
    * Zoom Out the slider, remove scale from the slides.
    */
   zoomOut() {
+    this.zws_.el.classList.remove('in');
+
     setTimeout(() => {
-      DOM.hide(this.zws_.el);
       this.ws_.enable();
+      DOM.hide(this.zws_.el);
+      this.isZoomed_ = false;
+      document.body.style.overflow = '';
     }, 400);
-    this.isZoomed_ = false;
-    document.body.style.overflow = '';
   }
 }

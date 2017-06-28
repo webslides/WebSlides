@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-27
+ * Date: 2017-06-28
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1152,6 +1152,10 @@ var WebSlides = function () {
     key: 'disable',
     value: function disable() {
       this.el.classList.add(CLASSES.DISABLED);
+
+      if (this.plugins.autoslide && this.plugins.autoslide.time !== false) {
+        this.plugins.autoslide.stop();
+      }
     }
 
     /**
@@ -1162,6 +1166,10 @@ var WebSlides = function () {
     key: 'enable',
     value: function enable() {
       this.el.classList.remove(CLASSES.DISABLED);
+
+      if (this.plugins.autoslide && this.plugins.autoslide.time !== false) {
+        this.plugins.autoslide.play();
+      }
     }
 
     /**
@@ -2769,9 +2777,13 @@ var Zoom = function () {
   _createClass(Zoom, [{
     key: 'onKeyDown',
     value: function onKeyDown(event) {
-      if (!this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].MINUS.includes(event.which)) {
+      if (!this.isZoomed_ && __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].MINUS.some(function (key) {
+        return key === event.which;
+      })) {
         this.zoomIn();
-      } else if (this.isZoomed_ && (__WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.includes(event.which) || event.which === __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].ESCAPE)) {
+      } else if (this.isZoomed_ && (__WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].PLUS.some(function (key) {
+        return key === event.which;
+      }) || event.which === __WEBPACK_IMPORTED_MODULE_1__utils_keys__["a" /* default */].ESCAPE)) {
         this.zoomOut();
       }
     }
@@ -2872,17 +2884,20 @@ var Zoom = function () {
       var _this3 = this;
 
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
-      var currentId = this.ws_.el.querySelector('.' + CLASSES.SLIDE + '.' + CLASSES.CURRENT).getAttribute('id');
+      var currentId = this.ws_.currentSlide_.el.id;
       var zoomedCurrent = this.zws_.el.querySelector('.' + CLASSES.WRAP + '.' + CLASSES.CURRENT);
       if (zoomedCurrent) {
         zoomedCurrent.classList.remove(CLASSES.CURRENT);
       }
       this.zws_.el.querySelector('#zoomed-' + currentId).classList.add(CLASSES.CURRENT);
-      setTimeout(function () {
-        _this3.ws_.disable();
-      }, 400);
+
       this.isZoomed_ = true;
       document.body.style.overflow = 'auto';
+
+      setTimeout(function () {
+        _this3.ws_.disable();
+        _this3.zws_.el.classList.add('in');
+      }, 50);
     }
 
     /**
@@ -2894,12 +2909,14 @@ var Zoom = function () {
     value: function zoomOut() {
       var _this4 = this;
 
+      this.zws_.el.classList.remove('in');
+
       setTimeout(function () {
-        __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(_this4.zws_.el);
         _this4.ws_.enable();
+        __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(_this4.zws_.el);
+        _this4.isZoomed_ = false;
+        document.body.style.overflow = '';
       }, 400);
-      this.isZoomed_ = false;
-      document.body.style.overflow = '';
     }
   }]);
 

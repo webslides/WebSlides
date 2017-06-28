@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-27
+ * Date: 2017-06-28
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -46,8 +46,8 @@
 	14. Forms
   15. Longform Elements
 	16. Safari Bug (flex-wrap)
-	17. Print
-  18. Slidex index (aka zoom)
+	17. Slidex index (aka zoom)
+  18. Print
   19. Colors
 ----------------------------------------------------------------------------------- */
 /*
@@ -2865,44 +2865,6 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
 .cta:after {
   width: 0; }
 
-/*=========================================
-17. PRINT
-=========================================== */
-@media print {
-  @page {
-    margin: .5cm;
-    size: A4 landscape; }
-  * {
-    background: transparent !important;
-    color: #000 !important;
-    -webkit-filter: none !important;
-            filter: none !important;
-    text-shadow: none !important; }
-  html,
-  body,
-  #webslides {
-    height: auto !important;
-    overflow: auto !important;
-    width: auto !important; }
-  #webslides {
-    overflow-x: auto !important;
-    overflow-y: auto !important; }
-  section,
-  .slide {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    height: auto !important; }
-  section * {
-    -webkit-animation: none;
-            animation: none; }
-  table,
-  figure {
-    page-break-inside: avoid; }
-  #counter,
-  #navigation {
-    display: none; } }
-
 /*==============================================
 18. Slides Index: Thumbnails navigation gallery
 ================================================ */
@@ -2996,20 +2958,76 @@ Solution: stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
       #webslides-zoomed .column > .wrap-zoom > .slide {
         -webkit-transform: scale(0.5) translate(-50%, -50%);
                 transform: scale(0.5) translate(-50%, -50%); } }
+  #webslides-zoomed .column {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transition: opacity .4s, -webkit-transform .4s;
+    transition: opacity .4s, -webkit-transform .4s;
+    transition: opacity .4s, transform .4s;
+    transition: opacity .4s, transform .4s, -webkit-transform .4s;
+    -webkit-transition-delay: .2s;
+            transition-delay: .2s; }
+  #webslides-zoomed.in .column {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); }
 
 .text-slide-number {
   display: inline-block;
   margin: .8rem auto;
   text-align: center; }
 
-#webslides.disabled, #webslides.zooming {
-  position: fixed;
-  width: 100%;
-  z-index: 0; }
+#webslides {
+  -webkit-transition: -webkit-filter .3s;
+  transition: -webkit-filter .3s;
+  transition: filter .3s;
+  transition: filter .3s, -webkit-filter .3s; }
+  #webslides.disabled, #webslides.zooming {
+    position: fixed;
+    width: 100%;
+    z-index: 0; }
+  #webslides.disabled {
+    -webkit-filter: blur(10px);
+            filter: blur(10px); }
 
-#webslides.disabled {
-  -webkit-filter: blur(10px);
-          filter: blur(10px); }
+/*=========================================
+17. PRINT
+=========================================== */
+@media print {
+  @page {
+    margin: .5cm;
+    size: A4 landscape; }
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    -webkit-filter: none !important;
+            filter: none !important;
+    text-shadow: none !important; }
+  html,
+  body,
+  #webslides {
+    height: auto !important;
+    overflow: auto !important;
+    width: auto !important; }
+  #webslides {
+    overflow-x: auto !important;
+    overflow-y: auto !important; }
+  section,
+  .slide {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    height: auto !important; }
+  section * {
+    -webkit-animation: none;
+            animation: none; }
+  table,
+  figure {
+    page-break-inside: avoid; }
+  #counter,
+  #navigation {
+    display: none; } }
 
 /*=========================================
 19. Colors
@@ -3248,7 +3266,7 @@ figure[class*='text-pull-'] {
 .text-shadow {
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
 
-/* -- time, ampersands, prepositions (for, of...), symbols...  
+/* -- time, ampersands, prepositions (for, of...), symbols...
 [class*='card-'] time,
 h1 span {
   color: #abd;
@@ -3273,7 +3291,8 @@ nav[role='navigation'] li.active a {
   color: #fff; }
 
 nav[role='navigation'] li a {
-  background-color: rgba(50, 50, 50, 0.9); }
+  background-color: rgba(50, 50, 50, 0.9);
+  color: #fff; }
   nav[role='navigation'] li a:hover {
     background-color: rgba(50, 50, 50, 0.7); }
 
@@ -3305,7 +3324,7 @@ nav li.email a:hover {
   background-color: rgba(0, 20, 80, 0.03); }
 
 /*=========================================
-Features & Clients List 
+Features & Clients List
 =========================================== */
 .features li,
 .clients li {
@@ -3335,7 +3354,7 @@ Features & Clients List
   border: 0; }
 
 /*===========================================
-flexblock.steps 
+flexblock.steps
 ============================================= */
 .steps li:nth-child(1) {
   background-color: #e8eef7; }
@@ -3573,7 +3592,7 @@ tr:nth-child(even) > td:hover {
   background-color: rgba(255, 255, 255, 0.5); }
 
 /*============================
-Browser (Screenshots) 
+Browser (Screenshots)
 ============================== */
 .browser {
   border: 1px solid rgba(0, 20, 80, 0.1); }
