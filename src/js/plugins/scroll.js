@@ -85,6 +85,8 @@ export default class Scroll {
       return;
     }
 
+    // Firefox uses lines instead of pixels for delta
+    const linesToPx = event.deltaMode * this.ws_.options.minWheelDelta;
     const {deltaY: wheelDeltaY, deltaX: wheelDeltaX} = event;
     const isVertical = this.ws_.isVertical;
     const isHorizontalMovement = Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY);
@@ -103,8 +105,8 @@ export default class Scroll {
       }
     }
 
-    if (Math.abs(wheelDeltaY) >= this.ws_.options.minWheelDelta ||
-        Math.abs(wheelDeltaX) >= this.ws_.options.minWheelDelta) {
+    if (Math.abs(wheelDeltaY + linesToPx) >= this.ws_.options.minWheelDelta ||
+        Math.abs(wheelDeltaX + linesToPx) >= this.ws_.options.minWheelDelta) {
       if ((isHorizontalMovement && this.isGoingLeft_) ||
           (!isHorizontalMovement && this.isGoingUp_)) {
         this.ws_.goPrev();

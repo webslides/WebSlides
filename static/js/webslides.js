@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-06-28
+ * Date: 2017-06-29
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1998,6 +1998,8 @@ var Scroll = function () {
         return;
       }
 
+      // Firefox uses lines instead of pixels for delta
+      var linesToPx = event.deltaMode * this.ws_.options.minWheelDelta;
       var wheelDeltaY = event.deltaY,
           wheelDeltaX = event.deltaX;
 
@@ -2017,7 +2019,7 @@ var Scroll = function () {
         }
       }
 
-      if (Math.abs(wheelDeltaY) >= this.ws_.options.minWheelDelta || Math.abs(wheelDeltaX) >= this.ws_.options.minWheelDelta) {
+      if (Math.abs(wheelDeltaY + linesToPx) >= this.ws_.options.minWheelDelta || Math.abs(wheelDeltaX + linesToPx) >= this.ws_.options.minWheelDelta) {
         if (isHorizontalMovement && this.isGoingLeft_ || !isHorizontalMovement && this.isGoingUp_) {
           this.ws_.goPrev();
         } else {
