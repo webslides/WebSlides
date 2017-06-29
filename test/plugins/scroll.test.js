@@ -7,6 +7,7 @@ const fireEvent = (target, eventType, deltaX, deltaY) => {
   const event = new CustomEvent(eventType);
   event.deltaX = deltaX;
   event.deltaY = deltaY;
+  event.deltaMode = 0;
 
   target.dispatchEvent(event);
 };

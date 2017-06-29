@@ -35,6 +35,7 @@ test('Zoom utility', () => {
     disable: disable
   };
   slides.forEach(slide => webslides.slides.push({el: slide}));
+  webslides.currentSlide_ = webslides.slides[0];
 
   new Zoom(webslides);
 
@@ -51,7 +52,7 @@ test('Zoom utility', () => {
   expect(zws.style.display).toBe('');
 
   // Wait until next execution
-  jest.runTimersToTime(500);
+  jest.runTimersToTime(600);
   expect(disable.mock.calls.length).toBe(1);
   expect(enable.mock.calls.length).toBe(0);
   expect(goto.mock.calls.length).toBe(0);
