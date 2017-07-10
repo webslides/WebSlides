@@ -68,6 +68,10 @@
         transform: scale(1.02);
         z-index: 2;
       }
+
+      &.current {
+        transform: scale(1.08);
+      }
     }
 
     > .wrap-zoom > .zoom-layer {
