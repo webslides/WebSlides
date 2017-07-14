@@ -1,5 +1,6 @@
 import DOM from '../utils/dom';
 import Keys from '../utils/keys';
+import scrollTo from '../utils/scroll-to';
 import Slide from '../modules/slide';
 
 const CLASSES = {
@@ -139,9 +140,9 @@ export default class Zoom {
     if (zoomedCurrent) {
       zoomedCurrent.classList.remove(CLASSES.CURRENT);
     }
-    this.zws_.el
-      .querySelector(`#zoomed-${currentId}`)
-      .classList.add(CLASSES.CURRENT);
+    const actualCurrent = this.zws_.el
+      .querySelector(`#zoomed-${currentId}`);
+    actualCurrent.classList.add(CLASSES.CURRENT);
 
     this.isZoomed_ = true;
     document.body.style.overflow = 'auto';
@@ -149,6 +150,9 @@ export default class Zoom {
     setTimeout(() => {
       this.ws_.disable();
       this.zws_.el.classList.add('in');
+      const wrapCSS = window.getComputedStyle(this.zws_.grid);
+      scrollTo(actualCurrent.parentNode.offsetTop
+        + DOM.parseSize(wrapCSS.paddingTop), 50, () => {}, document.body);
     }, 50);
   }
 

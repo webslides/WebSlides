@@ -8,9 +8,13 @@ let SCROLLABLE_CONTAINER = null;
  * @param {number} y Offset of the page to scroll to.
  * @param {number} duration Duration of the animation. 500ms by default.
  * @param {function} cb Callback function to call upon completion.
+ * @param {HTMLElement} container The HTML element where to scroll
  */
-export default function scrollTo(y, duration = 500, cb = () => {}) {
-  if (!SCROLLABLE_CONTAINER) {
+export default function scrollTo(y, duration = 500, cb = () => {},
+  container = null) {
+  if (container) {
+    SCROLLABLE_CONTAINER = container;
+  } else if (!SCROLLABLE_CONTAINER) {
     SCROLLABLE_CONTAINER = document.getElementById('webslides');
   }
 

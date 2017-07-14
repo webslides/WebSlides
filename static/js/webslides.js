@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-07-13
+ * Date: 2017-07-14
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -71,7 +71,7 @@
 /******/ 	__webpack_require__.p = "/static/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,7 +79,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(20);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -687,10 +687,69 @@ var MobileDetector = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(13);
+/* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(21);
+
+
+var SCROLLABLE_CONTAINER = null;
+
+/**
+ * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
+ * callback upon finishing.
+ * @param {number} y Offset of the page to scroll to.
+ * @param {number} duration Duration of the animation. 500ms by default.
+ * @param {function} cb Callback function to call upon completion.
+ * @param {HTMLElement} container The HTML element where to scroll
+ */
+function scrollTo(y) {
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
+  var container = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+
+  if (container) {
+    SCROLLABLE_CONTAINER = container;
+  } else if (!SCROLLABLE_CONTAINER) {
+    SCROLLABLE_CONTAINER = document.getElementById('webslides');
+  }
+
+  var delta = y - SCROLLABLE_CONTAINER.scrollTop;
+  var startLocation = SCROLLABLE_CONTAINER.scrollTop;
+  var increment = 16;
+
+  if (!duration) {
+    SCROLLABLE_CONTAINER.scrollTop = y;
+    cb();
+    return;
+  }
+
+  var animateScroll = function animateScroll(elapsedTime) {
+    elapsedTime += increment;
+    var percent = Math.min(1, elapsedTime / duration);
+    var easingP = __WEBPACK_IMPORTED_MODULE_0__easing__["a" /* default */].swing(percent, elapsedTime * percent, y, delta, duration);
+
+    SCROLLABLE_CONTAINER.scrollTop = Math.floor(startLocation + easingP * delta);
+
+    if (elapsedTime < duration) {
+      setTimeout(function () {
+        return animateScroll(elapsedTime);
+      }, increment);
+    } else {
+      cb();
+    }
+  };
+
+  animateScroll(0);
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(4);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1226,25 +1285,25 @@ var WebSlides = function () {
 /* harmony default export */ __webpack_exports__["a"] = (WebSlides);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_webslides__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_webslides__ = __webpack_require__(5);
 
-__webpack_require__(5);
+__webpack_require__(6);
 
 window.WebSlides = __WEBPACK_IMPORTED_MODULE_0__modules_webslides__["a" /* default */];
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1347,7 +1406,7 @@ var AutoSlide = function () {
 /* harmony default export */ __webpack_exports__["a"] = (AutoSlide);
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1403,7 +1462,7 @@ var ClickNav = function () {
 /* harmony default export */ __webpack_exports__["a"] = (ClickNav);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1473,7 +1532,7 @@ var Grid = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Grid);
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1580,7 +1639,7 @@ var Hash = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Hash);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1677,7 +1736,7 @@ var Keyboard = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Keyboard);
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1853,21 +1912,21 @@ var Navigation = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Navigation);
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__autoslide__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__click_nav__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grid__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hash__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__keyboard__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__navigation__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scroll__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__zoom__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__autoslide__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__click_nav__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grid__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hash__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__keyboard__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__navigation__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scroll__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__zoom__ = __webpack_require__(19);
 
 
 
@@ -1895,7 +1954,7 @@ var Navigation = function () {
 });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2037,7 +2096,7 @@ var Scroll = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Scroll);
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2287,7 +2346,7 @@ var Touch = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Touch);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2374,7 +2433,7 @@ var Video = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Video);
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2710,16 +2769,18 @@ var YouTube = function () {
 /* harmony default export */ __webpack_exports__["a"] = (YouTube);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_keys__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_slide__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_scroll_to__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_slide__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -2818,7 +2879,7 @@ var Zoom = function () {
       this.zws_.slides = [].map.call(this.ws_.slides, function (slide, i) {
         var s_ = slide.el.cloneNode(true);
         _this.zws_.grid.appendChild(s_);
-        return new __WEBPACK_IMPORTED_MODULE_2__modules_slide__["a" /* default */](s_, i);
+        return new __WEBPACK_IMPORTED_MODULE_3__modules_slide__["a" /* default */](s_, i);
       });
 
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
@@ -2891,7 +2952,8 @@ var Zoom = function () {
       if (zoomedCurrent) {
         zoomedCurrent.classList.remove(CLASSES.CURRENT);
       }
-      this.zws_.el.querySelector('#zoomed-' + currentId).classList.add(CLASSES.CURRENT);
+      var actualCurrent = this.zws_.el.querySelector('#zoomed-' + currentId);
+      actualCurrent.classList.add(CLASSES.CURRENT);
 
       this.isZoomed_ = true;
       document.body.style.overflow = 'auto';
@@ -2899,6 +2961,8 @@ var Zoom = function () {
       setTimeout(function () {
         _this3.ws_.disable();
         _this3.zws_.el.classList.add('in');
+        var wrapCSS = window.getComputedStyle(_this3.zws_.grid);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_scroll_to__["a" /* default */])(actualCurrent.parentNode.offsetTop + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(wrapCSS.paddingTop), 50, function () {}, document.body);
       }, 50);
     }
 
@@ -2928,7 +2992,7 @@ var Zoom = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Zoom);
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2979,7 +3043,7 @@ var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
 /* harmony default export */ __webpack_exports__["a"] = (WSCustomEvent);
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2993,61 +3057,6 @@ function swing(p) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = ({ swing: swing });
-
-/***/ }),
-/* 21 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(20);
-
-
-var SCROLLABLE_CONTAINER = null;
-
-/**
- * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
- * callback upon finishing.
- * @param {number} y Offset of the page to scroll to.
- * @param {number} duration Duration of the animation. 500ms by default.
- * @param {function} cb Callback function to call upon completion.
- */
-function scrollTo(y) {
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
-
-  if (!SCROLLABLE_CONTAINER) {
-    SCROLLABLE_CONTAINER = document.getElementById('webslides');
-  }
-
-  var delta = y - SCROLLABLE_CONTAINER.scrollTop;
-  var startLocation = SCROLLABLE_CONTAINER.scrollTop;
-  var increment = 16;
-
-  if (!duration) {
-    SCROLLABLE_CONTAINER.scrollTop = y;
-    cb();
-    return;
-  }
-
-  var animateScroll = function animateScroll(elapsedTime) {
-    elapsedTime += increment;
-    var percent = Math.min(1, elapsedTime / duration);
-    var easingP = __WEBPACK_IMPORTED_MODULE_0__easing__["a" /* default */].swing(percent, elapsedTime * percent, y, delta, duration);
-
-    SCROLLABLE_CONTAINER.scrollTop = Math.floor(startLocation + easingP * delta);
-
-    if (elapsedTime < duration) {
-      setTimeout(function () {
-        return animateScroll(elapsedTime);
-      }, increment);
-    } else {
-      cb();
-    }
-  };
-
-  animateScroll(0);
-}
 
 /***/ })
 /******/ ]);
