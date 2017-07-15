@@ -41,12 +41,12 @@
     position: relative;
     width: 25%;
 
-    @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
-      width: 50%;
+    @media screen and (max-width: 567px) {
+      width: 100%;
     }
 
-    @media (max-aspect-ratio: 2 / 3) {
-      width: 100%;
+    @media screen and (min-width: 568px) and (max-width: 1023px) {
+      width: 50%;
     }
 
     > .wrap-zoom {
@@ -56,12 +56,12 @@
       position: relative;
       transition: .3s;
 
-      @media screen and (orientation: portrait), screen and (max-width: 768px) and (orientation: landscape) {
+      @media screen and (max-width: 567px) {
         height: 50vh;
       }
 
-      @media (max-aspect-ratio: 2 / 3) {
-        height: 50vh;
+      @media screen and (min-width: 568px) and (max-width: 1023px) {
+        height: 33vh;
       }
 
       &:hover {
