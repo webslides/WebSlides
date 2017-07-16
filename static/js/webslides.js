@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-07-15
+ * Date: 2017-07-16
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2882,7 +2882,7 @@ var Zoom = function () {
         return new __WEBPACK_IMPORTED_MODULE_3__modules_slide__["a" /* default */](s_, i);
       });
 
-      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(this.zws_.el);
+      this.disable();
       __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].after(this.zws_.el, this.ws_.el);
 
       // Creates the container for each slide
@@ -2946,7 +2946,7 @@ var Zoom = function () {
     value: function zoomIn() {
       var _this3 = this;
 
-      __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].show(this.zws_.el);
+      this.enable();
       var currentId = this.ws_.currentSlide_.el.id;
       var zoomedCurrent = this.zws_.el.querySelector('.' + CLASSES.WRAP + '.' + CLASSES.CURRENT);
       if (zoomedCurrent) {
@@ -2979,10 +2979,30 @@ var Zoom = function () {
 
       setTimeout(function () {
         _this4.ws_.enable();
-        __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].hide(_this4.zws_.el);
+        _this4.disable();
         _this4.isZoomed_ = false;
         document.body.style.overflow = '';
       }, 400);
+    }
+
+    /**
+     * Hides the zoom container
+     */
+
+  }, {
+    key: 'disable',
+    value: function disable() {
+      this.zws_.el.classList.add('disabled');
+    }
+
+    /**
+     * Shows the zoom container
+     */
+
+  }, {
+    key: 'enable',
+    value: function enable() {
+      this.zws_.el.classList.remove('disabled');
     }
   }]);
 

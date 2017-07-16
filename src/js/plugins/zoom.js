@@ -84,7 +84,7 @@ export default class Zoom {
           return new Slide(s_, i);
         });
 
-    DOM.hide(this.zws_.el);
+    this.disable();
     DOM.after(this.zws_.el, this.ws_.el);
 
     // Creates the container for each slide
@@ -133,7 +133,7 @@ export default class Zoom {
    * Zoom In the slider, scales the slides and uses a grid layout to show them.
    */
   zoomIn() {
-    DOM.show(this.zws_.el);
+    this.enable();
     const currentId = this.ws_.currentSlide_.el.id;
     const zoomedCurrent = this.zws_.el
       .querySelector(`.${CLASSES.WRAP}.${CLASSES.CURRENT}`);
@@ -164,9 +164,23 @@ export default class Zoom {
 
     setTimeout(() => {
       this.ws_.enable();
-      DOM.hide(this.zws_.el);
+      this.disable();
       this.isZoomed_ = false;
       document.body.style.overflow = '';
     }, 400);
+  }
+
+  /**
+   * Hides the zoom container
+   */
+  disable() {
+    this.zws_.el.classList.add('disabled');
+  }
+
+  /**
+   * Shows the zoom container
+   */
+  enable() {
+    this.zws_.el.classList.remove('disabled');
   }
 }

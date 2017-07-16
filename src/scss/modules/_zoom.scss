@@ -12,6 +12,11 @@
   position: relative;
   z-index: 2;
 
+  &.disabled {
+    left: -100000px;
+    position: absolute;
+  }
+
   .slide {
     height: 100%;
     width: 400%;
