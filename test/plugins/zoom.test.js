@@ -43,13 +43,14 @@ test('Zoom utility', () => {
   const zoomSlides = zws.querySelectorAll('.slide');
 
   expect(zws).not.toBe(null);
-  expect(zws.style.display).toBe('none');
+  expect(zws.className).toMatch('disable');
   expect(slides.length).toBe(zoomSlides.length);
   expect(zws.childNodes[0].className).toBe('wrap');
   expect(zws.childNodes[0].childNodes[0].className).toBe('grid');
 
   simulateKeyEvent(document.body, 109);
-  expect(zws.style.display).toBe('');
+  expect(zws.className).not.toMatch('disable');
+
 
   // Wait until next execution
   jest.runTimersToTime(600);
