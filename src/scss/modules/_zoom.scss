@@ -146,7 +146,7 @@
 
   &.disabled {
     filter: blur(10px);
-    /* BLur makes scroll no accesible */
+    /* Blur makes scroll no accesible */
     width: calc(100% - 10px);
   }
 }
