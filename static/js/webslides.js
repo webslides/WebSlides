@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-07-24
+ * Date: 2017-07-28
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2792,7 +2792,8 @@ var CLASSES = {
   WRAP: 'wrap-zoom',
   WRAP_CONTAINER: 'wrap',
   CURRENT: 'current',
-  SLIDE: 'slide'
+  SLIDE: 'slide',
+  ZOOM_ENABLED: 'ws-ready-zoom'
 };
 
 var ID = 'webslides-zoomed';
@@ -2905,9 +2906,11 @@ var Zoom = function () {
       var wrap = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(elem.el, 'div');
       wrap.className = CLASSES.WRAP;
       wrap.setAttribute('id', 'zoomed-' + elem.el.getAttribute('id'));
+
       // Slide container, need due to flexbox styles
       var div = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].wrap(wrap, 'div');
       div.className = CLASSES.DIV;
+
       // Adding some layer for controlling click events
       var divLayer = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('div');
       divLayer.className = 'zoom-layer';
@@ -2917,6 +2920,7 @@ var Zoom = function () {
         _this2.ws_.goToSlide(elem.i);
       });
       wrap.appendChild(divLayer);
+
       // Slide number
       var slideNumber = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('p', '', '' + (elem.i + 1));
       slideNumber.className = 'text-slide-number';
@@ -2949,20 +2953,24 @@ var Zoom = function () {
       this.enable();
       var currentId = this.ws_.currentSlide_.el.id;
       var zoomedCurrent = this.zws_.el.querySelector('.' + CLASSES.WRAP + '.' + CLASSES.CURRENT);
+
       if (zoomedCurrent) {
         zoomedCurrent.classList.remove(CLASSES.CURRENT);
       }
+
       var actualCurrent = this.zws_.el.querySelector('#zoomed-' + currentId);
       actualCurrent.classList.add(CLASSES.CURRENT);
 
       this.isZoomed_ = true;
-      document.body.style.overflow = 'auto';
+      document.documentElement.classList.add(CLASSES.ZOOM_ENABLED);
 
       setTimeout(function () {
         _this3.ws_.disable();
         _this3.zws_.el.classList.add('in');
         var wrapCSS = window.getComputedStyle(_this3.zws_.grid);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_scroll_to__["a" /* default */])(actualCurrent.parentNode.offsetTop + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(wrapCSS.paddingTop), 50, function () {}, document.body);
+        var scrollingElement = document.scrollingElement || document.body;
+
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_scroll_to__["a" /* default */])(actualCurrent.parentNode.offsetTop + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(wrapCSS.paddingTop), 50, function () {}, scrollingElement);
       }, 50);
     }
 
@@ -2981,7 +2989,7 @@ var Zoom = function () {
         _this4.ws_.enable();
         _this4.disable();
         _this4.isZoomed_ = false;
-        document.body.style.overflow = '';
+        document.documentElement.classList.remove(CLASSES.ZOOM_ENABLED);
       }, 400);
     }
 
