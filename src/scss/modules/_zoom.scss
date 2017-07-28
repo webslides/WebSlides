@@ -50,12 +50,12 @@
       width: 100%;
     }
 
-    @media screen and (min-width: 568px) and (max-width: 1023px) {
+    @media screen and (min-width: 568px) and (max-width: 1024px) {
       width: 50%;
     }
 
-    @media screen and (orientation: portrait) {
-      width: 50%;
+    @media screen and (max-width: 567px) and (orientation: portrait) {
+      width: 100%;
     }
 
     > .wrap-zoom {
