@@ -14,6 +14,14 @@ webslides.js will add .ws-ready automatically. Don't worry :) -- */
     overflow: hidden;
     width: 100%;
   }
+
+  &.ws-ready-zoom {
+    overflow: visible;
+
+    body {
+      overflow: auto;
+    }
+  }
 }
 
 #webslides {

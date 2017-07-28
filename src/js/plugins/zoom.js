@@ -9,7 +9,8 @@ const CLASSES = {
   WRAP: 'wrap-zoom',
   WRAP_CONTAINER: 'wrap',
   CURRENT: 'current',
-  SLIDE: 'slide'
+  SLIDE: 'slide',
+  ZOOM_ENABLED: 'ws-ready-zoom'
 };
 
 const ID = 'webslides-zoomed';
@@ -100,9 +101,11 @@ export default class Zoom {
     const wrap = DOM.wrap(elem.el, 'div');
     wrap.className = CLASSES.WRAP;
     wrap.setAttribute('id', `zoomed-${elem.el.getAttribute('id')}`);
+
     // Slide container, need due to flexbox styles
     const div = DOM.wrap(wrap, 'div');
     div.className = CLASSES.DIV;
+
     // Adding some layer for controlling click events
     const divLayer = DOM.createNode('div');
     divLayer.className = 'zoom-layer';
@@ -112,8 +115,9 @@ export default class Zoom {
       this.ws_.goToSlide(elem.i);
     });
     wrap.appendChild(divLayer);
+
     // Slide number
-    const slideNumber = DOM.createNode('p', '', `${elem.i+1}`);
+    const slideNumber = DOM.createNode('p', '', `${elem.i + 1}`);
     slideNumber.className = 'text-slide-number';
     div.appendChild(slideNumber);
   }
@@ -137,22 +141,26 @@ export default class Zoom {
     const currentId = this.ws_.currentSlide_.el.id;
     const zoomedCurrent = this.zws_.el
       .querySelector(`.${CLASSES.WRAP}.${CLASSES.CURRENT}`);
+
     if (zoomedCurrent) {
       zoomedCurrent.classList.remove(CLASSES.CURRENT);
     }
+
     const actualCurrent = this.zws_.el
       .querySelector(`#zoomed-${currentId}`);
     actualCurrent.classList.add(CLASSES.CURRENT);
 
     this.isZoomed_ = true;
-    document.body.style.overflow = 'auto';
+    document.documentElement.classList.add(CLASSES.ZOOM_ENABLED);
 
     setTimeout(() => {
       this.ws_.disable();
       this.zws_.el.classList.add('in');
       const wrapCSS = window.getComputedStyle(this.zws_.grid);
+      const scrollingElement = document.scrollingElement || document.body;
+
       scrollTo(actualCurrent.parentNode.offsetTop
-        + DOM.parseSize(wrapCSS.paddingTop), 50, () => {}, document.body);
+        + DOM.parseSize(wrapCSS.paddingTop), 50, () => {}, scrollingElement);
     }, 50);
   }
 
@@ -166,7 +174,7 @@ export default class Zoom {
       this.ws_.enable();
       this.disable();
       this.isZoomed_ = false;
-      document.body.style.overflow = '';
+      document.documentElement.classList.remove(CLASSES.ZOOM_ENABLED);
     }, 400);
   }
 
