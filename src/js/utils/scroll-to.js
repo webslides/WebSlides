@@ -1,6 +1,6 @@
 import Easings from './easing';
 
-const SCROLLABLE_CONTAINER = document.getElementById('webslides');
+let SCROLLABLE_CONTAINER = document.getElementById('webslides');
 
 /**
  * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
@@ -10,6 +10,8 @@ const SCROLLABLE_CONTAINER = document.getElementById('webslides');
  * @param {function} cb Callback function to call upon completion.
  */
 export default function scrollTo(y, duration = 500, cb = () => {}) {
+  SCROLLABLE_CONTAINER = SCROLLABLE_CONTAINER
+    || document.getElementById('webslides');
   const delta = y - SCROLLABLE_CONTAINER.scrollTop;
   const startLocation = SCROLLABLE_CONTAINER.scrollTop;
   const increment = 16;
