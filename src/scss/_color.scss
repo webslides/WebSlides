@@ -780,7 +780,7 @@ Slides (Counter/Arrows)
 }
 
 #webslides:hover #navigation a:hover {
-  background-color: rgba($black, .9);
+  background-color: $index-overlay;
   color: $white;
 }
 
@@ -794,6 +794,10 @@ footer[role='contentinfo'] {
 /*============================
 Slides Index
 ============================== */
+#webslides-zoomed {
+  background: $index-overlay;
+}
+
 #webslides-zoomed .column > .wrap-zoom {
   background-color: $catskill-white;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 4px 8px rgba(0, 0, 0, .04);
@@ -804,7 +808,7 @@ Slides Index
   }
 
   &.current {
-    border: 3px double rgba(0, 20, 280, .2);
+    border: .6rem solid rgba(0, 20, 280, .2);
   }
 }
 

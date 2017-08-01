@@ -5,7 +5,6 @@
 #webslides-zoomed {
   align-content: flex-start;
   align-items: flex-start;
-  background: transparent;
   flex-direction: row;
   justify-content: flex-start;
   min-height: 100vh;
@@ -59,6 +58,7 @@
     }
 
     > .wrap-zoom {
+      border-radius: .3rem;
       display: inline-block;
       height: 25vh;
       overflow: hidden;
@@ -145,7 +145,10 @@
   }
 
   &.disabled {
+    /*
     filter: blur(10px);
+    transform: scale(1.1);
+    */
     /* Blur makes scroll no accesible */
     width: calc(100% - 10px);
   }
