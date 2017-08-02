@@ -32,7 +32,8 @@ test('Zoom utility', () => {
     slides: [],
     goToSlide: goto,
     enable: enable,
-    disable: disable
+    disable: disable,
+    options: {showIndex: true}
   };
   slides.forEach(slide => webslides.slides.push({el: slide}));
   webslides.currentSlide_ = webslides.slides[0];
@@ -49,6 +50,7 @@ test('Zoom utility', () => {
   expect(zws.childNodes[0].childNodes[0].className).toBe('grid');
 
   simulateKeyEvent(document.body, 109);
+
   expect(zws.className).not.toMatch('disable');
 
 
