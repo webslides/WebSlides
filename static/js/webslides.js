@@ -41,9 +41,6 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -71,7 +68,7 @@
 /******/ 	__webpack_require__.p = "/static/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,7 +76,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__custom_event__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -363,8 +360,8 @@ var DOM = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Slide; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Events; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Slide; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Events; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_dom__ = __webpack_require__(0);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -688,7 +685,7 @@ var MobileDetector = function () {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = scrollTo;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(20);
 
 
 var SCROLLABLE_CONTAINER = null;
@@ -746,7 +743,19 @@ function scrollTo(y) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(14);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_webslides__ = __webpack_require__(6);
+
+__webpack_require__(21);
+
+window.WebSlides = __WEBPACK_IMPORTED_MODULE_0__modules_webslides__["a" /* default */];
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plugins_plugins__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slide__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__ = __webpack_require__(4);
@@ -800,6 +809,7 @@ var WebSlides = function () {
    * navigation can occur again with scroll.
    * @param {number} slideOffset Controls the amount of needed touch delta to
    * trigger navigation.
+   * @param {boolean} showIndex Controls if the index can be shown.
    */
   function WebSlides() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -816,7 +826,9 @@ var WebSlides = function () {
         _ref$scrollWait = _ref.scrollWait,
         scrollWait = _ref$scrollWait === undefined ? 450 : _ref$scrollWait,
         _ref$slideOffset = _ref.slideOffset,
-        slideOffset = _ref$slideOffset === undefined ? 50 : _ref$slideOffset;
+        slideOffset = _ref$slideOffset === undefined ? 50 : _ref$slideOffset,
+        _ref$showIndex = _ref.showIndex,
+        showIndex = _ref$showIndex === undefined ? true : _ref$showIndex;
 
     _classCallCheck(this, WebSlides);
 
@@ -879,7 +891,8 @@ var WebSlides = function () {
       minWheelDelta: minWheelDelta,
       navigateOnScroll: navigateOnScroll,
       scrollWait: scrollWait,
-      slideOffset: slideOffset
+      slideOffset: slideOffset,
+      showIndex: showIndex
     };
     /**
      * Initialisation flag.
@@ -912,7 +925,7 @@ var WebSlides = function () {
       while (i--) {
         var node = nodes[i];
 
-        if (!__WEBPACK_IMPORTED_MODULE_1__slide__["a" /* default */].isCandidate(node)) {
+        if (!__WEBPACK_IMPORTED_MODULE_1__slide__["b" /* default */].isCandidate(node)) {
           this.el.removeChild(node);
         }
       }
@@ -958,7 +971,7 @@ var WebSlides = function () {
     key: 'grabSlides_',
     value: function grabSlides_() {
       this.slides = __WEBPACK_IMPORTED_MODULE_2__utils_dom__["a" /* default */].toArray(this.el.childNodes).map(function (slide, i) {
-        return new __WEBPACK_IMPORTED_MODULE_1__slide__["a" /* default */](slide, i);
+        return new __WEBPACK_IMPORTED_MODULE_1__slide__["b" /* default */](slide, i);
       });
 
       this.maxSlide_ = this.slides.length;
@@ -1018,12 +1031,12 @@ var WebSlides = function () {
       if (!isMovingForward) {
         nextSlide.moveBeforeFirst();
         nextSlide.show();
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(this.currentSlide_.el.offsetTop, 0);
+        Object(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(this.currentSlide_.el.offsetTop, 0);
       } else {
         nextSlide.show();
       }
 
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(nextSlide.el.offsetTop, 500, function () {
+      Object(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(nextSlide.el.offsetTop, 500, function () {
         _this2.currentSlide_.hide();
 
         if (isMovingForward) {
@@ -1052,7 +1065,7 @@ var WebSlides = function () {
     value: function transitionToSlide_(isMovingForward, nextSlide, callback) {
       var _this3 = this;
 
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(0, 0);
+      Object(__WEBPACK_IMPORTED_MODULE_3__utils_scroll_to__["a" /* default */])(0, 0);
       var className = 'slideInRight';
 
       if (!isMovingForward) {
@@ -1200,7 +1213,9 @@ var WebSlides = function () {
   }, {
     key: 'toggleZoom',
     value: function toggleZoom() {
-      this.plugins.zoom.toggleZoom();
+      if (this.options.showIndex) {
+        this.plugins.zoom.toggleZoom();
+      }
     }
 
     /**
@@ -1285,22 +1300,46 @@ var WebSlides = function () {
 /* harmony default export */ __webpack_exports__["a"] = (WebSlides);
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_webslides__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__autoslide__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__click_nav__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grid__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hash__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__keyboard__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__navigation__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scroll__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__zoom__ = __webpack_require__(19);
 
-__webpack_require__(6);
 
-window.WebSlides = __WEBPACK_IMPORTED_MODULE_0__modules_webslides__["a" /* default */];
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  AutoSlide: __WEBPACK_IMPORTED_MODULE_0__autoslide__["a" /* default */],
+  ClickNav: __WEBPACK_IMPORTED_MODULE_1__click_nav__["a" /* default */],
+  Grid: __WEBPACK_IMPORTED_MODULE_2__grid__["a" /* default */],
+  Hash: __WEBPACK_IMPORTED_MODULE_3__hash__["a" /* default */],
+  Keyboard: __WEBPACK_IMPORTED_MODULE_4__keyboard__["a" /* default */],
+  Navigation: __WEBPACK_IMPORTED_MODULE_5__navigation__["a" /* default */],
+  Scroll: __WEBPACK_IMPORTED_MODULE_6__scroll__["a" /* default */],
+  Touch: __WEBPACK_IMPORTED_MODULE_7__touch__["a" /* default */],
+  Video: __WEBPACK_IMPORTED_MODULE_8__video__["a" /* default */],
+  YouTube: __WEBPACK_IMPORTED_MODULE_9__youtube__["a" /* default */],
+  Zoom: __WEBPACK_IMPORTED_MODULE_10__zoom__["a" /* default */]
+});
 
 /***/ }),
 /* 8 */
@@ -1410,6 +1449,57 @@ var AutoSlide = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var NativeCustomEvent = window.CustomEvent;
+
+/**
+ * Check for the usage of native support for CustomEvents which is lacking
+ * completely on IE.
+ * @return {boolean} Whether it can be used or not.
+ */
+function canIuseNativeCustom() {
+  try {
+    var p = new NativeCustomEvent('t', {
+      detail: {
+        a: 'b'
+      }
+    });
+    return 't' === p.type && 'b' === p.detail.a;
+  } catch (e) {}
+
+  /* istanbul ignore next: hard to reproduce on test environment  */
+  return false;
+}
+
+/**
+ * Lousy polyfill for the Custom Event constructor for IE.
+ * @param {!string} type The type of the event.
+ * @param {?Object} params Additional information for the event.
+ * @return {Event}
+ * @constructor
+ */
+/* istanbul ignore next: hard to reproduce on test environment  */
+var IECustomEvent = function CustomEvent(type, params) {
+  var e = document.createEvent('CustomEvent');
+
+  if (params) {
+    e.initCustomEvent(type, params.bubbles, params.cancelable, params.detail);
+  } else {
+    e.initCustomEvent(type, false, false, undefined);
+  }
+
+  return e;
+};
+
+/* istanbul ignore next: hard to reproduce on test environment  */
+var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
+
+/* harmony default export */ __webpack_exports__["a"] = (WSCustomEvent);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1462,7 +1552,7 @@ var ClickNav = function () {
 /* harmony default export */ __webpack_exports__["a"] = (ClickNav);
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1532,7 +1622,7 @@ var Grid = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Grid);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1639,7 +1729,7 @@ var Hash = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Hash);
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1736,7 +1826,7 @@ var Keyboard = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Keyboard);
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1910,48 +2000,6 @@ var Navigation = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Navigation);
-
-/***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__autoslide__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__click_nav__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grid__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__hash__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__keyboard__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__navigation__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scroll__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__touch__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__video__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__youtube__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__zoom__ = __webpack_require__(19);
-
-
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  AutoSlide: __WEBPACK_IMPORTED_MODULE_0__autoslide__["a" /* default */],
-  ClickNav: __WEBPACK_IMPORTED_MODULE_1__click_nav__["a" /* default */],
-  Grid: __WEBPACK_IMPORTED_MODULE_2__grid__["a" /* default */],
-  Hash: __WEBPACK_IMPORTED_MODULE_3__hash__["a" /* default */],
-  Keyboard: __WEBPACK_IMPORTED_MODULE_4__keyboard__["a" /* default */],
-  Navigation: __WEBPACK_IMPORTED_MODULE_5__navigation__["a" /* default */],
-  Scroll: __WEBPACK_IMPORTED_MODULE_6__scroll__["a" /* default */],
-  Touch: __WEBPACK_IMPORTED_MODULE_7__touch__["a" /* default */],
-  Video: __WEBPACK_IMPORTED_MODULE_8__video__["a" /* default */],
-  YouTube: __WEBPACK_IMPORTED_MODULE_9__youtube__["a" /* default */],
-  Zoom: __WEBPACK_IMPORTED_MODULE_10__zoom__["a" /* default */]
-});
 
 /***/ }),
 /* 15 */
@@ -2390,15 +2438,15 @@ var Video = function () {
         video.pause();
         video.currentTime = 0;
 
-        var _Slide$getSectionFrom = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(video),
+        var _Slide$getSectionFrom = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* default */].getSectionFromEl(video),
             i = _Slide$getSectionFrom.i;
 
         var slide = wsInstance.slides[i - 1];
 
         slide.video = video;
 
-        slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].ENABLE, Video.onSectionEnabled);
-        slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].DISABLE, Video.onSectionDisabled);
+        slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].ENABLE, Video.onSectionEnabled);
+        slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].DISABLE, Video.onSectionDisabled);
       });
     }
   }
@@ -2473,7 +2521,7 @@ var Player = function () {
      * Slide element in which the video is located.
      * @type {Node}
      */
-    this.slide = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(el).section;
+    this.slide = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* default */].getSectionFromEl(el).section;
     /**
      * Whether it should autoplay on load or not.
      * @type {boolean}
@@ -2679,17 +2727,17 @@ var YouTube = function () {
         var player = new Player(video);
 
         if (typeof video.dataset.autoplay !== 'undefined') {
-          var _Slide$getSectionFrom = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* default */].getSectionFromEl(player.el),
+          var _Slide$getSectionFrom = __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* default */].getSectionFromEl(player.el),
               i = _Slide$getSectionFrom.i;
 
           var slide = _this2.ws_.slides[i - 1];
 
           slide.player = player;
 
-          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].ENABLE, YouTube.onSlideEvent);
-          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].DISABLE, YouTube.onSlideEvent);
-          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].ENTER, YouTube.onSlideEvent);
-          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].LEAVE, YouTube.onSlideEvent);
+          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].ENABLE, YouTube.onSlideEvent);
+          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].DISABLE, YouTube.onSlideEvent);
+          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].ENTER, YouTube.onSlideEvent);
+          slide.el.addEventListener(__WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].LEAVE, YouTube.onSlideEvent);
 
           if (_this2.ws_.currentSlide_ === slide) {
             YouTube.onSectionEnabled(slide);
@@ -2723,16 +2771,16 @@ var YouTube = function () {
       var slide = event.detail.slide;
 
       switch (event.type) {
-        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].ENABLE:
+        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].ENABLE:
           YouTube.onSectionEnabled(slide);
           break;
-        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].DISABLE:
+        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].DISABLE:
           YouTube.onSectionDisabled(slide);
           break;
-        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].LEAVE:
+        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].LEAVE:
           slide.player.destroy();
           break;
-        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["b" /* Events */].ENTER:
+        case __WEBPACK_IMPORTED_MODULE_1__modules_slide__["a" /* Events */].ENTER:
           slide.player.create();
           break;
       }
@@ -2880,7 +2928,7 @@ var Zoom = function () {
       this.zws_.slides = [].map.call(this.ws_.slides, function (slide, i) {
         var s_ = slide.el.cloneNode(true);
         _this.zws_.grid.appendChild(s_);
-        return new __WEBPACK_IMPORTED_MODULE_3__modules_slide__["a" /* default */](s_, i);
+        return new __WEBPACK_IMPORTED_MODULE_3__modules_slide__["b" /* default */](s_, i);
       });
 
       this.disable();
@@ -2950,6 +2998,7 @@ var Zoom = function () {
     value: function zoomIn() {
       var _this3 = this;
 
+      if (!this.ws_.options.showIndex) return;
       this.enable();
       var currentId = this.ws_.currentSlide_.el.id;
       var zoomedCurrent = this.zws_.el.querySelector('.' + CLASSES.WRAP + '.' + CLASSES.CURRENT);
@@ -2970,7 +3019,7 @@ var Zoom = function () {
         var wrapCSS = window.getComputedStyle(_this3.zws_.grid);
         var scrollingElement = document.scrollingElement || document.body;
 
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_scroll_to__["a" /* default */])(actualCurrent.parentNode.offsetTop + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(wrapCSS.paddingTop), 50, function () {}, scrollingElement);
+        Object(__WEBPACK_IMPORTED_MODULE_2__utils_scroll_to__["a" /* default */])(actualCurrent.parentNode.offsetTop + __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].parseSize(wrapCSS.paddingTop), 50, function () {}, scrollingElement);
       }, 50);
     }
 
@@ -2983,6 +3032,7 @@ var Zoom = function () {
     value: function zoomOut() {
       var _this4 = this;
 
+      if (!this.ws_.options.showIndex) return;
       this.zws_.el.classList.remove('in');
 
       setTimeout(function () {
@@ -3024,57 +3074,6 @@ var Zoom = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var NativeCustomEvent = window.CustomEvent;
-
-/**
- * Check for the usage of native support for CustomEvents which is lacking
- * completely on IE.
- * @return {boolean} Whether it can be used or not.
- */
-function canIuseNativeCustom() {
-  try {
-    var p = new NativeCustomEvent('t', {
-      detail: {
-        a: 'b'
-      }
-    });
-    return 't' === p.type && 'b' === p.detail.a;
-  } catch (e) {}
-
-  /* istanbul ignore next: hard to reproduce on test environment  */
-  return false;
-}
-
-/**
- * Lousy polyfill for the Custom Event constructor for IE.
- * @param {!string} type The type of the event.
- * @param {?Object} params Additional information for the event.
- * @return {Event}
- * @constructor
- */
-/* istanbul ignore next: hard to reproduce on test environment  */
-var IECustomEvent = function CustomEvent(type, params) {
-  var e = document.createEvent('CustomEvent');
-
-  if (params) {
-    e.initCustomEvent(type, params.bubbles, params.cancelable, params.detail);
-  } else {
-    e.initCustomEvent(type, false, false, undefined);
-  }
-
-  return e;
-};
-
-/* istanbul ignore next: hard to reproduce on test environment  */
-var WSCustomEvent = canIuseNativeCustom() ? NativeCustomEvent : IECustomEvent;
-
-/* harmony default export */ __webpack_exports__["a"] = (WSCustomEvent);
-
-/***/ }),
-/* 21 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /**
  * Swing easing function.
  * @param {number} p The percentage of time that has passed.
@@ -3085,6 +3084,12 @@ function swing(p) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = ({ swing: swing });
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

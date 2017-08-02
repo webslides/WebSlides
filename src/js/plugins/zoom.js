@@ -137,6 +137,7 @@ export default class Zoom {
    * Zoom In the slider, scales the slides and uses a grid layout to show them.
    */
   zoomIn() {
+    if (!this.ws_.options.showIndex) return;
     this.enable();
     const currentId = this.ws_.currentSlide_.el.id;
     const zoomedCurrent = this.zws_.el
@@ -168,6 +169,7 @@ export default class Zoom {
    * Zoom Out the slider, remove scale from the slides.
    */
   zoomOut() {
+    if (!this.ws_.options.showIndex) return;
     this.zws_.el.classList.remove('in');
 
     setTimeout(() => {

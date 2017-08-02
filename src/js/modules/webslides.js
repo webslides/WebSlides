@@ -44,6 +44,7 @@ export default class WebSlides {
    * navigation can occur again with scroll.
    * @param {number} slideOffset Controls the amount of needed touch delta to
    * trigger navigation.
+   * @param {boolean} showIndex Controls if the index can be shown.
    */
   constructor({
     autoslide = false,
@@ -52,7 +53,8 @@ export default class WebSlides {
     minWheelDelta = 40,
     navigateOnScroll = true,
     scrollWait = 450,
-    slideOffset = 50
+    slideOffset = 50,
+    showIndex = true
   } = {}) {
     /**
      * WebSlide element.
@@ -113,7 +115,8 @@ export default class WebSlides {
       minWheelDelta,
       navigateOnScroll,
       scrollWait,
-      slideOffset
+      slideOffset,
+      showIndex
     };
     /**
      * Initialisation flag.
@@ -393,7 +396,9 @@ export default class WebSlides {
    * Toggles zoom
    */
   toggleZoom() {
-    this.plugins.zoom.toggleZoom();
+    if (this.options.showIndex) {
+      this.plugins.zoom.toggleZoom();
+    }
   }
 
   /**
