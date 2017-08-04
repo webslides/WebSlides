@@ -1816,6 +1816,8 @@ var Keyboard = function () {
 
       if (method) {
         method.call(this.ws_, argument);
+        // Prevents Firefox key events.
+        event.preventDefault();
       }
     }
   }]);
