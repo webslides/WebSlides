@@ -15,7 +15,8 @@ test('Navigation plugin', () => {
     el: ws,
     goNext: next,
     goPrev: prev,
-    toggleZoom: zoom
+    toggleZoom: zoom,
+    options: {showIndex: true}
   };
 
   const fakeArrow = Navigation.createArrow('arrow', 'Test');
@@ -24,7 +25,7 @@ test('Navigation plugin', () => {
   expect(fakeArrow.id).toBe('arrow');
   expect(fakeArrow.textContent).toBe('Test');
 
-  const fakeCounter = Navigation.createCounter('counter');
+  const fakeCounter = Navigation.createCounter('counter', webslides);
   expect(fakeCounter.tagName).toBe('SPAN');
   expect(fakeCounter.childNodes.length).toBe(1);
   expect(fakeCounter.childNodes[0].tagName).toBe('A');
