@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.3.1
- * Date: 2017-08-02
+ * Date: 2017-08-04
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1887,7 +1887,7 @@ var Navigation = function () {
      * Counter Element.
      * @type {Element}
      */
-    this.counter = Navigation.createCounter(ELEMENT_ID.COUNTER);
+    this.counter = Navigation.createCounter(ELEMENT_ID.COUNTER, wsInstance);
     /**
      * @type {WebSlides}
      * @private
@@ -1926,7 +1926,11 @@ var Navigation = function () {
   }, {
     key: 'updateCounter',
     value: function updateCounter(current, max) {
-      this.counter.childNodes[0].textContent = current + ' / ' + max;
+      if (this.ws_.options.showIndex) {
+        this.counter.childNodes[0].textContent = current + ' / ' + max;
+      } else {
+        this.counter.textContent = current + ' / ' + max;
+      }
     }
 
     /**
@@ -1980,17 +1984,20 @@ var Navigation = function () {
     /**
      * Creates the navigation counter.
      * @param {!String} id Desired ID for the counter.
+     * @param {WebSlides} ws_ WebSlides object.
      * @return {Element} The arrow element.
      */
 
   }, {
     key: 'createCounter',
-    value: function createCounter(id) {
+    value: function createCounter(id, ws_) {
       var counter = __WEBPACK_IMPORTED_MODULE_0__utils_dom__["a" /* default */].createNode('span', id);
-      var link = document.createElement('a');
-      link.href = '#';
-      link.title = 'View all slides';
-      counter.appendChild(link);
+      if (ws_.options.showIndex) {
+        var link = document.createElement('a');
+        link.href = '#';
+        link.title = 'View all slides';
+        counter.appendChild(link);
+      }
 
       return counter;
     }
