@@ -9,8 +9,8 @@ const Keys = {
   UP: 38,
   RIGHT: 39,
   DOWN: 40,
-  PLUS: [107, 171],
-  MINUS: [109, 173],
+  PLUS: [107, 171, 187],
+  MINUS: [109, 173, 189],
   ESCAPE: 27,
   F: 70
 };
