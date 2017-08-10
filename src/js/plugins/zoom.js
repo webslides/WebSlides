@@ -158,7 +158,7 @@ export default class Zoom {
       this.ws_.disable();
       this.zws_.el.classList.add('in');
       const wrapCSS = window.getComputedStyle(this.zws_.grid);
-      const scrollingElement = document.scrollingElement || document.body;
+      const scrollingElement = document.body;
 
       scrollTo(actualCurrent.parentNode.offsetTop
         + DOM.parseSize(wrapCSS.paddingTop), 50, () => {}, scrollingElement);
