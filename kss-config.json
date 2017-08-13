@@ -1,0 +1,14 @@
+{
+  "title": "WebSlides",
+
+  "source": "src/scss/",
+
+  "destination": "doc/styleguide/",
+
+  "builder": "doc/kss/templates/default/",
+
+  "css": [
+    "../../static/css/webslides.css"
+  ]
+
+}

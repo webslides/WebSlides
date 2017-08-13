@@ -1,0 +1,12 @@
+$kss-title-color: $cowabunga;
+
+.kss-title {
+  margin: 0;
+  color: $kss-title-color;
+  text-align: center;
+  font-size: rem(24px);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+}

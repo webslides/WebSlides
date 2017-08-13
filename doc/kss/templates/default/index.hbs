@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{options.title}}</title>
+
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="kss-assets/kss.css">
+  {{{styles}}}
+</head>
+<body id="kss-node" {{#if template.isItem}}class="kss-fullscreen-mode"{{/if}}>
+
+<div class="kss-sidebar kss-style">
+  <header class="kss-header">
+    <h1 class="kss-doc-title">{{options.title}}</h1>
+  </header>
+  <nav class="kss-nav">
+    <ul class="kss-nav__menu">
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="./">
+          <span class="kss-nav__ref">0</span
+          ><span class="kss-nav__name">Overview</span>
+        </a>
+      </li>
+    {{#each menu}}
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-{{referenceURI}}.html">
+          <span class="kss-nav__ref">{{referenceNumber}}</span><span class="kss-nav__name">{{header}}</span>
+        </a>
+        {{#if isActive}}
+          {{#if children}}
+            <ul class="kss-nav__menu-child">
+            {{#each children}}
+              <li class="kss-nav__menu-item">
+                <a class="kss-nav__menu-link" href="section-{{../referenceURI}}.html#kssref-{{referenceURI}}">
+                  <span class="kss-nav__ref {{#if isGrandChild}}kss-nav__ref-child{{/if}}">{{referenceNumber}}</span
+                  ><span class="kss-nav__name">{{header}}</span>
+                </a>
+              </li>
+            {{/each}}
+            </ul>
+          {{/if}}
+        {{/if}}
+      </li>
+    {{/each}}
+    </ul>
+  </nav>
+</div>
+<article role="main" class="kss-main">
+{{#if template.isHomepage}}
+  {{#if homepage}}
+    <div id="kssref-0" class="kss-section kss-section--depth-0 kss-overview kss-style">
+      {{{homepage}}}
+    </div>
+  {{/if}}
+{{else}}
+
+  {{!
+    Display each section, in order.
+
+    The "root" element comes first in this loop, and can be detected using
+    the "#if @first" block as seen below.
+  }}
+  {{#each sections}}
+    <{{#if @first}}div{{else}}section{{/if}} id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}} {{#if @root.template.isItem}}is-fullscreen{{/if}}">
+
+      <div class="kss-style">
+        <h{{depth}} class="kss-title kss-title--level-{{depth}}">
+          <a class="kss-title__permalink" href="#kssref-{{referenceURI}}">
+            <span class="kss-title__ref">
+              {{referenceNumber}}
+              <span class="kss-title__permalink-hash">
+                {{#if @root.hasNumericReferences}}
+                  #permalink
+                {{else}}
+                  #{{reference}}
+                {{/if}}
+              </span>
+            </span>
+            {{header}}
+          </a>
+        </h{{depth}}>
+
+        {{#if description}}
+          <div class="kss-description">
+            {{{description}}}
+          </div>
+        {{/if}}
+
+        {{#if parameters}}
+          <div class="kss-parameters__title">Parameters:</div>
+          <ul class="kss-parameters">
+          {{#each parameters}}
+            <li class="kss-parameters__item">
+              <div class="kss-parameters__name"><code>{{name}}</code></div>
+              <div class="kss-parameters__description">
+                {{{description}}}
+                {{#if defaultValue}}
+                  <div class="kss-parameters__default-value">
+                    Defaults to: <code>{{defaultValue}}</code>
+                  </div>
+                {{/if}}
+              </div>
+            </li>
+          {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+
+      {{#if example}}
+        <div class="kss-modifier__wrapper">
+          <div class="kss-modifier__heading kss-style">
+            Example{{#if modifiers}}s{{/if}}
+          </div>
+
+          {{#if modifiers}}
+            <div class="kss-modifier__default-name kss-style">
+              Default styling
+            </div>
+          {{/if}}
+
+          <div class="kss-modifier__example">
+            {{{example}}}
+            <div class="kss-modifier__example-footer"></div>
+          </div>
+
+          {{#each modifiers}}
+            <div class="kss-modifier__name kss-style">
+              {{name}}
+            </div>
+            <div class="kss-modifier__description kss-style">
+              {{{description}}}
+            </div>
+            <div class="kss-modifier__example">
+              {{{markup}}}
+              <div class="kss-modifier__example-footer"></div>
+            </div>
+          {{/each}}
+        </div>
+
+        {{#if markup}}
+          <details class="kss-markup kss-style">
+            <summary>
+              {{#if markupFile }}
+                Markup: <code>{{ markupFile }}</code>
+              {{else}}
+                Markup
+              {{/if}}
+            </summary>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
+          </details>
+        {{/if}}
+      {{/if}}
+
+      {{#if source.filename}}
+        <div class="kss-source kss-style">
+          Source: <code>{{source.filename}}</code>, line {{source.line}}
+        </div>
+      {{/if}}
+
+    </{{#if @first}}div{{else}}section{{/if}}>
+  {{/each}}
+{{/if}}
+</article>
+
+<!-- SCRIPTS -->
+<script src="kss-assets/kss.js"></script>
+<script src="kss-assets/scrollspy.js"></script>
+<script src="kss-assets/prettify.js"></script>
+<script src="kss-assets/kss-fullscreen.js"></script>
+<script src="kss-assets/kss-guides.js"></script>
+<script src="kss-assets/kss-markup.js"></script>
+<script>
+  prettyPrint();
+  var spy = new ScrollSpy('#kss-node', {
+    nav: '.kss-nav__menu-child > li > a',
+    className: 'is-in-viewport'
+  });
+  var kssFullScreen = new KssFullScreen({
+    idPrefix: 'kss-fullscreen-',
+    bodyClass: 'kss-fullscreen-mode',
+    elementClass: 'is-fullscreen'
+  });
+  var kssGuides = new KssGuides({
+    bodyClass: 'kss-guides-mode'
+  });
+  var kssMarkup = new KssMarkup({
+    bodyClass: 'kss-markup-mode',
+    detailsClass: 'kss-markup'
+  });
+</script>
+{{{scripts}}}
+
+{{! This will only be included in the demo page. }}
+{{#if options.demo}}
+  <footer class="kss-github">
+    <!-- https://github.com/blog/273-github-ribbons -->
+    <a href="https://github.com/kss-node/kss-node"><img src="kss-assets/github-fork--black.png" alt="Fork me on GitHub"></a>
+  </footer>
+{{/if}}
+
+<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

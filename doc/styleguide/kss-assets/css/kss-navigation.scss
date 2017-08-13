@@ -1,0 +1,109 @@
+$kss-nav-item-link-active: $cowabunga;
+
+
+.kss-navigation {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  box-shadow: -10px 0 10px 10px rgba($black, 0.5);
+  box-sizing: border-box;
+  width: 85%;
+  height: 100%;
+  color: $black;
+  background: $white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+
+  @include mq(min, 768px) { width: 35%; }
+
+  @include mq(min, 1024px) {
+    width: 25%;
+    transform: translateX(0);
+  }
+
+  @include mq(min, 1280px) { width: 20%; }
+
+  @include mq(min, 1440px) { width: 15%; }
+
+  &.kss-state-active { transform: none; }
+}
+
+.kss-navigation__title {
+  display: none;
+  box-sizing: border-box;
+  padding: 20px 10px;
+
+  @include mq(min, 1024px) { display: block; }
+}
+
+.kss-nav {
+  overflow-y: auto;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 100px;
+  padding-left: 0;
+  list-style-type: none;
+
+  @include mq(min, 1024px) { padding-top: 0; }
+}
+
+.kss-nav__item a {
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 20px;
+  color: $black;
+  font-family: 'Lato', sans-serif;
+  font-size: rem(16px);
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+  transition: color 0.3s;
+
+  &:hover { color: $kss-nav-item-link-active; }
+
+  &:hover .kss-nav__name { transform: translateX(6px); }
+
+  &.kss-state-active { color: $kss-nav-item-link-active; }
+
+  &.kss-state-active:hover .kss-nav__name { transform: none; }
+}
+
+.kss-nav__ref {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.kss-nav__name {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+
+.kss-nav__subnav {
+  margin-bottom: 10px;
+  padding: 0;
+  list-style-type: none;
+
+  .kss-nav__item a {
+    padding: 2px 10px;
+    padding-left: 30px;
+    font-size: rem(14px);
+    font-weight: 300;
+  }
+
+  .kss-nav__item--grandchild a {
+    padding-left: 40px;
+    font-size: rem(12px);
+  }
+}

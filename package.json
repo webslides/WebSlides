@@ -42,6 +42,8 @@
     "eslint-plugin-jest": "^20.0.3",
     "extract-text-webpack-plugin": "^3.0.0",
     "jest": "^20.0.4",
+    "kss": "^3.0.0-beta.18",
+    "michelangelo": "^0.6.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
     "postcss-loader": "^2.0.6",
@@ -65,7 +67,8 @@
     "lint:tests": "eslint ./test --cache --ignore-pattern .gitignore",
     "lint:css": "sass-lint -v -f stylish",
     "dev": "webpack-dev-server",
-    "test": "jest && codecov"
+    "test": "jest && codecov",
+    "kss": "kss --config kss-config.json"
   },
   "jest": {
     "collectCoverage": true

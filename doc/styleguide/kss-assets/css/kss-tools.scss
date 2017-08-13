@@ -1,0 +1,30 @@
+@function em($target, $context: 16px) {
+  @return ($target / $context) * 1em;
+}
+
+@function rem($target, $context: 16px) {
+  @return ($target / $context) * 1rem;
+}
+
+@function mq-unit($target) {
+  @return ($target / 16px) * 1em;
+}
+
+
+
+@mixin mq($min-max, $width1, $max:unquote(''), $width2:unquote('')) {
+  // min-width > max-width.
+  @if $min-max == min and $max == max {
+    @media only screen and (min-width: mq-unit($width1 + 1)) and (max-width: mq-unit($width2)) { @content; }
+  }
+
+  // min-width.
+  @else if $min-max == min {
+    @media only screen and (min-width: mq-unit($width1 + 1)) { @content; }
+  }
+
+  // max-width.
+  @else if $min-max == max {
+    @media only screen and (max-width: mq-unit($width1)) { @content; }
+  }
+}

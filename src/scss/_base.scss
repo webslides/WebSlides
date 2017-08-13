@@ -70,6 +70,16 @@ nav a[rel='external'] em,
   width: 1px;
 }
 
+// Shadows
+//
+// Drops a shadow under the layer. The layer containing the shadow has to have a solid background
+//
+// Markup:
+// <div class="bg-white shadow">
+//   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.
+// </div>
+//
+// Styleguide Layout.Shadow
 .shadow {
   position: relative;
 
@@ -116,10 +126,33 @@ footer nav {
   padding: 2.4rem;
 }
 
+// Radius
+//
+// Adds a rounded radis
+//
+// Markup:
+// <div class="bg-black radius">
+//   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.
+// </div>
+//
+// Styleguide Layout.Radius
 .radius {
   border-radius: .4rem;
 }
 
+// Align content
+//
+// Markup:
+// <div>
+//   <img src="../../../static/images/iphone.png" class="size-50 {{modifier_class}}" />
+//   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.</p>
+// </div>
+//
+// .alignright - Align right.
+// .alignleft - Align left.
+// .aligncenter - Align center.
+//
+// Styleguide Layout.Alignment
 .alignright {
   float: right;
 }
@@ -163,6 +196,20 @@ figure.alignleft {
   margin: .8rem 2.4rem .8rem 0;
 }
 
+// Resizing
+//
+// Markup:
+// <img src="../../../static/images/iphone.png" class="{{modifier_class}}" />
+//
+// .size-80 - resize to 80%.
+// .size-70 - resize to 70%.
+// .size-60 - resize to 60%.
+// .size-50 - resize to 50%.
+// .size-40 - resize to 40%.
+// .size-30 - resize to 30%.
+// .size-20 - resize to 20%.
+//
+// Styleguide Layout.Sizes
 $sizes: 80, 70, 60, 50, 40, 30, 20;
 
 /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */
