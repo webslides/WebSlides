@@ -1,3 +1,16 @@
+# 1.4.0 (2017-08-14)
+
+## Misc
+
+- [[#52]((https://github.com/webslides/webslides/issues/52))] We've moved to Sass! We've migrated all of our content to sass so you can customise it a bit more easily.
+Tests! We've added tests with the awesome Jest and Travis to keep it tested.
+
+## New features
+
+- [[#73]((https://github.com/webslides/webslides/issues/73))] Slides Index. Press - or click on our slide count to access a fancy new index to quickly navigate to a new slide. Press + or esc to exit or click on one slide to navigate to the slide. You can also disable this feature entirely with an option. Read more
+- [[#84]((https://github.com/webslides/webslides/issues/84))] Full Screen Mode. Pressing F now toggles full screen mode to remove all the distractions from the browser. Thanks solilokiam!
+- [[#66]((https://github.com/webslides/webslides/issues/66))] New option to disable scroll to navigate.
+
 # 1.3.0 (2017-04-20)
 
 ## Misc

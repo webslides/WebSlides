@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
- * Version: 1.3.1
- * Date: 2017-08-13
+ * Version: 1.4.0
+ * Date: 2017-08-14
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -688,6 +688,8 @@ var MobileDetector = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__easing__ = __webpack_require__(20);
 
 
+var SCROLLABLE_CONTAINER = document.getElementById('webslides');
+
 /**
  * Smoothly scrolls to a given Y position using Easing.Swing. It'll run a
  * callback upon finishing.
@@ -701,7 +703,7 @@ function scrollTo(y) {
   var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
   var container = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-  var SCROLLABLE_CONTAINER = container ? container : document.getElementById('webslides');
+  SCROLLABLE_CONTAINER = container ? container : document.getElementById('webslides');
 
   var delta = y - SCROLLABLE_CONTAINER.scrollTop;
   var startLocation = SCROLLABLE_CONTAINER.scrollTop;
