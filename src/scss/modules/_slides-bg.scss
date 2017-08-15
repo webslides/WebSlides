@@ -12,6 +12,27 @@
 
 /*=== BG Positions === */
 
+// Backgrounds
+//
+// Markup:
+// <section>
+//   <span class="{{modifier_class}} bg-gray" style="background-image:url('http://lorempixel.com/150/150/')"></span>
+// </section>
+//
+// .background - Center.
+// .background-top - Top.
+// .background-bottom - Bottom.
+// .background-center - Center.
+// .background-center-top - Center top.
+// .background-left-top - Left top.
+// .background-right-top - Right top.
+// .background-center-bottom - Center bottom.
+// .background-left-bottom - Left bottom.
+// .background-right-bottom - Right bottom.
+// .background-left - Left.
+// .background-right - Right.
+//
+// Styleguide Slide.Background
 .background {
   background-position: center;
   background-size: cover;
@@ -68,10 +89,20 @@
     }
   }
 
-  /*fullscreen video
-    <video class="background-video">
-  */
-
+  // Video
+  //
+  // Markup:
+  // <section>
+  //   <video class="background-video" autoplay poster="https://webslides.tv/static/images/working.jpg">
+  //     <source src="https://webslides.tv/static/videos/working.mp4" type="video/mp4">
+  //   </video>
+  //   <div class="wrap">
+  //     <p><code>.background-video</code></p>
+  //     <h2><strong>WebSlides is the easiest way to make HTML presentations. Inspire and engage.</strong></h2>
+  //   </div>
+  // </section>
+  //
+  // Styleguide Slide.Background.Video
   &-video {
     height: 100%;
     object-fit: fill;
