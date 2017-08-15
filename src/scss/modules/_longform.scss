@@ -8,13 +8,13 @@
   /* Why 72rem=720px?
   90-95 characters per line = better reading speed */
 
-  &.alignleft,
-  &.alignright {
+  & .alignleft,
+  & .alignright {
     max-width: 40%;
   }
 
   img.aligncenter,
-  .longform figure.aligncenter {
+  figure.aligncenter {
     margin-bottom: 3.2rem;
     margin-top: 3.2rem;
   }
