@@ -1,3 +1,9 @@
+# 1.4.1 (2017-08-18)
+
+- Fixed longform alignments. (Regression from Sass)
+- Updated demos to use correct reference.
+- Added new unsplash to [demo](http://webslides.tv/demos/keynote).
+
 # 1.4.0 (2017-08-14)
 
 ## Misc

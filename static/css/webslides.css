@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
- * Version: 1.4.0
- * Date: 2017-08-14
+ * Version: 1.4.1
+ * Date: 2017-08-18
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2823,10 +2823,11 @@ button:disabled:hover {
   /* Why 72rem=720px?
   90-95 characters per line = better reading speed */
   /* Mobile: video full width */ }
-  .longform.alignleft, .longform.alignright {
+  .longform .alignleft,
+  .longform .alignright {
     max-width: 40%; }
   .longform img.aligncenter,
-  .longform .longform figure.aligncenter {
+  .longform figure.aligncenter {
     margin-bottom: 3.2rem;
     margin-top: 3.2rem; }
   .longform ul,
