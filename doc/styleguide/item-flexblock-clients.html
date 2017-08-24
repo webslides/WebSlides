@@ -51,21 +51,25 @@
 </div>
 <article role="main" class="kss-main">
 
-    <div id="kssref-layout-sizes" class="kss-section kss-section--depth-2 is-fullscreen">
+    <div id="kssref-flexblock-clients" class="kss-section kss-section--depth-2 is-fullscreen">
 
       <div class="kss-style">
         <h2 class="kss-title kss-title--level-2">
-          <a class="kss-title__permalink" href="#kssref-layout-sizes">
+          <a class="kss-title__permalink" href="#kssref-flexblock-clients">
             <span class="kss-title__ref">
-              3.4
+              2.2
               <span class="kss-title__permalink-hash">
-                  #Layout.Sizes
+                  #Flexblock.Clients
               </span>
             </span>
-            Resizing
+            Clients
           </a>
         </h2>
 
+          <div class="kss-description">
+            <p>Highlight clients information</p>
+
+          </div>
 
       </div>
 
@@ -79,78 +83,64 @@
             </div>
 
           <div class="kss-modifier__example">
-            <img src="../../../static/images/iphone.png" class="" />
+            <ul class="flexblock clients ">
+  <li>
+    <a href="#" title="Client">
+      <figure>
+        <img class="blacklogo" src="/static/images/logos/google.svg" alt="Google">
+        <figcaption>
+          <h3>Interfaces</h3>
+          <p>Collaboration with the Acme team to design their mobile apps. <code>img.blacklogo</code></p>
+        </figcaption>
+      </figure>
+    </a>
+  </li>
+  <li>
+    <a href="#" title="Client">
+      <figure>
+        <img class="blacklogo" src="/static/images/logos/microsoft.svg" alt="Microsoft">
+        <figcaption>
+          <h3>Interfaces</h3>
+          <p>Collaboration with the Acme team to design their mobile apps. <code>img.blacklogo</code></p>
+        </figcaption>
+      </figure>
+    </a>
+  </li>
+</ul>
             <div class="kss-modifier__example-footer"></div>
           </div>
 
             <div class="kss-modifier__name kss-style">
-              .size-80
+              .border
             </div>
             <div class="kss-modifier__description kss-style">
-              resize to 80%.
+              with border
             </div>
             <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-80" />
-              <div class="kss-modifier__example-footer"></div>
-            </div>
-            <div class="kss-modifier__name kss-style">
-              .size-70
-            </div>
-            <div class="kss-modifier__description kss-style">
-              resize to 70%.
-            </div>
-            <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-70" />
-              <div class="kss-modifier__example-footer"></div>
-            </div>
-            <div class="kss-modifier__name kss-style">
-              .size-60
-            </div>
-            <div class="kss-modifier__description kss-style">
-              resize to 60%.
-            </div>
-            <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-60" />
-              <div class="kss-modifier__example-footer"></div>
-            </div>
-            <div class="kss-modifier__name kss-style">
-              .size-50
-            </div>
-            <div class="kss-modifier__description kss-style">
-              resize to 50%.
-            </div>
-            <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-50" />
-              <div class="kss-modifier__example-footer"></div>
-            </div>
-            <div class="kss-modifier__name kss-style">
-              .size-40
-            </div>
-            <div class="kss-modifier__description kss-style">
-              resize to 40%.
-            </div>
-            <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-40" />
-              <div class="kss-modifier__example-footer"></div>
-            </div>
-            <div class="kss-modifier__name kss-style">
-              .size-30
-            </div>
-            <div class="kss-modifier__description kss-style">
-              resize to 30%.
-            </div>
-            <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-30" />
-              <div class="kss-modifier__example-footer"></div>
-            </div>
-            <div class="kss-modifier__name kss-style">
-              .size-20
-            </div>
-            <div class="kss-modifier__description kss-style">
-              resize to 20%.
-            </div>
-            <div class="kss-modifier__example">
-              <img src="../../../static/images/iphone.png" class="size-20" />
+              <ul class="flexblock clients border">
+  <li>
+    <a href="#" title="Client">
+      <figure>
+        <img class="blacklogo" src="/static/images/logos/google.svg" alt="Google">
+        <figcaption>
+          <h3>Interfaces</h3>
+          <p>Collaboration with the Acme team to design their mobile apps. <code>img.blacklogo</code></p>
+        </figcaption>
+      </figure>
+    </a>
+  </li>
+  <li>
+    <a href="#" title="Client">
+      <figure>
+        <img class="blacklogo" src="/static/images/logos/microsoft.svg" alt="Microsoft">
+        <figcaption>
+          <h3>Interfaces</h3>
+          <p>Collaboration with the Acme team to design their mobile apps. <code>img.blacklogo</code></p>
+        </figcaption>
+      </figure>
+    </a>
+  </li>
+</ul>
               <div class="kss-modifier__example-footer"></div>
             </div>
         </div>
@@ -159,11 +149,34 @@
             <summary>
                 Markup
             </summary>
-            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;img src&#x3D;&quot;../../../static/images/iphone.png&quot; class&#x3D;&quot;[modifier class]&quot; /&gt;</code></pre>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class&#x3D;&quot;flexblock clients [modifier class]&quot;&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot; title&#x3D;&quot;Client&quot;&gt;
+      &lt;figure&gt;
+        &lt;img class&#x3D;&quot;blacklogo&quot; src&#x3D;&quot;/static/images/logos/google.svg&quot; alt&#x3D;&quot;Google&quot;&gt;
+        &lt;figcaption&gt;
+          &lt;h3&gt;Interfaces&lt;/h3&gt;
+          &lt;p&gt;Collaboration with the Acme team to design their mobile apps. &lt;code&gt;img.blacklogo&lt;/code&gt;&lt;/p&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot; title&#x3D;&quot;Client&quot;&gt;
+      &lt;figure&gt;
+        &lt;img class&#x3D;&quot;blacklogo&quot; src&#x3D;&quot;/static/images/logos/microsoft.svg&quot; alt&#x3D;&quot;Microsoft&quot;&gt;
+        &lt;figcaption&gt;
+          &lt;h3&gt;Interfaces&lt;/h3&gt;
+          &lt;p&gt;Collaboration with the Acme team to design their mobile apps. &lt;code&gt;img.blacklogo&lt;/code&gt;&lt;/p&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
           </details>
 
         <div class="kss-source kss-style">
-          Source: <code>_base.scss</code>, line 199
+          Source: <code>modules/_flexblock-clients.scss</code>, line 5
         </div>
 
     </div>

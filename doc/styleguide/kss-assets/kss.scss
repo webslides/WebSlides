@@ -790,3 +790,13 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     margin: 3rem;
   }
 }
+
+#kssref-slide-background-anim .slide {
+  clip: rect(0px, 200px, 200px, 0px);
+  position: absolute;
+}
+#kssref-slide-background-anim .kss-modifier__example {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}

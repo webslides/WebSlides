@@ -109,19 +109,19 @@ Slides - Backgrounds <section class="bg-primary">
 // Colors we use for backgrounds.
 //
 // Markup:
-// <span class="bg-primary size-20">Primary</span>
-// <span class="bg-secondary size-20">Secondary</span>
-// <span class="bg-light size-20">Light</span>
-// <span class="bg-black size-20">Black</span>
-// <span class="bg-black-blue size-20">Black blue</span>
-// <span class="bg-blue size-20">Blue</span>
-// <span class="bg-brown size-20">Brown</span>
-// <span class="bg-gray size-20">Gray</span>
-// <span class="bg-green size-20">Green</span>
-// <span class="bg-purple size-20">Purple</span>
-// <span class="bg-red size-20">Red</span>
-// <span class="bg-white size-20">White</span>
-// <span class="bg-facebook size-20">Facebook</span>
+// <span class="bg-primary size-20">Primary #44d</span>
+// <span class="bg-secondary size-20">Secondary #67d</span>
+// <span class="bg-light size-20">Light #f7f9fb</span>
+// <span class="bg-black size-20">Black #000</span>
+// <span class="bg-black-blue size-20">Black blue #123</span>
+// <span class="bg-blue size-20">Blue #346</span>
+// <span class="bg-brown size-20">Brown #f9f8f2</span>
+// <span class="bg-gray size-20">Gray #d5d9e2</span>
+// <span class="bg-green size-20">Green #077</span>
+// <span class="bg-purple size-20">Purple #62b</span>
+// <span class="bg-red size-20">Red #c23</span>
+// <span class="bg-white size-20">White #fff</span>
+// <span class="bg-facebook size-20">Facebook #3b5998</span>
 //
 // Styleguide Base.backgrounds
 @each $name, $color in $bg-colors {

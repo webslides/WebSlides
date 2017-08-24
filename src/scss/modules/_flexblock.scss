@@ -3,6 +3,38 @@
 Blocks Links li>a = .flexblock.blink (.blink required)
 ================================================================= */
 
+// Flexblocks
+//
+// Auto-fill & Equal height columns
+//
+// Markup:
+// <ul class="flexblock {{modifier_class}}">
+//   <li>
+//     <a href="#">
+//       Item 1
+//      </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       Item 2
+//      </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       Item 3
+//      </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       Item 4
+//      </a>
+//   </li>
+// </ul>
+//
+// .blink - Linkable block
+// .border - With border
+//
+// Styleguide Flexblock.Blink
 .flexblock {
   clear: both;
   display: flex;

@@ -2,6 +2,40 @@
 6.2 Clients Logos <ul class="flexblock clients">
 ======================================================================= */
 
+// Clients
+//
+// Highlight clients information
+//
+// Markup:
+// <ul class="flexblock clients {{modifier_class}}">
+//   <li>
+//     <a href="#" title="Client">
+//       <figure>
+//         <img class="blacklogo" src="/static/images/logos/google.svg" alt="Google">
+//         <figcaption>
+//           <h3>Interfaces</h3>
+//           <p>Collaboration with the Acme team to design their mobile apps. <code>img.blacklogo</code></p>
+//         </figcaption>
+//       </figure>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#" title="Client">
+//       <figure>
+//         <img class="blacklogo" src="/static/images/logos/microsoft.svg" alt="Microsoft">
+//         <figcaption>
+//           <h3>Interfaces</h3>
+//           <p>Collaboration with the Acme team to design their mobile apps. <code>img.blacklogo</code></p>
+//         </figcaption>
+//       </figure>
+//     </a>
+//   </li>
+// </ul>
+//
+// .border - with border
+//
+// Styleguide Flexblock.Clients
+
 .flexblock.clients.blink li > a,
 .flexblock.clients li {
   padding: 0;

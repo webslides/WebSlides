@@ -51,21 +51,25 @@
 </div>
 <article role="main" class="kss-main">
 
-    <div id="kssref-slide-background-video" class="kss-section kss-section--depth-3 is-fullscreen">
+    <div id="kssref-flexblock-gallery-overlay" class="kss-section kss-section--depth-3 is-fullscreen">
 
       <div class="kss-style">
         <h3 class="kss-title kss-title--level-3">
-          <a class="kss-title__permalink" href="#kssref-slide-background-video">
+          <a class="kss-title__permalink" href="#kssref-flexblock-gallery-overlay">
             <span class="kss-title__ref">
-              4.1.2
+              2.4.1
               <span class="kss-title__permalink-hash">
-                  #Slide.Background.Video
+                  #Flexblock.Gallery.Overlay
               </span>
             </span>
-            Video
+            Gallery + Overflow
           </a>
         </h3>
 
+          <div class="kss-description">
+            <p>Beautiful gallery with overlay content</p>
+
+          </div>
 
       </div>
 
@@ -76,15 +80,35 @@
 
 
           <div class="kss-modifier__example">
-            <section>
-  <video class="background-video" autoplay poster="https://webslides.tv/static/images/working.jpg">
-    <source src="https://webslides.tv/static/videos/working.mp4" type="video/mp4">
-  </video>
-  <div class="wrap">
-    <p><code>.background-video</code></p>
-    <h2><strong>WebSlides is the easiest way to make HTML presentations. Inspire and engage.</strong></h2>
-  </div>
-</section>
+            <ul class="flexblock gallery">
+  <li>
+    <a href="#">
+      <div class="overlay">
+        <h2>New York</h2>
+        <p>1,234 rooms</p>
+      </div>
+      <img alt="Thumbnail " src="https://source.unsplash.com/-sQ4FsomXEs/800x600">
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <div class="overlay">
+        <h2>uWatch</h2>
+        <time datetime="2017-12-17T21:23:34-05:00">December 2017</time>
+      </div>
+      <img alt="Thumbnail" src="https://source.unsplash.com/vCF5sB7QecM/800x600">
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <div class="overlay">
+        <h2>Ellen Daniels</h2>
+        <p>CEO</p>
+      </div>
+      <img alt="Thumbnail" src="https://source.unsplash.com/yvx7LSZSzeo/800x600">
+    </a>
+  </li>
+</ul>
             <div class="kss-modifier__example-footer"></div>
           </div>
 
@@ -94,19 +118,39 @@
             <summary>
                 Markup
             </summary>
-            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;section&gt;
-  &lt;video class&#x3D;&quot;background-video&quot; autoplay poster&#x3D;&quot;https://webslides.tv/static/images/working.jpg&quot;&gt;
-    &lt;source src&#x3D;&quot;https://webslides.tv/static/videos/working.mp4&quot; type&#x3D;&quot;video/mp4&quot;&gt;
-  &lt;/video&gt;
-  &lt;div class&#x3D;&quot;wrap&quot;&gt;
-    &lt;p&gt;&lt;code&gt;.background-video&lt;/code&gt;&lt;/p&gt;
-    &lt;h2&gt;&lt;strong&gt;WebSlides is the easiest way to make HTML presentations. Inspire and engage.&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code></pre>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class&#x3D;&quot;flexblock gallery&quot;&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      &lt;div class&#x3D;&quot;overlay&quot;&gt;
+        &lt;h2&gt;New York&lt;/h2&gt;
+        &lt;p&gt;1,234 rooms&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;img alt&#x3D;&quot;Thumbnail &quot; src&#x3D;&quot;https://source.unsplash.com/-sQ4FsomXEs/800x600&quot;&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      &lt;div class&#x3D;&quot;overlay&quot;&gt;
+        &lt;h2&gt;uWatch&lt;/h2&gt;
+        &lt;time datetime&#x3D;&quot;2017-12-17T21:23:34-05:00&quot;&gt;December 2017&lt;/time&gt;
+      &lt;/div&gt;
+      &lt;img alt&#x3D;&quot;Thumbnail&quot; src&#x3D;&quot;https://source.unsplash.com/vCF5sB7QecM/800x600&quot;&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      &lt;div class&#x3D;&quot;overlay&quot;&gt;
+        &lt;h2&gt;Ellen Daniels&lt;/h2&gt;
+        &lt;p&gt;CEO&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;img alt&#x3D;&quot;Thumbnail&quot; src&#x3D;&quot;https://source.unsplash.com/yvx7LSZSzeo/800x600&quot;&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
           </details>
 
         <div class="kss-source kss-style">
-          Source: <code>modules/_slides-bg.scss</code>, line 92
+          Source: <code>modules/_flexblock-gallery.scss</code>, line 50
         </div>
 
     </div>

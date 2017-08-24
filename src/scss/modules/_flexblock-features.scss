@@ -2,6 +2,38 @@
 6.1 Features <ul class="flexblock features">
 ====================================================================== */
 
+// Features
+//
+// Special features
+//
+// Markup:
+// <ul class="flexblock features">
+//   <li>
+//     <div>
+//       <h2> <span>100<sup>%</sup></span> customizable</h2>
+//       Well documented.
+//     </div>
+//   </li>
+//   <li>
+//     <div>
+//       <span><sup>$</sup>48</span>
+//       <h2>Extra virgin olive oil</h2>
+//       The Spanish caviar.
+//     </div>
+//   </li>
+//   <li>
+//     <div>
+//       <h2>
+//         Ultra-fast Wifi
+//       </h2>
+//       Simple file sharing.
+//     </div>
+//   </li>
+// </ul>
+//
+// .border - with border
+//
+// Styleguide Flexblock.Features
 .flexblock.features {
   > li {
     border-radius: .4rem;

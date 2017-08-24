@@ -137,8 +137,14 @@
   }
 }
 
-/*=== Animated Background Image === */
-
+// Animated
+//
+// Markup:
+// <section class="aligncenter bg-black">
+//   <span class="background anim" style="background-image:url('https://source.unsplash.com/n9WPPWiPPJw/')"></span>
+// </section>
+//
+// Styleguide Slide.Background.Anim
 .background.anim {
   animation: anim 80s linear infinite;
   background-position: center top;

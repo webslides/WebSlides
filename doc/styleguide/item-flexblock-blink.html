@@ -51,62 +51,157 @@
 </div>
 <article role="main" class="kss-main">
 
-    <div id="kssref-slide-background-video" class="kss-section kss-section--depth-3 is-fullscreen">
+    <div id="kssref-flexblock-blink" class="kss-section kss-section--depth-2 is-fullscreen">
 
       <div class="kss-style">
-        <h3 class="kss-title kss-title--level-3">
-          <a class="kss-title__permalink" href="#kssref-slide-background-video">
+        <h2 class="kss-title kss-title--level-2">
+          <a class="kss-title__permalink" href="#kssref-flexblock-blink">
             <span class="kss-title__ref">
-              4.1.2
+              2.1
               <span class="kss-title__permalink-hash">
-                  #Slide.Background.Video
+                  #Flexblock.Blink
               </span>
             </span>
-            Video
+            Flexblocks
           </a>
-        </h3>
+        </h2>
 
+          <div class="kss-description">
+            <p>Auto-fill &amp; Equal height columns</p>
+
+          </div>
 
       </div>
 
         <div class="kss-modifier__wrapper">
           <div class="kss-modifier__heading kss-style">
-            Example
+            Examples
           </div>
 
+            <div class="kss-modifier__default-name kss-style">
+              Default styling
+            </div>
 
           <div class="kss-modifier__example">
-            <section>
-  <video class="background-video" autoplay poster="https://webslides.tv/static/images/working.jpg">
-    <source src="https://webslides.tv/static/videos/working.mp4" type="video/mp4">
-  </video>
-  <div class="wrap">
-    <p><code>.background-video</code></p>
-    <h2><strong>WebSlides is the easiest way to make HTML presentations. Inspire and engage.</strong></h2>
-  </div>
-</section>
+            <ul class="flexblock ">
+  <li>
+    <a href="#">
+      Item 1
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 2
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 3
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 4
+     </a>
+  </li>
+</ul>
             <div class="kss-modifier__example-footer"></div>
           </div>
 
+            <div class="kss-modifier__name kss-style">
+              .blink
+            </div>
+            <div class="kss-modifier__description kss-style">
+              Linkable block
+            </div>
+            <div class="kss-modifier__example">
+              <ul class="flexblock blink">
+  <li>
+    <a href="#">
+      Item 1
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 2
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 3
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 4
+     </a>
+  </li>
+</ul>
+              <div class="kss-modifier__example-footer"></div>
+            </div>
+            <div class="kss-modifier__name kss-style">
+              .border
+            </div>
+            <div class="kss-modifier__description kss-style">
+              With border
+            </div>
+            <div class="kss-modifier__example">
+              <ul class="flexblock border">
+  <li>
+    <a href="#">
+      Item 1
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 2
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 3
+     </a>
+  </li>
+  <li>
+    <a href="#">
+      Item 4
+     </a>
+  </li>
+</ul>
+              <div class="kss-modifier__example-footer"></div>
+            </div>
         </div>
 
           <details class="kss-markup kss-style">
             <summary>
                 Markup
             </summary>
-            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;section&gt;
-  &lt;video class&#x3D;&quot;background-video&quot; autoplay poster&#x3D;&quot;https://webslides.tv/static/images/working.jpg&quot;&gt;
-    &lt;source src&#x3D;&quot;https://webslides.tv/static/videos/working.mp4&quot; type&#x3D;&quot;video/mp4&quot;&gt;
-  &lt;/video&gt;
-  &lt;div class&#x3D;&quot;wrap&quot;&gt;
-    &lt;p&gt;&lt;code&gt;.background-video&lt;/code&gt;&lt;/p&gt;
-    &lt;h2&gt;&lt;strong&gt;WebSlides is the easiest way to make HTML presentations. Inspire and engage.&lt;/strong&gt;&lt;/h2&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code></pre>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;ul class&#x3D;&quot;flexblock [modifier class]&quot;&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      Item 1
+     &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      Item 2
+     &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      Item 3
+     &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href&#x3D;&quot;#&quot;&gt;
+      Item 4
+     &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
           </details>
 
         <div class="kss-source kss-style">
-          Source: <code>modules/_slides-bg.scss</code>, line 92
+          Source: <code>modules/_flexblock.scss</code>, line 6
         </div>
 
     </div>

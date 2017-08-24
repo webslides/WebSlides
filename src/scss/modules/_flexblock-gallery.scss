@@ -4,6 +4,86 @@ Block Thumbnails li+.overlay+image
 img size recommended:800x600px
 =================================================== */
 
+// Gallery
+//
+// Beautiful gallery
+//
+// Markup:
+// <ul class="flexblock gallery">
+//   <li>
+//     <a href="#">
+//       <figure>
+//         <img alt="Thumbnail" src="https://source.unsplash.com/vCF5sB7QecM/800x600">
+//         <figcaption>
+//           <h2>uWatch</h2>
+//           <p>By Jane Doe</p>
+//         </figcaption>
+//       </figure>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       <figure>
+//         <img alt="Thumbnail " src="https://source.unsplash.com/yvx7LSZSzeo/800x600">
+//         <figcaption>
+//           <h2>Ellen Daniels</h2>
+//           <p>CEO</p>
+//         </figcaption>
+//       </figure>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       <figure>
+//         <img alt="Thumbnail" src="https://source.unsplash.com/-sQ4FsomXEs/800x600">
+//         <figcaption>
+//           <h2>New York</h2>
+//           <p>3,456 rooms</p>
+//         </figcaption>
+//       </figure>
+//     </a>
+//   </li>
+// </ul>
+//
+// Styleguide Flexblock.Gallery
+
+// Gallery + Overflow
+//
+// Beautiful gallery with overlay content
+//
+// Markup:
+// <ul class="flexblock gallery">
+//   <li>
+//     <a href="#">
+//       <div class="overlay">
+//         <h2>New York</h2>
+//         <p>1,234 rooms</p>
+//       </div>
+//       <img alt="Thumbnail " src="https://source.unsplash.com/-sQ4FsomXEs/800x600">
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       <div class="overlay">
+//         <h2>uWatch</h2>
+//         <time datetime="2017-12-17T21:23:34-05:00">December 2017</time>
+//       </div>
+//       <img alt="Thumbnail" src="https://source.unsplash.com/vCF5sB7QecM/800x600">
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#">
+//       <div class="overlay">
+//         <h2>Ellen Daniels</h2>
+//         <p>CEO</p>
+//       </div>
+//       <img alt="Thumbnail" src="https://source.unsplash.com/yvx7LSZSzeo/800x600">
+//     </a>
+//   </li>
+// </ul>
+//
+// Styleguide Flexblock.Gallery.Overlay
+
 .flexblock.gallery {
   li {
     margin-bottom: 4.8rem;

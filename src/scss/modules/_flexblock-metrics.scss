@@ -2,6 +2,32 @@
 6.4 Block Numbers - <ul class="flexblock metrics">
 =================================================== */
 
+// Metrics
+//
+// Bla bla bla
+//
+// Markup:
+// <ul class="flexblock metrics  {{modifier_class}}">
+//   <li> Founded
+//     <span>2016</span>
+//   </li>
+//   <li>
+//     <span>24M</span>
+//     Subscribers
+//   </li>
+//   <li>
+//     Revenue:
+//     <span>$16M</span>
+//   </li>
+//   <li>
+//     Monthly Growth
+//     <span>64%</span>
+//   </li>
+// </ul>
+//
+// .border - with border
+//
+// Styleguide Flexblock.Metrics
 .metrics li {
   text-align: center;
   width: 100%;
