@@ -2,7 +2,56 @@
 6.9 Block Activity <ul class="activity">
 CV / News
 ============================================= */
-
+//  Activity
+//
+// Bla bla bla
+//
+// Markup:
+// <ul class="flexblock activity">
+//   <li>
+//     <a href="#" title="UX Designer at ACME">
+//       <div>
+//         <p class="year">
+//           2016
+//         </p>
+//         <p class="title">
+//           UX Designer at ACME
+//         </p>
+//         <p class="summary">
+//           This is a job description for the UX Designer role at ACME. Be concise. Content like a tweet: 2-3 lines recommended.
+//         </p>
+//       </div>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#" title="14 world famous buildings to inspire you">
+//       <p class="year">
+//         2 mins ago
+//       </p>
+//       <p class="title">
+//         14 world famous buildings to inspire you
+//       </p>
+//       <p class="summary">
+//         From the Colosseum to the Chrysler building, get a dose of inspiration from 14 of the world's most famous buildings.
+//       </p>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#" title="Co-Founder of GAMMA">
+//       <p class="year">
+//         2013
+//       </p>
+//       <p class="title">
+//         Co-Founder of GAMMA
+//       </p>
+//       <p class="summary">
+//         The culture within an organization is an essential part for success. This is a job description. Be concise. 2-3 lines recommended.
+//       </p>
+//     </a>
+//   </li>
+// </ul>
+//
+// Styleguide Flexblock.Activity
 .flexblock.activity {
   flex-direction: column;
 

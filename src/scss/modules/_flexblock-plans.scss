@@ -2,6 +2,47 @@
 6.8 Plans / Pricing <ul class="flexblock plans">
 ================================================= */
 
+// Plans
+//
+// Bla bla bla
+//
+// Markup:
+// <ul class="flexblock plans {{modifier_class}}">
+//   <li>
+//     <a href="#" title="Purchase">
+//       <h2>Basic</h2>
+//       <div>
+//         <span class="price">Free</span>
+//         <p>Good karma. Just the essential features. 100% customizable. Make it yours.</p>
+//         <span class="button">Select</span>
+//       </div>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#" title="Purchase">
+//       <h2>Medium</h2>
+//       <div>
+//         <span class="price"><sup>$</sup>4,99 <sup>/month</sup></span>
+//         <p>Clean markup with popular naming conventions. Minimum effort.</p>
+//         <span class="button">Buy Now</span>
+//       </div>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#" title="Purchase">
+//       <h2>Premium <sup>(save 20%)</sup></h2>
+//       <div>
+//         <span class="price"><sup>$</sup>40 <sup>/year</sup></span>
+//         <p>Prototype faster. Create landings and portfolios. Unlimited projects.</p>
+//         <span class="button">Select</span>
+//       </div>
+//     </a>
+//   </li>
+// </ul>
+//
+// .blink - block linkable
+//
+// Styleguide Flexblock.Plans
 .flexblock.plans {
   > li {
     border-radius: 3px;

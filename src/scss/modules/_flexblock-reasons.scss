@@ -2,6 +2,23 @@
 6.6 Reasons/Why/Numbers (counter-increment)
 <ul class="flexblock reasons">
 =================================================== */
+// Reasons
+//
+// Bla bla bla
+//
+// Markup:
+// <ul class="flexblock reasons">
+//   <li>
+//     <h2>Why WebSlides? Work better, faster.</h2>
+//     <p>Designers and marketers can now focus on the content. Simply <a href="/demos/" title="WebSlides Demos">choose a demo</a> and customize it in minutes. Be memorable! </p>
+//   </li>
+//   <li>
+//     <h2> Good karma. Just the essentials and using lovely CSS.</h2>
+//     <p>WebSlides is about telling the story, and sharing it in a beautiful way. Hypertext and clean code as narrative elements.</p>
+//   </li>
+// </ul>
+//
+// Styleguide Flexblock.Reasons
 .flexblock.reasons {
   li {
     counter-increment: list;
@@ -38,4 +55,3 @@
     }
   }
 }
-
