@@ -203,20 +203,41 @@ h3 [class*='bg-'] {
   padding: .4rem .8rem;
 }
 
-/*== 2.2. Typography Classes = .text- == */
+// Intro
+//
+// Typography Classes = .text-
+//
+// Markup:
+// <p class="text-intro">Create a simple web presence.</p>
+//
+// Styleguide Typography.Intro
 .text-intro,
 [class*='content-'] p {
   font-size: 2.4rem;
   line-height: 4rem;
 }
 
-/* -- Serif -- */
+// Serif
+//
+// Maitree font
+//
+// Markup:
+// <p class="text-serif">Create a simple web presence.</p>
+//
+// Styleguide Typography.Serif
 .text-serif,
 h1 span {
   font-family: 'Maitree', times, serif;
 }
 
-/* -- h1,h2... Promo/Landings -- */
+// Landings
+//
+// h1,h2... Promo/Landings
+//
+// Markup:
+// <h1 class="text-landing">Landings</h1>
+//
+// Styleguide Typography.Landings
 .text-landing {
   letter-spacing: .4rem;
   text-transform: uppercase;
@@ -226,7 +247,14 @@ h1 span {
   }
 }
 
-/* -- Subtitle (Before h1, h2) p.subtitle + h1/h2 */
+// Subtitule
+//
+// Subtitle (Before h1, h2)
+//
+// Markup:
+// <p class="text-subtitle">Powered by <a href="#">#WebSlides</a> <code>.text-subtitle</code></p>
+//
+// Styleguide Typography.Subtitle
 .text-subtitle {
   letter-spacing: .2rem;
   margin-bottom: 0;
@@ -245,15 +273,34 @@ h1 span {
   }
 }
 
+// Uppercase
+//
+// Markup:
+// <p class="text-uppercase">Create a simple web presence.</p>
+//
+// Styleguide Typography.Uppercase
 .text-uppercase {
   text-transform: uppercase;
 }
 
+// Lowercase
+//
+// Markup:
+// <p class="text-lowercase">Create a simple web presence.</p>
+//
+// Styleguide Typography.Lowercase
 .text-lowercase {
   text-transform: lowercase;
 }
 
-/* -- Emoji (you'll love this) -- */
+// Emoji
+//
+// You'll love this
+//
+// Markup:
+// <p class="text-emoji">😀😁😂😅😉😋😎😍</p>
+//
+// Styleguide Typography.Emoji
 .text-emoji {
   font-size: 6.8rem;
   line-height: 8.8rem;
@@ -264,7 +311,14 @@ h1 span {
   }
 }
 
-/* -- Numbers (results, sales... 23,478,289 iphones) -- */
+// Data
+//
+// Numbers (results, sales... )-
+//
+// Markup:
+// <p class="text-data">23,478,289</p>
+//
+// Styleguide Typography.Data
 .text-data {
   font-size: 6.4rem;
   line-height: 8rem;
@@ -276,6 +330,12 @@ h1 span {
   }
 }
 
+// Label
+//
+// Markup:
+// <p><span class="text-label">Website:</span> <a href="#">http://webslides.tv</a></p>
+//
+// Styleguide Typography.Label
 .text-label {
   display: inline-block;
   font-weight: 600;
@@ -283,8 +343,15 @@ h1 span {
   width: 12.8rem;
 }
 
-/* -- Magazine Two Columns -- */
-@media (min-width: 768px) {
+// Columns
+//
+// Magazine Two Columns
+//
+// Markup:
+// <div class="text-cols"><p><strong>Column 1</strong> text</p><p><strong>Column 2</strong> text</p></div>
+//
+// Styleguide Typography.Columns
+@media  (min-width: 768px) {
   .text-cols {
     column-count: 2;
     column-gap: 4.8rem;
@@ -306,7 +373,14 @@ h1 span {
   text-transform: uppercase;
 }
 
-/* -- Heading with border -- */
+// Context
+//
+// Heading with border
+//
+// Markup:
+// <p class="text-context">Why WebSlides?</p>
+//
+// Styleguide Typography.Context
 .text-context {
   position: relative;
 
@@ -327,13 +401,28 @@ h1 span {
   }
 }
 
-/* -- Separator/Symbols (stars ***...) -- */
+// Symbols
+//
+// Stars * * *
+//
+// Markup:
+// <p class="text-symbols">* * *</p>
+//
+// Styleguide Typography.Symbols
 .text-symbols {
   font-weight: 600;
   letter-spacing: .8rem;
   text-align: center;
 }
 
+// Separator
+//
+// Stars * * *
+//
+// Markup:
+// <p class="text-separator">Separator</p>
+//
+// Styleguide Typography.Separator
 .text-separator {
   margin-top: 2.4rem;
 
@@ -357,7 +446,17 @@ h1 span {
   }
 }
 
-/* -- Pull Quote (Right/Left)  -- */
+// Pull Quote
+//
+// Pull Quote Right/Left
+//
+// Markup:
+// <p>Imagine that you are in Florence. If you suddenly start to feel that you literally cannot breathe, you may be experiencing Stendhal Syndrome.</p>
+// <p class="text-pull-right">Psychiatrists have long debated whether it really exists.</p>
+// <p>Imagine that you are in Florence. If you suddenly start to feel that you literally cannot breathe, you may be experiencing Stendhal Syndrome.</p>
+// <p class="text-pull-left">Psychiatrists have long debated whether it really exists.</p>
+//
+// Styleguide Typography.Pull_Quote
 [class*='text-pull'] {
   font-size: 2.4rem;
   font-weight: 400;
@@ -402,12 +501,31 @@ figure[class*='text-pull-'] {
   padding-top: 0;
 }
 
-/* -- Interviews (Questions & Answers)  --- */
-/* -- <dl class="text-interview">
-<dt>name</dt>
-<dd><p>question or answer</p>
-</dd>
---- */
+// Interviews
+//
+// Questions & Answers
+//
+// Markup:
+// <dl class="text-interview">
+//   <dt>Driftwood</dt>
+//   <dd>
+//     <p>It says, "The party of the first part shall be known in this contract as the party of the first part." How do you like that? That's pretty neat, eh?</p>
+//   </dd>
+//   <dt>Fiorello</dt>
+//   <dd>
+//     <p>No. It's no good.</p>
+//   </dd>
+//   <dt>Driftwood</dt>
+//   <dd>
+//     <p>What's the matter with it?</p>
+//   </dd>
+//   <dt>Fiorello</dt>
+//   <dd>
+//     <p>I don't know, let's hear it again.</p>
+//   </dd>
+// </dl>
+//
+// Styleguide Typography.Interviews
 .text-interview dt {
   font-weight: 600;
   margin-bottom: 0;
@@ -425,7 +543,14 @@ figure[class*='text-pull-'] {
 }
 
 
-/* -- Info Messages (error, warning, success... -- */
+// Info Messages
+//
+// Error, warning, success...
+//
+// Markup:
+// <p class="text-info">Psychiatrists have long debated whether it really exists.</p>
+//
+// Styleguide Typography.Info
 .text-info {
   font-size: 1.6rem;
   line-height: 2.4rem;
