@@ -1,4 +1,9 @@
-/* Buttons/Badges */
+// Buttons
+//
+// Markup:
+// <a href="#" class="button">Download</a>
+//
+// Styleguide Buttons
 [class*='button'] {
   @media (min-width: 500px) {
     & + & {

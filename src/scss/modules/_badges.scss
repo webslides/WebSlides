@@ -1,6 +1,12 @@
-/*=== App Store Badges === */
-/* Change width and height: 216x64px, 162x48px, 135x40... */
-
+// Badges
+//
+// App Store Badges. Change width and height: 216x64px, 162x48px, 135x40...
+//
+// Markup:
+// <p class="badge-android">Google Play</p>
+// <p class="badge-ios">App Store</p>
+//
+// Styleguide Badgets
 [class*='badge-'] {
   background-repeat: no-repeat;
   background-size: cover;

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../static/css/webslides.css">
 
 </head>
-<body id="kss-node" class="kss-fullscreen-mode">
+<body id="kss-node" >
 
 <div class="kss-sidebar kss-style">
   <header class="kss-header">
@@ -40,26 +40,6 @@
         <a class="kss-nav__menu-link" href="section-base.html">
           <span class="kss-nav__ref">3</span><span class="kss-nav__name">Base</span>
         </a>
-            <ul class="kss-nav__menu-child">
-              <li class="kss-nav__menu-item">
-                <a class="kss-nav__menu-link" href="section-base.html#kssref-base-backgrounds">
-                  <span class="kss-nav__ref ">3.1</span
-                  ><span class="kss-nav__name">Backgrounds</span>
-                </a>
-              </li>
-              <li class="kss-nav__menu-item">
-                <a class="kss-nav__menu-link" href="section-base.html#kssref-base-backgrounds-gradient">
-                  <span class="kss-nav__ref kss-nav__ref-child">3.1.1</span
-                  ><span class="kss-nav__name">Gradient Backgrounds</span>
-                </a>
-              </li>
-              <li class="kss-nav__menu-item">
-                <a class="kss-nav__menu-link" href="section-base.html#kssref-base-backgrounds-transparent">
-                  <span class="kss-nav__ref kss-nav__ref-child">3.1.2</span
-                  ><span class="kss-nav__name">Transparent Backgrounds</span>
-                </a>
-              </li>
-            </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a class="kss-nav__menu-link" href="section-buttons.html">
@@ -101,25 +81,65 @@
 </div>
 <article role="main" class="kss-main">
 
-    <div id="kssref-base" class="kss-section kss-section--depth-1 is-fullscreen">
+    <div id="kssref-cards" class="kss-section kss-section--depth-1 ">
 
       <div class="kss-style">
         <h1 class="kss-title kss-title--level-1">
-          <a class="kss-title__permalink" href="#kssref-base">
+          <a class="kss-title__permalink" href="#kssref-cards">
             <span class="kss-title__ref">
-              3
+              5
               <span class="kss-title__permalink-hash">
-                  #Base
+                  #Cards
               </span>
             </span>
-            Base
+            Cards
           </a>
         </h1>
 
+          <div class="kss-description">
+            <p>Different sizes: .card-30, .card-40, .card-50, .card-60, .card-70, .card-80</p>
+
+          </div>
 
       </div>
 
+        <div class="kss-modifier__wrapper">
+          <div class="kss-modifier__heading kss-style">
+            Example
+          </div>
 
+
+          <div class="kss-modifier__example">
+              <div class="card-50">
+    <figure><img class="aligncenter" src="/static/images/iphone.png" alt="iPhone"></figure>
+    <div class="flex-content">
+      <h2>iPhone 7</h2>
+      <p class="text-intro">3D Touch, 12MP photos, and 4K video.</p>
+      <p>Every iPhone they have made was built on the same belief. That a phone should be more than a collection of features. That, above all, a phone should be absolutely simple, beautiful, and magical to use.</p>
+    </div>
+  </div>
+            <div class="kss-modifier__example-footer"></div>
+          </div>
+
+        </div>
+
+          <details class="kss-markup kss-style">
+            <summary>
+                Markup
+            </summary>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">  &lt;div class&#x3D;&quot;card-50&quot;&gt;
+    &lt;figure&gt;&lt;img class&#x3D;&quot;aligncenter&quot; src&#x3D;&quot;/static/images/iphone.png&quot; alt&#x3D;&quot;iPhone&quot;&gt;&lt;/figure&gt;
+    &lt;div class&#x3D;&quot;flex-content&quot;&gt;
+      &lt;h2&gt;iPhone 7&lt;/h2&gt;
+      &lt;p class&#x3D;&quot;text-intro&quot;&gt;3D Touch, 12MP photos, and 4K video.&lt;/p&gt;
+      &lt;p&gt;Every iPhone they have made was built on the same belief. That a phone should be more than a collection of features. That, above all, a phone should be absolutely simple, beautiful, and magical to use.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;</code></pre>
+          </details>
+
+        <div class="kss-source kss-style">
+          Source: <code>modules/_cards.scss</code>, line 1
+        </div>
 
     </div>
 </article>

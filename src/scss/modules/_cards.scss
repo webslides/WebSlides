@@ -1,7 +1,18 @@
-/*===========================================
-10. Cards
-============================================= */
-
+// Cards
+//
+// Different sizes: .card-30, .card-40, .card-50, .card-60, .card-70, .card-80
+//
+// Markup:
+//   <div class="card-50">
+//     <figure><img class="aligncenter" src="/static/images/iphone.png" alt="iPhone"></figure>
+//     <div class="flex-content">
+//       <h2>iPhone 7</h2>
+//       <p class="text-intro">3D Touch, 12MP photos, and 4K video.</p>
+//       <p>Every iPhone they have made was built on the same belief. That a phone should be more than a collection of features. That, above all, a phone should be absolutely simple, beautiful, and magical to use.</p>
+//     </div>
+//   </div>
+//
+// Styleguide Cards
 [class*='card-'] {
   &,
   & > a {

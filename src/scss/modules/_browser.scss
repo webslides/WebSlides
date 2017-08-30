@@ -1,6 +1,14 @@
-/*=== HTML Browser (Screenshots) ================ */
-/* <figure class="browser"> img </figure> */
-
+// Screenshots
+//
+// HTML browser
+//
+// Markup:
+// <figure class="browser">
+//   <img src="http://lorempixel.com/500/500/food/" />
+//   <figcaption>Foddie</figcaption>
+// </figure>
+//
+// Styleguide Screenshots
 .browser {
   border-radius: .3rem;
   margin: 0 auto 3.2rem;
