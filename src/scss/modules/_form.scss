@@ -93,6 +93,12 @@ input[type='submit'] {
   width: 50%;
 }
 
+// Try
+//
+// Markup:
+// <a href="#" class="try">Try element</a>
+//
+// Styleguide Elements.Try
 .try {
   display: block;
   font-size: 1.6rem;
@@ -130,6 +136,15 @@ button:disabled:hover {
   cursor: not-allowed;
 }
 
+// User
+//
+// Markup:
+// <div class="user">
+//   <input type="text" placeholder="Username" />
+//   <button>Log in</button>
+// </div>
+//
+// Styleguide Forms.User
 .user {
   input {
     margin-bottom: 0;

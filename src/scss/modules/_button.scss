@@ -1,7 +1,9 @@
 // Buttons
 //
 // Markup:
-// <a href="#" class="button">Download</a>
+// <a href="#" class="button {{modifier_class}}">Download</a>
+//
+// .radius - Rounded corners
 //
 // Styleguide Buttons
 [class*='button'] {

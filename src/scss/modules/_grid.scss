@@ -1,6 +1,24 @@
-/*=== 1.4. Basic Grid (Flexible blocks)
-Auto-fill & Equal height === */
-
+// Grid
+//
+// Basic Grid (Flexible blocks)
+// Auto-fill & Equal height
+//
+// Markup:
+// <div class="grid {{modifier_class}}">
+//   <div class="column">
+//     <h3><strong>WebSlides is really easy</strong></h3>
+//     <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.</p>
+//     <p>Code is neat, scalable, and well documented. It uses <strong>intuitive markup with popular naming conventions</strong>. There's no need to overuse classes or nesting. <strong>Based on <a href="https://github.com/jennschiffer/SimpleSlides">SimpleSlides</a>, by <a href="http://jennmoney.biz">Jenn Schiffer</a></strong> :)</p>
+//   </div>
+//   <div class="column">
+//     <h3><strong>WebSlides is the clean</strong></h3>
+//     <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.</p>
+//   </div>
+// </div>
+//
+// .vertical-align - Vertical align
+//
+// Styleguide Grid
 .grid {
   clear: both;
   display: flex;

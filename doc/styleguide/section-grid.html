@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../static/css/webslides.css">
 
 </head>
-<body id="kss-node" class="kss-fullscreen-mode">
+<body id="kss-node" >
 
 <div class="kss-sidebar kss-style">
   <header class="kss-header">
@@ -96,23 +96,24 @@
 </div>
 <article role="main" class="kss-main">
 
-    <div id="kssref-badgets" class="kss-section kss-section--depth-1 is-fullscreen">
+    <div id="kssref-grid" class="kss-section kss-section--depth-1 ">
 
       <div class="kss-style">
         <h1 class="kss-title kss-title--level-1">
-          <a class="kss-title__permalink" href="#kssref-badgets">
+          <a class="kss-title__permalink" href="#kssref-grid">
             <span class="kss-title__ref">
-              2
+              9
               <span class="kss-title__permalink-hash">
-                  #Badgets
+                  #Grid
               </span>
             </span>
-            Badges
+            Grid
           </a>
         </h1>
 
           <div class="kss-description">
-            <p>App Store Badges. Change width and height: 216x64px, 162x48px, 135x40...</p>
+            <p>Basic Grid (Flexible blocks)
+Auto-fill &amp; Equal height</p>
 
           </div>
 
@@ -120,28 +121,69 @@
 
         <div class="kss-modifier__wrapper">
           <div class="kss-modifier__heading kss-style">
-            Example
+            Examples
           </div>
 
+            <div class="kss-modifier__default-name kss-style">
+              Default styling
+            </div>
 
           <div class="kss-modifier__example">
-            <p class="badge-android">Google Play</p>
-<p class="badge-ios">App Store</p>
+            <div class="grid ">
+  <div class="column">
+    <h3><strong>WebSlides is really easy</strong></h3>
+    <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.</p>
+    <p>Code is neat, scalable, and well documented. It uses <strong>intuitive markup with popular naming conventions</strong>. There's no need to overuse classes or nesting. <strong>Based on <a href="https://github.com/jennschiffer/SimpleSlides">SimpleSlides</a>, by <a href="http://jennmoney.biz">Jenn Schiffer</a></strong> :)</p>
+  </div>
+  <div class="column">
+    <h3><strong>WebSlides is the clean</strong></h3>
+    <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.</p>
+  </div>
+</div>
             <div class="kss-modifier__example-footer"></div>
           </div>
 
+            <div class="kss-modifier__name kss-style">
+              .vertical-align
+            </div>
+            <div class="kss-modifier__description kss-style">
+              Vertical align
+            </div>
+            <div class="kss-modifier__example">
+              <div class="grid vertical-align">
+  <div class="column">
+    <h3><strong>WebSlides is really easy</strong></h3>
+    <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.</p>
+    <p>Code is neat, scalable, and well documented. It uses <strong>intuitive markup with popular naming conventions</strong>. There's no need to overuse classes or nesting. <strong>Based on <a href="https://github.com/jennschiffer/SimpleSlides">SimpleSlides</a>, by <a href="http://jennmoney.biz">Jenn Schiffer</a></strong> :)</p>
+  </div>
+  <div class="column">
+    <h3><strong>WebSlides is the clean</strong></h3>
+    <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide.</p>
+  </div>
+</div>
+              <div class="kss-modifier__example-footer"></div>
+            </div>
         </div>
 
           <details class="kss-markup kss-style">
             <summary>
                 Markup
             </summary>
-            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;p class&#x3D;&quot;badge-android&quot;&gt;Google Play&lt;/p&gt;
-&lt;p class&#x3D;&quot;badge-ios&quot;&gt;App Store&lt;/p&gt;</code></pre>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class&#x3D;&quot;grid [modifier class]&quot;&gt;
+  &lt;div class&#x3D;&quot;column&quot;&gt;
+    &lt;h3&gt;&lt;strong&gt;WebSlides is really easy&lt;/strong&gt;&lt;/h3&gt;
+    &lt;p class&#x3D;&quot;text-intro&quot;&gt;Each parent &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; in the #webslides element is an individual slide.&lt;/p&gt;
+    &lt;p&gt;Code is neat, scalable, and well documented. It uses &lt;strong&gt;intuitive markup with popular naming conventions&lt;/strong&gt;. There&#x27;s no need to overuse classes or nesting. &lt;strong&gt;Based on &lt;a href&#x3D;&quot;https://github.com/jennschiffer/SimpleSlides&quot;&gt;SimpleSlides&lt;/a&gt;, by &lt;a href&#x3D;&quot;http://jennmoney.biz&quot;&gt;Jenn Schiffer&lt;/a&gt;&lt;/strong&gt; :)&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;column&quot;&gt;
+    &lt;h3&gt;&lt;strong&gt;WebSlides is the clean&lt;/strong&gt;&lt;/h3&gt;
+    &lt;p class&#x3D;&quot;text-intro&quot;&gt;Each parent &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; in the #webslides element is an individual slide.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
           </details>
 
         <div class="kss-source kss-style">
-          Source: <code>modules/_badges.scss</code>, line 1
+          Source: <code>modules/_grid.scss</code>, line 1
         </div>
 
     </div>
