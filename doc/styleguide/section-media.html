@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../static/css/webslides.css">
 
 </head>
-<body id="kss-node" class="kss-fullscreen-mode">
+<body id="kss-node" >
 
 <div class="kss-sidebar kss-style">
   <header class="kss-header">
@@ -85,6 +85,20 @@
         <a class="kss-nav__menu-link" href="section-media.html">
           <span class="kss-nav__ref">12</span><span class="kss-nav__name">Media</span>
         </a>
+            <ul class="kss-nav__menu-child">
+              <li class="kss-nav__menu-item">
+                <a class="kss-nav__menu-link" href="section-media.html#kssref-media-embed">
+                  <span class="kss-nav__ref ">12.1</span
+                  ><span class="kss-nav__name">Embed</span>
+                </a>
+              </li>
+              <li class="kss-nav__menu-item">
+                <a class="kss-nav__menu-link" href="section-media.html#kssref-media-embed">
+                  <span class="kss-nav__ref ">12.1</span
+                  ><span class="kss-nav__name">Fullscreen</span>
+                </a>
+              </li>
+            </ul>
       </li>
       <li class="kss-nav__menu-item">
         <a class="kss-nav__menu-link" href="section-navigation.html">
@@ -111,23 +125,44 @@
 </div>
 <article role="main" class="kss-main">
 
-    <div id="kssref-layout-radius" class="kss-section kss-section--depth-2 is-fullscreen">
+    <div id="kssref-media" class="kss-section kss-section--depth-1 ">
+
+      <div class="kss-style">
+        <h1 class="kss-title kss-title--level-1">
+          <a class="kss-title__permalink" href="#kssref-media">
+            <span class="kss-title__ref">
+              12
+              <span class="kss-title__permalink-hash">
+                  #Media
+              </span>
+            </span>
+            Media
+          </a>
+        </h1>
+
+
+      </div>
+
+
+
+    </div>
+    <section id="kssref-media-embed" class="kss-section kss-section--depth-2 ">
 
       <div class="kss-style">
         <h2 class="kss-title kss-title--level-2">
-          <a class="kss-title__permalink" href="#kssref-layout-radius">
+          <a class="kss-title__permalink" href="#kssref-media-embed">
             <span class="kss-title__ref">
-              10.2
+              12.1
               <span class="kss-title__permalink-hash">
-                  #Layout.Radius
+                  #Media.Embed
               </span>
             </span>
-            Radius
+            Embed
           </a>
         </h2>
 
           <div class="kss-description">
-            <p>Adds a rounded radis</p>
+            <p>Responsive Media (videos, iframe...)</p>
 
           </div>
 
@@ -140,8 +175,12 @@
 
 
           <div class="kss-modifier__example">
-            <div class="bg-black radius">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.
+            <div class="fullscreen">
+  <div class="embed">
+    <video autoplay loop poster="https://webslides.tv/static/images/peggy.jpg">
+      <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+    </video>
+  </div>
 </div>
             <div class="kss-modifier__example-footer"></div>
           </div>
@@ -152,16 +191,80 @@
             <summary>
                 Markup
             </summary>
-            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class&#x3D;&quot;bg-black radius&quot;&gt;
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.
+            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class&#x3D;&quot;fullscreen&quot;&gt;
+  &lt;div class&#x3D;&quot;embed&quot;&gt;
+    &lt;video autoplay loop poster&#x3D;&quot;https://webslides.tv/static/images/peggy.jpg&quot;&gt;
+      &lt;source src&#x3D;&quot;https://webslides.tv/static/videos/peggy.mp4&quot; type&#x3D;&quot;video/mp4&quot;&gt;
+    &lt;/video&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </details>
 
         <div class="kss-source kss-style">
-          Source: <code>_base.scss</code>, line 129
+          Source: <code>modules/_media.scss</code>, line 1
         </div>
 
-    </div>
+    </section>
+    <section id="kssref-media-embed" class="kss-section kss-section--depth-2 ">
+
+      <div class="kss-style">
+        <h2 class="kss-title kss-title--level-2">
+          <a class="kss-title__permalink" href="#kssref-media-embed">
+            <span class="kss-title__ref">
+              12.1
+              <span class="kss-title__permalink-hash">
+                  #Media.Embed
+              </span>
+            </span>
+            Fullscreen
+          </a>
+        </h2>
+
+          <div class="kss-description">
+            <p>Responsive background video
+<a href="https://fvsch.com/code/video-background/">https://fvsch.com/code/video-background/</a></p>
+
+          </div>
+
+      </div>
+
+        <div class="kss-modifier__wrapper">
+          <div class="kss-modifier__heading kss-style">
+            Example
+          </div>
+
+
+          <div class="kss-modifier__example">
+            <div class="fullscreen">
+  <div class="embed">
+    <video autoplay loop poster="https://webslides.tv/static/images/peggy.jpg">
+      <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+            <div class="kss-modifier__example-footer"></div>
+          </div>
+
+        </div>
+
+          <details class="kss-markup kss-style">
+            <summary>
+                Markup
+            </summary>
+            <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class&#x3D;&quot;fullscreen&quot;&gt;
+  &lt;div class&#x3D;&quot;embed&quot;&gt;
+    &lt;video autoplay loop poster&#x3D;&quot;https://webslides.tv/static/images/peggy.jpg&quot;&gt;
+      &lt;source src&#x3D;&quot;https://webslides.tv/static/videos/peggy.mp4&quot; type&#x3D;&quot;video/mp4&quot;&gt;
+    &lt;/video&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </details>
+
+        <div class="kss-source kss-style">
+          Source: <code>modules/_media.scss</code>, line 35
+        </div>
+
+    </section>
 </article>
 
 <!-- SCRIPTS -->

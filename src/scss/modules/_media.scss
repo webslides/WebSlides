@@ -1,5 +1,15 @@
-/*=== 1.3 Responsive Media (videos, iframe...) === */
-
+// Embed
+//
+// Responsive Media (videos, iframe...)
+//
+// Markup:
+// <div class="embed">
+//   <video autoplay loop poster="https://webslides.tv/static/images/peggy.jpg">
+//     <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+//   </video>
+// </div>
+//
+// Styleguide Media.Embed
 .embed {
   height: 0;
   overflow: hidden;
@@ -21,9 +31,22 @@
     width: 100%;
   }
 
-  /* -- Responsive background video
-  https://fvsch.com/code/video-background/ -- */
 
+  // Fullscreen
+  //
+  // Responsive background video
+  // https://fvsch.com/code/video-background/
+  //
+  // Markup:
+  // <div class="fullscreen">
+  //   <div class="embed">
+  //     <video autoplay loop poster="https://webslides.tv/static/images/peggy.jpg">
+  //       <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
+  //     </video>
+  //   </div>
+  // </div>
+  //
+  // Styleguide Media.Embed
   .fullscreen > & {
     bottom: 0;
     height: auto;

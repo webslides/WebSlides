@@ -1,8 +1,11 @@
-/*=========================================
-15. Longform
-=========================================== */
-/* -- Posts = .wrap.longform -- */
-
+// Longform
+//
+// Markup:
+// <section class="wrap longform">
+//   <p>Lorem ipsum</p>
+// </section>
+//
+// Styleguide Longform
 .longform {
   width: 72rem;
   /* Why 72rem=720px?

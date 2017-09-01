@@ -1,9 +1,30 @@
-/*=========================================
-4. Navigation
-=========================================== */
-
-/*=== 4.1. Navbars === */
-
+// Navigation
+//
+// Responsive Media (videos, iframe...)
+//
+// Markup:
+// <nav role="navigation" class="{{modifier_class}}">
+//   <ul>
+//     <li><a href="">About</a></li>
+//     <li><a href="">Clients</a></li>
+//     <li class="facebook">
+//       <a rel="external" href="https://facebook.com/webslides" title="Facebook">
+//         Facebook
+//       </a>
+//     </li>
+//     <li class="twitter">
+//       <a rel="external" href="https://twitter.com/webslides" title="Twitter">
+//         @WebSlides
+//       </a>
+//     </li>
+//   </ul>
+// </nav>
+//
+// .navbar - Navigation bar
+// .aligncenter - Center alignment
+// .alignright - Right alignment
+//
+// Styleguide Navigation
 nav ul {
   display: flex;
   flex-wrap: wrap;
