@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.4.1
- * Date: 2017-08-18
+ * Date: 2017-09-01
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -363,10 +363,6 @@ webslides.js will add .ws-ready automatically. Don't worry :) -- */
   overflow-y: scroll; }
   #webslides::-webkit-scrollbar {
     display: none; }
-
-/* -- Prototype faster - Vertical rhythm  -- */
-.baseline {
-  background: url("../images/baseline.png") left top 0.8rem/0.8rem; }
 
 li li {
   margin-left: 1.6rem; }
