@@ -1,7 +1,11 @@
-/*=========================================
-11. Quotes
-=========================================== */
-
+// Quotes
+//
+// Markup:
+// <blockquote>
+//   <p>"I feel guilty as a web designer when I have to use PowerPoint and Keynote. So I made #WebSlides."</p>
+// </blockquote>
+//
+// Styleguide Blocks.Quotes
 blockquote {
   display: inline-block;
   position: relative;
@@ -21,6 +25,12 @@ dd blockquote p:last-child {
   margin-bottom: 0;
 }
 
+// Cites
+//
+// Markup:
+// <cite> <img class="avatar-40" src="http://webslides.tv/static/images/avatar.jpg" alt="Avatar"> <a href="http://twitter.com/jlantunez/">@jlantunez</a></cite>
+//
+// Styleguide Blocks.Cites
 cite {
   display: block;
   text-align: center;

@@ -1,7 +1,38 @@
-/*=========================================
-13. Tables
-=========================================== */
-
+// Tables
+//
+// Markup:
+// <table>
+//   <thead>
+//    <tr>
+//      <th>Plans</th>
+//      <th>Good</th>
+//      <th>Better</th>
+//      <th>Awesome</th>
+//    </tr>
+//   </thead>
+//   <tbody>
+//     <tr>
+//       <td>Price</td>
+//       <td>Free</td>
+//       <td>$6</td>
+//       <td>$10</td>
+//     </tr>
+//     <tr>
+//       <td>Access to exclusive content</td>
+//       <td>No</td>
+//       <td>No</td>
+//       <td>Yes</td>
+//     </tr>
+//     <tr>
+//       <td>Screens you can watch on at the same time</td>
+//       <td>1</td>
+//       <td>2</td>
+//       <td>Unlimited</td>
+//     </tr>
+//   </tbody>
+// </table>
+//
+// Styleguide Elements.Tables
 table {
   margin-bottom: 3.2rem;
   margin-top: 3.2rem;

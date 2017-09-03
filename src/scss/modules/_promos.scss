@@ -1,7 +1,17 @@
-/*=============================================
-7. Promos/Offers (pricing, tagline, CTA...)
-=============================================== */
-
+// Call to action
+//
+// Markup:
+// <div class="cta">
+//   <div class="number">
+//     <p><span><sup>$</sup>40</span></p>
+//   </div>
+//   <div class="benefit">
+//     <h2>Watch TV shows anytime, anywhere</h2>
+//     <p>Lorem ipsum</p>
+//   </div>
+// </div>
+//
+// Styleguide Blocks.CTA
 .cta {
   display: flex;
   flex-wrap: wrap;
@@ -62,7 +72,20 @@
   }
 }
 
-/* --- Header CTA --- */
+// Headings
+//
+// Markup:
+// <div class="cta-cover">
+//   <h1><strong>HTML Presentations</strong> Made Easy</h1>
+//   <p class="alignright">
+//     <a class="button" href="https://webslides.tv/webslides-latest.zip" title="Download WebSlides">
+//       WebSlides
+//     </a>
+//     <span class="try"><a href="/demos/" title="WebSlides Demos">Demos</a> · <a href="https://github.com/webslides/webslides" title="Github">Github</a></span>
+//   </p>
+// </div>
+//
+// Styleguide Blocks.cta-cover
 .cta-cover {
   display: table;
   width: 100%;

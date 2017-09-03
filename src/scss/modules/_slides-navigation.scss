@@ -1,5 +1,13 @@
-/* === 5.2 Counter / Navigation Slides  === */
-
+// Slides navigation
+//
+// Markup:
+// <div id="navigation">
+//   <a id="next" href="#" title="Arrow Keys">→</a>
+//   <a id="previous" href="#" title="Arrow Keys">←</a>
+//   <span id="counter"><a href="#" title="View all slides">53 / 120</a></span>
+// </div>
+//
+// Styleguide Blocks.Navigation
 #navigation {
   animation: fadeIn 8s;
   bottom: 0;

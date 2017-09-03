@@ -1,7 +1,33 @@
-/*===========================================
-9. Table of contents
-============================================= */
-
+// Table of contents
+//
+// Markup:
+// <div class="toc">
+//   <ol>
+//     <li>
+//       <a href="#" title="Go to Learning to see">
+//       <span class="chapter">Prologue: Learning to See</span>
+//       <span class="toc-page">01</span>
+//       </a>
+//     </li>
+//     <li><a href="#" title="Go to What is Design?"><span class="chapter">What is Design?</span>
+//       <span class="toc-page">04</span></a>
+//     </li>
+//     <li>
+//       <a href="#" title="Go to What is Beauty?"><span class="chapter">What is Beauty?</span>
+//       <span class="toc-page">08</span></a>
+//       <ol>
+//         <li><a href="#" title="Go to Harmony"><span class="chapter">Harmony</span>
+//           <span class="toc-page">12</span></a>
+//         </li>
+//         <li><a href="#" title="Go to Simplicity vs. Clarity"><span class="chapter">Simplicity vs. Clarity</span>
+//           <span class="toc-page">14</span></a>
+//         </li>
+//       </ol>
+//     </li>
+//   </ol>
+// </div>
+//
+// Styleguide Blocks.TOC
 .toc,
 .toc ol > li:before,
 .chapter {

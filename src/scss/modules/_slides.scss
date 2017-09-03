@@ -1,11 +1,15 @@
-/*============================================
-5. SLIDES (Full Screen)
-Vertically and horizontally centered
-============================================== */
-
-/* Fade transition to all slides.
-* = All HTML elements will have those styles.*/
-
+// Slides
+//
+// Fullscreen. Vertically and horizontally centered.
+// Fade transition to all slides.
+// All HTML elements will have those styles
+//
+// Markup:
+// <section>
+//   <p>Content</p>
+// </section>
+//
+// Styleguide Slides
 section * {
   animation: fadeIn .6s ease-in-out;
 }
@@ -36,7 +40,16 @@ section,
   }
 }
 
-/*slide with no padding (full card, .embed youtube video...) */
+// fullscreen
+//
+// Slide with no padding (full card, .embed youtube video...)
+//
+// Markup:
+// <section class="fullscreen">
+//   <p>Content</p>
+// </section>
+//
+// Styleguide Slides
 .fullscreen {
   padding: 0;
   /* Fixed/Visible header?
@@ -44,12 +57,30 @@ section,
   */
 }
 
-/* slide alignment - top */
+// Align top
+//
+// Slide alignment - top
+//
+// Markup:
+// <section class="slide-top">
+//   <p>Content</p>
+// </section>
+//
+// Styleguide Slides.Top
 .slide-top {
   justify-content: flex-start;
 }
 
-/* slide alignment - bottom */
+// Align bottom
+//
+// Slide alignment - bottom
+//
+// Markup:
+// <section class="slide-bottom">
+//   <p>Content</p>
+// </section>
+//
+// Styleguide Slides.Bottom
 .slide-bottom {
   justify-content: flex-end;
 }
