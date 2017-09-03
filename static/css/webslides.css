@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
  * Version: 1.4.1
- * Date: 2017-08-18
+ * Date: 2017-09-03
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -2399,6 +2399,15 @@ CV / News
     font-weight: 600; }
   .toc li a:hover .toc-page:before {
     border-bottom-width: 2px; }
+
+.chapter {
+  display: inline-block;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  padding-right: .8rem; }
+
+.toc-page {
+  float: right; }
 
 /*===========================================
 10. Cards
