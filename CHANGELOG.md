@@ -1,3 +1,8 @@
+# 1.4.2 (2017-09-12)
+
+- Fixed `.toc` class. (Regression from Sass)
+- Fixed baseline being incorrectly included.
+
 # 1.4.1 (2017-08-18)
 
 - Fixed longform alignments. (Regression from Sass)

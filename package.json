@@ -1,6 +1,6 @@
 {
   "name": "webslides",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Making HTML presentations easy",
   "main": "static/js/webslides.js",
   "repository": {
