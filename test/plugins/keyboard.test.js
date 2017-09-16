@@ -2,12 +2,12 @@ import Keyboard from '../../src/js/plugins/keyboard';
 import Keys from '../../src/js/utils/keys';
 
 // @TODO: Check to do this with simulant
-const simulateKeyEvent = (el, code) => {
+const simulateKeyEvent = (el, code, useShift = false) => {
   const evt = new KeyboardEvent('keydown', {
     bubbles: true,
     cancelableCode: true,
     which: code,
-    shiftKey: true});
+    shiftKey: useShift});
   el.dispatchEvent(evt);
 };
 
@@ -37,7 +37,7 @@ test('Keyboard plugin', () => {
     el: ws
   };
 
-  new Keyboard(webslides);
+  const key = new Keyboard(webslides);
 
   expect(goto).not.toBeCalled();
   expect(next).not.toBeCalled();
@@ -51,18 +51,36 @@ test('Keyboard plugin', () => {
   expect(next.mock.calls.length).toBe(1);
   simulateKeyEvent(document, Keys.SPACE);
   expect(next.mock.calls.length).toBe(2);
-  simulateKeyEvent(document, Keys.RE_PAGE);
+  // Shift + Space
+  simulateKeyEvent(document, Keys.SPACE, true);
+  expect(next.mock.calls.length).toBe(2);
   expect(prev.mock.calls.length).toBe(1);
+  simulateKeyEvent(document, Keys.RE_PAGE);
+  expect(prev.mock.calls.length).toBe(2);
+
+  // Home - End
   simulateKeyEvent(document, Keys.HOME);
   expect(goto.mock.calls.length).toBe(1);
+  simulateKeyEvent(document, Keys.END);
+  expect(goto.mock.calls.length).toBe(2);
+
+  // Arrow keys, only left right should increase
   simulateKeyEvent(document, Keys.DOWN);
-  expect(next.mock.calls.length).toBe(2);
   simulateKeyEvent(document, Keys.UP);
-  expect(prev.mock.calls.length).toBe(1);
   simulateKeyEvent(document, Keys.LEFT);
-  expect(prev.mock.calls.length).toBe(2);
   simulateKeyEvent(document, Keys.RIGHT);
+  expect(prev.mock.calls.length).toBe(3);
   expect(next.mock.calls.length).toBe(3);
+
+  // Arrow keys, only up down should increase
+  key.ws_.isVertical = true;
+  simulateKeyEvent(document, Keys.DOWN);
+  simulateKeyEvent(document, Keys.UP);
+  simulateKeyEvent(document, Keys.LEFT);
+  simulateKeyEvent(document, Keys.RIGHT);
+  expect(prev.mock.calls.length).toBe(4);
+  expect(next.mock.calls.length).toBe(4);
+
   simulateKeyEvent(document, Keys.F);
   expect(fullscreen.mock.calls.length).toBe(1);
 });

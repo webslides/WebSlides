@@ -35,8 +35,14 @@ export default class Keyboard {
 
     switch (event.which) {
       case Keys.AV_PAGE:
-      case Keys.SPACE:
         method = this.ws_.goNext;
+        break;
+      case Keys.SPACE:
+        if (event.shiftKey) {
+          method = this.ws_.goPrev;
+        } else {
+          method = this.ws_.goNext;
+        }
         break;
       case Keys.RE_PAGE:
         method = this.ws_.goPrev;
