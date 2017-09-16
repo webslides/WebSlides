@@ -1,3 +1,9 @@
+# 1.5.0 (2017-09-16)
+
+- [[#96]((https://github.com/webslides/webslides/issues/96))] Using Shift Space now allows to go to previous slide.
+- [[#97]((https://github.com/webslides/webslides/issues/97))] Fixing CTRL/CMD + F not allowing to search.
+- Dependencies updated.
+
 # 1.4.2 (2017-09-12)
 
 - Fixed `.toc` class. (Regression from Sass)

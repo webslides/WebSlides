@@ -1,6 +1,6 @@
 {
   "name": "webslides",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Making HTML presentations easy",
   "main": "static/js/webslides.js",
   "repository": {
@@ -67,7 +67,7 @@
     "lint:css": "sass-lint -v -f stylish",
     "dev": "webpack-dev-server",
     "test": "jest && codecov",
-    "preversion": "npm test",
+    "preversion": "npm jest",
     "postversion": "npm run build && git add -A static && node ./zip-release.js && git push && git push --tags"
   },
   "release": {

@@ -1,7 +1,7 @@
 /*!
  * Name: WebSlides
- * Version: 1.4.2
- * Date: 2017-09-12
+ * Version: 1.5.0
+ * Date: 2017-09-16
  * Description: Making HTML presentations easy
  * URL: https://github.com/webslides/webslides#readme
  * Credits: @jlantunez, @LuisSacristan, @Belelros
@@ -1779,8 +1779,14 @@ var Keyboard = function () {
 
       switch (event.which) {
         case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].AV_PAGE:
-        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].SPACE:
           method = this.ws_.goNext;
+          break;
+        case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].SPACE:
+          if (event.shiftKey) {
+            method = this.ws_.goPrev;
+          } else {
+            method = this.ws_.goNext;
+          }
           break;
         case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].RE_PAGE:
           method = this.ws_.goPrev;
@@ -1806,7 +1812,10 @@ var Keyboard = function () {
           method = !this.ws_.isVertical ? this.ws_.goNext : null;
           break;
         case __WEBPACK_IMPORTED_MODULE_0__utils_keys__["a" /* default */].F:
-          method = this.ws_.fullscreen;
+          if (!event.metaKey && !event.ctrlKey) {
+            method = this.ws_.fullscreen;
+          }
+
           break;
       }
 
