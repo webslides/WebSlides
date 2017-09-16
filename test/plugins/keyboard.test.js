@@ -2,12 +2,14 @@ import Keyboard from '../../src/js/plugins/keyboard';
 import Keys from '../../src/js/utils/keys';
 
 // @TODO: Check to do this with simulant
-const simulateKeyEvent = (el, code, useShift = false) => {
-  const evt = new KeyboardEvent('keydown', {
+const simulateKeyEvent = (el, code, extra) => {
+  const config = Object.assign({
     bubbles: true,
     cancelableCode: true,
     which: code,
-    shiftKey: useShift});
+    shiftKey: false}, extra);
+
+  const evt = new KeyboardEvent('keydown', config);
   el.dispatchEvent(evt);
 };
 
@@ -52,7 +54,7 @@ test('Keyboard plugin', () => {
   simulateKeyEvent(document, Keys.SPACE);
   expect(next.mock.calls.length).toBe(2);
   // Shift + Space
-  simulateKeyEvent(document, Keys.SPACE, true);
+  simulateKeyEvent(document, Keys.SPACE, {shiftKey: true});
   expect(next.mock.calls.length).toBe(2);
   expect(prev.mock.calls.length).toBe(1);
   simulateKeyEvent(document, Keys.RE_PAGE);
@@ -81,6 +83,9 @@ test('Keyboard plugin', () => {
   expect(prev.mock.calls.length).toBe(4);
   expect(next.mock.calls.length).toBe(4);
 
+  // F, only trigger on when alone
   simulateKeyEvent(document, Keys.F);
+  simulateKeyEvent(document, Keys.F, {ctrlKey: true});
+  simulateKeyEvent(document, Keys.F, {metaKey: true});
   expect(fullscreen.mock.calls.length).toBe(1);
 });
