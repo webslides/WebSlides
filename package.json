@@ -68,7 +68,7 @@
     "dev": "webpack-dev-server",
     "test": "jest && codecov",
     "preversion": "npm test",
-    "postversion": "npm run build && git add -A static && node ./zip-release.js && git push && git push --tags",
+    "postversion": "npm run build && git add -A static && node ./zip-release.js && git push && git push --tags"
   },
   "release": {
     "files": [
