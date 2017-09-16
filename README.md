@@ -89,7 +89,6 @@ You can add:
 - [Animate on scroll](http://michalsnik.github.io/aos/) (Useful for longform articles)
 - [pt](http://williamngan.github.io/pt/)
 
-
 ### Dive In!
 
 - Do not miss [our demos](https://webslides.tv/). 
