@@ -1,6 +1,6 @@
 {
-  "title": "WebSlides",
-
+  "title": "WebSlides - Documentation 1.5.0",
+  "logo": "../../static/images/favicons/favicon.svg",
   "source": "src/scss/",
 
   "destination": "doc/styleguide/",
@@ -9,6 +9,12 @@
 
   "css": [
     "../../static/css/webslides.css"
+  ],
+
+  "mainmenu": [
+    {"title" : "WebSlides", "url" : "../../index.html"},
+    {"title" : "Documentation", "url" : "./"},
+    {"title" : "Demos", "url" : ".../demos/index.html"}
   ]
 
 }

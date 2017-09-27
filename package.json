@@ -12,10 +12,10 @@
     "presentation",
     "css"
   ],
-  "author": "Jose Luís Antúnez <jlantunez@gmail.com>",
+  "author": "Jose Luis Antúnez <jlantunez@gmail.com>",
   "contributors": [
     {
-      "name": "Luís Sacristán"
+      "name": "Luis Sacristán"
     },
     {
       "name": "Antonio Laguna",
@@ -42,7 +42,7 @@
     "eslint-plugin-jest": "^20.0.3",
     "extract-text-webpack-plugin": "^3.0.0",
     "jest": "^20.0.4",
-    "kss": "^3.0.0-beta.18",
+    "kss": "git+https://github.com/webslides/kss-node",
     "michelangelo": "^0.6.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
@@ -68,7 +68,9 @@
     "lint:css": "sass-lint -v -f stylish",
     "dev": "webpack-dev-server",
     "test": "jest && codecov",
-    "kss": "kss --config kss-config.json"
+    "kss": "npm-run-all -p kss:*",
+    "kss:css": "node-sass doc/kss/templates/default/kss-assets/kss.scss doc/kss/templates/default/kss-assets/kss.css",
+    "kss:doc": "kss --config kss-config.json"
   },
   "jest": {
     "collectCoverage": true

@@ -1,26 +1,52 @@
 // ------------------------------------------------------------------------------
 //   Variables - Colors, Fonts, etc.
 // ------------------------------------------------------------------------------
-$kss-colors-background    : #fff;
+$kss-black: #000;
+$kss-gray: #999;
+$kss-white: #fff;
+$kss-transparent: rgba(0, 0, 0, 0);
+$kss-dark-gray: #333;
+$kss-shadow: rgba(0, 0, 0, .25);
 
-$kss-colors-foreground    : #444;
-$kss-colors-heading       : #111;
-$kss-colors-quotes        : #666;
+$kss-colors-header-bg: #2f3742;
+$kss-colors-header-font: #fff;
+$kss-colors-header-link-active: #93cdcf;
+$kss-colors-subheader-bg: #f3f3f5;
+$kss-colors-subheader-border: #e7e7e9;
 
-$kss-colors-link          : #0645ad;
-$kss-colors-link-visited  : #0645ad;
-$kss-colors-link-hover    : lighten($kss-colors-link, 20%);
-$kss-colors-link-active   : #faa700;
+$kss-colors-background: $kss-white;
+$kss-colors-border-sep: #e2e3e5;
 
-$kss-font-body            : Helvetica, 'Helvetica Neue', Arial, sans-serif;
-$kss-font-code            : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
+$kss-colors-menu-link: #2e3337;
+$kss-colors-menu-link-active: #93cdcf;
+$kss-colors-submenu-link: #6a737a;
 
-$kss-font-size            : 16px;
-$kss-vertical-rhythm      : $kss-font-size * 1.5;
+$kss-colors-foreground: #444;
+$kss-colors-heading: #111;
+$kss-colors-heading-side: #e2e3e5;
+$kss-colors-quotes: $kss-gray;
+
+$kss-colors-ins-bg: #ff9;
+$kss-colors-mark-bg: #ff0;
+
+$kss-colors-link: #d1783e;
+$kss-colors-link-visited: #d1783e;
+$kss-colors-link-hover: lighten($kss-colors-link, 20%);
+$kss-colors-link-active: #d1783e;
+
+$kss-font-body: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+$kss-font-code: Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
+
+$kss-font-size: 16px;
+$kss-vertical-rhythm: $kss-font-size * 1.5;
 
 // ------------------------------------------------------------------------------
 // Wrap all of this builder's base HTML styling inside a .kss-style selector.
 // ------------------------------------------------------------------------------
+
+[class*='kss-'] {
+  font-family: 'San Francisco';
+}
 
 .kss-style {
   color: $kss-colors-foreground;
@@ -31,106 +57,145 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   a {
     color: $kss-colors-link;
     text-decoration: none;
+    transition-duration: .5s;
     transition-property: color;
-    transition-duration: 0.5s;
 
     &:visited { color: $kss-colors-link-visited; }
-    &:hover,
     &:focus   { color: $kss-colors-link-hover;   }
-    &:active  { color: $kss-colors-link-active;  }
+
+    &:active,
+    &:hover  {
+      color: $kss-colors-link-active;
+    }
 
     &:hover,
     &:active {
       outline: 0;
     }
+
+    &.kss-nav__menu-link {
+      color: $kss-colors-menu-link;
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    &.kss-nav__menu-link-active {
+      color: $kss-colors-menu-link-active;
+    }
   }
 
   p {
-    margin: ($kss-vertical-rhythm/2) 0 $kss-vertical-rhythm 0;
+    margin: ($kss-vertical-rhythm / 2) 0 $kss-vertical-rhythm;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    margin: $kss-vertical-rhythm 0 0 0;
-    font-family: $kss-font-body;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $kss-colors-heading;
+    font-family: $kss-font-body;
+    font-weight: 900;
     line-height: 1.15em;
+    margin: $kss-vertical-rhythm 0 0;
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-weight: bold;
   }
 
-  h1 { font-size: $kss-font-size * 2.5;   }
-  h2 { font-size: $kss-font-size * 2.25;  }
+  h1 { font-size: $kss-font-size * 2.75;   }
+
+  h2 {
+    font-size: $kss-font-size * 2.5;
+
+    &::before {
+      color: $kss-colors-heading-side;
+      content: '#';
+      margin-left: -30px;
+      position: absolute;
+    }
+  }
+
   h3 { font-size: $kss-font-size * 2.125; }
   h4 { font-size: $kss-font-size * 2;     }
   h5 { font-size: $kss-font-size * 1.875; }
   h6 { font-size: $kss-font-size * 1.75;  }
 
   blockquote {
+    border-left: .5em mix($kss-colors-quotes, $kss-colors-background, 25%) solid;
     color: $kss-colors-quotes;
     margin: 0;
     padding-left: $kss-vertical-rhythm;
-    border-left: 0.5em mix($kss-colors-quotes, $kss-colors-background, 25%) solid;
   }
 
   hr {
+    border: 0;
+    border-bottom: 1px solid darken($kss-colors-background, 10%);
+    border-top: 1px solid lighten($kss-colors-foreground, 60%);
     display: block;
     height: 2px;
-    border: 0;
-    border-top: 1px solid lighten($kss-colors-foreground, 60%);
-    border-bottom: 1px solid darken($kss-colors-background, 10%);
     margin: $kss-vertical-rhythm 0;
     padding: 0;
   }
 
-  pre, code, kbd, samp {
-    font-family: $kss-font-code;
+  pre,
+  code,
+  kbd,
+  samp {
     color: mix($kss-colors-foreground, $kss-colors-heading, 50%);
+    font-family: $kss-font-code;
     font-size: 1em;
   }
 
   pre {
-    white-space: pre;
     overflow: scroll;
+    white-space: pre;
   }
 
   ins {
+    background: $kss-colors-ins-bg;
     color: $kss-colors-heading;
-    background: #ff9;
     text-decoration: none;
   }
 
   mark {
+    background: $kss-colors-mark-bg;
     color: $kss-colors-heading;
-    background: #ff0;
     font-weight: bold;
   }
 
-  sub, sup {
+  sub,
+  sup {
     font-size: 75%;
     line-height: 0;
     position: relative;
     vertical-align: baseline;
   }
-  sup { top: -0.5em;     }
-  sub { bottom: -0.25em; }
 
-  ul, ol {
+  sup { top: -.5em;     }
+  sub { bottom: -.25em; }
+
+  ul,
+  ol {
     margin: $kss-vertical-rhythm 0;
     padding: 0 0 0 $kss-vertical-rhythm;
   }
+
   li p:last-child {
     margin: 0;
   }
+
   dd {
     margin: 0 0 0 $kss-vertical-rhythm;
   }
 
   img {
-    max-width:100%;
     border: 0;
-    -ms-interpolation-mode: bicubic;
+    max-width: 100%;
     vertical-align: middle;
   }
 
@@ -138,21 +203,57 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     border-collapse: collapse;
     border-spacing: 0;
   }
+
   td {
     vertical-align: top;
   }
 
   @media print {
-    a, a:visited { text-decoration: underline; }
-    hr { height: 1px; border:0; border-bottom:1px solid black; }
-    a[href]:after { content: " (" attr(href) ")"; }
-    a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
-    abbr[title]:after { content: " (" attr(title) ")"; }
-    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
-    tr, img { page-break-inside: avoid; }
-    img { max-width: 100% !important; }
-    p, h2, h3 { orphans: 3; widows: 3; }
-    h2, h3 { page-break-after: avoid; }
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: 0;
+      border-bottom: 1px solid $kss-black;
+      height: 1px;
+    }
+
+    a[href]:after { content: ' (' attr(href) ')'; }
+
+    a[href^='javascript:']:after,
+    a[href^='#']:after {
+      content: '';
+    }
+
+    abbr[title]:after { content: ' (' attr(title) ')'; }
+
+    pre,
+    blockquote {
+      border: 1px solid $kss-gray;
+      padding-right: 1em;
+      page-break-inside: avoid;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    img { max-width: 100%; }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
   }
 }
 
@@ -161,9 +262,9 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 // ------------------------------------------------------------------------------
 
 #kss-node {
+  background: $kss-white;
   margin: 0;
   padding: 20px;
-  background: #fff;
 
   &.kss-fullscreen-mode {
     .kss-sidebar,
@@ -178,57 +279,41 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 
     .kss-main,
     .kss-sidebar {
-      float: left;
-      margin-right: -100%;
+      border: 0;
+      border-right: 1px solid $kss-colors-border-sep;
       box-sizing: border-box;
     }
   }
 
   .kss-main {
-    width: 100%;
-    margin: 0 auto;
 
     @media screen and (min-width: 769px) {
-      width: 80%;
-      margin-left: 20%;
       padding: 0 20px 0 30px;
     }
   }
 
   .kss-sidebar {
-    border-bottom:1px solid #ddd;
+    border-right: 1px solid $kss-colors-border-sep;
 
     @media screen and (min-width: 769px) {
-      position: fixed;
-      width: 20%;
-      height: 100%;
-      overflow: auto;
-      padding: 0 10px 0 20px;
       border-bottom: 0;
-      background-image: url(noise-low.png), -ms-radial-gradient(#fff, #eee);
-      background-image: url(noise-low.png), -o-radial-gradient(#fff, #eee);
-      background-image: url(noise-low.png), -webkit-radial-gradient(#fff, #eee);
-      background-image: url(noise-low.png), radial-gradient(#fff, #eee);
-      box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.7);
+      padding: 150px 10px 0 20px;
     }
   }
-}
-
-// ------------------------------------------------------------------------------
-// Sidebar-area components
-// ------------------------------------------------------------------------------
-
-#kss-node {
 
   .kss-doc-title {
     margin: 0;
+
+    img {
+      max-width: 40px;
+      vertical-align: middle;
+    }
 
     @media screen and (min-width: 769px) {
       font-size: 1.5em;
     }
   }
 
-  .kss-header,
   .kss-nav {
     position: relative;
 
@@ -236,7 +321,9 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
       margin-top: 2em;
     }
 
-    & ul, & ol, & li {
+    & ul,
+    & ol,
+    & li {
       display: block;
       float: none;
     }
@@ -244,13 +331,21 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
     & li {
       margin-left: 3.2rem;
     }
+
+    .kss-nav-has-children > a::before {
+      content: url('./images/down_arrow.svg');
+    }
+
+    .kss-nav-has-children > a.kss-nav__menu-link-active::before {
+      content: url('./images/up_arrow.svg');
+    }
   }
 
   .kss-nav__menu {
-    margin-top: ($kss-vertical-rhythm/2);
-    margin-bottom: ($kss-vertical-rhythm/2);
-    padding: 0;
     list-style-type: none;
+    margin-bottom: ($kss-vertical-rhythm / 2);
+    margin-top: ($kss-vertical-rhythm / 2);
+    padding: 0;
   }
 
   .kss-nav__menu-item {
@@ -264,24 +359,18 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   }
 
   .kss-nav__menu-link {
-    position: relative;
     display: inline-block;
+    position: relative;
 
     &:before {
       @media screen and (min-width: 769px) {
+        background-color: $kss-transparent;
         content: ' ';
-        position: absolute;
-        left: -20px;
-        width: 0;
         height: 100%;
-        background-color: rgba(#000, 0);
+        left: -20px;
+        position: absolute;
+        width: 0;
       }
-    }
-
-    &.is-in-viewport:before {
-      background-color: #000;
-      width: 5px;
-      transition: background-color .4s, width .6s;
     }
   }
 
@@ -294,87 +383,81 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
       margin: 0;
       padding: 0;
 
-      // @TODO: The ul is output even when there are no children. Fix this, so
-      // we can put these :first-child and :last child styles back on the ul.
-      li:first-child {
-        margin-top: 10px;
-        border-top: 1px solid #ccc;
-        padding: 10px 0 0;
-      }
+      li {
+        padding: 15px 0 0;
 
-      li:last-child {
-        margin-bottom: 10px;
-        border-bottom: 1px solid #ccc;
-        padding: 0 0 10px;
+        &:last-child {
+          padding: 15px 0;
+        }
       }
     }
   }
 
   .kss-nav__ref {
-    color: #333;
-    font-weight: bold;
+    color: $kss-colors-submenu-link;
 
     &:after {
       content: ' ';
     }
   }
+
   .kss-nav__ref-child {
     font-weight: normal;
   }
-}
 
-// ------------------------------------------------------------------------------
-// Content-area components
-// ------------------------------------------------------------------------------
-
-#kss-node {
+  // ------------------------------------------------------------------------------
+  // Content-area components
+  // ------------------------------------------------------------------------------
 
   .kss-section {
-    padding-top: 2.4rem;
     padding-bottom: 2.4rem;
+    padding-top: 2.4rem;
 
     // "fullscreen" styles copied from Mozilla's default stylesheet.
     &.is-fullscreen {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      margin: 0 !important;
-      min-width: 0 !important;
-      max-width: none !important;
-      min-height: 0 !important;
-      max-height: none !important;
-      box-sizing: border-box !important;
-      object-fit: contain !important;
-      transform: none !important;
+      bottom: 0;
+      box-sizing: border-box;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      max-height: none;
+      max-width: none;
+      min-height: 0;
+      min-width: 0;
+      object-fit: contain;
       // Turn on scrolling if needed.
-      overflow: auto !important;
+      overflow: auto;
       padding: 20px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      transform: none;
+      width: 100%;
     }
   }
 
   .kss-title {
     margin-bottom: 0;
   }
+
   .is-fullscreen .kss-title {
     margin-top: 0;
   }
+
   .kss-title__ref {
+    color: $kss-dark-gray;
     display: block;
     font-size: $kss-font-size;
     line-height: $kss-font-size;
-    color: #666;
 
     &:before {
       content: 'Section ';
     }
   }
+
   .kss-title__permalink {
+    color: $kss-black;
     display: block;
-    color: #000;
     text-decoration: none;
 
     &:hover,
@@ -389,38 +472,34 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
       }
     }
   }
+
   .kss-title__permalink-hash {
+    color: $kss-gray;
     display: none;
-    color: #ccc;
   }
 
   .kss-toolbar {
-    margin: 6px 0 24px;
     display: inline-block;
-    border: 1px solid #eee;
-    background-color: #f9f9f9;
-    border-right-color: #e0e0e0;
-    border-bottom-color: #e0e0e0;
     line-height: 1;
+    margin: 6px 0 24px;
     padding: 3px;
 
     a {
       box-sizing: content-box;
       display: inline-block;
-      width: 16px;
       height: 16px;
-      padding: 3px;
-      vertical-align: top;
-      // Tooltip wrapper styles:
-      position: relative;
       overflow: visible;
+      padding: 3px;
+      position: relative;
+      vertical-align: top;
+      width: 16px;
 
       + a {
         margin-left: 6px;
       }
 
       .kss-toolbar__icon-fill {
-        fill: #ccc;
+        fill: $kss-gray;
       }
 
       svg.on {
@@ -429,76 +508,77 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 
       &:focus,
       &:hover {
-        border-color: #000;
+        border-color: $kss-black;
 
         .kss-toolbar__icon-fill {
-          fill: #000;
+          fill: $kss-black;
         }
       }
     }
   }
+
   .kss-toolbar__tooltip {
-    position: absolute;
-    z-index: 1;
-    display: inline-block;
+    background: $kss-white;
+    border: solid 1px $kss-gray;
     bottom: 100%;
+    box-shadow: 2px 2px 2px $kss-shadow;
+    clip: rect(1px, 1px, 1px, 1px);
+    color: $kss-black;
+    cursor: help;
+    display: inline-block;
+    height: 1px;
     left: -10px;
     margin-bottom: 5px;
-    border: solid 1px #666;
-    padding: 8px 10px 6px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
-    white-space: nowrap;
-    color: #000;
-    background: #fff;
-    cursor: help;
     opacity: 0;
-    transition: opacity 0.25s;
-    // Visually hidden
-    height: 1px;
-    width: 1px;
     overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
+    padding: 8px 10px 6px;
+    position: absolute;
+    transition: opacity .25s;
+    white-space: nowrap;
+    width: 1px;
     word-wrap: normal;
+    z-index: 1;
 
     // Solid grey triangle.
     &:before,
     &:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 15px;
-      width: 0;
-      height: 0;
-      border-width: 7px 5px 0;
-      border-color: #666 transparent;
+      border-color: $kss-gray transparent;
       border-style: solid;
+      border-width: 7px 5px 0;
+      bottom: -8px;
+      content: '';
+      height: 0;
+      left: 15px;
+      position: absolute;
+      width: 0;
     }
 
     // White triangle knock-out.
     &:after {
+      border-top-color: $kss-white;
       bottom: -6px;
-      border-top-color: #fff;
     }
   }
+
   a:focus,
   a:hover {
     > .kss-toolbar__tooltip {
-      opacity: 1;
-      // Visually hidden off
       clip: auto;
       height: auto;
-      width: auto;
+      opacity: 1;
       overflow: visible;
+      width: auto;
     }
   }
+
   .is-fullscreen .kss-toolbar a[data-kss-fullscreen],
   &.kss-guides-mode .kss-toolbar a[data-kss-guides],
   &.kss-markup-mode .kss-toolbar a[data-kss-markup] {
-    border-color: #666;
-    background-color: #666;
+    background-color: $kss-gray;
+    border-color: $kss-gray;
 
     .kss-toolbar__icon-fill {
-      fill: #fff;
+      fill: $kss-white;
     }
 
     svg.on {
@@ -513,158 +593,181 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   .kss-parameters {
     display: table;
     list-style-type: none;
-    margin-top: 0;
     margin-left: 0;
+    margin-top: 0;
     padding-left: 0;
   }
+
   .kss-parameters__title {
     font-weight: bold;
   }
+
   .kss-parameters__item {
     display: table-row;
   }
+
   .kss-parameters__name {
     display: table-cell;
     padding-right: 20px;
     white-space: nowrap;
   }
+
   .kss-parameters__description {
     display: table-cell;
   }
+
   .kss-parameters__default-value code {
     white-space: nowrap;
   }
 
   .kss-modifier__wrapper {
-    border: 1px solid #ccc;
+    border: 1px solid $kss-gray;
     padding: 0 10px 10px;
   }
+
   .is-fullscreen .kss-modifier__wrapper {
-    // Un-do padding on .kss-section.
+    border: 0;
     margin-left: -20px;
     margin-right: -20px;
-    // Remove all padding on the wrapper
     padding-left: 0;
     padding-right: 0;
-    border: none;
   }
+
   .kss-modifier__heading {
-    margin: 0 -10px 10px -10px;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    background-color: #eee;
+    background-color: $kss-gray;
+    border-bottom: 1px solid $kss-gray;
     font-weight: bold;
+    margin: 0 -10px 10px;
+    padding: 10px;
   }
+
   .is-fullscreen .kss-modifier__heading {
+    border: 1px solid $kss-gray;
     margin: 0 20px 10px;
-    border: 1px solid #ccc;
   }
+
   .kss-modifier__default-name {
     font-weight: bold;
     margin-bottom: ($kss-vertical-rhythm / 2);
   }
+
   .is-fullscreen .kss-modifier__default-name {
     margin-left: 20px;
     margin-right: 20px;
   }
+
   .kss-modifier__name {
     float: left;
-    padding-right: 10px;
     font-weight: bold;
+    padding-right: 10px;
   }
+
   .is-fullscreen .kss-modifier__name {
     margin-left: 20px;
   }
+
   .kss-modifier__description {
     margin-bottom: ($kss-vertical-rhythm / 2);
   }
+
   .is-fullscreen .kss-modifier__description {
     margin-right: 20px;
   }
+
   .kss-modifier__example {
-    clear: left;
     border: 2px dashed transparent;
+    clear: left;
+    margin: -2px -2px ($kss-vertical-rhythm - 2px);
     position: relative; // Contain the example's absolute positioning.
     z-index: 0; // Establishes a local stacking context.
-    margin: -2px -2px ($kss-vertical-rhythm - 2px);
 
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &.kss-guides-mode .kss-modifier__example,
   &.kss-guides-mode .kss-modifier__example-footer {
     &:before,
     &:after {
-      z-index: -1;
+      border: 2px solid $kss-black;
       box-sizing: border-box;
       content: '';
+      height: 5px;
       position: absolute;
       width: 5px;
-      height: 5px;
-      border: 2px solid #000;
+      z-index: -1;
     }
   }
+
   &.kss-guides-mode .kss-modifier__example {
-    border-color: #000;
+    border-color: $kss-black;
 
     &:before {
-      top: -5px;
-      left: -5px;
-      border-top: 0;
       border-left: 0;
-    }
-    &:after {
-      top: -5px;
-      right: -5px;
       border-top: 0;
+      left: -5px;
+      top: -5px;
+    }
+
+    &:after {
       border-right: 0;
+      border-top: 0;
+      right: -5px;
+      top: -5px;
     }
   }
+
   &.kss-guides-mode.kss-fullscreen-mode .kss-modifier__example {
     &:before {
       left: auto;
       right: 0;
     }
+
     &:after {
-      right: auto;
       left: 0;
+      right: auto;
     }
   }
+
   .kss-modifier__example-footer {
     clear: both;
   }
+
   &.kss-guides-mode .kss-modifier__example-footer {
     &:before {
-      bottom: -5px;
-      left: -5px;
       border-bottom: 0;
       border-left: 0;
+      bottom: -5px;
+      left: -5px;
     }
+
     &:after {
+      border-bottom: 0;
+      border-right: 0;
       bottom: -5px;
       right: -5px;
-      border-right: 0;
-      border-bottom: 0;
     }
   }
+
   &.kss-guides-mode.kss-fullscreen-mode .kss-modifier__example-footer {
     &:before {
       left: auto;
       right: 0;
     }
+
     &:after {
-      right: auto;
       left: 0;
+      right: auto;
     }
   }
 
   .kss-markup {
+    border: 1px solid $kss-gray;
     margin: $kss-vertical-rhythm 0;
-    border: 1px solid #ccc;
 
     &[open] summary {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid $kss-gray;
       margin-bottom: 3px;
     }
 
@@ -682,13 +785,13 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   }
 
   .kss-github {
-    display:none;
+    display: none;
 
     @media screen and (min-width: 501px) {
       display: block;
       position: absolute;
-      top: 0;
       right: 0;
+      top: 0;
     }
 
     img {
@@ -701,60 +804,76 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
   // ------------------------------------------------------------------------------
 
   /* SPAN elements with the classes below are added by prettyprint. */
-  .pln { color: #000 }  /* plain text */
+  .pln { color: $kss-black; }  /* plain text */
 
-  .str { color: #080 }  /* string content */
-  .kwd { color: #008 }  /* a keyword */
-  .com { color: #800 }  /* a comment */
-  .typ { color: #606 }  /* a type name */
-  .lit { color: #066 }  /* a literal value */
-  /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #660 }
-  .tag { color: #008 }  /* a markup tag name */
-  .atn { color: #606 }  /* a markup attribute name */
-  .atv { color: #080 }  /* a markup attribute value */
-  .dec, .var { color: #606 }  /* a declaration; a variable name */
-  .fun { color: red }  /* a function name */
-
-  /* Use higher contrast and text-weight for printable form. */
-  @media print, projection {
-    .str { color: #060 }
-    .kwd { color: #006; font-weight: bold }
-    .com { color: #600; font-style: italic }
-    .typ { color: #404; font-weight: bold }
-    .lit { color: #044 }
-    .pun, .opn, .clo { color: #440 }
-    .tag { color: #006; font-weight: bold }
-    .atn { color: #404 }
-    .atv { color: #060 }
-  }
 
   /* Specify class=linenums on a pre to get line numbering */
   ol.linenums {
-    margin: 0;
-    padding: 0 0 3px 0;
     list-style-type: none;
+    margin: 0;
+    padding: 0 0 3px;
 
     li {
+      background: $kss-white;
+      border-bottom: 1px solid $kss-gray;
       min-height: $kss-vertical-rhythm;
-      border-bottom: 1px solid #eee;
       padding: 0 10px;
-      background: #fff;
 
       &:first-child {
         padding-top: 3px;
       }
     }
-    /* Alternate shading for lines */
-    li.L0,
-    li.L2,
-    li.L4,
-    li.L6,
-    li.L8 {
-      background: #fcfcfc;
-    }
   }
 }
+
+.kss-container {
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+// ------------------------------------------------------------------------------
+// Sidebar-area components
+// ------------------------------------------------------------------------------
+.kss-header {
+  background-color: $kss-colors-header-bg;
+  display: flex;
+  padding: 0 2.4rem;
+  position: fixed;
+
+  h1,
+  li a {
+    color: $kss-colors-header-font;
+    display: inline-block;
+    font-family: 'San Francisco';
+    font-size: .8em;
+    font-weight: bold;
+    line-height: 7.2rem;
+    padding: 0;
+  }
+
+  li a:hover {
+    color: $kss-colors-header-link-active;
+  }
+
+  .kss-menu-active {
+    border-bottom: 4px solid $kss-colors-header-link-active;
+    box-sizing: border-box;
+    color: $kss-colors-header-link-active;
+  }
+
+}
+
+.kss-sub-header {
+  background: $kss-colors-subheader-bg;
+  border-bottom: 4px solid $kss-colors-subheader-border;
+  font-size: 14px;
+  padding: 1rem 2.4rem;
+  position: fixed;
+  top: 72px;
+  width: 100%;
+  z-index: 1;
+}
+
 
 // WebSlides
 
@@ -765,38 +884,39 @@ $kss-vertical-rhythm      : $kss-font-size * 1.5;
 }
 
 #kssref-base-backgrounds {
-  & span[class*=bg] {
+  & span[class*='bg'] {
     display: inline-block;
-    padding: 1.2rem;
     margin-left: -4px;
+    padding: 1.2rem;
   }
 }
 
 #kssref-base-backgrounds-transparent {
-  & div[class*=bg] {
-    padding: 2rem;
+  & div[class*='bg'] {
     margin: 0;
+    padding: 2rem;
 
-    & > div[class*=bg] {
-      padding: 6rem;
+    & > div[class*='bg'] {
       margin: 3rem;
+      padding: 6rem;
     }
   }
 }
 
 #kssref-base-backgrounds-gradient {
-  & div[class*=bg] {
-    padding: 4rem;
+  & div[class*='bg'] {
     margin: 3rem;
+    padding: 4rem;
   }
 }
 
 #kssref-slide-background-anim .slide {
-  clip: rect(0px, 200px, 200px, 0px);
+  clip: rect(0, 200px, 200px, 0);
   position: absolute;
 }
+
 #kssref-slide-background-anim .kss-modifier__example {
-  width: 200px;
   height: 200px;
   margin: 0 auto;
+  width: 200px;
 }

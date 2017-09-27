@@ -1,6 +1,32 @@
-/*=========================================
-8. Work/Resumé/CV <ul class="work">
-=========================================== */
+// Work / Resumé / CV
+//
+// Markup:
+// <ul class="work">
+//   <li class="work-label">
+//     <p class="work-title">Work</p>
+//     <p class="work-client">Client</p>
+//     <p class="work-services">Services</p>
+//     <p class="work-date">Year</p>
+//   </li>
+//   <li>
+//     <a href="#" rel="external">
+//       <p class="work-title"><span>Redesign of Netflix</span></p>
+//       <p class="work-client"><span>Netflix</span></p>
+//       <p class="work-services"><span>Frontend</span></p>
+//       <p class="work-date"><span>2015-2016</span></p>
+//     </a>
+//   </li>
+//   <li>
+//     <a href="#" rel="external">
+//       <p class="work-title"><span>Airbnb TV Commercials</span></p>
+//       <p class="work-client"><span>Airbnb</span></p>
+//       <p class="work-services"><span>Video, Storytelling</span></p>
+//       <p class="work-date"><span>2015</span></p>
+//     </a>
+//   </li>
+// </ul>
+//
+// Styleguide Content.Resume
 .work {
   clear: both;
   display: flex;

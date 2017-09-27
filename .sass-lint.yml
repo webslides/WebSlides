@@ -1,5 +1,7 @@
 files:
-  include: 'src/scss/**/*.scss'
+  include:
+    - 'src/scss/**/*.scss'
+    - 'doc/kss/templates/**/*.scss'
 options:
   formatter: stylish
   merge-default-rules: false
