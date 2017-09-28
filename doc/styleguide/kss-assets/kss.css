@@ -2,7 +2,7 @@
   font-family: 'San Francisco'; }
 
 .kss-style {
-  color: #444;
+  color: #60676f;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   line-height: 24px; }
@@ -42,15 +42,29 @@
   .kss-style h5,
   .kss-style h6 {
     font-weight: bold; }
+  .kss-style h1::before,
+  .kss-style h2::before {
+    color: #e2e3e5;
+    font-size: 17.6px;
+    position: absolute; }
+  .kss-style h1::after,
+  .kss-style h2::after {
+    border-bottom: 1px solid #f4f3f8;
+    content: '';
+    display: block;
+    height: 2.4rem;
+    margin-left: -90px;
+    width: 74vw; }
   .kss-style h1 {
-    font-size: 44px; }
-  .kss-style h2 {
     font-size: 40px; }
+    .kss-style h1::before {
+      content: ' #';
+      margin-left: -20px; }
+  .kss-style h2 {
+    font-size: 32px; }
     .kss-style h2::before {
-      color: #e2e3e5;
-      content: '#';
-      margin-left: -30px;
-      position: absolute; }
+      content: '##';
+      margin-left: -30px; }
   .kss-style h3 {
     font-size: 34px; }
   .kss-style h4 {
@@ -67,7 +81,7 @@
   .kss-style hr {
     border: 0;
     border-bottom: 1px solid #e6e6e6;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid white;
     display: block;
     height: 2px;
     margin: 24px 0;
@@ -76,7 +90,7 @@
   .kss-style code,
   .kss-style kbd,
   .kss-style samp {
-    color: #2b2b2b;
+    color: #393c40;
     font-family: Menlo, "Ubuntu Mono", "Lucida Console", "Courier New", Courier, monospace;
     font-size: 1em; }
   .kss-style pre {
@@ -156,7 +170,6 @@
   margin: 0;
   padding: 20px;
   /* SPAN elements with the classes below are added by prettyprint. */
-  /* plain text */
   /* Specify class=linenums on a pre to get line numbering */ }
   #kss-node.kss-fullscreen-mode .kss-sidebar,
   #kss-node.kss-fullscreen-mode .kss-section:not(.is-fullscreen),
@@ -172,7 +185,7 @@
         box-sizing: border-box; } }
   @media screen and (min-width: 769px) {
     #kss-node .kss-main {
-      padding: 0 20px 0 30px; } }
+      padding: 140px 90px; } }
   #kss-node .kss-sidebar {
     border-right: 1px solid #e2e3e5; }
     @media screen and (min-width: 769px) {
@@ -388,9 +401,6 @@
     display: table-cell; }
   #kss-node .kss-parameters__default-value code {
     white-space: nowrap; }
-  #kss-node .kss-modifier__wrapper {
-    border: 1px solid #999;
-    padding: 0 10px 10px; }
   #kss-node .is-fullscreen .kss-modifier__wrapper {
     border: 0;
     margin-left: -20px;
@@ -398,11 +408,14 @@
     padding-left: 0;
     padding-right: 0; }
   #kss-node .kss-modifier__heading {
-    background-color: #999;
-    border-bottom: 1px solid #999;
-    font-weight: bold;
-    margin: 0 -10px 10px;
-    padding: 10px; }
+    margin: 2.4rem 0;
+    padding: 1.2rem 0; }
+    #kss-node .kss-modifier__heading::after {
+      border-bottom: 4px solid #f3f3f5;
+      content: '';
+      display: block;
+      padding-top: 1.2rem;
+      width: 40%; }
   #kss-node .is-fullscreen .kss-modifier__heading {
     border: 1px solid #999;
     margin: 0 20px 10px; }
@@ -477,17 +490,24 @@
     left: 0;
     right: auto; }
   #kss-node .kss-markup {
-    border: 1px solid #999;
-    margin: 24px 0; }
+    border: 1px solid #e0e4e7;
+    border-radius: 3px;
+    margin: 24px 0;
+    padding: 20px; }
     #kss-node .kss-markup[open] summary {
-      border-bottom: 1px solid #999;
-      margin-bottom: 3px; }
+      background: url("./images/up_arrow.svg") no-repeat right center; }
     #kss-node .kss-markup summary {
-      padding-left: 10px; }
+      background: url("./images/down_arrow.svg") no-repeat right center;
+      cursor: pointer; }
     #kss-node .kss-markup pre {
-      margin: 0; }
+      background: #1d1f20;
+      overflow: auto;
+      padding: 20px; }
+      #kss-node .kss-markup pre code {
+        background: transparent; }
   #kss-node .kss-source {
-    font-size: 80%; }
+    font-size: 70%;
+    font-style: italic; }
   #kss-node .kss-github {
     display: none; }
     @media screen and (min-width: 501px) {
@@ -498,19 +518,25 @@
         top: 0; } }
     #kss-node .kss-github img {
       border: 0; }
+  #kss-node .tag {
+    color: #a7925a; }
+  #kss-node .atn {
+    color: #ddca7e; }
+  #kss-node .pun {
+    color: #fff; }
+  #kss-node .atv {
+    color: #96b38a; }
   #kss-node .pln {
-    color: #000; }
+    color: #fff; }
   #kss-node ol.linenums {
     list-style-type: none;
     margin: 0;
-    padding: 0 0 3px; }
+    padding: 0; }
     #kss-node ol.linenums li {
-      background: #fff;
-      border-bottom: 1px solid #999;
+      line-height: 2rem;
+      margin: 0;
       min-height: 24px;
       padding: 0 10px; }
-      #kss-node ol.linenums li:first-child {
-        padding-top: 3px; }
 
 .kss-container {
   display: grid;
@@ -574,3 +600,6 @@
   height: 200px;
   margin: 0 auto;
   width: 200px; }
+
+.kss-description p {
+  padding-bottom: 1.2rem; }

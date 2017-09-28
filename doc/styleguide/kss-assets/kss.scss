@@ -16,23 +16,32 @@ $kss-colors-subheader-border: #e7e7e9;
 
 $kss-colors-background: $kss-white;
 $kss-colors-border-sep: #e2e3e5;
+$kss-colors-border-bottom-sep: #f4f3f8;
 
 $kss-colors-menu-link: #2e3337;
 $kss-colors-menu-link-active: #93cdcf;
 $kss-colors-submenu-link: #6a737a;
 
-$kss-colors-foreground: #444;
+$kss-colors-foreground: #60676f;
 $kss-colors-heading: #111;
 $kss-colors-heading-side: #e2e3e5;
 $kss-colors-quotes: $kss-gray;
 
 $kss-colors-ins-bg: #ff9;
 $kss-colors-mark-bg: #ff0;
+$kss-colors-markup-border: #e0e4e7;
+$kss-colors-markup-code: #1d1f20;
 
 $kss-colors-link: #d1783e;
 $kss-colors-link-visited: #d1783e;
 $kss-colors-link-hover: lighten($kss-colors-link, 20%);
 $kss-colors-link-active: #d1783e;
+
+$kss-colors-tag: #a7925a;
+$kss-colors-atn: #ddca7e;
+$kss-colors-pun: #fff;
+$kss-colors-atv: #96b38a;
+$kss-colors-pln: #fff;
 
 $kss-font-body: Helvetica, 'Helvetica Neue', Arial, sans-serif;
 $kss-font-code: Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
@@ -107,16 +116,39 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     font-weight: bold;
   }
 
-  h1 { font-size: $kss-font-size * 2.75;   }
-
+  h1,
   h2 {
+    &::before {
+      color: $kss-colors-heading-side;
+      font-size: $kss-font-size * 1.1;
+      position: absolute;
+    }
+
+    &::after {
+      border-bottom: 1px solid $kss-colors-border-bottom-sep;
+      content: '';
+      display: block;
+      height: 2.4rem;
+      margin-left: -90px;
+      width: 74vw;
+    }
+  }
+
+  h1 {
     font-size: $kss-font-size * 2.5;
 
     &::before {
-      color: $kss-colors-heading-side;
-      content: '#';
+      content: ' #';
+      margin-left: -20px;
+    }
+  }
+
+  h2 {
+    font-size: $kss-font-size * 2;
+
+    &::before {
+      content: '##';
       margin-left: -30px;
-      position: absolute;
     }
   }
 
@@ -288,7 +320,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   .kss-main {
 
     @media screen and (min-width: 769px) {
-      padding: 0 20px 0 30px;
+      padding: 140px 90px;
     }
   }
 
@@ -620,11 +652,6 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     white-space: nowrap;
   }
 
-  .kss-modifier__wrapper {
-    border: 1px solid $kss-gray;
-    padding: 0 10px 10px;
-  }
-
   .is-fullscreen .kss-modifier__wrapper {
     border: 0;
     margin-left: -20px;
@@ -634,11 +661,16 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 
   .kss-modifier__heading {
-    background-color: $kss-gray;
-    border-bottom: 1px solid $kss-gray;
-    font-weight: bold;
-    margin: 0 -10px 10px;
-    padding: 10px;
+    margin: 2.4rem 0;
+    padding: 1.2rem 0;
+
+    &::after {
+      border-bottom: 4px solid $kss-colors-subheader-bg;
+      content: '';
+      display: block;
+      padding-top: 1.2rem;
+      width: 40%;
+    }
   }
 
   .is-fullscreen .kss-modifier__heading {
@@ -763,25 +795,34 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 
   .kss-markup {
-    border: 1px solid $kss-gray;
-    margin: $kss-vertical-rhythm 0;
+    border: 1px solid $kss-colors-markup-border;
+    border-radius: 3px;
+    margin: 24px 0;
+    padding: 20px;
 
     &[open] summary {
-      border-bottom: 1px solid $kss-gray;
-      margin-bottom: 3px;
+      background: url('./images/up_arrow.svg') no-repeat right center;
     }
 
-    summary {
-      padding-left: 10px;
+    & summary {
+      background: url('./images/down_arrow.svg') no-repeat right center;
+      cursor: pointer;
     }
 
     pre {
-      margin: 0;
+      background: $kss-colors-markup-code;
+      overflow: auto;
+      padding: 20px;
+
+      code {
+        background: transparent;
+      }
     }
   }
 
   .kss-source {
-    font-size: 80%;
+    font-size: 70%;
+    font-style: italic;
   }
 
   .kss-github {
@@ -804,24 +845,24 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   // ------------------------------------------------------------------------------
 
   /* SPAN elements with the classes below are added by prettyprint. */
-  .pln { color: $kss-black; }  /* plain text */
+  .tag { color: $kss-colors-tag; }
+  .atn { color: $kss-colors-atn; }
+  .pun { color: $kss-colors-pun; }
+  .atv { color: $kss-colors-atv; }
+  .pln { color: $kss-colors-pln; }
 
 
   /* Specify class=linenums on a pre to get line numbering */
   ol.linenums {
     list-style-type: none;
     margin: 0;
-    padding: 0 0 3px;
+    padding: 0;
 
     li {
-      background: $kss-white;
-      border-bottom: 1px solid $kss-gray;
+      line-height: 2rem;
+      margin: 0;
       min-height: $kss-vertical-rhythm;
       padding: 0 10px;
-
-      &:first-child {
-        padding-top: 3px;
-      }
     }
   }
 }
@@ -919,4 +960,11 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   height: 200px;
   margin: 0 auto;
   width: 200px;
+}
+
+.kss-description {
+
+  p {
+    padding-bottom: 1.2rem;
+  }
 }

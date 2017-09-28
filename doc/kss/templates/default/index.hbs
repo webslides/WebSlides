@@ -73,7 +73,7 @@
       the "#if @first" block as seen below.
     }}
     {{#each sections}}
-      <{{#if @first}}div{{else}}section{{/if}} id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}} {{#if @root.template.isItem}}is-fullscreen{{/if}}">
+      <div id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}} {{#if @root.template.isItem}}is-fullscreen{{/if}}">
 
         <div class="kss-style">
           <h{{depth}} class="kss-title kss-title--level-{{depth}}">
@@ -159,7 +159,7 @@
           </div>
         {{/if}}
 
-      </{{#if @first}}div{{else}}section{{/if}}>
+      </div>
     {{/each}}
   {{/if}}
   </div>
