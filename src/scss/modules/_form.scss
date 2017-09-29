@@ -98,7 +98,7 @@ input[type='submit'] {
 // Markup:
 // <a href="#" class="try">Try element</a>
 //
-// Styleguide Elements.Try
+// Styleguide Architecture.Try
 .try {
   display: block;
   font-size: 1.6rem;
@@ -136,7 +136,7 @@ button:disabled:hover {
   cursor: not-allowed;
 }
 
-// User
+// Login form
 //
 // Markup:
 // <div class="user">
@@ -144,7 +144,7 @@ button:disabled:hover {
 //   <button>Log in</button>
 // </div>
 //
-// Styleguide Forms.User
+// Styleguide Architecture.Forms.User
 .user {
   input {
     margin-bottom: 0;

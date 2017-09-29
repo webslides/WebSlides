@@ -79,7 +79,7 @@ nav a[rel='external'] em,
 //   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.
 // </div>
 //
-// Styleguide Layout.Shadow
+// Styleguide Architecture.Shadow
 .shadow {
   position: relative;
 
@@ -135,7 +135,7 @@ footer nav {
 //   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus dignissim libero ac egestas. Vivamus pretium, mauris non commodo dapibus, purus elit gravida justo, at hendrerit arcu turpis in libero. Curabitur lacinia diam est, id eleifend turpis ornare quis. Sed a metus id ligula bibendum scelerisque vel at velit. Duis congue mattis nibh at pharetra. Cras hendrerit, enim ac tristique finibus, mauris dui placerat nulla, a porttitor sapien metus eu arcu. Ut pharetra justo et felis gravida vulputate. Nulla facilisi.
 // </div>
 //
-// Styleguide Layout.Radius
+// Styleguide Architecture.Radius
 .radius {
   border-radius: .4rem;
 }
@@ -152,7 +152,7 @@ footer nav {
 // .alignleft - Align left.
 // .aligncenter - Align center.
 //
-// Styleguide Layout.Alignment
+// Styleguide Architecture.Alignment
 .alignright {
   float: right;
 }
@@ -209,7 +209,7 @@ figure.alignleft {
 // .size-30 - resize to 30%.
 // .size-20 - resize to 20%.
 //
-// Styleguide Layout.Sizes
+// Styleguide Architecture.Sizes
 $sizes: 80, 70, 60, 50, 40, 30, 20;
 
 /*=== div.size-60, img.size-50, h1.size-40, p.size-30... === */

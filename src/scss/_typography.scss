@@ -210,7 +210,7 @@ h3 [class*='bg-'] {
 // Markup:
 // <p class="text-intro">Create a simple web presence.</p>
 //
-// Styleguide Typography.Intro
+// Styleguide Architecture.Intro
 .text-intro,
 [class*='content-'] p {
   font-size: 2.4rem;
@@ -224,7 +224,7 @@ h3 [class*='bg-'] {
 // Markup:
 // <p class="text-serif">Create a simple web presence.</p>
 //
-// Styleguide Typography.Serif
+// Styleguide Architecture.Serif
 .text-serif,
 h1 span {
   font-family: 'Maitree', times, serif;
@@ -237,7 +237,7 @@ h1 span {
 // Markup:
 // <h1 class="text-landing">Landings</h1>
 //
-// Styleguide Typography.Landings
+// Styleguide Architecture.Landings
 .text-landing {
   letter-spacing: .4rem;
   text-transform: uppercase;
@@ -254,7 +254,7 @@ h1 span {
 // Markup:
 // <p class="text-subtitle">Powered by <a href="#">#WebSlides</a> <code>.text-subtitle</code></p>
 //
-// Styleguide Typography.Subtitle
+// Styleguide Architecture.Subtitle
 .text-subtitle {
   letter-spacing: .2rem;
   margin-bottom: 0;
@@ -278,7 +278,7 @@ h1 span {
 // Markup:
 // <p class="text-uppercase">Create a simple web presence.</p>
 //
-// Styleguide Typography.Uppercase
+// Styleguide Architecture.Uppercase
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -288,7 +288,7 @@ h1 span {
 // Markup:
 // <p class="text-lowercase">Create a simple web presence.</p>
 //
-// Styleguide Typography.Lowercase
+// Styleguide Architecture.Lowercase
 .text-lowercase {
   text-transform: lowercase;
 }
@@ -300,7 +300,7 @@ h1 span {
 // Markup:
 // <p class="text-emoji">😀😁😂😅😉😋😎😍</p>
 //
-// Styleguide Typography.Emoji
+// Styleguide Architecture.Emoji
 .text-emoji {
   font-size: 6.8rem;
   line-height: 8.8rem;
@@ -318,7 +318,7 @@ h1 span {
 // Markup:
 // <p class="text-data">23,478,289</p>
 //
-// Styleguide Typography.Data
+// Styleguide Architecture.Data
 .text-data {
   font-size: 6.4rem;
   line-height: 8rem;
@@ -335,7 +335,7 @@ h1 span {
 // Markup:
 // <p><span class="text-label">Website:</span> <a href="#">http://webslides.tv</a></p>
 //
-// Styleguide Typography.Label
+// Styleguide Architecture.Label
 .text-label {
   display: inline-block;
   font-weight: 600;
@@ -350,7 +350,7 @@ h1 span {
 // Markup:
 // <div class="text-cols"><p><strong>Column 1</strong> text</p><p><strong>Column 2</strong> text</p></div>
 //
-// Styleguide Typography.Columns
+// Styleguide Architecture.Columns
 @media  (min-width: 768px) {
   .text-cols {
     column-count: 2;
@@ -380,7 +380,7 @@ h1 span {
 // Markup:
 // <p class="text-context">Why WebSlides?</p>
 //
-// Styleguide Typography.Context
+// Styleguide Architecture.Context
 .text-context {
   position: relative;
 
@@ -408,7 +408,7 @@ h1 span {
 // Markup:
 // <p class="text-symbols">* * *</p>
 //
-// Styleguide Typography.Symbols
+// Styleguide Architecture.Symbols
 .text-symbols {
   font-weight: 600;
   letter-spacing: .8rem;
@@ -422,7 +422,7 @@ h1 span {
 // Markup:
 // <p class="text-separator">Separator</p>
 //
-// Styleguide Typography.Separator
+// Styleguide Architecture.Separator
 .text-separator {
   margin-top: 2.4rem;
 
@@ -456,7 +456,7 @@ h1 span {
 // <p>Imagine that you are in Florence. If you suddenly start to feel that you literally cannot breathe, you may be experiencing Stendhal Syndrome.</p>
 // <p class="text-pull-left">Psychiatrists have long debated whether it really exists.</p>
 //
-// Styleguide Typography.Pull_Quote
+// Styleguide Architecture.Pull_Quote
 [class*='text-pull'] {
   font-size: 2.4rem;
   font-weight: 400;
@@ -525,7 +525,7 @@ figure[class*='text-pull-'] {
 //   </dd>
 // </dl>
 //
-// Styleguide Typography.Interviews
+// Styleguide Architecture.Interviews
 .text-interview dt {
   font-weight: 600;
   margin-bottom: 0;
@@ -550,7 +550,7 @@ figure[class*='text-pull-'] {
 // Markup:
 // <p class="text-info">Psychiatrists have long debated whether it really exists.</p>
 //
-// Styleguide Typography.Info
+// Styleguide Architecture.Info
 .text-info {
   font-size: 1.6rem;
   line-height: 2.4rem;

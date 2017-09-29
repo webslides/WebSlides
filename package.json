@@ -69,6 +69,7 @@
     "dev": "webpack-dev-server",
     "test": "jest && codecov",
     "kss": "npm-run-all -p kss:*",
+    "kss:prebuild": "rimraf doc/styleguide*",
     "kss:css": "node-sass doc/kss/templates/default/kss-assets/kss.scss doc/kss/templates/default/kss-assets/kss.css",
     "kss:doc": "kss --config kss-config.json"
   },

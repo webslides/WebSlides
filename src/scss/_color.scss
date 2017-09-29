@@ -123,7 +123,7 @@ Slides - Backgrounds <section class="bg-primary">
 // <span class="bg-white size-20">White #fff</span>
 // <span class="bg-facebook size-20">Facebook #3b5998</span>
 //
-// Styleguide Base.backgrounds
+// Styleguide Architecture.Backgrounds
 @each $name, $color in $bg-colors {
   .bg-#{$name} {
     background-color: $color;
@@ -165,7 +165,7 @@ Slides - Backgrounds <section class="bg-primary">
   color: #666;
 }
 
-// Transparent Backgrounds
+// Backgrounds - Transparent
 //
 // Colors we use for backgrounds.
 //
@@ -176,8 +176,7 @@ Slides - Backgrounds <section class="bg-primary">
 //   <div class="bg-trans-gradient">Gradient</div>
 // </div>
 //
-// Styleguide Base.backgrounds.transparent
-/*Transparent/Opacity*/
+// Styleguide Architecture.backgrounds.transparent
 .bg-trans-dark {
   background: rgba($black, .8);
 }
@@ -191,7 +190,7 @@ Slides - Backgrounds <section class="bg-primary">
   background: linear-gradient(to top, rgba($black, .8) 0%, rgba($black, 0) 100%);
 }
 
-// Gradient Backgrounds
+// Backgrounds - Gradient
 //
 // Colors we use for backgrounds.
 //
@@ -200,7 +199,7 @@ Slides - Backgrounds <section class="bg-primary">
 //   <div class="bg-gradient-v">Vertical</div>
 //   <div class="bg-gradient-r">Radial</div>
 //
-// Styleguide Base.backgrounds.gradient
+// Styleguide Architecture.backgrounds.gradient
 /*Horizontal Gradient*/
 .bg-gradient-h {
   background: linear-gradient(134deg, #32b 0, #62b 100%);

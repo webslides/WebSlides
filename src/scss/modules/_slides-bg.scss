@@ -32,7 +32,7 @@
 // .background-left - Left.
 // .background-right - Right.
 //
-// Styleguide Slide.Background
+// Styleguide Architecture.Background
 .background {
   background-position: center;
   background-size: cover;
@@ -102,7 +102,7 @@
   //   </div>
   // </section>
   //
-  // Styleguide Slide.Background.Video
+  // Styleguide Media.Background.Video
   &-video {
     height: 100%;
     object-fit: fill;
@@ -144,7 +144,7 @@
 //   <span class="background anim" style="background-image:url('https://source.unsplash.com/n9WPPWiPPJw/')"></span>
 // </section>
 //
-// Styleguide Slide.Background.Anim
+// Styleguide Media.Background.Anim
 .background.anim {
   animation: anim 80s linear infinite;
   background-position: center top;
