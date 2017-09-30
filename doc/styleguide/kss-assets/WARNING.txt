@@ -1,2 +1,0 @@
-WARNING: This folder is deleted and re-recreated each time the style guide is
-built. Do NOT put your own files in this folder.
