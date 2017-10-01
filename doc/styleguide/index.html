@@ -36,22 +36,22 @@
           </a>
         </li>
         <li class="kss-nav__menu-item kss-nav-has-children">
-          <a class="kss-nav__menu-link " href="section-architecture.html">
+          <a class="kss-nav__menu-link" href="section-architecture.html">
             <span class="kss-nav__name">Architecture</span>
           </a>
         </li>
         <li class="kss-nav__menu-item kss-nav-has-children">
-          <a class="kss-nav__menu-link " href="section-contents.html">
+          <a class="kss-nav__menu-link" href="section-contents.html">
             <span class="kss-nav__name">Contents</span>
           </a>
         </li>
         <li class="kss-nav__menu-item kss-nav-has-children">
-          <a class="kss-nav__menu-link " href="section-landings.html">
+          <a class="kss-nav__menu-link" href="section-landings.html">
             <span class="kss-nav__name">Landings</span>
           </a>
         </li>
         <li class="kss-nav__menu-item kss-nav-has-children">
-          <a class="kss-nav__menu-link " href="section-media.html">
+          <a class="kss-nav__menu-link" href="section-media.html">
             <span class="kss-nav__name">Media</span>
           </a>
         </li>
@@ -59,6 +59,101 @@
     </nav>
   </div>
   <div role="main" class="kss-main">
+      <div id="kssref-0" class="kss-section kss-section--depth-0 kss-overview kss-style">
+        <h1 id="webslides-create-stories-with-karma">WebSlides = Create stories with Karma</h1>
+<p><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+<a href="https://github.com/webslides/webslides/releases/latest"><img src="https://img.shields.io/github/release/webslides/webslides.svg" alt="Release"></a>
+<a href="https://codecov.io/gh/webslides/WebSlides"><img src="https://codecov.io/gh/webslides/WebSlides/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://www.paypal.me/jlantunez/8"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate"></a>
+<a href="https://twitter.com/webslides"><img src="https://img.shields.io/twitter/url/https/github.com/webslides/webslides.svg?style=social" alt="Twitter"></a></p>
+<p>Finally, everything you need to make HTML presentations, landings, and longforms in a beautiful way. Just a basic knowledge of HTML and CSS is required. Designers, marketers, and journalists can now focus on the content. — <a href="https://webslides.tv/demos">https://webslides.tv/demos</a>.</p>
+<hr>
+<h3 id="download">Download</h3>
+<p>Simply choose a demo and customize it in seconds. Latest version: <a href="https://webslides.tv/webslides-latest.zip">webslides.tv/webslides-latest.zip</a>.</p>
+<hr>
+<h3 id="what-s-in-the-download-">What&#39;s in the download?</h3>
+<p>The download includes demos and images (devices and logos). 
+All content is for demo purposes only. Images are property of their respective owners.</p>
+<pre><code>webslides/
+├── index.html
+├── css/
+│   ├── base.css
+│   └── colors.css
+│   └── svg-icons.css (optional)
+├── js/
+│   ├── webslides.js
+│   └── svg-icons.js (optional)
+└── demos/
+└── images/
+</code></pre><h2 id="features">Features</h2>
+<ul>
+<li>Navigation (horizontal and vertical sliding): remote presenters, touchpad, keyboard shortcuts, and swipe.</li>
+<li>Slide counter.</li>
+<li>Permalinks: go to a specific slide.</li>
+<li>Autoslide.</li>
+<li>Click to nav.</li>
+<li>Simple CSS alignments. Put content wherever you want (vertical centering...)</li>
+<li>40+ components: background images/videos, quotes, cards, covers...</li>
+<li>Flexible blocks with auto-fill and equal height.</li>
+<li>Fonts: Roboto, Maitree (Serif), and San Francisco.</li>
+<li>Vertical rhythm (use multiples of 8).</li>
+</ul>
+<h2 id="markup">Markup</h2>
+<ul>
+<li>Code is clean and scalable. It uses intuitive markup with popular naming conventions. There&#39;s no need to overuse classes or nesting.</li>
+<li>Each parent <code>&lt;section&gt;</code> in the <code>#webslides</code> element is an individual slide.</li>
+</ul>
+<pre><code class="lang-html">&lt;article id=&quot;webslides&quot;&gt;
+    &lt;section&gt;
+        &lt;h1&gt;Slide 1&lt;/h1&gt;
+    &lt;/section&gt;
+    &lt;section class=&quot;bg-black aligncenter&quot;&gt;
+    &lt;!-- .wrap = container 1200px --&gt;
+        &lt;div class=&quot;wrap&quot;&gt;
+            &lt;h1&gt;Slide 2&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/article&gt;
+</code></pre>
+<h3 id="vertical-sliding">Vertical Sliding</h3>
+<pre><code class="lang-html">&lt;article id=&quot;webslides&quot; class=&quot;vertical&quot;&gt;
+</code></pre>
+<h3 id="css-syntax-classes-">CSS Syntax (classes)</h3>
+<ul>
+<li>Typography: <code>.text-landing</code>, <code>.text-data</code>, <code>.text-intro</code>...</li>
+<li>Background Colors: <code>.bg-primary</code>, <code>.bg-apple</code>, <code>.bg-blue</code>...</li>
+<li>Background Images: <code>.background</code>,<code>.background-center-bottom</code>...</li>
+<li>Cards: <code>.card-50</code>, <code>.card-40</code>...</li>
+<li>Flexible Blocks: <code>.flexblock.clients</code>, <code>.flexblock.metrics</code>...</li>
+</ul>
+<h3 id="extensions">Extensions</h3>
+<p>You can add:</p>
+<ul>
+<li><a href="https://unsplash.com">Unsplash</a> photos</li>
+<li><a href="https://daneden.github.io/animate.css">animate.css</a></li>
+<li><a href="https://github.com/VincentGarreau/particles.js">particles.js</a></li>
+<li><a href="http://michalsnik.github.io/aos/">Animate on scroll</a> (Useful for longform articles)</li>
+<li><a href="http://williamngan.github.io/pt/">pt</a></li>
+</ul>
+<h3 id="dive-in-">Dive In!</h3>
+<ul>
+<li>Do not miss <a href="https://webslides.tv/">our demos</a>. </li>
+<li>Want to get techie? Read <a href="wiki">our wiki</a>:<ul>
+<li><a href="https://github.com/webslides/WebSlides/wiki">FAQ</a></li>
+<li><a href="https://github.com/webslides/WebSlides/wiki/Core-API">Core API</a></li>
+<li><a href="https://github.com/webslides/WebSlides/wiki/Plugin-docs">Plugin Docs</a></li>
+<li><a href="https://github.com/webslides/WebSlides/wiki/Plugin-development">Plugin Development</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="credits">Credits</h3>
+<ul>
+<li>WebSlides was created by <a href="https://twitter.com/jlantunez">@jlantunez</a> using <a href="https://github.com/eudicots/Cactus">Cactus</a>.</li>
+<li>Javascript: <a href="https://twitter.com/Belelros">@Belelros</a> and <a href="https://twitter.com/luissacristan">@LuisSacristan</a>.</li>
+<li>Based on <a href="https://github.com/jennschiffer/SimpleSlides">SimpleSlides</a>, by <a href="https://twitter.com/jennschiffer">@JennSchiffer</a>.</li>
+</ul>
+
+      </div>
   </div>
 </div>
 

@@ -30,13 +30,13 @@
     <nav class="kss-nav">
       <ul class="kss-nav__menu">
         <li class="kss-nav__menu-item">
-          <a class="kss-nav__menu-link kss-nav__menu-link-active{{homepage}}" href="./">
+          <a class="kss-nav__menu-link {{#if template.isHomepage}}kss-nav__menu-link-active{{/if}}" href="./">
             <span class="kss-nav__name">Introduction</span>
           </a>
         </li>
       {{#each menu}}
         <li class="kss-nav__menu-item {{#if children}}kss-nav-has-children{{/if}}">
-          <a class="kss-nav__menu-link {{#if isActive}}kss-nav__menu-link-active{{/if}}" href="section-{{referenceURI}}.html">
+          <a class="kss-nav__menu-link" href="section-{{referenceURI}}.html">
             <span class="kss-nav__name">{{header}}</span>
           </a>
           {{#if isActive}}
