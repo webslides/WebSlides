@@ -865,6 +865,20 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
       padding: 0 10px;
     }
   }
+
+  .kss__demos {
+    list-style: none;
+
+    li {
+      margin-left: 0;
+    }
+
+    a {
+      color: $kss-colors-link-active;
+      font-size: $kss-font-size / 1.2;
+      font-weight: bold;
+    }
+  }
 }
 
 .kss-container {
@@ -924,7 +938,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 }
 
-#kssref-base-backgrounds {
+#kssref-architecture-backgrounds {
   & span[class*='bg'] {
     display: inline-block;
     margin-left: -4px;
@@ -932,7 +946,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 }
 
-#kssref-base-backgrounds-transparent {
+#kssref-architecture-backgrounds-transparent {
   & div[class*='bg'] {
     margin: 0;
     padding: 2rem;
@@ -944,7 +958,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 }
 
-#kssref-base-backgrounds-gradient {
+#kssref-architecture-backgrounds-gradient {
   & div[class*='bg'] {
     margin: 3rem;
     padding: 4rem;

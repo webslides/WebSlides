@@ -537,6 +537,14 @@
       margin: 0;
       min-height: 24px;
       padding: 0 10px; }
+  #kss-node .kss__demos {
+    list-style: none; }
+    #kss-node .kss__demos li {
+      margin-left: 0; }
+    #kss-node .kss__demos a {
+      color: #d1783e;
+      font-size: 13.33333px;
+      font-weight: bold; }
 
 .kss-container {
   display: grid;
@@ -576,19 +584,19 @@
 #kssref-layout-radius .radius {
   padding: 2.4rem; }
 
-#kssref-base-backgrounds span[class*='bg'] {
+#kssref-architecture-backgrounds span[class*='bg'] {
   display: inline-block;
   margin-left: -4px;
   padding: 1.2rem; }
 
-#kssref-base-backgrounds-transparent div[class*='bg'] {
+#kssref-architecture-backgrounds-transparent div[class*='bg'] {
   margin: 0;
   padding: 2rem; }
-  #kssref-base-backgrounds-transparent div[class*='bg'] > div[class*='bg'] {
+  #kssref-architecture-backgrounds-transparent div[class*='bg'] > div[class*='bg'] {
     margin: 3rem;
     padding: 6rem; }
 
-#kssref-base-backgrounds-gradient div[class*='bg'] {
+#kssref-architecture-backgrounds-gradient div[class*='bg'] {
   margin: 3rem;
   padding: 4rem; }
 

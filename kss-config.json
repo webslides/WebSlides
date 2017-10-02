@@ -11,6 +11,14 @@
     "../../static/css/webslides.css"
   ],
 
+  "custom": [
+    "Demos"
+  ],
+
+  "extend": [
+    "doc/kss/templates/default/kss-extend"
+  ],
+
   "mainmenu": [
     {"title" : "WebSlides", "url" : "../../index.html"},
     {"title" : "Documentation", "url" : "./"},

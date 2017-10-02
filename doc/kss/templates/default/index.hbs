@@ -108,6 +108,19 @@
           {{/if}}
         </div>
 
+        {{#if demos}}
+          <div class="kss-modifier__heading kss-style">
+            Demos
+          </div>
+          <ul class="kss__demos">
+            {{#Demos demos}}
+              <li>
+                <a href="{{demo.href}}" title="{{demo.title}}" target="_blank">{{demo.title}}</a>
+              </li>
+            {{/Demos}}
+          </ul>
+        {{/if}}
+
         {{#if example}}
           <div class="kss-modifier__wrapper">
             <div class="kss-modifier__heading kss-style">
