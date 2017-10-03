@@ -449,10 +449,17 @@
       border-radius: 6px;
       padding-bottom: 50%; }
       #kss-node .kss-modifier__example .fullscreen::before {
-        background-color: #f3f3f5;
+        background: url("./browser_icon.svg") no-repeat 5px center #f3f3f5;
+        border-bottom: 2px solid #e7e7e9;
         content: '';
         display: block;
         height: 20px; }
+      #kss-node .kss-modifier__example .fullscreen .embed {
+        height: calc(100% - 30px);
+        left: 5px;
+        position: absolute;
+        top: 25px;
+        width: calc(100% - 10px); }
   #kss-node.kss-guides-mode .kss-modifier__example:before, #kss-node.kss-guides-mode .kss-modifier__example:after,
   #kss-node.kss-guides-mode .kss-modifier__example-footer:before,
   #kss-node.kss-guides-mode .kss-modifier__example-footer:after {
