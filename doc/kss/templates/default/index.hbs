@@ -17,7 +17,7 @@
   <nav class="kss-header-nav">
     <ul>
       {{#each options.mainmenu}}
-        <li><a href="{{url}}" target="_blank">{{title}}</a></li>
+        <li><a href="{{url}}" target="_blank" class="{{class}}">{{title}}</a></li>
       {{/each}}
     </ul>
   </nav>
@@ -36,7 +36,7 @@
         </li>
       {{#each menu}}
         <li class="kss-nav__menu-item {{#if children}}kss-nav-has-children{{/if}}">
-          <a class="kss-nav__menu-link" href="section-{{referenceURI}}.html">
+          <a class="kss-nav__menu-link {{#if isActive}}kss-nav__menu-link-active{{/if}}" href="section-{{referenceURI}}.html">
             <span class="kss-nav__name">{{header}}</span>
           </a>
           {{#if isActive}}

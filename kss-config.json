@@ -20,9 +20,9 @@
   ],
 
   "mainmenu": [
-    {"title" : "WebSlides", "url" : "../../index.html"},
-    {"title" : "Documentation", "url" : "./"},
-    {"title" : "Demos", "url" : ".../demos/index.html"}
+    {"title" : "WebSlides", "url" : "../../index.html", "class": ""},
+    {"title" : "Documentation", "url" : "./", "class": "kss-menu-active"},
+    {"title" : "Demos", "url" : ".../demos/index.html", "class": ""}
   ]
 
 }

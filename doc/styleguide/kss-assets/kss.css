@@ -213,9 +213,9 @@
     #kss-node .kss-nav li {
       margin-left: 3.2rem; }
     #kss-node .kss-nav .kss-nav-has-children > a::before {
-      content: url("./images/down_arrow.svg"); }
+      content: url("./arrow_down.svg"); }
     #kss-node .kss-nav .kss-nav-has-children > a.kss-nav__menu-link-active::before {
-      content: url("./images/up_arrow.svg"); }
+      content: url("./arrow_up.svg"); }
   #kss-node .kss-nav__menu {
     list-style-type: none;
     margin-bottom: 12px;
@@ -256,7 +256,8 @@
     #kss-node .kss-nav__ref:after {
       content: ' '; }
   #kss-node .kss-nav__ref-child {
-    font-weight: normal; }
+    font-weight: normal;
+    padding-left: 1.2rem; }
   #kss-node .kss-section {
     padding-bottom: 2.4rem;
     padding-top: 2.4rem; }
@@ -443,6 +444,15 @@
     z-index: 0; }
     #kss-node .kss-modifier__example:last-child {
       margin-bottom: 0; }
+    #kss-node .kss-modifier__example .fullscreen {
+      border: 2px solid #e7e7e9;
+      border-radius: 6px;
+      padding-bottom: 50%; }
+      #kss-node .kss-modifier__example .fullscreen::before {
+        background-color: #f3f3f5;
+        content: '';
+        display: block;
+        height: 20px; }
   #kss-node.kss-guides-mode .kss-modifier__example:before, #kss-node.kss-guides-mode .kss-modifier__example:after,
   #kss-node.kss-guides-mode .kss-modifier__example-footer:before,
   #kss-node.kss-guides-mode .kss-modifier__example-footer:after {
@@ -495,9 +505,9 @@
     margin: 24px 0;
     padding: 20px; }
     #kss-node .kss-markup[open] summary {
-      background: url("./images/up_arrow.svg") no-repeat right center; }
+      background: url("./arrow_up.svg") no-repeat right center; }
     #kss-node .kss-markup summary {
-      background: url("./images/down_arrow.svg") no-repeat right center;
+      background: url("./arrow_down.svg") no-repeat right center;
       cursor: pointer; }
     #kss-node .kss-markup pre {
       background: #1d1f20;
@@ -545,6 +555,8 @@
       color: #d1783e;
       font-size: 13.33333px;
       font-weight: bold; }
+  #kss-node .fullscreen > .embed {
+    position: relative; }
 
 .kss-container {
   display: grid;
