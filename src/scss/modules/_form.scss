@@ -95,10 +95,17 @@ input[type='submit'] {
 
 // Try
 //
-// Markup:
-// <a href="#" class="try">Try element</a>
+// Highlight important links
 //
-// Styleguide Architecture.Try
+// Markup:
+// <p class="text-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas urna nisi, mollis sit amet venenatis nec, pulvinar id mi.</p>
+// <p><a href="#" class="try">Important link</a></p>
+//
+// Demos:
+// [Pay what you want...](https://webslides.tv/demos/components#slide=120)
+// [Demos - Github](https://webslides.tv/demos/components#slide=53)
+//
+// Styleguide Forms.Try
 .try {
   display: block;
   font-size: 1.6rem;
@@ -136,13 +143,45 @@ button:disabled:hover {
   cursor: not-allowed;
 }
 
-// Login form
+// Search
+//
+// WebSlides provides a easy way for search forms creating. Connect it to your search engine and help your users to find information in your site. Longforms are part of a whole website, a search form allows to find more relevant information in your site.
 //
 // Markup:
-// <div class="user">
-//   <input type="text" placeholder="Username" />
-//   <button>Log in</button>
-// </div>
+// <h1>Title</h1>
+// <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas urna nisi, mollis sit amet venenatis nec, pulvinar id mi.</p>
+// <form action="/" class="user" method="post">
+//   <input name="location" tabindex="1" placeholder="Type here..." required="" type="search">
+//   <button type="submit" tabindex="2" title="Search">Search ›</button>
+// </form>
+//
+// Demos:
+// [Search form - Components](https://webslides.tv/demos/components#slide=92)
+//
+// Styleguide Forms.Login
+
+// Login
+//
+// Creating a login form is a simple task, add every field you need: username, email, forget password?, buttons, ...
+//
+// Markup:
+// <form action="/" method="post">
+//   <fieldset>
+//     <legend>Welcome back</legend>
+//     <p><label>Username or Email</label>
+//       <input tabindex="1" name="email" placeholder="your@email.com" required="" type="text">
+//     </p>
+//     <p><label>Password <span class="alignright"><a href="#" title="Forgot password?">Forgot?</a></span></label>
+//       <input tabindex="2" name="password" placeholder="6 characters minimum" required="" type="password">
+//     </p>
+//     <p>
+//       <button type="submit" tabindex="3" title="Login">Login ›</button>
+//     </p>
+//   </fieldset>
+// </form>
+//
+// Demos:
+// [Microsoft login](https://webslides.tv/demos/components#slide=93)
 //
 // Styleguide Forms.Login
 .user {

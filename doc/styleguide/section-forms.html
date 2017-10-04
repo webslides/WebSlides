@@ -36,23 +36,23 @@
           </a>
         </li>
         <li class="kss-nav__menu-item kss-nav-has-children">
-          <a class="kss-nav__menu-link " href="section-architecture.html">
-            <span class="kss-nav__name">Architecture</span>
-          </a>
-        </li>
-        <li class="kss-nav__menu-item kss-nav-has-children">
-          <a class="kss-nav__menu-link " href="section-contents.html">
-            <span class="kss-nav__name">Contents</span>
-          </a>
-        </li>
-        <li class="kss-nav__menu-item kss-nav-has-children">
           <a class="kss-nav__menu-link kss-nav__menu-link-active" href="section-forms.html">
             <span class="kss-nav__name">Forms</span>
           </a>
               <ul class="kss-nav__menu-child">
                 <li class="kss-nav__menu-item">
                   <a class="kss-nav__menu-link kss-nav__ref " href="section-forms.html#kssref-forms-login">
-                    <span class="kss-nav__name">Login form</span>
+                    <span class="kss-nav__name">Search</span>
+                  </a>
+                </li>
+                <li class="kss-nav__menu-item">
+                  <a class="kss-nav__menu-link kss-nav__ref " href="section-forms.html#kssref-forms-login">
+                    <span class="kss-nav__name">Login</span>
+                  </a>
+                </li>
+                <li class="kss-nav__menu-item">
+                  <a class="kss-nav__menu-link kss-nav__ref " href="section-forms.html#kssref-forms-try">
+                    <span class="kss-nav__name">Try</span>
                   </a>
                 </li>
               </ul>
@@ -113,13 +113,25 @@
         <div class="kss-style">
           <h2 class="kss-title kss-title--level-2">
             <a class="kss-title__permalink" href="#kssref-forms-login">
-              Login form
+              Search
             </a>
           </h2>
 
+            <div class="kss-description">
+              <p>WebSlides provides a easy way for search forms creating. Connect it to your search engine and help your users to find information in your site. Longforms are part of a whole website, a search form allows to find more relevant information in your site.</p>
+
+            </div>
 
         </div>
 
+          <div class="kss-modifier__heading kss-style">
+            Demos
+          </div>
+          <ul class="kss__demos">
+              <li>
+                <a href="https://webslides.tv/demos/components#slide&#x3D;92" title="Search form - Components" target="_blank">Search form - Components</a>
+              </li>
+          </ul>
 
           <div class="kss-modifier__wrapper">
             <div class="kss-modifier__heading kss-style">
@@ -128,10 +140,20 @@
 
 
             <div class="kss-modifier__example">
-              <div class="user">
-  <input type="text" placeholder="Username" />
-  <button>Log in</button>
-</div>
+              <form action="/" method="post">
+  <fieldset>
+    <legend>Welcome back</legend>
+    <p><label>Username or Email</label>
+      <input tabindex="1" name="email" placeholder="your@email.com" required="" type="text">
+    </p>
+    <p><label>Password <span class="alignright"><a href="#" title="Forgot password?">Forgot?</a></span></label>
+      <input tabindex="2" name="password" placeholder="6 characters minimum" required="" type="password">
+    </p>
+    <p>
+      <button type="submit" tabindex="3" title="Login">Login ›</button>
+    </p>
+  </fieldset>
+</form>
               <div class="kss-modifier__example-footer"></div>
             </div>
 
@@ -141,14 +163,155 @@
               <summary>
                   Markup
               </summary>
-              <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;div class&#x3D;&quot;user&quot;&gt;
-  &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Username&quot; /&gt;
-  &lt;button&gt;Log in&lt;/button&gt;
-&lt;/div&gt;</code></pre>
+              <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;form action&#x3D;&quot;/&quot; method&#x3D;&quot;post&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Welcome back&lt;/legend&gt;
+    &lt;p&gt;&lt;label&gt;Username or Email&lt;/label&gt;
+      &lt;input tabindex&#x3D;&quot;1&quot; name&#x3D;&quot;email&quot; placeholder&#x3D;&quot;your@email.com&quot; required&#x3D;&quot;&quot; type&#x3D;&quot;text&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;&lt;label&gt;Password &lt;span class&#x3D;&quot;alignright&quot;&gt;&lt;a href&#x3D;&quot;#&quot; title&#x3D;&quot;Forgot password?&quot;&gt;Forgot?&lt;/a&gt;&lt;/span&gt;&lt;/label&gt;
+      &lt;input tabindex&#x3D;&quot;2&quot; name&#x3D;&quot;password&quot; placeholder&#x3D;&quot;6 characters minimum&quot; required&#x3D;&quot;&quot; type&#x3D;&quot;password&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;button type&#x3D;&quot;submit&quot; tabindex&#x3D;&quot;3&quot; title&#x3D;&quot;Login&quot;&gt;Login ›&lt;/button&gt;
+    &lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
             </details>
 
           <div class="kss-source kss-style">
-            Source: <code>modules/_form.scss</code>, line 139
+            Source: <code>modules/_form.scss</code>, line 146
+          </div>
+
+      </div>
+      <div id="kssref-forms-login" class="kss-section kss-section--depth-2 ">
+
+        <div class="kss-style">
+          <h2 class="kss-title kss-title--level-2">
+            <a class="kss-title__permalink" href="#kssref-forms-login">
+              Login
+            </a>
+          </h2>
+
+            <div class="kss-description">
+              <p>Creating a login form is a simple task, add every field you need: username, email, forget password?, buttons, ...</p>
+
+            </div>
+
+        </div>
+
+          <div class="kss-modifier__heading kss-style">
+            Demos
+          </div>
+          <ul class="kss__demos">
+              <li>
+                <a href="https://webslides.tv/demos/components#slide&#x3D;93" title="Microsoft login" target="_blank">Microsoft login</a>
+              </li>
+          </ul>
+
+          <div class="kss-modifier__wrapper">
+            <div class="kss-modifier__heading kss-style">
+              Example
+            </div>
+
+
+            <div class="kss-modifier__example">
+              <form action="/" method="post">
+  <fieldset>
+    <legend>Welcome back</legend>
+    <p><label>Username or Email</label>
+      <input tabindex="1" name="email" placeholder="your@email.com" required="" type="text">
+    </p>
+    <p><label>Password <span class="alignright"><a href="#" title="Forgot password?">Forgot?</a></span></label>
+      <input tabindex="2" name="password" placeholder="6 characters minimum" required="" type="password">
+    </p>
+    <p>
+      <button type="submit" tabindex="3" title="Login">Login ›</button>
+    </p>
+  </fieldset>
+</form>
+              <div class="kss-modifier__example-footer"></div>
+            </div>
+
+          </div>
+
+            <details class="kss-markup kss-style">
+              <summary>
+                  Markup
+              </summary>
+              <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;form action&#x3D;&quot;/&quot; method&#x3D;&quot;post&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Welcome back&lt;/legend&gt;
+    &lt;p&gt;&lt;label&gt;Username or Email&lt;/label&gt;
+      &lt;input tabindex&#x3D;&quot;1&quot; name&#x3D;&quot;email&quot; placeholder&#x3D;&quot;your@email.com&quot; required&#x3D;&quot;&quot; type&#x3D;&quot;text&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;&lt;label&gt;Password &lt;span class&#x3D;&quot;alignright&quot;&gt;&lt;a href&#x3D;&quot;#&quot; title&#x3D;&quot;Forgot password?&quot;&gt;Forgot?&lt;/a&gt;&lt;/span&gt;&lt;/label&gt;
+      &lt;input tabindex&#x3D;&quot;2&quot; name&#x3D;&quot;password&quot; placeholder&#x3D;&quot;6 characters minimum&quot; required&#x3D;&quot;&quot; type&#x3D;&quot;password&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;button type&#x3D;&quot;submit&quot; tabindex&#x3D;&quot;3&quot; title&#x3D;&quot;Login&quot;&gt;Login ›&lt;/button&gt;
+    &lt;/p&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+            </details>
+
+          <div class="kss-source kss-style">
+            Source: <code>modules/_form.scss</code>, line 163
+          </div>
+
+      </div>
+      <div id="kssref-forms-try" class="kss-section kss-section--depth-2 ">
+
+        <div class="kss-style">
+          <h2 class="kss-title kss-title--level-2">
+            <a class="kss-title__permalink" href="#kssref-forms-try">
+              Try
+            </a>
+          </h2>
+
+            <div class="kss-description">
+              <p>Highlight important links</p>
+
+            </div>
+
+        </div>
+
+          <div class="kss-modifier__heading kss-style">
+            Demos
+          </div>
+          <ul class="kss__demos">
+              <li>
+                <a href="https://webslides.tv/demos/components#slide&#x3D;120" title="Pay what you want..." target="_blank">Pay what you want...</a>
+              </li>
+              <li>
+                <a href="https://webslides.tv/demos/components#slide&#x3D;53" title="Demos - Github" target="_blank">Demos - Github</a>
+              </li>
+          </ul>
+
+          <div class="kss-modifier__wrapper">
+            <div class="kss-modifier__heading kss-style">
+              Example
+            </div>
+
+
+            <div class="kss-modifier__example">
+              <p class="text-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas urna nisi, mollis sit amet venenatis nec, pulvinar id mi.</p>
+<p><a href="#" class="try">Important link</a></p>
+              <div class="kss-modifier__example-footer"></div>
+            </div>
+
+          </div>
+
+            <details class="kss-markup kss-style">
+              <summary>
+                  Markup
+              </summary>
+              <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;p class&#x3D;&quot;text-intro&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas urna nisi, mollis sit amet venenatis nec, pulvinar id mi.&lt;/p&gt;
+&lt;p&gt;&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;try&quot;&gt;Important link&lt;/a&gt;&lt;/p&gt;</code></pre>
+            </details>
+
+          <div class="kss-source kss-style">
+            Source: <code>modules/_form.scss</code>, line 96
           </div>
 
       </div>
