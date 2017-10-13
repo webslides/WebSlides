@@ -720,17 +720,8 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     }
 
     .fullscreen {
-      border: 2px solid $kss-colors-subheader-border;
       border-radius: 6px;
       padding-bottom: 50%;
-
-      &::before {
-        background: url('./browser_icon.svg') no-repeat 5px center $kss-colors-subheader-bg;
-        border-bottom: 2px solid $kss-colors-subheader-border;
-        content: '';
-        display: block;
-        height: 20px;
-      }
 
       .embed {
         height: calc(100% - 30px);
@@ -738,6 +729,34 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
         position: absolute;
         top: 25px;
         width: calc(100% - 10px);
+      }
+    }
+
+    section {
+      padding: 0;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      p {
+        padding: 2.4rem;
+      }
+    }
+
+    .fullscreen,
+    section {
+      border: 2px solid $kss-colors-subheader-border;
+
+      &::before {
+        background: url('./browser_icon.svg') no-repeat 5px center $kss-colors-subheader-bg;
+        border-bottom: 2px solid $kss-colors-subheader-border;
+        content: '';
+        display: block;
+        height: 20px;
       }
     }
   }
@@ -907,6 +926,11 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   .fullscreen > .embed {
     position: relative;
   }
+
+  #navigation {
+    opacity: 1;
+    position: relative;
+  }
 }
 
 .kss-container {
@@ -966,15 +990,16 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 }
 
-#kssref-architecture-backgrounds {
+#kssref-layout-backgrounds {
   & span[class*='bg'] {
     display: inline-block;
     margin-left: -4px;
     padding: 1.2rem;
+    width: 25%;
   }
 }
 
-#kssref-architecture-backgrounds-transparent {
+#kssref-layout-backgrounds-transparent {
   & div[class*='bg'] {
     margin: 0;
     padding: 2rem;
@@ -986,7 +1011,7 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   }
 }
 
-#kssref-architecture-backgrounds-gradient {
+#kssref-layout-backgrounds-gradient {
   & div[class*='bg'] {
     margin: 3rem;
     padding: 4rem;
@@ -1009,4 +1034,8 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
   p {
     padding-bottom: 1.2rem;
   }
+}
+
+.kss-container-background-anim {
+  clip: rect(0 600px 400px 0);
 }

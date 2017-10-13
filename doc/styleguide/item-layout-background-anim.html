@@ -87,6 +87,14 @@
 
         </div>
 
+          <div class="kss-modifier__heading kss-style">
+            Demos
+          </div>
+          <ul class="kss__demos">
+              <li>
+                <a href="https://webslides.tv/demos/components#slide&#x3D;100" title="Example" target="_blank">Example</a>
+              </li>
+          </ul>
 
           <div class="kss-modifier__wrapper">
             <div class="kss-modifier__heading kss-style">
@@ -96,7 +104,9 @@
 
             <div class="kss-modifier__example">
               <section class="aligncenter bg-black">
-  <span class="background anim" style="background-image:url('https://source.unsplash.com/n9WPPWiPPJw/')"></span>
+  <div class="kss-container-background-anim">
+    <span class="background anim" style="background-image:url('https://source.unsplash.com/n9WPPWiPPJw/')"></span>
+  </div>
 </section>
               <div class="kss-modifier__example-footer"></div>
             </div>
@@ -108,12 +118,14 @@
                   Markup
               </summary>
               <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;section class&#x3D;&quot;aligncenter bg-black&quot;&gt;
-  &lt;span class&#x3D;&quot;background anim&quot; style&#x3D;&quot;background-image:url(&#x27;https://source.unsplash.com/n9WPPWiPPJw/&#x27;)&quot;&gt;&lt;/span&gt;
+  &lt;div class&#x3D;&quot;kss-container-background-anim&quot;&gt;
+    &lt;span class&#x3D;&quot;background anim&quot; style&#x3D;&quot;background-image:url(&#x27;https://source.unsplash.com/n9WPPWiPPJw/&#x27;)&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/section&gt;</code></pre>
             </details>
 
           <div class="kss-source kss-style">
-            Source: <code>modules/_slides-bg.scss</code>, line 140
+            Source: <code>modules/_slides-bg.scss</code>, line 152
           </div>
 
       </div>

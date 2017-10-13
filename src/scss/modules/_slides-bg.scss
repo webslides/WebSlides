@@ -16,7 +16,7 @@
 //
 // Markup:
 // <section>
-//   <span class="{{modifier_class}} bg-gray" style="background-image:url('http://lorempixel.com/150/150/')"></span>
+//   <span class="{{modifier_class}} bg-gray" style="background-image:url('http://lorempixel.com/800/800/city/')"></span>
 // </section>
 //
 // .background - Center.
@@ -31,6 +31,15 @@
 // .background-right-bottom - Right bottom.
 // .background-left - Left.
 // .background-right - Right.
+//
+// Demos:
+// [Example 1](https://webslides.tv/demos/components#slide=58)
+// [Example 2](https://webslides.tv/demos/components#slide=59)
+// [Example 3](https://webslides.tv/demos/components#slide=60)
+// [Example 4](https://webslides.tv/demos/components#slide=61)
+// [Right top](https://webslides.tv/demos/components#slide=51)
+// [Right bottom](https://webslides.tv/demos/components#slide=92)
+// [Left bottom](https://webslides.tv/demos/components#slide=87)
 //
 // Styleguide Layout.Background
 .background {
@@ -102,6 +111,9 @@
   //   </div>
   // </section>
   //
+  // Demos:
+  // [Example](https://webslides.tv/demos/classes#slide=34)
+  //
   // Styleguide Layout.Background.Video
   &-video {
     height: 100%;
@@ -141,8 +153,13 @@
 //
 // Markup:
 // <section class="aligncenter bg-black">
-//   <span class="background anim" style="background-image:url('https://source.unsplash.com/n9WPPWiPPJw/')"></span>
+//   <div class="kss-container-background-anim">
+//     <span class="background anim" style="background-image:url('https://source.unsplash.com/n9WPPWiPPJw/')"></span>
+//   </div>
 // </section>
+//
+// Demos:
+// [Example](https://webslides.tv/demos/components#slide=100)
 //
 // Styleguide Layout.Background.Anim
 .background.anim {

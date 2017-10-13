@@ -124,7 +124,7 @@ footer nav {
 .frame,
 .shadow {
   padding: 2.4rem;
-}
+}https://webslides.tv/demos/classes#slide=5
 
 .radius {
   border-radius: .4rem;
@@ -141,6 +141,14 @@ footer nav {
 // .alignright - Align right.
 // .alignleft - Align left.
 // .aligncenter - Align center.
+//
+// Demos:
+// [Example right](https://webslides.tv/demos/classes#slide=7)
+// [Example left](https://webslides.tv/demos/classes#slide=6)
+// [Example right](https://webslides.tv/demos/classes#slide=8)
+// [In the header](https://webslides.tv/demos/classes#slide=5)
+// [In the footer](https://webslides.tv/demos/components#slide=58)
+//
 //
 // Styleguide Layout.Alignment
 .alignright {
@@ -198,6 +206,10 @@ figure.alignleft {
 // .size-40 - resize to 40%.
 // .size-30 - resize to 30%.
 // .size-20 - resize to 20%.
+//
+// Demos:
+// [50%](https://webslides.tv/demos/components#slide=25)
+// [30%](https://webslides.tv/demos/components#slide=26)
 //
 // Styleguide Layout.Sizes
 $sizes: 80, 70, 60, 50, 40, 30, 20;

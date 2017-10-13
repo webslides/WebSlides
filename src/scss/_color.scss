@@ -109,19 +109,24 @@ Slides - Backgrounds <section class="bg-primary">
 // Colors we use for backgrounds.
 //
 // Markup:
-// <span class="bg-primary size-20">Primary #44d</span>
-// <span class="bg-secondary size-20">Secondary #67d</span>
-// <span class="bg-light size-20">Light #f7f9fb</span>
-// <span class="bg-black size-20">Black #000</span>
-// <span class="bg-black-blue size-20">Black blue #123</span>
-// <span class="bg-blue size-20">Blue #346</span>
-// <span class="bg-brown size-20">Brown #f9f8f2</span>
-// <span class="bg-gray size-20">Gray #d5d9e2</span>
-// <span class="bg-green size-20">Green #077</span>
-// <span class="bg-purple size-20">Purple #62b</span>
-// <span class="bg-red size-20">Red #c23</span>
-// <span class="bg-white size-20">White #fff</span>
-// <span class="bg-facebook size-20">Facebook #3b5998</span>
+// <span class="bg-primary">Primary #44d</span>
+// <span class="bg-secondary">Secondary #67d</span>
+// <span class="bg-light">Light #f7f9fb</span>
+// <span class="bg-black">Black #000</span>
+// <span class="bg-black-blue">Black blue #123</span>
+// <span class="bg-blue">Blue #346</span>
+// <span class="bg-brown">Brown #f9f8f2</span>
+// <span class="bg-gray">Gray #d5d9e2</span>
+// <span class="bg-green">Green #077</span>
+// <span class="bg-purple">Purple #62b</span>
+// <span class="bg-red">Red #c23</span>
+// <span class="bg-white">White #fff</span>
+// <span class="bg-facebook">Facebook #3b5998</span>
+//
+// Demos:
+// [White](https://webslides.tv/demos/classes#slide=24)
+// [Several colors](https://webslides.tv/demos/classes#slide=28)
+// [Examples](https://webslides.tv/demos/components#slide=27)
 //
 // Styleguide Layout.Backgrounds
 @each $name, $color in $bg-colors {
@@ -176,6 +181,9 @@ Slides - Backgrounds <section class="bg-primary">
 //   <div class="bg-trans-gradient">Gradient</div>
 // </div>
 //
+// Demos:
+// [Example](https://webslides.tv/demos/components#slide=28)
+//
 // Styleguide Layout.backgrounds.transparent
 .bg-trans-dark {
   background: rgba($black, .8);
@@ -198,9 +206,12 @@ Slides - Backgrounds <section class="bg-primary">
 //   <div class="bg-gradient-h">Horizontal</div>
 //   <div class="bg-gradient-v">Vertical</div>
 //   <div class="bg-gradient-r">Radial</div>
+// Demos:
+// [Horizontal](https://webslides.tv/demos/classes#slide=29)
+// [Vertical](https://webslides.tv/demos/classes#slide=32)
+// [Radial](https://webslides.tv/demos/classes#slide=31)
 //
 // Styleguide Layout.backgrounds.gradient
-/*Horizontal Gradient*/
 .bg-gradient-h {
   background: linear-gradient(134deg, #32b 0, #62b 100%);
 }
