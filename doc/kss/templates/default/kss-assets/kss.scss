@@ -931,6 +931,13 @@ $kss-vertical-rhythm: $kss-font-size * 1.5;
     opacity: 1;
     position: relative;
   }
+
+  #kssref-longforms-interviews {
+    .text-interview {
+      margin-left: 34%;
+      width: 66%;
+    }
+  }
 }
 
 .kss-container {
