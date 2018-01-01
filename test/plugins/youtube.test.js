@@ -44,10 +44,10 @@ test('YouTube utility', () => {
   new YouTube(webslides);
 
   expect(typeof window.onYouTubeIframeAPIReady).toBe('function');
-  webslides.el.querySelector('[data-youtube]').dataset = {
-    autoplay: true,
-    youtubeId: 'CQY3KUR3VzM'
-  };
+  const el = webslides.el.querySelector('[data-youtube]');
+
+  el.dataset.autoplay = true;
+  el.dataset.youtubeId = 'CQY3KUR3VzM';
 
   window.onYouTubeIframeAPIReady();
 

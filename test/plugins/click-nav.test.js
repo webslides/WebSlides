@@ -9,8 +9,7 @@ beforeAll(() => {
 test('Click nav plugin', () => {
   const next = jest.fn();
   const ws = document.getElementById('webslides');
-  // Simulates dataset
-  ws.dataset = {};
+
   const webslides = {
     options: {
       changeOnClick: true

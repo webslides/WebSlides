@@ -8,8 +8,8 @@ describe('Hash utility', () => {
   document.location.hash = '#slide=1';
   const goto = jest.fn();
   const ws = document.getElementById('webslides');
-  // Simulates dataset
-  ws.dataset = {};
+
+
   const webslides = {
     options: {
       changeOnClick: true
