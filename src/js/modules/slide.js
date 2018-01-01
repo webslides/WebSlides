@@ -37,7 +37,7 @@ class Slide {
      */
     this.i = i;
 
-    this.el.id = `section-${(i + 1)}`;
+    this.el.id = this.el.id ? this.el.id : `section-${(i + 1)}`;
     this.el.classList.add(CLASSES.SLIDE);
 
     // Hide slides by default

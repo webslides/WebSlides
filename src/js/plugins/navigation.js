@@ -60,6 +60,9 @@ export default class Navigation {
     this.el.appendChild(this.counter);
 
     this.ws_.el.appendChild(this.el);
+    this.slides = Array.prototype.slice.call(
+      document.querySelectorAll('#webslides section')).map(s => s.id);
+
     this.bindEvents_();
   }
 
@@ -73,6 +76,29 @@ export default class Navigation {
     this.next.addEventListener('click', this.onButtonClicked_.bind(this));
     this.prev.addEventListener('click', this.onButtonClicked_.bind(this));
     this.counter.addEventListener('click', this.onButtonClicked_.bind(this));
+    document.body.addEventListener('click', this.onBodyClicked_.bind(this));
+  }
+
+  /**
+   * Whenever the body is clicked, check if the element has [data-slide] attr
+   * and if so, navigate to it.
+   * @param {MouseEvent} event Click event
+   */
+  onBodyClicked_(event) {
+    const matches = document.body.matches || document.body.msMatchesSelector;
+    let el;
+
+    if (matches.call(event.target, '[data-slide]')) {
+      el = event.target;
+    } else if (matches.call(event.target, '[data-slide] *')) {
+      el = event.target.querySelector('[data-slide]');
+    }
+
+    if (el) {
+      event.preventDefault();
+      const i = this.slides.indexOf(el.dataset.slide);
+      this.ws_.goToSlide(i);
+    }
   }
 
   /**
