@@ -71,22 +71,26 @@ describe('Slide module', () => {
       const enter = jest.fn();
       const enable = jest.fn();
       const disable = jest.fn();
+      const show = jest.fn();
 
       slide.el.addEventListener('dom:leave', leave);
       slide.el.addEventListener('dom:enter', enter);
       slide.el.addEventListener('slide:enable', enable);
       slide.el.addEventListener('slide:disable', disable);
+      slide.el.addEventListener('slide:show', show);
 
       expect(enter).not.toHaveBeenCalled();
       expect(leave).not.toHaveBeenCalled();
       expect(enable).not.toHaveBeenCalled();
       expect(disable).not.toHaveBeenCalled();
+      expect(show).not.toHaveBeenCalled();
 
       slide.enable();
       expect(enter).not.toHaveBeenCalled();
       expect(leave).not.toHaveBeenCalled();
       expect(enable).toHaveBeenCalledTimes(1);
       expect(disable).not.toHaveBeenCalled();
+      expect(show).not.toHaveBeenCalled();
       enable.mockClear();
 
       slide.disable();
@@ -94,6 +98,7 @@ describe('Slide module', () => {
       expect(leave).not.toHaveBeenCalled();
       expect(enable).not.toHaveBeenCalled();
       expect(disable).toHaveBeenCalledTimes(1);
+      expect(show).not.toHaveBeenCalled();
       disable.mockClear();
 
       slide.moveAfterLast();
@@ -101,6 +106,7 @@ describe('Slide module', () => {
       expect(leave).toHaveBeenCalledTimes(1);
       expect(enable).not.toHaveBeenCalled();
       expect(disable).not.toHaveBeenCalled();
+      expect(show).not.toHaveBeenCalled();
       enter.mockClear();
       leave.mockClear();
 
@@ -109,8 +115,12 @@ describe('Slide module', () => {
       expect(leave).toHaveBeenCalledTimes(1);
       expect(enable).not.toHaveBeenCalled();
       expect(disable).not.toHaveBeenCalled();
+      expect(show).not.toHaveBeenCalled();
       enter.mockClear();
       leave.mockClear();
+
+      slide.show();
+      expect(show).toHaveBeenCalled();
     });
 
     test('Move', () => {

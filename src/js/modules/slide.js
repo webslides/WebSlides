@@ -8,8 +8,9 @@ const CLASSES = {
 const Events = {
   ENTER: 'dom:enter',
   LEAVE: 'dom:leave',
+  DISABLE: 'slide:disable',
   ENABLE: 'slide:enable',
-  DISABLE: 'slide:disable'
+  SHOW: 'slide:show'
 };
 
 /**
@@ -57,6 +58,7 @@ class Slide {
   show() {
     DOM.show(this.el);
     this.el.classList.add(CLASSES.CURRENT);
+    this.fire_(Events.SHOW);
   }
 
   /**
