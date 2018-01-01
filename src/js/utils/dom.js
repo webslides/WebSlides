@@ -148,7 +148,8 @@ export default class DOM {
    */
   static fireEvent(target, eventType, eventInfo = {}) {
     const event = new WSCustomEvent(eventType, {
-      detail: eventInfo
+      detail: eventInfo,
+      bubbles: true
     });
 
     target.dispatchEvent(event);
