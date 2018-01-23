@@ -85,16 +85,6 @@
   "pre-commit": [
     "lint"
   ],
-  "babel": {
-    "presets": [
-      [
-        "es2015",
-        {
-          "modules": false
-        }
-      ]
-    ]
-  },
   "dependencies": {
     "request": "^2.83.0"
   }
