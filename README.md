@@ -92,7 +92,7 @@ You can add:
 ### Dive In!
 
 - Do not miss [our demos](https://webslides.tv/). 
-- Want to get techie? Read [our wiki](wiki):
+- Want to get techie? Read [our wiki](https://github.com/webslides/WebSlides/wiki):
   - [FAQ](https://github.com/webslides/WebSlides/wiki)
   - [Core API](https://github.com/webslides/WebSlides/wiki/Core-API)
   - [Plugin Docs](https://github.com/webslides/WebSlides/wiki/Plugin-docs)
