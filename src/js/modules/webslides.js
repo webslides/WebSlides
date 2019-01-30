@@ -89,6 +89,18 @@ export default class WebSlides {
      */
     this.currentSlide_ = null;
     /**
+     Name of the Slide.
+     * @type {string}
+     * @private
+     */
+    this.slideName = null;
+    /**
+     ID of the Slide.
+     * @type {string}
+     * @private
+     */
+    this.id = null;
+    /**
      * Max slide index.
      * @type {number}
      * @private
@@ -316,7 +328,9 @@ export default class WebSlides {
     DOM.fireEvent(this.el, 'ws:slide-change', {
       slides: this.maxSlide_,
       currentSlide0: this.currentSlideI_,
-      currentSlide: this.currentSlideI_ + 1
+      currentSlide: this.currentSlideI_ + 1,
+      slideName: slide.slideName,
+      id: slide.id
     });
   }
 

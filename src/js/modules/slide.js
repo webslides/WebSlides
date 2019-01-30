@@ -37,6 +37,18 @@ class Slide {
      */
     this.i = i;
 
+    /**
+     * The slide name if there is any.
+     * @type {string}
+     */
+    this.slideName = this.el.getAttribute('slideName');
+
+    /**
+     * The slide id if there is any.
+     * @type {string}
+     */
+    this.id = this.el.getAttribute('id');
+
     this.el.id = this.el.id ? this.el.id : `section-${(i + 1)}`;
     this.el.classList.add(CLASSES.SLIDE);
 
