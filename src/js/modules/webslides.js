@@ -315,6 +315,7 @@ export default class WebSlides {
 
     DOM.fireEvent(this.el, 'ws:slide-change', {
       slides: this.maxSlide_,
+      slideEl: slide.el,
       currentSlide0: this.currentSlideI_,
       currentSlide: this.currentSlideI_ + 1
     });
