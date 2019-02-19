@@ -30,6 +30,7 @@ webslides.js will add .ws-ready automatically. Don't worry :) -- */
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  scrollbar-width: none; // sass-lint:disable-line no-misspelled-properties
 
   &::-webkit-scrollbar {
     display: none;
