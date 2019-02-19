@@ -1,4 +1,4 @@
-import Video from '../../src/js/plugins/video';
+import Video from '../../src/js/plugins/media';
 import DOM from '../../src/js/utils/dom';
 
 beforeAll(() => {

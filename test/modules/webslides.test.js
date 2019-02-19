@@ -51,7 +51,7 @@ test('Should have correct properties', () => {
   expect(webslides.plugins.nav).toBeDefined();
   expect(webslides.plugins.scroll).toBeDefined();
   expect(webslides.plugins.touch).toBeDefined();
-  expect(webslides.plugins.video).toBeDefined();
+  expect(webslides.plugins.media).toBeDefined();
   expect(webslides.plugins.youtube).toBeDefined();
   expect(webslides.plugins.zoom).toBeDefined();
 

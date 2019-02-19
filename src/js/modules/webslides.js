@@ -19,7 +19,7 @@ const PLUGINS = {
   'nav': Plugins.Navigation,
   'scroll': Plugins.Scroll,
   'touch': Plugins.Touch,
-  'video': Plugins.Video,
+  'media': Plugins.Media,
   'youtube': Plugins.YouTube,
   'zoom': Plugins.Zoom
 };

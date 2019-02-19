@@ -6,7 +6,7 @@ import Keyboard from './keyboard';
 import Navigation from './navigation';
 import Scroll from './scroll';
 import Touch from './touch';
-import Video from './video';
+import Media from './media';
 import YouTube from './youtube';
 import Zoom from './zoom';
 
@@ -19,7 +19,7 @@ export default {
   Navigation,
   Scroll,
   Touch,
-  Video,
+  Media,
   YouTube,
   Zoom
 };

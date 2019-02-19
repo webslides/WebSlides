@@ -5,7 +5,7 @@ import {default as Slide, Events as SlideEvents} from '../modules/slide';
  * Video plugin. Video plugin that allows to autoplay videos once the slide gets
  * active.
  */
-export default class Video {
+export default class Media {
   /**
    * @param {WebSlides} wsInstance The WebSlides instance.
    * @constructor
@@ -17,24 +17,24 @@ export default class Video {
      */
     this.ws_ = wsInstance;
 
-    const videos = DOM.toArray(this.ws_.el.querySelectorAll('video'));
+    const medias = DOM.toArray(this.ws_.el.querySelectorAll('video,audio'));
 
-    if (videos.length) {
-      videos.forEach(video => {
-        if (!video.hasAttribute('autoplay')) {
+    if (medias.length) {
+      medias.forEach(media => {
+        if (!media.hasAttribute('autoplay')) {
           return;
         }
 
-        video.removeAttribute('autoplay');
-        video.pause();
-        video.currentTime = 0;
-        const {i} = Slide.getSectionFromEl(video);
+        media.removeAttribute('autoplay');
+        media.pause();
+        media.currentTime = 0;
+        const {i} = Slide.getSectionFromEl(media);
         const slide = wsInstance.slides[i - 1];
 
-        slide.video = video;
+        slide.media = media;
 
-        slide.el.addEventListener(SlideEvents.ENABLE, Video.onSectionEnabled);
-        slide.el.addEventListener(SlideEvents.DISABLE, Video.onSectionDisabled);
+        slide.el.addEventListener(SlideEvents.ENABLE, Media.onSectionEnabled);
+        slide.el.addEventListener(SlideEvents.DISABLE, Media.onSectionDisabled);
       });
     }
   }
@@ -44,7 +44,7 @@ export default class Video {
    * @param {CustomEvent} event
    */
   static onSectionEnabled(event) {
-    event.detail.slide.video.play();
+    event.detail.slide.media.play();
   }
 
   /**
@@ -52,6 +52,6 @@ export default class Video {
    * @param {CustomEvent} event
    */
   static onSectionDisabled(event) {
-    event.detail.slide.video.pause();
+    event.detail.slide.media.pause();
   }
 }
