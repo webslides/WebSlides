@@ -29,7 +29,7 @@ test('Navigation plugin', () => {
   expect(fakeCounter.tagName).toBe('SPAN');
   expect(fakeCounter.childNodes.length).toBe(1);
   expect(fakeCounter.childNodes[0].tagName).toBe('A');
-  expect(fakeCounter.childNodes[0].href).toBe('about:blank#');
+  expect(fakeCounter.childNodes[0].href).toBe('http://localhost/#');
   expect(fakeCounter.childNodes[0].title).toBe('View all slides');
 
   new Navigation(webslides);
