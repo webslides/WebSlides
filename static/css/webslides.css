@@ -3789,3 +3789,16 @@ Slides Index
 
 .text-slide-number {
   color: #abc; }
+
+.fa-chevron-circle-left{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.fa-chevron-circle-right{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.alineacion div{
+    display:inline-block;
+}
