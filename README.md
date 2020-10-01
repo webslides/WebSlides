@@ -1,4 +1,4 @@
-# WebSlides = Create stories with Karma
+# WebSlides - Create stories with Karma
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/release/webslides/webslides.svg)](https://github.com/webslides/webslides/releases/latest)
